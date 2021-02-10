@@ -17,23 +17,23 @@ namespace FastFoodDemo
         {
             InitializeComponent();
             SidePanel.Height = btnTimeSheet.Height;
-            SidePanel.Top = btnTimeSheet.Top;
-            btnMenu.Visible = false;
-            //firstCustomControl1.BringToFront();
+            SidePanel.Top = btnTimeSheet.Top;     
+            pictureBox2.Visible = true;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SidePanel.Height = btnTimeSheet.Height;
             SidePanel.Top = btnTimeSheet.Top;
-           //firstCustomControl1.BringToFront();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SidePanel.Height = btnOvertime.Height;
             SidePanel.Top = btnOvertime.Top;
-           // mySecondCustmControl1.BringToFront();
+           
 
         }
 
@@ -75,29 +75,22 @@ namespace FastFoodDemo
             Close();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            pnlForm.Width = 972;
-            pnlForm.Location = new Point(55, 59);
-            pnlMenu.Width = 56; 
-            pictureBox1.Hide();
-            btnMenu.Visible = true;
-            pictureBox2.Location = new Point(190, 117);
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            pnlForm.Width = 832;
-            pnlForm.Location = new Point(195,59);
-            pnlMenu.Width = 196;
-            btnMenu.Visible = false;
-            pictureBox1.Show();
-            pictureBox2.Location = new Point(267, 117);
-        }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SidePanel.Height = btnSettings.Height;
+            SidePanel.Top = btnSettings.Top;
+        }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            SidePanel.Height = btnMore.Height;
+            SidePanel.Top = btnMore.Top;
         }
     }
 }
