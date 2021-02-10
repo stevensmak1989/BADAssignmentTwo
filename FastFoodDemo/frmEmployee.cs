@@ -16,5 +16,15 @@ namespace FastFoodDemo
         {
             InitializeComponent();
         }
+
+        private void lblFirstNameAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

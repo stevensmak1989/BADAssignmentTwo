@@ -53,6 +53,13 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnEmployee.Height;
             SidePanel.Top = btnEmployee.Top;
+            frmEmployee frm = new frmEmployee();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.WindowState = FormWindowState.Maximized;
+            pnlForm.Controls.Add(frm);
+            frm.Show();
+            pictureBox2.Visible = false;
         }
 
 
