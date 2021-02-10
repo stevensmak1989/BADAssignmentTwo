@@ -26,5 +26,10 @@ namespace FastFoodDemo
         {
 
         }
+
+        private void frmAccount_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
