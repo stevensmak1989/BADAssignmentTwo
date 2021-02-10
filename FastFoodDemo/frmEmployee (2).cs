@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace FastFoodDemo
+{
+    public partial class frmEmployee : Form
+    {
+        public frmEmployee()
+        {
+            InitializeComponent();
+        }
+
+        private void lblFirstNameAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+}
