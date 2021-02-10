@@ -46,6 +46,7 @@
             this.btnMore = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pnlForm.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,7 +70,7 @@
             this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(1125, 31);
+            this.button12.Location = new System.Drawing.Point(1175, 55);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(32, 35);
             this.button12.TabIndex = 4;
@@ -84,7 +85,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1163, 31);
+            this.btnClose.Location = new System.Drawing.Point(1175, 25);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(32, 35);
             this.btnClose.TabIndex = 4;
@@ -94,9 +95,10 @@
             // 
             // pnlForm
             // 
-            this.pnlForm.Location = new System.Drawing.Point(195, 61);
+            this.pnlForm.Controls.Add(this.pictureBox2);
+            this.pnlForm.Location = new System.Drawing.Point(79, 25);
             this.pnlForm.Name = "pnlForm";
-            this.pnlForm.Size = new System.Drawing.Size(832, 521);
+            this.pnlForm.Size = new System.Drawing.Size(1102, 604);
             this.pnlForm.TabIndex = 5;
             // 
             // btnTimeSheet
@@ -238,13 +240,11 @@
             this.btnBack.TabIndex = 6;
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBack.UseVisualStyleBackColor = true;
-            //this.btnBack.Click += new System.EventHandler(this.btnBack_Click); 
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.pnlMenu.Controls.Add(this.btnMore);
-            this.pnlMenu.Controls.Add(this.pnlForm);
             this.pnlMenu.Controls.Add(this.btnCustomer);
             this.pnlMenu.Controls.Add(this.SidePanel);
             this.pnlMenu.Controls.Add(this.btnSettings);
@@ -280,9 +280,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1065, 609);
+            this.pictureBox1.Location = new System.Drawing.Point(1095, 635);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(112, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -291,9 +291,9 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(303, 133);
+            this.pictureBox2.Location = new System.Drawing.Point(291, 68);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(635, 340);
+            this.pictureBox2.Size = new System.Drawing.Size(542, 383);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -306,7 +306,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1207, 661);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pnlForm);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button12);
@@ -317,6 +317,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.pnlForm.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

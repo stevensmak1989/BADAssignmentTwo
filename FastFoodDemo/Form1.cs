@@ -26,14 +26,13 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnTimeSheet.Height;
             SidePanel.Top = btnTimeSheet.Top;
-           
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SidePanel.Height = btnOvertime.Height;
             SidePanel.Top = btnOvertime.Top;
-           
 
         }
 
@@ -62,6 +61,13 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnCustomer.Height;
             SidePanel.Top = btnCustomer.Top;
+            frmAccount frm = new frmAccount();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.WindowState = FormWindowState.Maximized;
+            pnlForm.Controls.Add(frm);
+            frm.Show();
+            pictureBox2.Visible = false;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
