@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Employee.cs" />
+    <Compile Include="Grade.cs" />
+    <Compile Include="MyException.cs" />
     <Compile Include="FirstCustomControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +89,7 @@
     <Compile Include="MySecondCustmControl.Designer.cs">
       <DependentUpon>MySecondCustmControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UC_Accounts.cs">

@@ -53,12 +53,20 @@ namespace FastFoodDemo.Forms
             this.lblSurnameAdd = new System.Windows.Forms.Label();
             this.txtFirstNameAdd = new System.Windows.Forms.TextBox();
             this.lblFirstNameAdd = new System.Windows.Forms.Label();
+            this.txtAddSalary = new System.Windows.Forms.TextBox();
+            this.lblAddAnnualSal = new System.Windows.Forms.Label();
+            this.txtAddManagerID = new System.Windows.Forms.TextBox();
+            this.lblAddManagerId = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.txtAddSalary);
+            this.panel1.Controls.Add(this.lblAddAnnualSal);
+            this.panel1.Controls.Add(this.txtAddManagerID);
+            this.panel1.Controls.Add(this.lblAddManagerId);
             this.panel1.Controls.Add(this.txtPersonnelNo);
             this.panel1.Controls.Add(this.lblPersonnelNo);
             this.panel1.Controls.Add(this.cmbGrade);
@@ -127,17 +135,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtPersonnelNo
             // 
-            this.txtPersonnelNo.Location = new System.Drawing.Point(170, 66);
+            this.txtPersonnelNo.Location = new System.Drawing.Point(175, 43);
             this.txtPersonnelNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPersonnelNo.Name = "txtPersonnelNo";
-            this.txtPersonnelNo.Size = new System.Drawing.Size(126, 20);
+            this.txtPersonnelNo.Size = new System.Drawing.Size(121, 20);
             this.txtPersonnelNo.TabIndex = 39;
             // 
             // lblPersonnelNo
             // 
             this.lblPersonnelNo.AutoSize = true;
             this.lblPersonnelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonnelNo.Location = new System.Drawing.Point(52, 74);
+            this.lblPersonnelNo.Location = new System.Drawing.Point(52, 51);
             this.lblPersonnelNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPersonnelNo.Name = "lblPersonnelNo";
             this.lblPersonnelNo.Size = new System.Drawing.Size(90, 16);
@@ -147,17 +155,17 @@ namespace FastFoodDemo.Forms
             // cmbGrade
             // 
             this.cmbGrade.FormattingEnabled = true;
-            this.cmbGrade.Location = new System.Drawing.Point(170, 232);
+            this.cmbGrade.Location = new System.Drawing.Point(175, 209);
             this.cmbGrade.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGrade.Name = "cmbGrade";
-            this.cmbGrade.Size = new System.Drawing.Size(126, 21);
+            this.cmbGrade.Size = new System.Drawing.Size(121, 21);
             this.cmbGrade.TabIndex = 37;
             // 
             // lblGrade
             // 
             this.lblGrade.AutoSize = true;
             this.lblGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrade.Location = new System.Drawing.Point(52, 232);
+            this.lblGrade.Location = new System.Drawing.Point(52, 209);
             this.lblGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrade.Name = "lblGrade";
             this.lblGrade.Size = new System.Drawing.Size(46, 16);
@@ -166,17 +174,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtPostcode
             // 
-            this.txtPostcode.Location = new System.Drawing.Point(477, 229);
+            this.txtPostcode.Location = new System.Drawing.Point(482, 206);
             this.txtPostcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostcode.Name = "txtPostcode";
-            this.txtPostcode.Size = new System.Drawing.Size(126, 20);
+            this.txtPostcode.Size = new System.Drawing.Size(121, 20);
             this.txtPostcode.TabIndex = 35;
             // 
             // lblPostcode
             // 
             this.lblPostcode.AutoSize = true;
             this.lblPostcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostcode.Location = new System.Drawing.Point(366, 233);
+            this.lblPostcode.Location = new System.Drawing.Point(366, 210);
             this.lblPostcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostcode.Name = "lblPostcode";
             this.lblPostcode.Size = new System.Drawing.Size(66, 16);
@@ -185,17 +193,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(477, 183);
+            this.txtCountry.Location = new System.Drawing.Point(482, 160);
             this.txtCountry.Margin = new System.Windows.Forms.Padding(4);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(126, 20);
+            this.txtCountry.Size = new System.Drawing.Size(121, 20);
             this.txtCountry.TabIndex = 33;
             // 
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
             this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.Location = new System.Drawing.Point(366, 187);
+            this.lblCountry.Location = new System.Drawing.Point(366, 164);
             this.lblCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(53, 16);
@@ -204,17 +212,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtCounty
             // 
-            this.txtCounty.Location = new System.Drawing.Point(477, 139);
+            this.txtCounty.Location = new System.Drawing.Point(482, 116);
             this.txtCounty.Margin = new System.Windows.Forms.Padding(4);
             this.txtCounty.Name = "txtCounty";
-            this.txtCounty.Size = new System.Drawing.Size(126, 20);
+            this.txtCounty.Size = new System.Drawing.Size(121, 20);
             this.txtCounty.TabIndex = 31;
             // 
             // lblCounty
             // 
             this.lblCounty.AutoSize = true;
             this.lblCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCounty.Location = new System.Drawing.Point(366, 148);
+            this.lblCounty.Location = new System.Drawing.Point(366, 125);
             this.lblCounty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(49, 16);
@@ -223,17 +231,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtTown
             // 
-            this.txtTown.Location = new System.Drawing.Point(477, 98);
+            this.txtTown.Location = new System.Drawing.Point(482, 75);
             this.txtTown.Margin = new System.Windows.Forms.Padding(4);
             this.txtTown.Name = "txtTown";
-            this.txtTown.Size = new System.Drawing.Size(126, 20);
+            this.txtTown.Size = new System.Drawing.Size(121, 20);
             this.txtTown.TabIndex = 29;
             // 
             // lblTown
             // 
             this.lblTown.AutoSize = true;
             this.lblTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTown.Location = new System.Drawing.Point(366, 107);
+            this.lblTown.Location = new System.Drawing.Point(366, 84);
             this.lblTown.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTown.Name = "lblTown";
             this.lblTown.Size = new System.Drawing.Size(41, 16);
@@ -242,17 +250,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(477, 55);
+            this.txtStreet.Location = new System.Drawing.Point(482, 32);
             this.txtStreet.Margin = new System.Windows.Forms.Padding(4);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(126, 20);
+            this.txtStreet.Size = new System.Drawing.Size(121, 20);
             this.txtStreet.TabIndex = 27;
             // 
             // lblStreet
             // 
             this.lblStreet.AutoSize = true;
             this.lblStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStreet.Location = new System.Drawing.Point(366, 58);
+            this.lblStreet.Location = new System.Drawing.Point(366, 35);
             this.lblStreet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStreet.Name = "lblStreet";
             this.lblStreet.Size = new System.Drawing.Size(43, 16);
@@ -261,17 +269,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(170, 187);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(175, 164);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(126, 20);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(121, 20);
             this.txtPhoneNumber.TabIndex = 25;
             // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(52, 190);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(52, 167);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(98, 16);
@@ -280,17 +288,17 @@ namespace FastFoodDemo.Forms
             // 
             // txtSurnameAdd
             // 
-            this.txtSurnameAdd.Location = new System.Drawing.Point(170, 148);
+            this.txtSurnameAdd.Location = new System.Drawing.Point(175, 125);
             this.txtSurnameAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtSurnameAdd.Name = "txtSurnameAdd";
-            this.txtSurnameAdd.Size = new System.Drawing.Size(126, 20);
+            this.txtSurnameAdd.Size = new System.Drawing.Size(121, 20);
             this.txtSurnameAdd.TabIndex = 23;
             // 
             // lblSurnameAdd
             // 
             this.lblSurnameAdd.AutoSize = true;
             this.lblSurnameAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSurnameAdd.Location = new System.Drawing.Point(52, 152);
+            this.lblSurnameAdd.Location = new System.Drawing.Point(52, 129);
             this.lblSurnameAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSurnameAdd.Name = "lblSurnameAdd";
             this.lblSurnameAdd.Size = new System.Drawing.Size(62, 16);
@@ -299,22 +307,60 @@ namespace FastFoodDemo.Forms
             // 
             // txtFirstNameAdd
             // 
-            this.txtFirstNameAdd.Location = new System.Drawing.Point(170, 108);
+            this.txtFirstNameAdd.Location = new System.Drawing.Point(175, 85);
             this.txtFirstNameAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstNameAdd.Name = "txtFirstNameAdd";
-            this.txtFirstNameAdd.Size = new System.Drawing.Size(126, 20);
+            this.txtFirstNameAdd.Size = new System.Drawing.Size(121, 20);
             this.txtFirstNameAdd.TabIndex = 21;
             // 
             // lblFirstNameAdd
             // 
             this.lblFirstNameAdd.AutoSize = true;
             this.lblFirstNameAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstNameAdd.Location = new System.Drawing.Point(52, 108);
+            this.lblFirstNameAdd.Location = new System.Drawing.Point(52, 85);
             this.lblFirstNameAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFirstNameAdd.Name = "lblFirstNameAdd";
             this.lblFirstNameAdd.Size = new System.Drawing.Size(73, 16);
             this.lblFirstNameAdd.TabIndex = 20;
             this.lblFirstNameAdd.Text = "First Name";
+            // 
+            // txtAddSalary
+            // 
+            this.txtAddSalary.Location = new System.Drawing.Point(482, 247);
+            this.txtAddSalary.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddSalary.Name = "txtAddSalary";
+            this.txtAddSalary.Size = new System.Drawing.Size(121, 20);
+            this.txtAddSalary.TabIndex = 43;
+            // 
+            // lblAddAnnualSal
+            // 
+            this.lblAddAnnualSal.AutoSize = true;
+            this.lblAddAnnualSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddAnnualSal.Location = new System.Drawing.Point(366, 251);
+            this.lblAddAnnualSal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddAnnualSal.Name = "lblAddAnnualSal";
+            this.lblAddAnnualSal.Size = new System.Drawing.Size(47, 16);
+            this.lblAddAnnualSal.TabIndex = 42;
+            this.lblAddAnnualSal.Text = "Salary";
+            // 
+            // txtAddManagerID
+            // 
+            this.txtAddManagerID.Location = new System.Drawing.Point(175, 251);
+            this.txtAddManagerID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddManagerID.Name = "txtAddManagerID";
+            this.txtAddManagerID.Size = new System.Drawing.Size(121, 20);
+            this.txtAddManagerID.TabIndex = 41;
+            // 
+            // lblAddManagerId
+            // 
+            this.lblAddManagerId.AutoSize = true;
+            this.lblAddManagerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddManagerId.Location = new System.Drawing.Point(52, 254);
+            this.lblAddManagerId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddManagerId.Name = "lblAddManagerId";
+            this.lblAddManagerId.Size = new System.Drawing.Size(78, 16);
+            this.lblAddManagerId.TabIndex = 40;
+            this.lblAddManagerId.Text = "Manager ID";
             // 
             // frmAddEmployee
             // 
@@ -360,5 +406,9 @@ namespace FastFoodDemo.Forms
         private System.Windows.Forms.Label lblSurnameAdd;
         private System.Windows.Forms.TextBox txtFirstNameAdd;
         private System.Windows.Forms.Label lblFirstNameAdd;
+        private System.Windows.Forms.TextBox txtAddSalary;
+        private System.Windows.Forms.Label lblAddAnnualSal;
+        private System.Windows.Forms.TextBox txtAddManagerID;
+        private System.Windows.Forms.Label lblAddManagerId;
     }
 }
