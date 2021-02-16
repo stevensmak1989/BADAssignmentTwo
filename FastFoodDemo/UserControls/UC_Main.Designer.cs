@@ -1,5 +1,5 @@
 ﻿
-namespace FastFoodDemo.UserControls
+namespace FujitsuPayments.UserControls
 {
     partial class UC_Main
     {

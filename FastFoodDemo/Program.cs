@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FastFoodDemo.Forms;
+using FujitsuPayments.Forms;
 
-namespace FastFoodDemo
+namespace FujitsuPayments
 {
     static class Program
     {

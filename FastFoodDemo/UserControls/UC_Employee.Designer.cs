@@ -1,5 +1,5 @@
 ﻿
-namespace FastFoodDemo.UserControls
+namespace FujitsuPayments.UserControls
 {
     partial class UC_Employee
     {
@@ -50,9 +50,10 @@ namespace FastFoodDemo.UserControls
             this.panel1.Controls.Add(this.btnEmployeeDel);
             this.panel1.Controls.Add(this.btnEmployeeEdit);
             this.panel1.Controls.Add(this.btnEmployeeAdd);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1080, 38);
+            this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -61,12 +62,12 @@ namespace FastFoodDemo.UserControls
             this.btnEmployeeView.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeView.FlatAppearance.BorderSize = 0;
             this.btnEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeView.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeView.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeView.Image")));
             this.btnEmployeeView.Location = new System.Drawing.Point(488, 0);
             this.btnEmployeeView.Name = "btnEmployeeView";
-            this.btnEmployeeView.Size = new System.Drawing.Size(163, 38);
+            this.btnEmployeeView.Size = new System.Drawing.Size(163, 42);
             this.btnEmployeeView.TabIndex = 3;
             this.btnEmployeeView.Text = "View Employee";
             this.btnEmployeeView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -77,12 +78,12 @@ namespace FastFoodDemo.UserControls
             this.btnEmployeeDel.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeDel.FlatAppearance.BorderSize = 0;
             this.btnEmployeeDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeDel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeDel.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeDel.Image")));
             this.btnEmployeeDel.Location = new System.Drawing.Point(321, 0);
             this.btnEmployeeDel.Name = "btnEmployeeDel";
-            this.btnEmployeeDel.Size = new System.Drawing.Size(167, 38);
+            this.btnEmployeeDel.Size = new System.Drawing.Size(167, 42);
             this.btnEmployeeDel.TabIndex = 2;
             this.btnEmployeeDel.Text = "Delete Employee";
             this.btnEmployeeDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -93,12 +94,12 @@ namespace FastFoodDemo.UserControls
             this.btnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeEdit.FlatAppearance.BorderSize = 0;
             this.btnEmployeeEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeEdit.Image")));
             this.btnEmployeeEdit.Location = new System.Drawing.Point(158, 0);
             this.btnEmployeeEdit.Name = "btnEmployeeEdit";
-            this.btnEmployeeEdit.Size = new System.Drawing.Size(163, 38);
+            this.btnEmployeeEdit.Size = new System.Drawing.Size(163, 42);
             this.btnEmployeeEdit.TabIndex = 1;
             this.btnEmployeeEdit.Text = "Edit Employee";
             this.btnEmployeeEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -109,12 +110,12 @@ namespace FastFoodDemo.UserControls
             this.btnEmployeeAdd.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeAdd.FlatAppearance.BorderSize = 0;
             this.btnEmployeeAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeAdd.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeAdd.Image")));
             this.btnEmployeeAdd.Location = new System.Drawing.Point(0, 0);
             this.btnEmployeeAdd.Name = "btnEmployeeAdd";
-            this.btnEmployeeAdd.Size = new System.Drawing.Size(158, 38);
+            this.btnEmployeeAdd.Size = new System.Drawing.Size(158, 42);
             this.btnEmployeeAdd.TabIndex = 0;
             this.btnEmployeeAdd.Text = "Add Employee";
             this.btnEmployeeAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,7 +129,7 @@ namespace FastFoodDemo.UserControls
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(709, 374);
+            this.panel2.Size = new System.Drawing.Size(1090, 525);
             this.panel2.TabIndex = 5;
             // 
             // dvgEmployee
@@ -137,10 +138,11 @@ namespace FastFoodDemo.UserControls
             this.dvgEmployee.AllowUserToDeleteRows = false;
             this.dvgEmployee.BackgroundColor = System.Drawing.Color.Silver;
             this.dvgEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgEmployee.Location = new System.Drawing.Point(3, 47);
+            this.dvgEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvgEmployee.Location = new System.Drawing.Point(0, 0);
             this.dvgEmployee.Name = "dvgEmployee";
             this.dvgEmployee.ReadOnly = true;
-            this.dvgEmployee.Size = new System.Drawing.Size(1077, 430);
+            this.dvgEmployee.Size = new System.Drawing.Size(1090, 525);
             this.dvgEmployee.TabIndex = 0;
             this.dvgEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -148,20 +150,21 @@ namespace FastFoodDemo.UserControls
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 374);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 525);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(709, 91);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1090, 91);
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // UC_Employee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UC_Employee";
-            this.Size = new System.Drawing.Size(709, 465);
+            this.Size = new System.Drawing.Size(1090, 616);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).EndInit();

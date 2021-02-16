@@ -1,5 +1,5 @@
 ﻿
-namespace FastFoodDemo.Forms
+namespace FujitsuPayments.Forms
 {
     partial class frmAddAccount
     {

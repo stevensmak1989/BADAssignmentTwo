@@ -1,5 +1,5 @@
 ﻿
-namespace FastFoodDemo
+namespace FujitsuPayments
 {
     partial class frmEmployee
     {

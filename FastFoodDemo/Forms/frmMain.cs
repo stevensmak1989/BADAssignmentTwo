@@ -1,4 +1,4 @@
-﻿using FastFoodDemo.UserControls;
+﻿using FujitsuPayments.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FastFoodDemo
+namespace FujitsuPayments
 {
     public partial class frmMain : Form
     {
+        
 
         public frmMain()
         {
@@ -46,6 +47,8 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnOnCall.Height;
             SidePanel.Top = btnOnCall.Top;
+            UC_Schedule uc = new UC_Schedule();
+            addControls(uc);
         }
 
      

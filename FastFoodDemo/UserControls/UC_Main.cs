@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FastFoodDemo.UserControls
+namespace FujitsuPayments.UserControls
 {
     public partial class UC_Main : UserControl
     {

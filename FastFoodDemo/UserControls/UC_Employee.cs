@@ -1,4 +1,4 @@
-﻿using FastFoodDemo.Forms;
+﻿using FujitsuPayments.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FastFoodDemo.UserControls
+namespace FujitsuPayments.UserControls
 {
     public partial class UC_Employee : UserControl
     {

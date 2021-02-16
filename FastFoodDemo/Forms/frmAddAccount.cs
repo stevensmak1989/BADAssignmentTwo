@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FastFoodDemo.Forms
+namespace FujitsuPayments.Forms
 {
     public partial class frmAddAccount : Form
     {

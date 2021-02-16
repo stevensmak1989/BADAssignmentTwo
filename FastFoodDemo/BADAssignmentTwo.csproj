@@ -110,6 +110,12 @@
     <Compile Include="UserControls\UC_Main.Designer.cs">
       <DependentUpon>UC_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_Schedule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Schedule.Designer.cs">
+      <DependentUpon>UC_Schedule.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FirstCustomControl.resx">
       <DependentUpon>FirstCustomControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Main.resx">
       <DependentUpon>UC_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Schedule.resx">
+      <DependentUpon>UC_Schedule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

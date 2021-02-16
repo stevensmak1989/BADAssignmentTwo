@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FastFoodDemo.Properties
+namespace FujitsuPayments.Properties
 {
 
 

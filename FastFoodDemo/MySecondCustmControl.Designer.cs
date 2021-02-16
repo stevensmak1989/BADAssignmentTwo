@@ -1,4 +1,4 @@
-﻿namespace FastFoodDemo
+﻿namespace FujitsuPayments
 {
     partial class MySecondCustmControl
     {
