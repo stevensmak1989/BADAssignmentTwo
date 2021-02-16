@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastFoodDemo.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,28 +54,31 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnEmployee.Height;
             SidePanel.Top = btnEmployee.Top;
-            frmEmployee frm = new frmEmployee();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.WindowState = FormWindowState.Maximized;
-            pnlForm.Controls.Add(frm);
-            frm.Show();
-            pictureBox2.Visible = false;
+           // frmEmployee frm = new frmEmployee();
+            //frm.TopLevel = false;
+           // frm.FormBorderStyle = FormBorderStyle.None;
+           // frm.WindowState = FormWindowState.Maximized;
+           // pnlForm.Controls.Add(frm);
+          //  frm.Show();
+          //  pictureBox2.Visible = false;
         }
 
+        private void addControls(UserControl uc)
+        {
+            pnlForm.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            pnlForm.Controls.Add(uc);
+            uc.BringToFront();
 
+        }
 
-        private void btnCustomer_Click(object sender, EventArgs e)
+        private void btnCustomer_Click(object sender, EventArgs e) // accounts
         {
             SidePanel.Height = btnCustomer.Height;
             SidePanel.Top = btnCustomer.Top;
-            frmAccount frm = new frmAccount();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.WindowState = FormWindowState.Maximized;
-            pnlForm.Controls.Add(frm);
-            frm.Show();
-            pictureBox2.Visible = false;
+            UC_Accounts uc = new UC_Accounts();
+            addControls(uc);
+
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -104,6 +108,17 @@ namespace FastFoodDemo
         {
             SidePanel.Height = btnMore.Height;
             SidePanel.Top = btnMore.Top;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            UC_Main um = new UC_Main();
+            addControls(um);
         }
     }
 }

@@ -10,26 +10,24 @@ using System.Windows.Forms;
 
 namespace FastFoodDemo
 {
-    public partial class frmAccount : Form
+    public partial class frmLogin : Form
     {
-        public frmAccount()
+        public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void frmAccount_Load(object sender, EventArgs e)
-        {
-
+            frmMain frm = new frmMain();
+            frm.ShowDialog();
+            
+            
         }
     }
 }
