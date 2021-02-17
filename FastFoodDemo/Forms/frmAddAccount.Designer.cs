@@ -29,6 +29,7 @@ namespace FujitsuPayments.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -49,7 +50,9 @@ namespace FujitsuPayments.Forms
             this.lblTelNo = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -275,6 +278,10 @@ namespace FujitsuPayments.Forms
             this.lblEmail.TabIndex = 18;
             this.lblEmail.Text = "Email";
             // 
+            // errP
+            // 
+            this.errP.ContainerControl = this;
+            // 
             // frmAddAccount
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -290,6 +297,7 @@ namespace FujitsuPayments.Forms
             this.Load += new System.EventHandler(this.frmAddAccount_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,5 +324,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblTelNo;
         private System.Windows.Forms.TextBox txtAccountID;
         private System.Windows.Forms.Label lblAccountId;
+        private System.Windows.Forms.ErrorProvider errP;
     }
 }
