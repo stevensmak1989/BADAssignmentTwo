@@ -228,6 +228,29 @@ namespace FujitsuPayments
             return ok;
         }
 
+        public static bool validDays(string txt, int Min)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime DOB = Convert.ToDateTime(txt);
+
+            TimeSpan t = currentDate - DOB;
+            double noOfDays = t.TotalDays;
+
+            bool ok = true;
+
+            if (txt.Trim().Length == 0)
+            {
+                ok = false;
+            }
+            else
+            {
+                if (noOfDays < Min)
+                    ok = false;
+            }
+            return ok;
+        }
+
+
         public static String firstLetterEachWordToUpper(string word) // not working
         {
             Char[] array = word.ToCharArray();

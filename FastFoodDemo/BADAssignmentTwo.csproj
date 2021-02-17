@@ -48,12 +48,6 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
-    <Compile Include="FirstCustomControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FirstCustomControl.Designer.cs">
-      <DependentUpon>FirstCustomControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmAddAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,14 +78,9 @@
     <Compile Include="Forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MySecondCustmControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MySecondCustmControl.Designer.cs">
-      <DependentUpon>MySecondCustmControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyValidation.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UC_Accounts.cs">
       <SubType>UserControl</SubType>
@@ -117,9 +106,6 @@
     <Compile Include="UserControls\UC_Schedule.Designer.cs">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FirstCustomControl.resx">
-      <DependentUpon>FirstCustomControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddAccount.resx">
       <DependentUpon>frmAddAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MySecondCustmControl.resx">
-      <DependentUpon>MySecondCustmControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
