@@ -36,12 +36,7 @@ namespace FujitsuPayments.UserControls
         private void btnEmployeeAdd_Click(object sender, EventArgs e)
         {
              frmAddEmployee frm = new frmAddEmployee();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
             frm.Visible = true;
-            //frm.Dock = DockStyle.
-            this.Controls.Add(frm);
-            frm.BringToFront();
         }
     }
 }

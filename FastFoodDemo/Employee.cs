@@ -11,7 +11,7 @@ namespace FujitsuPayments
 		private int employeeId, managerId;
 		private String title, surname, forename, street, town, county, country,  postcode, telNo, grade;
 		private DateTime DOB;
-		private Decimal salary;
+		private float salary;
 
 
 		public Employee()
@@ -23,7 +23,7 @@ namespace FujitsuPayments
 		}
 
 		public Employee(int employeeId, int managerId, String title, String surname, String forename, String street, String town, String county, 
-			String country, String postcode, String telNo, String grade, DateTime DOB, Decimal salary)
+			String country, String postcode, String telNo, String grade, DateTime DOB, float salary)
 		{
 			this.employeeId = employeeId; this.managerId = managerId;
 			this.title = title; this.surname = surname; this.forename = forename; this.street = street; this.town = town; this.county = county; this.country = country; this.postcode = postcode; this.telNo = telNo; this.grade = grade;
@@ -195,18 +195,17 @@ namespace FujitsuPayments
             }
         }
 
-        public Decimal Salary
+        public float Salary
         {
             get { return salary; }
             set
             {
-                if (salary > 0)
+                if (salary < 0)
                 {
-                    throw new MyException("Salary muust be greater than £0.");
-                    
+                    salary = salary;
                 }
                 else
-                    salary = salary;
+                    throw new MyException("Salary muust be greater than £0.");
             }
         }
 
