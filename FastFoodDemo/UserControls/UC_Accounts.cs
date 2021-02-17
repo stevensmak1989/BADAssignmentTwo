@@ -25,10 +25,17 @@ namespace FujitsuPayments.UserControls
         public UC_Accounts()
         {
             InitializeComponent();
+            //this.dgvAccounts.DefaultCellStyle.Font = new Font("Century Gothic", 10);
         }
 
         private void UC_Accounts_Load(object sender, EventArgs e)
         {
+            // style fornt of data grid cell and header
+            this.dgvAccounts.DefaultCellStyle.Font = new Font("Century Gothic", 9);
+            this.dgvAccounts.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
+
+
+
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = fujitsuPayments; Integrated Security = true";
 
             sqlAccount = @"select * from Account";
@@ -39,7 +46,7 @@ namespace FujitsuPayments.UserControls
 
             dgvAccounts.DataSource = dsFujitsuPayments.Tables["Account"];
             // resize the datagridview columns to fit the newly loaded content
-            dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+           dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             
         }
 
