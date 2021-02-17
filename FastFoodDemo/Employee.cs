@@ -74,7 +74,7 @@ namespace FujitsuPayments
             get { return forename; }
             set
             {
-                if (MyValidation.validLength(value, 2, 25) && MyValidation.validForename(value))
+                if (MyValidation.validLength(value, 2, 15) && MyValidation.validForename(value))
                 {
                     forename = MyValidation.firstLetterEachWordToUpper(value);
                 }
