@@ -53,7 +53,11 @@ namespace FujitsuPayments.UserControls
         private void button1_Click(object sender, EventArgs e)
         {
             frmAddAccount frm = new frmAddAccount();
-            frm.ShowDialog();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Visible = true;
+            //frm.Dock = DockStyle.Fill;
+            this.Controls.Add(frm);
             frm.BringToFront();
         }
 
