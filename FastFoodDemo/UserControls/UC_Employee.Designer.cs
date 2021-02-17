@@ -29,6 +29,7 @@ namespace FujitsuPayments.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Employee));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEmployeeView = new System.Windows.Forms.Button();
@@ -38,9 +39,11 @@ namespace FujitsuPayments.UserControls
             this.panel2 = new System.Windows.Forms.Panel();
             this.dvgEmployee = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -156,6 +159,10 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // UC_Employee
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -168,6 +175,7 @@ namespace FujitsuPayments.UserControls
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,5 +190,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgEmployee;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

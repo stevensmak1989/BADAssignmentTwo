@@ -22,13 +22,19 @@ namespace FujitsuPayments
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             frmMain frm = new frmMain();
-            frm.ShowDialog();
-           
-            
-            
+            //frm.ShowDialog();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Visible = true;
+            frm.Location = new Point(0, 0);
+            this.Controls.Add(frm);
+            frm.BringToFront();
+
+
+
         }
     }
 }
