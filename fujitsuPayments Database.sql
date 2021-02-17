@@ -43,3 +43,42 @@ CREATE TABLE Employee
 	CONSTRAINT ckSal CHECK (Salary > 0),
 	CONSTRAINT ckDOB CHECK (DOB >= dateAdd(Year, -17, getDate()))
 )
+
+
+CREATE TABLE Account
+(
+	AccountID 		int				NOT NULL,
+	ClientName		varchar(20)			NOT NULL,
+	Street			varchar(30)			NOT NULL,
+	Town			varchar(30)			NOT NULL,
+	County			varchar(30)			NOT NULL,
+	PostCode		varchar(8)			NOT NULL,
+	TelNo			varchar(11)			NOT NULL,
+	Email                   varchar(20)			NOT NULL,
+
+	--PK
+	CONSTRAINT pkEmpID PRIMARY KEY (AccountID),
+	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
+	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
+
+)
+
+
+
+CREATE TABLE OfficeLocation
+(
+	LocationID 		varchar(5)			NOT NULL,
+	LocationName            varchar(20)			NOT NULL,
+	Street			varchar(30)			NOT NULL,
+	Town			varchar(30)			NOT NULL,
+	County			varchar(30)			NOT NULL,
+	PostCode		varchar(8)			NOT NULL,
+	TelNo			varchar(11)			NOT NULL,
+
+	--PK
+	CONSTRAINT pkEmpID PRIMARY KEY (LocationID),
+	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
+	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
+	
+
+)
