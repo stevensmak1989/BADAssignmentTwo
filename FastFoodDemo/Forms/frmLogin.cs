@@ -26,6 +26,7 @@ namespace FujitsuPayments
         {
             frmMain frm = new frmMain();
             frm.ShowDialog();
+           
             
             
         }
