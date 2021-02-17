@@ -8,14 +8,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FujitsuPayments.UserControls
 {
     public partial class UC_Accounts : UserControl
     {
+
+        SqlDataAdapter daAccount;
+        DataSet dsFujitsuPayments = new DataSet();
+        SqlCommandBuilder cmbBAccount;
+        DataRow drAccount;
+        String connStr, sqlAccount; 
+
+
         public UC_Accounts()
         {
             InitializeComponent();
+        }
+
+        private void UC_Accounts_Load(object sender, EventArgs e)
+        {
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = fujitsuPayments; Integrated Security = true";
+
+            sqlAccount = @"select * from Account";
+            daAccount = new SqlDataAdapter(sqlAccount, connStr);
+            cmbBAccount = new SqlCommandBuilder(daAccount);
+            daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
+            daAccount.Fill(dsFujitsuPayments, "Account");
+
+            dgvAccounts.DataSource = dsFujitsuPayments.Tables["Account"];
+            // resize the datagridview columns to fit the newly loaded content
+            dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,7 +50,9 @@ namespace FujitsuPayments.UserControls
             frm.BringToFront();
         }
 
-        private void UC_Accounts_Load(object sender, EventArgs e)
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
