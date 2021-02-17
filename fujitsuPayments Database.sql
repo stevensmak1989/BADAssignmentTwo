@@ -57,7 +57,7 @@ CREATE TABLE Account
 	Email                   varchar(20)			NOT NULL,
 
 	--PK
-	CONSTRAINT pkEmpID PRIMARY KEY (AccountID),
+	CONSTRAINT pkAccID PRIMARY KEY (AccountID),
 	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
 
@@ -76,7 +76,7 @@ CREATE TABLE OfficeLocation
 	TelNo			varchar(11)			NOT NULL,
 
 	--PK
-	CONSTRAINT pkEmpID PRIMARY KEY (LocationID),
+	CONSTRAINT pkLocID PRIMARY KEY (LocationID),
 	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
 	
