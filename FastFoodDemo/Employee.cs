@@ -6,54 +6,54 @@ using System.Threading.Tasks;
 
 namespace FujitsuPayments
 {
-	class Employee
-	{
-		private int employeeId, managerId;
-		private String title, surname, forename, street, town, county, country,  postcode, telNo, grade;
-		private DateTime DOB;
-		private float salary;
+    class Employee
+    {
+        private int employeeId, managerId;
+        private String title, surname, forename, street, town, county, country, postcode, telNo, grade;
+        private DateTime DOB;
+        private Decimal salary;
 
 
-		public Employee()
-		{
-			employeeId = 0; managerId = 0;
-			title = ""; surname = ""; forename = ""; street = ""; town = ""; county = ""; country = ""; postcode = ""; telNo = ""; grade = "";
-			DOB = new DateTime(1999, 01, 01);
-			salary = 0;
-		}
+        public Employee()
+        {
+            employeeId = 0; managerId = 0;
+            title = ""; surname = ""; forename = ""; street = ""; town = ""; county = ""; country = ""; postcode = ""; telNo = ""; grade = "";
+            DOB = new DateTime(1999, 01, 01);
+            salary = 0;
+        }
 
-		public Employee(int employeeId, int managerId, String title, String surname, String forename, String street, String town, String county, 
-			String country, String postcode, String telNo, String grade, DateTime DOB, float salary)
-		{
-			this.employeeId = employeeId; this.managerId = managerId;
-			this.title = title; this.surname = surname; this.forename = forename; this.street = street; this.town = town; this.county = county; this.country = country; this.postcode = postcode; this.telNo = telNo; this.grade = grade;
-			this.DOB = DOB;
-			this.salary = salary;
-		}
+        public Employee(int employeeId, int managerId, String title, String surname, String forename, String street, String town, String county,
+            String country, String postcode, String telNo, String grade, DateTime DOB, Decimal salary)
+        {
+            this.employeeId = employeeId; this.managerId = managerId;
+            this.title = title; this.surname = surname; this.forename = forename; this.street = street; this.town = town; this.county = county; this.country = country; this.postcode = postcode; this.telNo = telNo; this.grade = grade;
+            this.DOB = DOB;
+            this.salary = salary;
+        }
 
-		public int EmployeeId
-		{
-			get { return employeeId; }
-			set { employeeId = value; }
-		}
+        public int EmployeeId
+        {
+            get { return employeeId; }
+            set { employeeId = value; }
+        }
 
-		public int ManagerId
-		{
-			get { return managerId; }
-			set { managerId = value; }
-		}
+        public int ManagerId
+        {
+            get { return managerId; }
+            set { managerId = value; }
+        }
 
-		public string Title
-		{
-			get { return title; }
-			set
-			{
-				if (value.ToUpper() != "MR" && value.ToUpper() != "MRS" && value.ToUpper() != "MISS" && value.ToUpper() != "MS")
-					throw new MyException("Title must be Mr,Mrs, Miss or Ms.");
-				else
-					title = MyValidation.firstLetterEachWordToUpper(value);
-			}
-		}
+        public string Title
+        {
+            get { return title; }
+            set
+            {
+                if (value.ToUpper() != "MR" && value.ToUpper() != "MRS" && value.ToUpper() != "MISS" && value.ToUpper() != "MS")
+                    throw new MyException("Title must be Mr,Mrs, Miss or Ms.");
+                else
+                    title = MyValidation.firstLetterEachWordToUpper(value);
+            }
+        }
 
         public string Surname
         {
@@ -195,17 +195,18 @@ namespace FujitsuPayments
             }
         }
 
-        public float Salary
+        public Decimal Salary
         {
             get { return salary; }
             set
             {
-                if (salary < 0)
+                if (salary > 0)
                 {
-                    salary = salary;
+                    throw new MyException("Salary muust be greater than £0.");
+
                 }
                 else
-                    throw new MyException("Salary muust be greater than £0.");
+                    salary = salary;
             }
         }
 
@@ -221,5 +222,5 @@ namespace FujitsuPayments
 
 
 
-	
+
 }

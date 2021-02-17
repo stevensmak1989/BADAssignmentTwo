@@ -29,6 +29,7 @@ namespace FujitsuPayments.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Employee));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEmployeeView = new System.Windows.Forms.Button();
@@ -38,9 +39,12 @@ namespace FujitsuPayments.UserControls
             this.panel2 = new System.Windows.Forms.Panel();
             this.dvgEmployee = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,7 +66,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeView.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeView.FlatAppearance.BorderSize = 0;
             this.btnEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeView.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeView.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeView.Image")));
             this.btnEmployeeView.Location = new System.Drawing.Point(488, 0);
@@ -72,13 +76,14 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeView.Text = "View Employee";
             this.btnEmployeeView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployeeView.UseVisualStyleBackColor = true;
+            this.btnEmployeeView.Click += new System.EventHandler(this.btnEmployeeView_Click);
             // 
             // btnEmployeeDel
             // 
             this.btnEmployeeDel.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeDel.FlatAppearance.BorderSize = 0;
             this.btnEmployeeDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeDel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeDel.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeDel.Image")));
             this.btnEmployeeDel.Location = new System.Drawing.Point(321, 0);
@@ -94,7 +99,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeEdit.FlatAppearance.BorderSize = 0;
             this.btnEmployeeEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeEdit.Image")));
             this.btnEmployeeEdit.Location = new System.Drawing.Point(158, 0);
@@ -110,7 +115,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeAdd.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmployeeAdd.FlatAppearance.BorderSize = 0;
             this.btnEmployeeAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeAdd.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmployeeAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeAdd.Image")));
             this.btnEmployeeAdd.Location = new System.Drawing.Point(0, 0);
@@ -138,11 +143,12 @@ namespace FujitsuPayments.UserControls
             this.dvgEmployee.AllowUserToDeleteRows = false;
             this.dvgEmployee.BackgroundColor = System.Drawing.Color.Silver;
             this.dvgEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvgEmployee.Location = new System.Drawing.Point(0, 0);
+            this.dvgEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Title});
+            this.dvgEmployee.Location = new System.Drawing.Point(3, 37);
             this.dvgEmployee.Name = "dvgEmployee";
             this.dvgEmployee.ReadOnly = true;
-            this.dvgEmployee.Size = new System.Drawing.Size(1090, 525);
+            this.dvgEmployee.Size = new System.Drawing.Size(1087, 488);
             this.dvgEmployee.TabIndex = 0;
             this.dvgEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -156,18 +162,29 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
             // UC_Employee
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UC_Employee";
             this.Size = new System.Drawing.Size(1090, 616);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,5 +199,7 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgEmployee;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
     }
 }

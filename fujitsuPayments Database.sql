@@ -106,3 +106,17 @@ CREATE TABLE Project
 
 	CONSTRAINT ckStartDate CHECK (StartDate >=  getDate())
 )
+
+CREATE TABLE CostCentre
+(
+	CostCentreID 		int					NOT NULL, 
+	CostCentreDesc      varchar(40)         NOT NULL,
+	LocationID 		    varchar(5)			NOT NULL,
+
+	--PK
+	CONSTRAINT pkCostCId PRIMARY KEY (CostCentreID),
+
+	--FK
+	CONSTRAINT fkLocId   FOREIGN KEY (LocationID) REFERENCES OfficeLocation(LocationID)
+
+)
