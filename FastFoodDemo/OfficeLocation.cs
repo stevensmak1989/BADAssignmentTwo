@@ -6,43 +6,42 @@ using System.Threading.Tasks;
 
 namespace FujitsuPayments
 {
-    class Account
+    class OfficeLocation
     {
-        private int accountId;
-        private string clientName, street, town, county,  postcode, telNo, email;
+        private int locationId;
+        private string locationName, street, town, county, postcode, telNo;
 
-        public Account()
+
+        public OfficeLocation()
         {
-            accountId = 0;
-            clientName = ""; street = ""; town = ""; county = ""; postcode = "";telNo = ""; email = "";
+            locationId = 0;
+            locationName = ""; street = ""; town = ""; county = ""; postcode = ""; telNo = "";
         }
 
-        public Account(int accountId, string clientName, string street, String town, String county,
-             String postcode, String telNo, string email)
+        public OfficeLocation(int locationId, string locationName, string street, string town, string county, string postcode, string telNo)
         {
-            this.accountId = accountId;
-            this.clientName = clientName;
-            this.street = street; this.town = town; this.street = street; this.town = town;
-            this.county = county; this.postcode = postcode; this.telNo = telNo; this.email = email;
+            this.locationId = locationId; this.locationName = locationName; this.street = street; 
+            this.town = town; this.county = county; this.postcode = postcode; this.telNo = telNo;
+        }
+        
+
+        public int LocationId
+        {
+            get { return locationId; }
+            set { locationId = value; }
         }
 
-        public int AccountId
+        public string LocationName
         {
-            get { return accountId; }
-            set { accountId = value; }
-        }
-
-        public string ClientName
-        {
-            get { return clientName; }
+            get { return locationName; }
             set
             {
                 if (MyValidation.validLength(value, 2, 20) && MyValidation.validForename(value))
                 {
-                    clientName = MyValidation.firstLetterEachWordToUpper(value);
+                    locationName = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("Client Name must be 2-20 letters.");
+                    throw new MyException("Location Name must be 2-20 letters.");
             }
         }
 
@@ -115,26 +114,5 @@ namespace FujitsuPayments
                     throw new MyException("Telephone number must be 11-15 digits.");
             }
         }
-
-
-        public String Email
-        {
-            get { return email; }
-            set
-            {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validEmail(value))
-                {
-                    email = value;
-                }
-                else
-                    throw new MyException("Email must be 2-20 characters");
-            }
-
-        }
-
-
     }
-
-
-
 }
