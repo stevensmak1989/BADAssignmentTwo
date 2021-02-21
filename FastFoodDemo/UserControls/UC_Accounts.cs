@@ -69,7 +69,22 @@ namespace FujitsuPayments.UserControls
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
+            if (dgvAccounts.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an Account from the list.", "Select Account");
+            }
+            else
+            {
+                drAccount = dsFujitsuPayments.Tables["Account"].Rows.Find(dgvAccounts.SelectedRows[0].Cells[0].Value);
 
+                string tempName = drAccount["ClientName"].ToString() + "\'s";
+
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    drAccount.Delete();
+                    daAccount.Update(dsFujitsuPayments, "Account");
+                }
+            }
         }
 
         private void dgvAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)

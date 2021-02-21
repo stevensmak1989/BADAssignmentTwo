@@ -31,6 +31,12 @@ namespace FujitsuPayments.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtTelNo = new System.Windows.Forms.TextBox();
+            this.lblTelNo = new System.Windows.Forms.Label();
+            this.txtAccountID = new System.Windows.Forms.TextBox();
+            this.lblAccountId = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPostCode = new System.Windows.Forms.TextBox();
@@ -44,12 +50,6 @@ namespace FujitsuPayments.Forms
             this.txtClientName = new System.Windows.Forms.TextBox();
             this.lblClientName = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.lblAccountId = new System.Windows.Forms.Label();
-            this.txtAccountID = new System.Windows.Forms.TextBox();
-            this.txtTelNo = new System.Windows.Forms.TextBox();
-            this.lblTelNo = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
@@ -84,15 +84,73 @@ namespace FujitsuPayments.Forms
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(356, 165);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(306, 26);
+            this.txtEmail.TabIndex = 19;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblEmail.Location = new System.Drawing.Point(304, 171);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(43, 17);
+            this.lblEmail.TabIndex = 18;
+            this.lblEmail.Text = "Email";
+            // 
+            // txtTelNo
+            // 
+            this.txtTelNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelNo.Location = new System.Drawing.Point(450, 132);
+            this.txtTelNo.Name = "txtTelNo";
+            this.txtTelNo.Size = new System.Drawing.Size(212, 26);
+            this.txtTelNo.TabIndex = 17;
+            // 
+            // lblTelNo
+            // 
+            this.lblTelNo.AutoSize = true;
+            this.lblTelNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblTelNo.Location = new System.Drawing.Point(398, 138);
+            this.lblTelNo.Name = "lblTelNo";
+            this.lblTelNo.Size = new System.Drawing.Size(47, 17);
+            this.lblTelNo.TabIndex = 16;
+            this.lblTelNo.Text = "Tel No";
+            // 
+            // txtAccountID
+            // 
+            this.txtAccountID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountID.Location = new System.Drawing.Point(125, 67);
+            this.txtAccountID.Name = "txtAccountID";
+            this.txtAccountID.Size = new System.Drawing.Size(222, 26);
+            this.txtAccountID.TabIndex = 15;
+            // 
+            // lblAccountId
+            // 
+            this.lblAccountId.AutoSize = true;
+            this.lblAccountId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblAccountId.Location = new System.Drawing.Point(39, 71);
+            this.lblAccountId.Name = "lblAccountId";
+            this.lblAccountId.Size = new System.Drawing.Size(76, 17);
+            this.lblAccountId.TabIndex = 14;
+            this.lblAccountId.Text = "AccountID";
+            // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.button2.Location = new System.Drawing.Point(201, 235);
+            this.button2.Location = new System.Drawing.Point(227, 235);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 36);
+            this.button2.Size = new System.Drawing.Size(97, 27);
             this.button2.TabIndex = 13;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
@@ -103,10 +161,11 @@ namespace FujitsuPayments.Forms
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatAppearance.BorderSize = 2;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.btnSave.Location = new System.Drawing.Point(370, 235);
+            this.btnSave.Location = new System.Drawing.Point(377, 235);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 36);
+            this.btnSave.Size = new System.Drawing.Size(97, 27);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -220,63 +279,6 @@ namespace FujitsuPayments.Forms
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Add a New Account";
             this.lblUsername.Click += new System.EventHandler(this.lblUsername_Click);
-            // 
-            // lblAccountId
-            // 
-            this.lblAccountId.AutoSize = true;
-            this.lblAccountId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccountId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblAccountId.Location = new System.Drawing.Point(39, 71);
-            this.lblAccountId.Name = "lblAccountId";
-            this.lblAccountId.Size = new System.Drawing.Size(76, 17);
-            this.lblAccountId.TabIndex = 14;
-            this.lblAccountId.Text = "AccountID";
-            // 
-            // txtAccountID
-            // 
-            this.txtAccountID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAccountID.Location = new System.Drawing.Point(125, 67);
-            this.txtAccountID.Name = "txtAccountID";
-            this.txtAccountID.Size = new System.Drawing.Size(222, 26);
-            this.txtAccountID.TabIndex = 15;
-            // 
-            // txtTelNo
-            // 
-            this.txtTelNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelNo.Location = new System.Drawing.Point(450, 132);
-            this.txtTelNo.Name = "txtTelNo";
-            this.txtTelNo.Size = new System.Drawing.Size(212, 26);
-            this.txtTelNo.TabIndex = 17;
-            // 
-            // lblTelNo
-            // 
-            this.lblTelNo.AutoSize = true;
-            this.lblTelNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblTelNo.Location = new System.Drawing.Point(398, 138);
-            this.lblTelNo.Name = "lblTelNo";
-            this.lblTelNo.Size = new System.Drawing.Size(47, 17);
-            this.lblTelNo.TabIndex = 16;
-            this.lblTelNo.Text = "Tel No";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(356, 165);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(306, 26);
-            this.txtEmail.TabIndex = 19;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblEmail.Location = new System.Drawing.Point(304, 171);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(43, 17);
-            this.lblEmail.TabIndex = 18;
-            this.lblEmail.Text = "Email";
             // 
             // errP
             // 
