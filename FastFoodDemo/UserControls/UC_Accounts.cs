@@ -60,11 +60,18 @@ namespace FujitsuPayments.UserControls
             this.Controls.Add(frm);
             frm.BringToFront();
             
+            
         }
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
-
+            frmEditAccount frm = new frmEditAccount();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Visible = true;
+            frm.Location = new Point(180, 100);
+            this.Controls.Add(frm);
+            frm.BringToFront();
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)

@@ -167,7 +167,7 @@ namespace FujitsuPayments.Forms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //cancel button
         {
             this.Dispose();
         }

@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Forms\frmEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditAccount.Designer.cs">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Forms\frmAddAccount.cs">
@@ -107,6 +113,9 @@
     <Compile Include="UserControls\UC_Schedule.Designer.cs">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmEditAccount.resx">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddAccount.resx">
       <DependentUpon>frmAddAccount.cs</DependentUpon>
     </EmbeddedResource>
