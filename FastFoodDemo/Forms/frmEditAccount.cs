@@ -20,6 +20,9 @@ namespace FujitsuPayments.Forms
         DataRow drAccount;
         String connStr, sqlAccount;
 
+        bool accSelected = false;
+        int accNoSelected = 0;
+
 
         public frmEditAccount()
         {
@@ -35,6 +38,8 @@ namespace FujitsuPayments.Forms
             cmbBAccount = new SqlCommandBuilder(daAccount);
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
+
+
         }
 
         private void button2_Click(object sender, EventArgs e) //Cancel button
@@ -46,5 +51,13 @@ namespace FujitsuPayments.Forms
         {
 
         }
+
+        private void getNumber(int noRows)
+        {
+            drAccount = dsFujitsuPayments.Tables["Account"].Rows[noRows - 1];
+            txtEditAccountID.Text = (int.Parse(drAccount["AccountID"].ToString()) + 1).ToString();
+        }
+
+
     }
 }

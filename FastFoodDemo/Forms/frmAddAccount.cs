@@ -26,6 +26,7 @@ namespace FujitsuPayments.Forms
         {
             InitializeComponent();
             
+            
         }
         private void frmAddAccount_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,23 @@ namespace FujitsuPayments.Forms
             cmbBAccount = new SqlCommandBuilder(daAccount);
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
+
+
+            int noRows = dsFujitsuPayments.Tables["Account"].Rows.Count;
+
+            if (noRows == 0)
+                txtAccountID.Text = "10000";
+            else
+            {
+                getNumber(noRows);
+            }
+
+            
+
+
+
+
+
         }
         private void lblUsername_Click(object sender, EventArgs e)
         {
@@ -170,6 +188,12 @@ namespace FujitsuPayments.Forms
         private void button2_Click(object sender, EventArgs e) //cancel button
         {
             this.Dispose();
+        }
+
+        private void getNumber(int noRows)
+        {
+            drAccount = dsFujitsuPayments.Tables["Account"].Rows[noRows - 1];
+            txtAccountID.Text = (int.Parse(drAccount["AccountID"].ToString()) + 1).ToString();
         }
     }
 }

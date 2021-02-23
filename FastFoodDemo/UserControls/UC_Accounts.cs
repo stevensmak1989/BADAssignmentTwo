@@ -19,7 +19,10 @@ namespace FujitsuPayments.UserControls
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBAccount;
         DataRow drAccount;
-        String connStr, sqlAccount; 
+        String connStr, sqlAccount;
+        public int selectedTab = 0;
+        public bool accSelected = false;
+        public int accNoSelected = 0;
 
 
         public UC_Accounts()
@@ -46,8 +49,21 @@ namespace FujitsuPayments.UserControls
 
             dgvAccounts.DataSource = dsFujitsuPayments.Tables["Account"];
             // resize the datagridview columns to fit the newly loaded content
-           dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            
+            dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+
+
+            if (dgvAccounts.SelectedRows.Count == 0)
+            {
+                accSelected = false;
+                accNoSelected = 0;
+            }
+            else if (dgvAccounts.SelectedRows.Count == 1)
+            {
+                accSelected = true;
+                accNoSelected = Convert.ToInt32(dgvAccounts.SelectedRows[0].Cells[0].Value);
+            }
+
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
