@@ -31,6 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Employee));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEmployeeView = new System.Windows.Forms.Button();
             this.btnEmployeeDel = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@ namespace FujitsuPayments.UserControls
             this.dvgEmployee = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmployee)).BeginInit();
@@ -93,6 +93,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeDel.Text = "Delete Employee";
             this.btnEmployeeDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployeeDel.UseVisualStyleBackColor = true;
+            this.btnEmployeeDel.Click += new System.EventHandler(this.btnEmployeeDel_Click);
             // 
             // btnEmployeeEdit
             // 
@@ -109,6 +110,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmployeeEdit.Text = "Edit Employee";
             this.btnEmployeeEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployeeEdit.UseVisualStyleBackColor = true;
+            this.btnEmployeeEdit.Click += new System.EventHandler(this.btnEmployeeEdit_Click);
             // 
             // btnEmployeeAdd
             // 
@@ -143,8 +145,14 @@ namespace FujitsuPayments.UserControls
             this.dvgEmployee.AllowUserToDeleteRows = false;
             this.dvgEmployee.BackgroundColor = System.Drawing.Color.Silver;
             this.dvgEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Title});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgEmployee.DefaultCellStyle = dataGridViewCellStyle3;
             this.dvgEmployee.Location = new System.Drawing.Point(3, 37);
             this.dvgEmployee.Name = "dvgEmployee";
             this.dvgEmployee.ReadOnly = true;
@@ -165,12 +173,6 @@ namespace FujitsuPayments.UserControls
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
             // 
             // UC_Employee
             // 
@@ -200,6 +202,5 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.DataGridView dvgEmployee;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
     }
 }

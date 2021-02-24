@@ -82,34 +82,35 @@ namespace FujitsuPayments.Forms
             this.pnlEditAccount.Name = "pnlEditAccount";
             this.pnlEditAccount.Size = new System.Drawing.Size(701, 330);
             this.pnlEditAccount.TabIndex = 0;
+            this.pnlEditAccount.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEditAccount_Paint);
             // 
             // lblEditEmail
             // 
             this.lblEditEmail.AutoSize = true;
-            this.lblEditEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditEmail.Location = new System.Drawing.Point(304, 171);
             this.lblEditEmail.Name = "lblEditEmail";
-            this.lblEditEmail.Size = new System.Drawing.Size(43, 17);
+            this.lblEditEmail.Size = new System.Drawing.Size(42, 16);
             this.lblEditEmail.TabIndex = 37;
             this.lblEditEmail.Text = "Email";
             // 
             // txtEditTelNo
             // 
-            this.txtEditTelNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditTelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditTelNo.Location = new System.Drawing.Point(450, 132);
             this.txtEditTelNo.Name = "txtEditTelNo";
-            this.txtEditTelNo.Size = new System.Drawing.Size(212, 26);
+            this.txtEditTelNo.Size = new System.Drawing.Size(212, 24);
             this.txtEditTelNo.TabIndex = 36;
             // 
             // lblEditTelNo
             // 
             this.lblEditTelNo.AutoSize = true;
-            this.lblEditTelNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditTelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditTelNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditTelNo.Location = new System.Drawing.Point(398, 138);
             this.lblEditTelNo.Name = "lblEditTelNo";
-            this.lblEditTelNo.Size = new System.Drawing.Size(47, 17);
+            this.lblEditTelNo.Size = new System.Drawing.Size(49, 16);
             this.lblEditTelNo.TabIndex = 35;
             this.lblEditTelNo.Text = "Tel No";
             // 
@@ -118,7 +119,7 @@ namespace FujitsuPayments.Forms
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.button2.Location = new System.Drawing.Point(227, 235);
             this.button2.Name = "button2";
@@ -133,7 +134,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatAppearance.BorderSize = 2;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
             this.btnSave.Location = new System.Drawing.Point(377, 235);
             this.btnSave.Name = "btnSave";
@@ -145,134 +146,134 @@ namespace FujitsuPayments.Forms
             // 
             // txtEditEmail
             // 
-            this.txtEditEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditEmail.Location = new System.Drawing.Point(356, 165);
             this.txtEditEmail.Name = "txtEditEmail";
-            this.txtEditEmail.Size = new System.Drawing.Size(306, 26);
+            this.txtEditEmail.Size = new System.Drawing.Size(306, 24);
             this.txtEditEmail.TabIndex = 32;
             // 
             // txtEditAccountID
             // 
-            this.txtEditAccountID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditAccountID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditAccountID.Location = new System.Drawing.Point(125, 67);
             this.txtEditAccountID.Name = "txtEditAccountID";
-            this.txtEditAccountID.Size = new System.Drawing.Size(222, 26);
+            this.txtEditAccountID.Size = new System.Drawing.Size(222, 24);
             this.txtEditAccountID.TabIndex = 31;
             // 
             // lblEditAccountId
             // 
             this.lblEditAccountId.AutoSize = true;
-            this.lblEditAccountId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditAccountId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditAccountId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditAccountId.Location = new System.Drawing.Point(39, 71);
             this.lblEditAccountId.Name = "lblEditAccountId";
-            this.lblEditAccountId.Size = new System.Drawing.Size(76, 17);
+            this.lblEditAccountId.Size = new System.Drawing.Size(69, 16);
             this.lblEditAccountId.TabIndex = 30;
             this.lblEditAccountId.Text = "AccountID";
             // 
             // txtEditPostCode
             // 
-            this.txtEditPostCode.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditPostCode.Location = new System.Drawing.Point(125, 165);
             this.txtEditPostCode.Name = "txtEditPostCode";
-            this.txtEditPostCode.Size = new System.Drawing.Size(123, 26);
+            this.txtEditPostCode.Size = new System.Drawing.Size(123, 24);
             this.txtEditPostCode.TabIndex = 29;
             // 
             // lblEditCounty
             // 
             this.lblEditCounty.AutoSize = true;
-            this.lblEditCounty.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditCounty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditCounty.Location = new System.Drawing.Point(60, 138);
             this.lblEditCounty.Name = "lblEditCounty";
-            this.lblEditCounty.Size = new System.Drawing.Size(55, 17);
+            this.lblEditCounty.Size = new System.Drawing.Size(49, 16);
             this.lblEditCounty.TabIndex = 28;
             this.lblEditCounty.Text = "County";
             // 
             // txtEditCounty
             // 
-            this.txtEditCounty.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditCounty.Location = new System.Drawing.Point(125, 132);
             this.txtEditCounty.Name = "txtEditCounty";
-            this.txtEditCounty.Size = new System.Drawing.Size(222, 26);
+            this.txtEditCounty.Size = new System.Drawing.Size(222, 24);
             this.txtEditCounty.TabIndex = 27;
             // 
             // lblEditPostCode
             // 
             this.lblEditPostCode.AutoSize = true;
-            this.lblEditPostCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditPostCode.Location = new System.Drawing.Point(39, 171);
             this.lblEditPostCode.Name = "lblEditPostCode";
-            this.lblEditPostCode.Size = new System.Drawing.Size(76, 17);
+            this.lblEditPostCode.Size = new System.Drawing.Size(71, 16);
             this.lblEditPostCode.TabIndex = 26;
             this.lblEditPostCode.Text = "Post Code";
             // 
             // txtEditTown
             // 
-            this.txtEditTown.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditTown.Location = new System.Drawing.Point(450, 99);
             this.txtEditTown.Name = "txtEditTown";
-            this.txtEditTown.Size = new System.Drawing.Size(212, 26);
+            this.txtEditTown.Size = new System.Drawing.Size(212, 24);
             this.txtEditTown.TabIndex = 25;
             // 
             // lblEditStreet
             // 
             this.lblEditStreet.AutoSize = true;
-            this.lblEditStreet.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditStreet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditStreet.Location = new System.Drawing.Point(71, 104);
             this.lblEditStreet.Name = "lblEditStreet";
-            this.lblEditStreet.Size = new System.Drawing.Size(44, 17);
+            this.lblEditStreet.Size = new System.Drawing.Size(43, 16);
             this.lblEditStreet.TabIndex = 24;
             this.lblEditStreet.Text = "Street";
             // 
             // txtEditStreet
             // 
-            this.txtEditStreet.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditStreet.Location = new System.Drawing.Point(125, 99);
             this.txtEditStreet.Name = "txtEditStreet";
-            this.txtEditStreet.Size = new System.Drawing.Size(222, 26);
+            this.txtEditStreet.Size = new System.Drawing.Size(222, 24);
             this.txtEditStreet.TabIndex = 23;
             // 
             // lblEditEditTown
             // 
             this.lblEditEditTown.AutoSize = true;
-            this.lblEditEditTown.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditEditTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditEditTown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditEditTown.Location = new System.Drawing.Point(398, 105);
             this.lblEditEditTown.Name = "lblEditEditTown";
-            this.lblEditEditTown.Size = new System.Drawing.Size(42, 17);
+            this.lblEditEditTown.Size = new System.Drawing.Size(41, 16);
             this.lblEditEditTown.TabIndex = 22;
             this.lblEditEditTown.Text = "Town";
             // 
             // txtEditClientName
             // 
-            this.txtEditClientName.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditClientName.Location = new System.Drawing.Point(450, 67);
             this.txtEditClientName.Name = "txtEditClientName";
-            this.txtEditClientName.Size = new System.Drawing.Size(212, 26);
+            this.txtEditClientName.Size = new System.Drawing.Size(212, 24);
             this.txtEditClientName.TabIndex = 21;
             // 
             // lblEditClientName
             // 
             this.lblEditClientName.AutoSize = true;
-            this.lblEditClientName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.lblEditClientName.Location = new System.Drawing.Point(353, 71);
             this.lblEditClientName.Name = "lblEditClientName";
-            this.lblEditClientName.Size = new System.Drawing.Size(90, 17);
+            this.lblEditClientName.Size = new System.Drawing.Size(81, 16);
             this.lblEditClientName.TabIndex = 20;
             this.lblEditClientName.Text = "Client Name";
             // 
             // lblEditAccount
             // 
             this.lblEditAccount.AutoSize = true;
-            this.lblEditAccount.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditAccount.ForeColor = System.Drawing.Color.DarkRed;
             this.lblEditAccount.Location = new System.Drawing.Point(272, 22);
             this.lblEditAccount.Name = "lblEditAccount";
-            this.lblEditAccount.Size = new System.Drawing.Size(101, 18);
+            this.lblEditAccount.Size = new System.Drawing.Size(103, 18);
             this.lblEditAccount.TabIndex = 2;
             this.lblEditAccount.Text = "Edit Account";
             // 
@@ -286,7 +287,7 @@ namespace FujitsuPayments.Forms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
             this.ClientSize = new System.Drawing.Size(717, 346);
             this.Controls.Add(this.pnlEditAccount);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditAccount";
             this.Padding = new System.Windows.Forms.Padding(8);

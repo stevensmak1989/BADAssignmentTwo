@@ -233,7 +233,7 @@ namespace FujitsuPayments
             DateTime currentDate = DateTime.Now;
             DateTime DOB = Convert.ToDateTime(txt);
 
-            TimeSpan t = currentDate - DOB;
+            TimeSpan t = DOB -currentDate ;
             double noOfDays = t.TotalDays;
 
             bool ok = true;

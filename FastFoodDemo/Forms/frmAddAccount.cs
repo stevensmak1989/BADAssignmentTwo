@@ -30,7 +30,7 @@ namespace FujitsuPayments.Forms
         }
         private void frmAddAccount_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = fujitsuPayments; Integrated Security = true";
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
             sqlAccount = @"select * from Account";
             daAccount = new SqlDataAdapter(sqlAccount, connStr);
@@ -182,6 +182,11 @@ namespace FujitsuPayments.Forms
         private void button2_Click(object sender, EventArgs e) //cancel button
         {
             this.Dispose();
+        }
+
+        private void txtAccountID_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void getNumber(int noRows)

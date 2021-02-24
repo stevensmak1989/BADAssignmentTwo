@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FujitsuPayments.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FujitsuPayments.Forms
 {
-    public partial class frmAddEmployee : Form
+    public partial class frmEditEmployee : Form
     {
         SqlDataAdapter daEmployee;
         DataSet dsFujitsuPayments = new DataSet();
@@ -19,13 +20,12 @@ namespace FujitsuPayments.Forms
         DataRow drEmployee;
         String connStr, sqlEmployee;
 
-
-        public frmAddEmployee()
+        public frmEditEmployee()
         {
             InitializeComponent();
         }
 
-        private void frmAddEmployee_Load(object sender, EventArgs e)
+        private void frmEditEmployee_Load(object sender, EventArgs e)
         {
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
@@ -35,19 +35,26 @@ namespace FujitsuPayments.Forms
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
-            int noRows = dsFujitsuPayments.Tables["Employee"].Rows.Count;
+            
+            lblEmpNoEdit.Text = UC_Employee.empNoSelected.ToString();
 
-            if (noRows == 0)
-                lblEmpNoAdd.Text = "1000";
-            else
-            {
-                getNumber(noRows);
-            }
-        }
+            drEmployee = dsFujitsuPayments.Tables["Employee"].Rows.Find(lblEmpNoEdit.Text);
 
-        private void btnEmpClose_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
+            
+
+                 
+                   txtTitleEdit.Text= drEmployee["Title"].ToString();
+                  txtSurnameEdit.Text = drEmployee["Surname"].ToString();
+                  txtFirstNameEdit.Text = drEmployee["Forename"].ToString();
+                   txtStreetEdit.Text = drEmployee["Street"].ToString();
+                   txtTownEdit.Text = drEmployee["Town"].ToString();
+                   txtCountyEdit.Text = drEmployee["County"].ToString();
+                   txtPostcodeEdit.Text = drEmployee["Postcode"].ToString();
+                   txtPhoneNumberEdit.Text = drEmployee["TelNo"].ToString();
+                   dtpDOBEdit.Text =  drEmployee["DOB"].ToString();
+                   txtEditManagerID.Text = drEmployee["ManagerID"].ToString();
+                    cmbGradeEdit.Text = drEmployee["Grade"].ToString();
+                   txtEditSalary.Text =  drEmployee["Salary"].ToString();
         }
 
         private void btnEmpSave_Click(object sender, EventArgs e)
@@ -59,132 +66,132 @@ namespace FujitsuPayments.Forms
             //employee number
             try
             {
-                myEmployee.EmployeeId = Convert.ToInt32(lblEmpNoAdd.Text.Trim());
+                myEmployee.EmployeeId = Convert.ToInt32(lblEmpNoEdit.Text.Trim());
                 //passed to employee Class to check
 
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(lblPersonnelNo, MyEx.toString());
+                errP.SetError(lblEmpNoEdit, MyEx.toString());
             }
             //employee Title
             try
             {
-                myEmployee.Title = txtTitle.Text.Trim();
+                myEmployee.Title = txtTitleEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtTitle, MyEx.toString());
+                errP.SetError(txtTitleEdit, MyEx.toString());
             }
             //employee Surname
             try
             {
-                myEmployee.Surname = txtSurnameAdd.Text.Trim();
+                myEmployee.Surname = txtSurnameEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtSurnameAdd, MyEx.toString());
+                errP.SetError(txtSurnameEdit, MyEx.toString());
             }
             //employee Forename
             try
             {
-                myEmployee.Forename = txtFirstNameAdd.Text.Trim();
+                myEmployee.Forename = txtFirstNameEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtFirstNameAdd, MyEx.toString());
+                errP.SetError(txtFirstNameEdit, MyEx.toString());
             }
             //employee Street
             try
             {
-                myEmployee.Street = txtStreet.Text.Trim();
+                myEmployee.Street = txtStreetEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtStreet, MyEx.toString());
+                errP.SetError(txtStreetEdit, MyEx.toString());
             }
             //employee Town
             try
             {
-                myEmployee.Town = txtTown.Text.Trim();
+                myEmployee.Town = txtTownEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtTown, MyEx.toString());
+                errP.SetError(txtTownEdit, MyEx.toString());
             }
             //employee County
             try
             {
-                myEmployee.County = txtCounty.Text.Trim();
+                myEmployee.County = txtCountyEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtCounty, MyEx.toString());
+                errP.SetError(txtCountyEdit, MyEx.toString());
             }
-         
+
             //employee Postcode
             try
             {
-                myEmployee.Postcode = txtPostcode.Text.Trim();
+                myEmployee.Postcode = txtPostcodeEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtPostcode, MyEx.toString());
+                errP.SetError(txtPostcodeEdit, MyEx.toString());
             }
 
             //employee TelNo
             try
             {
-                myEmployee.TelNo = txtPhoneNumber.Text.Trim();
+                myEmployee.TelNo = txtPhoneNumberEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtPhoneNumber, MyEx.toString());
+                errP.SetError(txtPhoneNumberEdit, MyEx.toString());
             }
             //employee dob
             try
             {
-                myEmployee.Dob = DateTime.Parse(dtpDOB.Text.Trim());
+                myEmployee.Dob = DateTime.Parse(dtpDOBEdit.Text.Trim());
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(dtpDOB, MyEx.toString());
+                errP.SetError(dtpDOBEdit, MyEx.toString());
             }
             //employee Grade
             try
             {
-                myEmployee.Grade = cmbGrade.SelectedItem.ToString();
+                myEmployee.Grade = cmbGradeEdit.SelectedItem.ToString();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(cmbGrade, MyEx.toString());
+                errP.SetError(cmbGradeEdit, MyEx.toString());
             }
             //employee Manager number
             try
             {
-                myEmployee.ManagerId = Convert.ToInt32(txtAddManagerID.Text.Trim());
+                myEmployee.ManagerId = Convert.ToInt32(txtEditManagerID.Text.Trim());
                 //passed to employee Class to check
 
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtAddManagerID, MyEx.toString());
+                errP.SetError(txtEditManagerID, MyEx.toString());
             }
             try
             {
-                String temp = txtAddSalary.Text;
+                String temp = txtEditSalary.Text;
                 Decimal tempD = Decimal.Parse(temp);
 
                 myEmployee.Salary = tempD;
@@ -194,14 +201,14 @@ namespace FujitsuPayments.Forms
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtAddSalary, MyEx.toString());
+                errP.SetError(txtEditSalary, MyEx.toString());
             }
             try
             {
                 if (ok)
                 {
 
-                    drEmployee = dsFujitsuPayments.Tables["Employee"].NewRow();
+                    drEmployee.BeginEdit();
 
                     drEmployee["EmployeeID"] = myEmployee.EmployeeId;
                     drEmployee["Title"] = myEmployee.Title;
@@ -217,12 +224,13 @@ namespace FujitsuPayments.Forms
                     drEmployee["Grade"] = myEmployee.Grade;
                     drEmployee["Salary"] = myEmployee.Salary;
 
-                    dsFujitsuPayments.Tables["Employee"].Rows.Add(drEmployee);
+                    drEmployee.EndEdit();
                     daEmployee.Update(dsFujitsuPayments, "Employee");
 
-                    MessageBox.Show("Employee Added");
+                    MessageBox.Show("Employee Updated");
                     this.Dispose();
-                    
+                    UC_Employee.refresh = true;
+
                 }
             }
             catch (Exception ex)
@@ -231,17 +239,15 @@ namespace FujitsuPayments.Forms
             }
         }
 
+        private void btnEmpClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
 
-        private void getNumber(int noRows)
-        {
-            drEmployee = dsFujitsuPayments.Tables["Employee"].Rows[noRows - 1];
-            lblEmpNoAdd.Text = (int.Parse(drEmployee["EmployeeID"].ToString()) + 1).ToString();
         }
     }
 }
-
-

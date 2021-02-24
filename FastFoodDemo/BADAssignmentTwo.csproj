@@ -46,11 +46,23 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Forms\frmAddProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddProject.Designer.cs">
+      <DependentUpon>frmAddProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmEditAccount.Designer.cs">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditEmployee.Designer.cs">
+      <DependentUpon>frmEditEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
@@ -107,12 +119,21 @@
     <Compile Include="UserControls\UC_Main.Designer.cs">
       <DependentUpon>UC_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_Project.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Project.Designer.cs">
+      <DependentUpon>UC_Project.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_Schedule.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UC_Schedule.Designer.cs">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmAddProject.resx">
+      <DependentUpon>frmAddProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEmployee.resx">
       <DependentUpon>frmAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditEmployee.resx">
+      <DependentUpon>frmEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -148,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Main.resx">
       <DependentUpon>UC_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Project.resx">
+      <DependentUpon>UC_Project.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Schedule.resx">
       <DependentUpon>UC_Schedule.cs</DependentUpon>

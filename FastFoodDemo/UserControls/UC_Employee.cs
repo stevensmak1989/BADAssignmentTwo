@@ -19,7 +19,13 @@ namespace FujitsuPayments.UserControls
         SqlCommandBuilder cmbBEmployee;
         DataRow drEmployee;
         String connStr, sqlEmployee;
-        frmAddEmployee frmAdd = new frmAddEmployee();
+
+        // Static varibales to pass to form's
+        public static int selectedTab = 0;
+        public static bool empSelected = false;
+        public static int empNoSelected = 0;
+        public static bool refresh = false;
+
         public UC_Employee()
         {
             InitializeComponent();
@@ -27,9 +33,9 @@ namespace FujitsuPayments.UserControls
             this.dvgEmployee.DefaultCellStyle.Font = new Font("Century Gothic", 8);
             this.dvgEmployee.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 8);
 
-            dvgEmployee.Visible = false;
+           // dvgEmployee.Visible = false;
 
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = fujitsuPayments; Integrated Security = true";
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
             sqlEmployee = @"select * from Employee";
             daEmployee = new SqlDataAdapter(sqlEmployee, connStr);
@@ -40,7 +46,7 @@ namespace FujitsuPayments.UserControls
             dvgEmployee.DataSource = dsFujitsuPayments.Tables["Employee"];
             // resize the datagridview columns to fit the newly loaded content
             dvgEmployee.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            
+            checkRefresh();
 
         }
         private void UC_Employee__Load(object sender, EventArgs e)
@@ -66,21 +72,77 @@ namespace FujitsuPayments.UserControls
 
         private void btnEmployeeView_Click(object sender, EventArgs e)
         {
-            dvgEmployee.Visible = true;
-            frmAdd.Visible = false;
-            frmAdd.Location = new Point(2, 25);
+            
+        }
+
+        public void checkRefresh()
+        {
+
+            dvgEmployee.DataSource = dsFujitsuPayments.Tables["Employee"];
+            
+        }
+
+        private void btnEmployeeEdit_Click(object sender, EventArgs e)
+        {
+            // condition to check if a row has been selected to pass to edit form
+            if (dvgEmployee.SelectedRows.Count == 0)
+            {
+                empSelected = false;
+                empNoSelected = 0;
+                MessageBox.Show("Please select a record.", "Select Employee");
+            }
+            else if (dvgEmployee.SelectedRows.Count > 1)
+            {
+                empSelected = false;
+                empNoSelected = 0;
+                MessageBox.Show("Please select a single record, cannot edit multiple records", "Select Employee");
+
+            }
+            else if (dvgEmployee.SelectedRows.Count == 1)
+            {
+                empSelected = true;
+                empNoSelected = Convert.ToInt32(dvgEmployee.SelectedRows[0].Cells[0].Value);
+
+                frmEditEmployee frm = new frmEditEmployee();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(2, 25);
+                this.Controls.Add(frm);
+                frm.BringToFront();
+            }
+        }
+
+        private void btnEmployeeDel_Click(object sender, EventArgs e)
+        {
+            if (dvgEmployee.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an Employee from the list.", "Select Employee");
+            }
+            else
+            {
+                drEmployee = dsFujitsuPayments.Tables["Employee"].Rows.Find(dvgEmployee.SelectedRows[0].Cells[0].Value);
+
+                string tempName = drEmployee["Forename"].ToString() + " " + drEmployee["Surname"].ToString() + "'s";
+
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + " details?", "Add Employee", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    drEmployee.Delete();
+                    daEmployee.Update(dsFujitsuPayments, "Employee");
+                }
+            }
         }
 
         private void btnEmployeeAdd_Click(object sender, EventArgs e)
-        {            
-            
+        {
+            frmAddEmployee frmAdd = new frmAddEmployee();
             frmAdd.TopLevel = false;
             frmAdd.FormBorderStyle = FormBorderStyle.None;
             frmAdd.Visible = true;
             frmAdd.Location = new Point(2, 25);
             this.Controls.Add(frmAdd);
             frmAdd.BringToFront();
-            dvgEmployee.Visible = false;
+            //dvgEmployee.Visible = false;
         }
     }
 }

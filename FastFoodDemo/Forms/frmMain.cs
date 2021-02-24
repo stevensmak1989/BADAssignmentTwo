@@ -91,6 +91,8 @@ namespace FujitsuPayments
         {
             SidePanel.Height = btnProject.Height;
             SidePanel.Top = btnProject.Top;
+            UC_Project uc = new UC_Project();
+            addControls(uc);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

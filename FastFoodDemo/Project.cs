@@ -12,7 +12,7 @@ namespace FujitsuPayments
         private int projectId, accountID, duration;
         private string projDesc;
         private DateTime startDate;
-        private float cappedHrs, b48Rate, a48Rate, bHRate;
+        private decimal cappedHrs, b48Rate, a48Rate, bHRate;
 
         public Project()
         {
@@ -22,7 +22,7 @@ namespace FujitsuPayments
         }
 
         public Project(int projectId, int accountID, int duration, string projDesc, DateTime startDate,
-            float cappedHrs, float b48Rate, float a48Rate, float bHRate)
+            decimal cappedHrs, decimal b48Rate, decimal a48Rate, decimal bHRate)
         {
             this.projectId = projectId; this.accountID = accountID; this.duration = duration; this.projDesc = projDesc;
             this.startDate = startDate; this.cappedHrs = cappedHrs; this.b48Rate = b48Rate;
@@ -46,7 +46,7 @@ namespace FujitsuPayments
             get { return duration; }
             set
             {
-                if (duration < 0 )
+                if (duration > 0 )
                 {
                     duration = duration;
                 }
@@ -83,56 +83,56 @@ namespace FujitsuPayments
             }
         }
 
-        public float CappedHrs
+        public decimal CappedHrs
         {
             get { return cappedHrs; }
             set
             {
-                if (cappedHrs < 0)
+                if (cappedHrs > 0)
                 {
-                    cappedHrs = cappedHrs;
+                    cappedHrs = value;
                 }
                 else
                     throw new MyException("Capped Hours must be greater than 0.");
             }
         }
 
-        public float B48Rate
+        public decimal B48Rate
         {
             get { return b48Rate; }
             set
             {
-                if (b48Rate < 0)
+                if (b48Rate > 0)
                 {
-                    b48Rate = b48Rate;
+                    b48Rate = value;
                 }
                 else
-                    throw new MyException("Before 8 Hours must be greater than 0.");
+                    throw new MyException("Basic Hours must be greater than 0.");
             }
         }
 
-        public float A48Rate
+        public decimal A48Rate
         {
             get { return a48Rate; }
             set
             {
-                if (a48Rate < 0)
+                if (a48Rate > 0)
                 {
-                    a48Rate = a48Rate;
+                    a48Rate = value;
                 }
                 else
                     throw new MyException("After 8 Hours must be greater than 0.");
             }
         }
 
-        public float BHRate
+        public decimal BHRate
         {
             get { return bHRate; }
             set
             {
-                if (bHRate < 0)
+                if (bHRate > 0)
                 {
-                    bHRate = bHRate;
+                    bHRate = value;
                 }
                 else
                     throw new MyException("Bank holiday Hours must be greater than 0.");

@@ -31,18 +31,20 @@ namespace FujitsuPayments.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblEmpNoAdd = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.lblTitlee = new System.Windows.Forms.Label();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
+            this.lblDOB = new System.Windows.Forms.Label();
             this.txtAddSalary = new System.Windows.Forms.TextBox();
             this.lblAddAnnualSal = new System.Windows.Forms.Label();
             this.txtAddManagerID = new System.Windows.Forms.TextBox();
             this.lblAddManagerId = new System.Windows.Forms.Label();
-            this.txtPersonnelNo = new System.Windows.Forms.TextBox();
             this.lblPersonnelNo = new System.Windows.Forms.Label();
             this.cmbGrade = new System.Windows.Forms.ComboBox();
             this.lblGrade = new System.Windows.Forms.Label();
             this.txtPostcode = new System.Windows.Forms.TextBox();
             this.lblPostcode = new System.Windows.Forms.Label();
-            this.txtCountry = new System.Windows.Forms.TextBox();
-            this.lblCountry = new System.Windows.Forms.Label();
             this.txtCounty = new System.Windows.Forms.TextBox();
             this.lblCounty = new System.Windows.Forms.Label();
             this.txtTown = new System.Windows.Forms.TextBox();
@@ -59,10 +61,6 @@ namespace FujitsuPayments.Forms
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitle = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblDOB = new System.Windows.Forms.Label();
-            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.lblTitlee = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +68,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblEmpNoAdd);
             this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.lblTitlee);
             this.panel1.Controls.Add(this.dtpDOB);
@@ -78,14 +77,11 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.lblAddAnnualSal);
             this.panel1.Controls.Add(this.txtAddManagerID);
             this.panel1.Controls.Add(this.lblAddManagerId);
-            this.panel1.Controls.Add(this.txtPersonnelNo);
             this.panel1.Controls.Add(this.lblPersonnelNo);
             this.panel1.Controls.Add(this.cmbGrade);
             this.panel1.Controls.Add(this.lblGrade);
             this.panel1.Controls.Add(this.txtPostcode);
             this.panel1.Controls.Add(this.lblPostcode);
-            this.panel1.Controls.Add(this.txtCountry);
-            this.panel1.Controls.Add(this.lblCountry);
             this.panel1.Controls.Add(this.txtCounty);
             this.panel1.Controls.Add(this.lblCounty);
             this.panel1.Controls.Add(this.txtTown);
@@ -105,11 +101,64 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lblEmpNoAdd
+            // 
+            this.lblEmpNoAdd.AutoSize = true;
+            this.lblEmpNoAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpNoAdd.Location = new System.Drawing.Point(161, 72);
+            this.lblEmpNoAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpNoAdd.Name = "lblEmpNoAdd";
+            this.lblEmpNoAdd.Size = new System.Drawing.Size(13, 18);
+            this.lblEmpNoAdd.TabIndex = 48;
+            this.lblEmpNoAdd.Text = "-";
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(164, 29);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(106, 26);
+            this.txtTitle.TabIndex = 47;
+            // 
+            // lblTitlee
+            // 
+            this.lblTitlee.AutoSize = true;
+            this.lblTitlee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlee.Location = new System.Drawing.Point(36, 34);
+            this.lblTitlee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitlee.Name = "lblTitlee";
+            this.lblTitlee.Size = new System.Drawing.Size(35, 18);
+            this.lblTitlee.TabIndex = 46;
+            this.lblTitlee.Text = "Title";
+            // 
+            // dtpDOB
+            // 
+            this.dtpDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOB.Location = new System.Drawing.Point(164, 236);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(106, 26);
+            this.dtpDOB.TabIndex = 45;
+            this.dtpDOB.Value = new System.DateTime(1998, 1, 27, 0, 0, 0, 0);
+            // 
+            // lblDOB
+            // 
+            this.lblDOB.AutoSize = true;
+            this.lblDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDOB.Location = new System.Drawing.Point(33, 231);
+            this.lblDOB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDOB.Name = "lblDOB";
+            this.lblDOB.Size = new System.Drawing.Size(41, 18);
+            this.lblDOB.TabIndex = 44;
+            this.lblDOB.Text = "DOB";
             // 
             // txtAddSalary
             // 
             this.txtAddSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddSalary.Location = new System.Drawing.Point(533, 277);
+            this.txtAddSalary.Location = new System.Drawing.Point(533, 238);
             this.txtAddSalary.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddSalary.Name = "txtAddSalary";
             this.txtAddSalary.Size = new System.Drawing.Size(115, 26);
@@ -119,7 +168,7 @@ namespace FujitsuPayments.Forms
             // 
             this.lblAddAnnualSal.AutoSize = true;
             this.lblAddAnnualSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddAnnualSal.Location = new System.Drawing.Point(417, 281);
+            this.lblAddAnnualSal.Location = new System.Drawing.Point(417, 242);
             this.lblAddAnnualSal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddAnnualSal.Name = "lblAddAnnualSal";
             this.lblAddAnnualSal.Size = new System.Drawing.Size(49, 18);
@@ -146,15 +195,6 @@ namespace FujitsuPayments.Forms
             this.lblAddManagerId.TabIndex = 40;
             this.lblAddManagerId.Text = "Manager ID";
             // 
-            // txtPersonnelNo
-            // 
-            this.txtPersonnelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPersonnelNo.Location = new System.Drawing.Point(164, 69);
-            this.txtPersonnelNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPersonnelNo.Name = "txtPersonnelNo";
-            this.txtPersonnelNo.Size = new System.Drawing.Size(106, 26);
-            this.txtPersonnelNo.TabIndex = 39;
-            // 
             // lblPersonnelNo
             // 
             this.lblPersonnelNo.AutoSize = true;
@@ -170,7 +210,10 @@ namespace FujitsuPayments.Forms
             // 
             this.cmbGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGrade.FormattingEnabled = true;
-            this.cmbGrade.Location = new System.Drawing.Point(533, 238);
+            this.cmbGrade.Items.AddRange(new object[] {
+            "Dev1",
+            "Dev2"});
+            this.cmbGrade.Location = new System.Drawing.Point(533, 199);
             this.cmbGrade.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGrade.Name = "cmbGrade";
             this.cmbGrade.Size = new System.Drawing.Size(115, 28);
@@ -180,7 +223,7 @@ namespace FujitsuPayments.Forms
             // 
             this.lblGrade.AutoSize = true;
             this.lblGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrade.Location = new System.Drawing.Point(420, 236);
+            this.lblGrade.Location = new System.Drawing.Point(420, 197);
             this.lblGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrade.Name = "lblGrade";
             this.lblGrade.Size = new System.Drawing.Size(49, 18);
@@ -190,7 +233,7 @@ namespace FujitsuPayments.Forms
             // txtPostcode
             // 
             this.txtPostcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPostcode.Location = new System.Drawing.Point(533, 194);
+            this.txtPostcode.Location = new System.Drawing.Point(533, 155);
             this.txtPostcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(115, 26);
@@ -200,32 +243,12 @@ namespace FujitsuPayments.Forms
             // 
             this.lblPostcode.AutoSize = true;
             this.lblPostcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostcode.Location = new System.Drawing.Point(417, 198);
+            this.lblPostcode.Location = new System.Drawing.Point(417, 159);
             this.lblPostcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostcode.Name = "lblPostcode";
             this.lblPostcode.Size = new System.Drawing.Size(72, 18);
             this.lblPostcode.TabIndex = 34;
             this.lblPostcode.Text = "Postcode";
-            // 
-            // txtCountry
-            // 
-            this.txtCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.Location = new System.Drawing.Point(533, 148);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(115, 26);
-            this.txtCountry.TabIndex = 33;
-            // 
-            // lblCountry
-            // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.Location = new System.Drawing.Point(417, 152);
-            this.lblCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(60, 18);
-            this.lblCountry.TabIndex = 32;
-            this.lblCountry.Text = "Country";
             // 
             // txtCounty
             // 
@@ -353,7 +376,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose.FlatAppearance.BorderSize = 2;
             this.btnEmpClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmpClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnEmpClose.Location = new System.Drawing.Point(237, 313);
+            this.btnEmpClose.Location = new System.Drawing.Point(225, 313);
             this.btnEmpClose.Name = "btnEmpClose";
             this.btnEmpClose.Size = new System.Drawing.Size(125, 31);
             this.btnEmpClose.TabIndex = 13;
@@ -367,7 +390,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpSave.FlatAppearance.BorderSize = 2;
             this.btnEmpSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmpSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.btnEmpSave.Location = new System.Drawing.Point(381, 313);
+            this.btnEmpSave.Location = new System.Drawing.Point(369, 313);
             this.btnEmpSave.Name = "btnEmpSave";
             this.btnEmpSave.Size = new System.Drawing.Size(130, 31);
             this.btnEmpSave.TabIndex = 12;
@@ -389,47 +412,6 @@ namespace FujitsuPayments.Forms
             // errP
             // 
             this.errP.ContainerControl = this;
-            // 
-            // lblDOB
-            // 
-            this.lblDOB.AutoSize = true;
-            this.lblDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOB.Location = new System.Drawing.Point(33, 231);
-            this.lblDOB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDOB.Name = "lblDOB";
-            this.lblDOB.Size = new System.Drawing.Size(41, 18);
-            this.lblDOB.TabIndex = 44;
-            this.lblDOB.Text = "DOB";
-            // 
-            // dtpDOB
-            // 
-            this.dtpDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOB.Location = new System.Drawing.Point(164, 236);
-            this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(106, 26);
-            this.dtpDOB.TabIndex = 45;
-            this.dtpDOB.Value = new System.DateTime(1998, 1, 27, 0, 0, 0, 0);
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(164, 29);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(106, 26);
-            this.txtTitle.TabIndex = 47;
-            // 
-            // lblTitlee
-            // 
-            this.lblTitlee.AutoSize = true;
-            this.lblTitlee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitlee.Location = new System.Drawing.Point(36, 34);
-            this.lblTitlee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitlee.Name = "lblTitlee";
-            this.lblTitlee.Size = new System.Drawing.Size(35, 18);
-            this.lblTitlee.TabIndex = 46;
-            this.lblTitlee.Text = "Title";
             // 
             // frmAddEmployee
             // 
@@ -456,14 +438,11 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnEmpClose;
         private System.Windows.Forms.Button btnEmpSave;
         private System.Windows.Forms.Label lbltitle;
-        private System.Windows.Forms.TextBox txtPersonnelNo;
         private System.Windows.Forms.Label lblPersonnelNo;
         private System.Windows.Forms.ComboBox cmbGrade;
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.TextBox txtPostcode;
         private System.Windows.Forms.Label lblPostcode;
-        private System.Windows.Forms.TextBox txtCountry;
-        private System.Windows.Forms.Label lblCountry;
         private System.Windows.Forms.TextBox txtCounty;
         private System.Windows.Forms.Label lblCounty;
         private System.Windows.Forms.TextBox txtTown;
@@ -485,5 +464,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblDOB;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblTitlee;
+        private System.Windows.Forms.Label lblEmpNoAdd;
     }
 }

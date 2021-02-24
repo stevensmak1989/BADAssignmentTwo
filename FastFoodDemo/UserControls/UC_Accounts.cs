@@ -41,7 +41,7 @@ namespace FujitsuPayments.UserControls
 
 
 
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = fujitsuPayments; Integrated Security = true";
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
             sqlAccount = @"select * from Account";
             daAccount = new SqlDataAdapter(sqlAccount, connStr);

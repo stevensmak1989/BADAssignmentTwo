@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnEmployeeView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnProjectView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAjlJREFUSEvt
         ls1LVFEYxjUqzSKwhS3aiSsLpF0EugoV2jYJM87XvcMsBqb+hflzooUuxZqNH9CmVeDSTZCI4sI+/JrU
@@ -133,7 +133,7 @@
         m9SjlWHmdir8YPK/hR6AlS4EQbD6B6YkbJ8sKGLVAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnEmployeeDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnProjectDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAnFJREFUSEvN
         lj1oU1EUxxPRWtoiFMShOJQOUoeC4iIUqcUPhFaQQigk5DtkiM0siGBc3CyiTg4OtkM7KXQRpIMIpYI4
@@ -149,7 +149,7 @@
         GMsj9Q7ksr6FObZgVFNQLPYX7z/UYXlP11cAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnEmployeeEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnProjectEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAgtJREFUSEvt
         lj9LHFEUxVcTFA1BrdIJapB8ggiiEEL6YLGsWdj/y6LIBoMfwDFVrKKC2Nhs5UdIERDSpEqRtEoKtYlW
@@ -163,7 +163,7 @@
         ycPnGnca0gUBt7eCRWwyHO2NEgV8Hg4TJF91u2zx+8adJRI3Oc1+9Rg2zbAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnEmployeeAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnProjectAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAaxJREFUSEvt
         lstKw1AQhuNSvIALQTeC4gVfQPGyEhFXusomJW2ahCzyNIogvoV4ASv6MOpOUVB0pYv6j0xoMpnEnCoB
