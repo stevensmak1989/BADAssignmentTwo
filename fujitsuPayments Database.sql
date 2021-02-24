@@ -40,7 +40,7 @@ CREATE TABLE Employee
 	CONSTRAINT ckTitle CHECK (Title IN ('Mr','Mrs','Miss','Ms')),
 	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11)),
-	CONSTRAINT ckSal CHECK (Salary > 0.00),
+	
 
 )
 
