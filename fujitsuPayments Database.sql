@@ -47,14 +47,14 @@ CREATE TABLE Employee
 
 CREATE TABLE Account
 (
-	AccountID 		int				NOT NULL,
-	ClientName		varchar(20)			NOT NULL,
+	AccountID 		int					NOT NULL,
+	ClientName		varchar(30)			NOT NULL,
 	Street			varchar(30)			NOT NULL,
 	Town			varchar(30)			NOT NULL,
 	County			varchar(30)			NOT NULL,
 	PostCode		varchar(8)			NOT NULL,
 	TelNo			varchar(11)			NOT NULL,
-	Email                   varchar(20)			NOT NULL,
+	Email           varchar(30)			NOT NULL,
 
 	--PK
 	CONSTRAINT pkAccID PRIMARY KEY (AccountID),
@@ -68,7 +68,7 @@ CREATE TABLE Account
 CREATE TABLE OfficeLocation
 (
 	LocationID 		varchar(5)			NOT NULL,
-	LocationName            varchar(20)			NOT NULL,
+	LocationName    varchar(30)			NOT NULL,
 	Street			varchar(30)			NOT NULL,
 	Town			varchar(30)			NOT NULL,
 	County			varchar(30)			NOT NULL,
@@ -82,6 +82,7 @@ CREATE TABLE OfficeLocation
 	
 
 )
+
 
 CREATE TABLE Project
 (
@@ -106,6 +107,7 @@ CREATE TABLE Project
 
 	CONSTRAINT ckStartDate CHECK (StartDate >=  getDate())
 )
+
 
 CREATE TABLE CostCentre
 (
