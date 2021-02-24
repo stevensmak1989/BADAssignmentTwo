@@ -120,3 +120,76 @@ CREATE TABLE CostCentre
 	CONSTRAINT fkLocId   FOREIGN KEY (LocationID) REFERENCES OfficeLocation(LocationID)
 
 )
+
+CREATE TABLE ProjectTask
+(
+	ProjectID 		int	     		NOT NULL,
+	TaskID          int             NOT NULL,
+	TaskDesc        varchar(30)     NOT NULL,
+
+	--PK
+	CONSTRAINT pkProjTask  PRIMARY KEY (ProjectID, TaskID),
+
+	--FK
+	CONSTRAINT fkProjId FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID)
+	
+)
+
+
+CREATE TABLE ProjectTaskEmployee
+(
+    ProjectID 		int	     		NOT NULL,
+	TaskID 			int	     		NOT NULL,
+	EmployeeID      int            	NOT NULL,
+
+	--PK
+	CONSTRAINT pkProjTaskEmp PRIMARY KEY (ProjectID, TaskID, EmployeeID),
+
+	--FK
+	CONSTRAINT fkProjId2 FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID),
+	CONSTRAINT fkTaskId FOREIGN KEY (ProjectID,TaskID) REFERENCES ProjectTask (ProjectID,TaskID),
+	CONSTRAINT fkEmployeeId FOREIGN KEY (EmployeeID) REFERENCES Employee (EmployeeID)
+
+)
+
+
+
+CREATE TABLE EmployeeShift
+(
+	ShiftID			int			NOT NULL,
+	AccountID      	int         NOT NULL,
+	ProjectID 		int	     	NOT NULL,
+	TaskID 			int	     	NOT NULL,
+	StartDate       Date	    NOT NULL,
+	StartTime       Time 	    NOT NULL,
+	SlotCount       int			NOT NULL,
+
+	--PK
+	CONSTRAINT pkShift PRIMARY KEY (ShiftID),	
+
+	--FK
+	CONSTRAINT fkAccId2 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
+	CONSTRAINT fkProjId3 FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID),
+	CONSTRAINT fkTaskId2 FOREIGN KEY (ProjectID,TaskID) REFERENCES ProjectTask (ProjectID,TaskID)
+
+	--CONSTRAINT chkStartD CHECK (StartDate >= getDate())
+
+
+)
+
+
+
+CREATE TABLE EmployeeShiftDetails
+(
+	ShiftID				int					NOT NULL,
+	EmployeeID     		int             	NOT NULL,
+
+	--PK
+	CONSTRAINT pkShiftDet PRIMARY KEY (ShiftID, EmployeeID),
+
+	--FK
+	CONSTRAINT fkShiftID FOREIGN KEY (ShiftID) REFERENCES EmployeeShift (ShiftID),
+	CONSTRAINT fkEmployeeID2 FOREIGN KEY (EmployeeID) REFERENCES Employee (EmployeeID)
+
+	
+)
