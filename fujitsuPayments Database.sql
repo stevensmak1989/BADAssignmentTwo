@@ -40,8 +40,8 @@ CREATE TABLE Employee
 	CONSTRAINT ckTitle CHECK (Title IN ('Mr','Mrs','Miss','Ms')),
 	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11)),
-	CONSTRAINT ckSal CHECK (Salary > 0),
-	CONSTRAINT ckDOB CHECK (DOB >= dateAdd(Year, -17, getDate()))
+	CONSTRAINT ckSal CHECK (Salary > 0.00),
+
 )
 
 
@@ -103,9 +103,7 @@ CREATE TABLE Project
 
 	CONSTRAINT ckB48Rate CHECK (B48Rate > 0),
 	CONSTRAINT ckA48Rate CHECK (A48Rate > 0),
-	CONSTRAINT ckBHRate CHECK (BHRate > 0),
-
-	CONSTRAINT ckStartDate CHECK (StartDate >=  getDate())
+	CONSTRAINT ckBHRate CHECK (BHRate > 0)
 )
 
 
