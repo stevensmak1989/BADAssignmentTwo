@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace FujitsuPayments.UserControls
 {
     public partial class UC_Accounts : UserControl
@@ -20,9 +21,10 @@ namespace FujitsuPayments.UserControls
         SqlCommandBuilder cmbBAccount;
         DataRow drAccount;
         String connStr, sqlAccount;
-        public int selectedTab = 0;
-        public bool accSelected = false;
-        public int accNoSelected = 0;
+        // Static varibales to pass to form's
+        public static int selectedTab = 0;
+        public static bool accSelected = false;
+        public static int accNoSelected = 0;
 
 
         public UC_Accounts()
@@ -53,16 +55,6 @@ namespace FujitsuPayments.UserControls
 
 
 
-            if (dgvAccounts.SelectedRows.Count == 0)
-            {
-                accSelected = false;
-                accNoSelected = 0;
-            }
-            else if (dgvAccounts.SelectedRows.Count == 1)
-            {
-                accSelected = true;
-                accNoSelected = Convert.ToInt32(dgvAccounts.SelectedRows[0].Cells[0].Value);
-            }
 
         }
 
@@ -81,13 +73,29 @@ namespace FujitsuPayments.UserControls
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
-            frmEditAccount frm = new frmEditAccount();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
-            frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+
+            if (dgvAccounts.SelectedRows.Count == 0)
+            {
+                accSelected = false;
+                accNoSelected = 0;
+                MessageBox.Show("Please select a record.", "Select Account");
+            }
+            else if (dgvAccounts.SelectedRows.Count == 1)
+            {
+                accSelected = true;
+                accNoSelected = Convert.ToInt32(dgvAccounts.SelectedRows[0].Cells[0].Value);
+
+                frmEditAccount frm = new frmEditAccount();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(180, 100);
+                this.Controls.Add(frm);
+                frm.BringToFront();
+            }
+
+
+
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)

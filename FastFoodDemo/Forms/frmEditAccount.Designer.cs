@@ -32,18 +32,18 @@ namespace FujitsuPayments.Forms
             this.components = new System.ComponentModel.Container();
             this.pnlEditAccount = new System.Windows.Forms.Panel();
             this.lblEditEmail = new System.Windows.Forms.Label();
-            this.txtTelNo = new System.Windows.Forms.TextBox();
+            this.txtEditTelNo = new System.Windows.Forms.TextBox();
             this.lblEditTelNo = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtEditEmail = new System.Windows.Forms.TextBox();
             this.txtEditAccountID = new System.Windows.Forms.TextBox();
             this.lblEditAccountId = new System.Windows.Forms.Label();
             this.txtEditPostCode = new System.Windows.Forms.TextBox();
             this.lblEditCounty = new System.Windows.Forms.Label();
             this.txtEditCounty = new System.Windows.Forms.TextBox();
             this.lblEditPostCode = new System.Windows.Forms.Label();
-            this.txtTown = new System.Windows.Forms.TextBox();
+            this.txtEditTown = new System.Windows.Forms.TextBox();
             this.lblEditStreet = new System.Windows.Forms.Label();
             this.txtEditStreet = new System.Windows.Forms.TextBox();
             this.lblEditEditTown = new System.Windows.Forms.Label();
@@ -59,18 +59,18 @@ namespace FujitsuPayments.Forms
             // 
             this.pnlEditAccount.BackColor = System.Drawing.Color.White;
             this.pnlEditAccount.Controls.Add(this.lblEditEmail);
-            this.pnlEditAccount.Controls.Add(this.txtTelNo);
+            this.pnlEditAccount.Controls.Add(this.txtEditTelNo);
             this.pnlEditAccount.Controls.Add(this.lblEditTelNo);
             this.pnlEditAccount.Controls.Add(this.button2);
             this.pnlEditAccount.Controls.Add(this.btnSave);
-            this.pnlEditAccount.Controls.Add(this.txtEmail);
+            this.pnlEditAccount.Controls.Add(this.txtEditEmail);
             this.pnlEditAccount.Controls.Add(this.txtEditAccountID);
             this.pnlEditAccount.Controls.Add(this.lblEditAccountId);
             this.pnlEditAccount.Controls.Add(this.txtEditPostCode);
             this.pnlEditAccount.Controls.Add(this.lblEditCounty);
             this.pnlEditAccount.Controls.Add(this.txtEditCounty);
             this.pnlEditAccount.Controls.Add(this.lblEditPostCode);
-            this.pnlEditAccount.Controls.Add(this.txtTown);
+            this.pnlEditAccount.Controls.Add(this.txtEditTown);
             this.pnlEditAccount.Controls.Add(this.lblEditStreet);
             this.pnlEditAccount.Controls.Add(this.txtEditStreet);
             this.pnlEditAccount.Controls.Add(this.lblEditEditTown);
@@ -94,13 +94,13 @@ namespace FujitsuPayments.Forms
             this.lblEditEmail.TabIndex = 37;
             this.lblEditEmail.Text = "Email";
             // 
-            // txtTelNo
+            // txtEditTelNo
             // 
-            this.txtTelNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelNo.Location = new System.Drawing.Point(450, 132);
-            this.txtTelNo.Name = "txtTelNo";
-            this.txtTelNo.Size = new System.Drawing.Size(212, 26);
-            this.txtTelNo.TabIndex = 36;
+            this.txtEditTelNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditTelNo.Location = new System.Drawing.Point(450, 132);
+            this.txtEditTelNo.Name = "txtEditTelNo";
+            this.txtEditTelNo.Size = new System.Drawing.Size(212, 26);
+            this.txtEditTelNo.TabIndex = 36;
             // 
             // lblEditTelNo
             // 
@@ -143,13 +143,13 @@ namespace FujitsuPayments.Forms
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtEmail
+            // txtEditEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(356, 165);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(306, 26);
-            this.txtEmail.TabIndex = 32;
+            this.txtEditEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditEmail.Location = new System.Drawing.Point(356, 165);
+            this.txtEditEmail.Name = "txtEditEmail";
+            this.txtEditEmail.Size = new System.Drawing.Size(306, 26);
+            this.txtEditEmail.TabIndex = 32;
             // 
             // txtEditAccountID
             // 
@@ -208,13 +208,13 @@ namespace FujitsuPayments.Forms
             this.lblEditPostCode.TabIndex = 26;
             this.lblEditPostCode.Text = "Post Code";
             // 
-            // txtTown
+            // txtEditTown
             // 
-            this.txtTown.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTown.Location = new System.Drawing.Point(450, 99);
-            this.txtTown.Name = "txtTown";
-            this.txtTown.Size = new System.Drawing.Size(212, 26);
-            this.txtTown.TabIndex = 25;
+            this.txtEditTown.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditTown.Location = new System.Drawing.Point(450, 99);
+            this.txtEditTown.Name = "txtEditTown";
+            this.txtEditTown.Size = new System.Drawing.Size(212, 26);
+            this.txtEditTown.TabIndex = 25;
             // 
             // lblEditStreet
             // 
@@ -305,14 +305,14 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Panel pnlEditAccount;
         private System.Windows.Forms.ErrorProvider errP;
         private System.Windows.Forms.Label lblEditAccount;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtEditEmail;
         private System.Windows.Forms.TextBox txtEditAccountID;
         private System.Windows.Forms.Label lblEditAccountId;
         private System.Windows.Forms.TextBox txtEditPostCode;
         private System.Windows.Forms.Label lblEditCounty;
         private System.Windows.Forms.TextBox txtEditCounty;
         private System.Windows.Forms.Label lblEditPostCode;
-        private System.Windows.Forms.TextBox txtTown;
+        private System.Windows.Forms.TextBox txtEditTown;
         private System.Windows.Forms.Label lblEditStreet;
         private System.Windows.Forms.TextBox txtEditStreet;
         private System.Windows.Forms.Label lblEditEditTown;
@@ -321,7 +321,7 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblEditEmail;
-        private System.Windows.Forms.TextBox txtTelNo;
+        private System.Windows.Forms.TextBox txtEditTelNo;
         private System.Windows.Forms.Label lblEditTelNo;
     }
 }

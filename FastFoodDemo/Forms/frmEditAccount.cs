@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using FujitsuPayments.UserControls;
+
 
 namespace FujitsuPayments.Forms
 {
@@ -19,10 +21,6 @@ namespace FujitsuPayments.Forms
         SqlCommandBuilder cmbBAccount;
         DataRow drAccount;
         String connStr, sqlAccount;
-
-        bool accSelected = false;
-        int accNoSelected = 0;
-
 
         public frmEditAccount()
         {
@@ -38,6 +36,19 @@ namespace FujitsuPayments.Forms
             cmbBAccount = new SqlCommandBuilder(daAccount);
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
+
+            // Retrieve Account No from Account User Control
+            txtEditAccountID.Text = UC_Accounts.accNoSelected.ToString();
+
+            drAccount = dsFujitsuPayments.Tables["Account"].Rows.Find(txtEditAccountID.Text);
+
+            txtEditClientName.Text = drAccount["ClientName"].ToString();
+            txtEditStreet.Text = drAccount["Street"].ToString();
+            txtEditTown.Text = drAccount["Town"].ToString();
+            txtEditCounty.Text = drAccount["County"].ToString();
+            txtEditPostCode.Text = drAccount["PostCode"].ToString();
+            txtEditTelNo.Text = drAccount["TelNo"].ToString();
+            txtEditEmail.Text = drAccount["Email"].ToString();
 
 
         }
