@@ -48,12 +48,6 @@ namespace FujitsuPayments.Forms
                 getNumber(noRows);
             }
 
-            
-
-
-
-
-
         }
         private void lblUsername_Click(object sender, EventArgs e)
         {

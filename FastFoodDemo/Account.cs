@@ -37,9 +37,9 @@ namespace FujitsuPayments
             get { return clientName; }
             set
             {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validForename(value))
+                if (MyValidation.validLength(value, 2, 20))
                 {
-                    clientName = MyValidation.firstLetterEachWordToUpper(value);
+                    clientName = value;
                 }
                 else
                     throw new MyException("Client Name must be 2-20 letters.");

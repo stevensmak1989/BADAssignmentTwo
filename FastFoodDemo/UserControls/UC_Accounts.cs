@@ -15,7 +15,7 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Accounts : UserControl
     {
-
+        // database connectors
         SqlDataAdapter daAccount;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBAccount;
@@ -73,7 +73,7 @@ namespace FujitsuPayments.UserControls
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
-
+            // condition to check if a row has been selected to pass to edit form
             if (dgvAccounts.SelectedRows.Count == 0)
             {
                 accSelected = false;
