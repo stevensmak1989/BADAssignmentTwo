@@ -46,11 +46,23 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Forms\frmAddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddLocation.Designer.cs">
+      <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmEditAccount.Designer.cs">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditLocation.Designer.cs">
+      <DependentUpon>frmEditLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
@@ -101,6 +113,12 @@
     <Compile Include="UserControls\UC_Employee.Designer.cs">
       <DependentUpon>UC_Employee.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_Location.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Location.Designer.cs">
+      <DependentUpon>UC_Location.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_Main.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +131,9 @@
     <Compile Include="UserControls\UC_Schedule.Designer.cs">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmAddLocation.resx">
+      <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEmployee.resx">
       <DependentUpon>frmAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditLocation.resx">
+      <DependentUpon>frmEditLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -145,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Employee.resx">
       <DependentUpon>UC_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Location.resx">
+      <DependentUpon>UC_Location.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Main.resx">
       <DependentUpon>UC_Main.cs</DependentUpon>

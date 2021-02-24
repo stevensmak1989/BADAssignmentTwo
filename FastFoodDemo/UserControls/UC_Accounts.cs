@@ -21,6 +21,7 @@ namespace FujitsuPayments.UserControls
         SqlCommandBuilder cmbBAccount;
         DataRow drAccount;
         String connStr, sqlAccount;
+
         // Static varibales to pass to form's
         public static int selectedTab = 0;
         public static bool accSelected = false;
@@ -52,10 +53,6 @@ namespace FujitsuPayments.UserControls
             dgvAccounts.DataSource = dsFujitsuPayments.Tables["Account"];
             // resize the datagridview columns to fit the newly loaded content
             dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-
-
-
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
