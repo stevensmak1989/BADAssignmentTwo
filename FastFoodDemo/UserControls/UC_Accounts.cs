@@ -80,6 +80,13 @@ namespace FujitsuPayments.UserControls
                 accNoSelected = 0;
                 MessageBox.Show("Please select a record.", "Select Account");
             }
+            else if(dgvAccounts.SelectedRows.Count > 1)
+            {
+                accSelected = false;
+                accNoSelected = 0;
+                MessageBox.Show("Please select a single record, cannot edit multiple records", "Select Account");
+
+            }
             else if (dgvAccounts.SelectedRows.Count == 1)
             {
                 accSelected = true;

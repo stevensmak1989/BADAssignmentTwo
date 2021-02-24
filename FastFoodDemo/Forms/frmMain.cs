@@ -89,8 +89,8 @@ namespace FujitsuPayments
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btnSettings.Height;
-            SidePanel.Top = btnSettings.Top;
+            SidePanel.Height = btnProject.Height;
+            SidePanel.Top = btnProject.Top;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -106,14 +106,14 @@ namespace FujitsuPayments
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            SidePanel.Height = btnSettings.Height;
-            SidePanel.Top = btnSettings.Top;
+            SidePanel.Height = btnProject.Height;
+            SidePanel.Top = btnProject.Top;
         }
 
         private void btnMore_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btnMore.Height;
-            SidePanel.Top = btnMore.Top;
+            SidePanel.Height = btnLocation.Height;
+            SidePanel.Top = btnLocation.Top;
         }
 
         private void button12_Click(object sender, EventArgs e)

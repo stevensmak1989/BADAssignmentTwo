@@ -40,12 +40,12 @@
             this.button14 = new System.Windows.Forms.Button();
             this.btnOnCall = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnProject = new System.Windows.Forms.Button();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnMore = new System.Windows.Forms.Button();
+            this.btnLocation = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.pnlForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -213,22 +213,22 @@
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
-            // btnSettings
+            // btnProject
             // 
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSettings.Location = new System.Drawing.Point(7, 341);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(72, 56);
-            this.btnSettings.TabIndex = 4;
-            this.btnSettings.Text = "Config";
-            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnProject.FlatAppearance.BorderSize = 0;
+            this.btnProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProject.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProject.ForeColor = System.Drawing.Color.White;
+            this.btnProject.Image = ((System.Drawing.Image)(resources.GetObject("btnProject.Image")));
+            this.btnProject.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnProject.Location = new System.Drawing.Point(7, 341);
+            this.btnProject.Name = "btnProject";
+            this.btnProject.Size = new System.Drawing.Size(72, 56);
+            this.btnProject.TabIndex = 4;
+            this.btnProject.Text = "Project";
+            this.btnProject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnProject.UseVisualStyleBackColor = true;
+            this.btnProject.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // SidePanel
             // 
@@ -273,11 +273,11 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            this.pnlMenu.Controls.Add(this.btnMore);
+            this.pnlMenu.Controls.Add(this.btnLocation);
             this.pnlMenu.Controls.Add(this.pictureBox1);
             this.pnlMenu.Controls.Add(this.btnCustomer);
             this.pnlMenu.Controls.Add(this.SidePanel);
-            this.pnlMenu.Controls.Add(this.btnSettings);
+            this.pnlMenu.Controls.Add(this.btnProject);
             this.pnlMenu.Controls.Add(this.btnEmployee);
             this.pnlMenu.Controls.Add(this.btnOnCall);
             this.pnlMenu.Controls.Add(this.button14);
@@ -289,22 +289,22 @@
             this.pnlMenu.Size = new System.Drawing.Size(79, 641);
             this.pnlMenu.TabIndex = 0;
             // 
-            // btnMore
+            // btnLocation
             // 
-            this.btnMore.FlatAppearance.BorderSize = 0;
-            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMore.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMore.ForeColor = System.Drawing.Color.White;
-            this.btnMore.Image = ((System.Drawing.Image)(resources.GetObject("btnMore.Image")));
-            this.btnMore.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMore.Location = new System.Drawing.Point(7, 403);
-            this.btnMore.Name = "btnMore";
-            this.btnMore.Size = new System.Drawing.Size(72, 56);
-            this.btnMore.TabIndex = 8;
-            this.btnMore.Text = "More";
-            this.btnMore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMore.UseVisualStyleBackColor = true;
-            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
+            this.btnLocation.FlatAppearance.BorderSize = 0;
+            this.btnLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocation.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocation.ForeColor = System.Drawing.Color.White;
+            this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
+            this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLocation.Location = new System.Drawing.Point(7, 403);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Size = new System.Drawing.Size(72, 56);
+            this.btnLocation.TabIndex = 8;
+            this.btnLocation.Text = "Location";
+            this.btnLocation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLocation.UseVisualStyleBackColor = true;
+            this.btnLocation.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // frmMain
             // 
@@ -341,13 +341,13 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnOnCall;
         private System.Windows.Forms.Button btnEmployee;
-        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnProject;
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button btnMore;
+        private System.Windows.Forms.Button btnLocation;
     }
 }
 
