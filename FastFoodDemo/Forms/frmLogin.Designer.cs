@@ -148,9 +148,9 @@ namespace FujitsuPayments
             this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Location = new System.Drawing.Point(44, 122);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(83, 20);
+            this.lblPassword.Size = new System.Drawing.Size(79, 20);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Password:";
+            this.lblPassword.Text = "Password";
             // 
             // txtUsername
             // 
@@ -166,9 +166,9 @@ namespace FujitsuPayments
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(44, 43);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(93, 20);
+            this.lblUsername.Size = new System.Drawing.Size(89, 20);
             this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "User Name:";
+            this.lblUsername.Text = "User Name";
             // 
             // frmLogin
             // 

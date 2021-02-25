@@ -91,6 +91,7 @@ namespace FujitsuPayments.Forms
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(306, 26);
             this.txtEmail.TabIndex = 19;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblEmail
             // 
@@ -102,6 +103,7 @@ namespace FujitsuPayments.Forms
             this.lblEmail.Size = new System.Drawing.Size(43, 17);
             this.lblEmail.TabIndex = 18;
             this.lblEmail.Text = "Email";
+            this.lblEmail.Click += new System.EventHandler(this.lblEmail_Click);
             // 
             // txtTelNo
             // 
@@ -110,6 +112,7 @@ namespace FujitsuPayments.Forms
             this.txtTelNo.Name = "txtTelNo";
             this.txtTelNo.Size = new System.Drawing.Size(212, 26);
             this.txtTelNo.TabIndex = 17;
+            this.txtTelNo.TextChanged += new System.EventHandler(this.txtTelNo_TextChanged);
             // 
             // lblTelNo
             // 
@@ -121,6 +124,7 @@ namespace FujitsuPayments.Forms
             this.lblTelNo.Size = new System.Drawing.Size(47, 17);
             this.lblTelNo.TabIndex = 16;
             this.lblTelNo.Text = "Tel No";
+            this.lblTelNo.Click += new System.EventHandler(this.lblTelNo_Click);
             // 
             // txtAccountID
             // 
@@ -129,6 +133,7 @@ namespace FujitsuPayments.Forms
             this.txtAccountID.Name = "txtAccountID";
             this.txtAccountID.Size = new System.Drawing.Size(222, 26);
             this.txtAccountID.TabIndex = 15;
+            this.txtAccountID.TextChanged += new System.EventHandler(this.txtAccountID_TextChanged);
             // 
             // lblAccountId
             // 
@@ -140,6 +145,7 @@ namespace FujitsuPayments.Forms
             this.lblAccountId.Size = new System.Drawing.Size(76, 17);
             this.lblAccountId.TabIndex = 14;
             this.lblAccountId.Text = "AccountID";
+            this.lblAccountId.Click += new System.EventHandler(this.lblAccountId_Click);
             // 
             // button2
             // 
@@ -178,6 +184,7 @@ namespace FujitsuPayments.Forms
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(123, 26);
             this.txtPostCode.TabIndex = 11;
+            this.txtPostCode.TextChanged += new System.EventHandler(this.txtPostCode_TextChanged);
             // 
             // lblCounty
             // 
@@ -189,6 +196,7 @@ namespace FujitsuPayments.Forms
             this.lblCounty.Size = new System.Drawing.Size(55, 17);
             this.lblCounty.TabIndex = 10;
             this.lblCounty.Text = "County";
+            this.lblCounty.Click += new System.EventHandler(this.lblCounty_Click);
             // 
             // txtCounty
             // 
@@ -197,6 +205,7 @@ namespace FujitsuPayments.Forms
             this.txtCounty.Name = "txtCounty";
             this.txtCounty.Size = new System.Drawing.Size(222, 26);
             this.txtCounty.TabIndex = 9;
+            this.txtCounty.TextChanged += new System.EventHandler(this.txtCounty_TextChanged);
             // 
             // lblPostCode
             // 
@@ -208,6 +217,7 @@ namespace FujitsuPayments.Forms
             this.lblPostCode.Size = new System.Drawing.Size(76, 17);
             this.lblPostCode.TabIndex = 8;
             this.lblPostCode.Text = "Post Code";
+            this.lblPostCode.Click += new System.EventHandler(this.lblPostCode_Click);
             // 
             // txtTown
             // 
@@ -216,6 +226,7 @@ namespace FujitsuPayments.Forms
             this.txtTown.Name = "txtTown";
             this.txtTown.Size = new System.Drawing.Size(212, 26);
             this.txtTown.TabIndex = 7;
+            this.txtTown.TextChanged += new System.EventHandler(this.txtTown_TextChanged);
             // 
             // lblStreet
             // 
@@ -236,6 +247,7 @@ namespace FujitsuPayments.Forms
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(222, 26);
             this.txtStreet.TabIndex = 5;
+            this.txtStreet.TextChanged += new System.EventHandler(this.txtStreet_TextChanged);
             // 
             // lblTown
             // 
@@ -256,6 +268,7 @@ namespace FujitsuPayments.Forms
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(212, 26);
             this.txtClientName.TabIndex = 3;
+            this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // lblClientName
             // 
@@ -267,6 +280,7 @@ namespace FujitsuPayments.Forms
             this.lblClientName.Size = new System.Drawing.Size(90, 17);
             this.lblClientName.TabIndex = 2;
             this.lblClientName.Text = "Client Name";
+            this.lblClientName.Click += new System.EventHandler(this.lblClientName_Click);
             // 
             // lblUsername
             // 

@@ -184,6 +184,76 @@ namespace FujitsuPayments.Forms
             this.Dispose();
         }
 
+        private void lblAccountId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAccountID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblClientName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtClientName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTown_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStreet_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCounty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCounty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPostCode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPostCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTelNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void getNumber(int noRows)
         {
             drAccount = dsFujitsuPayments.Tables["Account"].Rows[noRows - 1];

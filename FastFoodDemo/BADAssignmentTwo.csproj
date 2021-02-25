@@ -52,6 +52,12 @@
     <Compile Include="Forms\frmAddLocation.Designer.cs">
       <DependentUpon>frmAddLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAddShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddShift.Designer.cs">
+      <DependentUpon>frmAddShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\frmAddLocation.resx">
       <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddShift.resx">
+      <DependentUpon>frmAddShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
