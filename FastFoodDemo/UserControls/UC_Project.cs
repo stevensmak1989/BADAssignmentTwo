@@ -25,14 +25,7 @@ namespace FujitsuPayments.UserControls
 
         private void btnProjectAdd_Click(object sender, EventArgs e)
         {
-            frmAddProject frmAdd = new frmAddProject();
-            frmAdd.TopLevel = false;
-            frmAdd.FormBorderStyle = FormBorderStyle.None;
-            frmAdd.Visible = true;
-            frmAdd.Location = new Point(15, 25);
-            this.Controls.Add(frmAdd);
-            frmAdd.BringToFront();
-            //dvgEmployee.Visible = false;
+           
         }
     }
 }
