@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FujitsuPayments.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,22 +18,25 @@ namespace FujitsuPayments.UserControls
         public UC_Schedule()
         {
             InitializeComponent();
-            pnlAddTask.Visible = false;
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pnlAddTask.Visible = true;
-        }
 
-        private void btnSaveTask_Click(object sender, EventArgs e)
-        {
-            pnlAddTask.Visible = false;
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddShift_Click(object sender, EventArgs e)
+        {
+            frmAddShift frm = new frmAddShift();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Visible = true;
+            frm.Location = new Point(180, 100);
+            this.Controls.Add(frm);
+            frm.BringToFront();
         }
     }
 }

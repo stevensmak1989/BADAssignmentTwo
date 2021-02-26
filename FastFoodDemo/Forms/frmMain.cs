@@ -112,10 +112,12 @@ namespace FujitsuPayments
             SidePanel.Top = btnProject.Top;
         }
 
-        private void btnMore_Click(object sender, EventArgs e)
+        private void btnMore_Click(object sender, EventArgs e) // location button
         {
             SidePanel.Height = btnLocation.Height;
             SidePanel.Top = btnLocation.Top;
+            UC_Location uc = new UC_Location();
+            addControls(uc);
         }
 
         private void button12_Click(object sender, EventArgs e)

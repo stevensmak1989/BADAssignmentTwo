@@ -40,21 +40,21 @@ CREATE TABLE Employee
 	CONSTRAINT ckTitle CHECK (Title IN ('Mr','Mrs','Miss','Ms')),
 	CONSTRAINT ckPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11)),
-	CONSTRAINT ckSal CHECK (Salary > 0),
-	CONSTRAINT ckDOB CHECK (DOB >= dateAdd(Year, -17, getDate()))
+	
+
 )
 
 
 CREATE TABLE Account
 (
-	AccountID 		int				NOT NULL,
-	ClientName		varchar(20)			NOT NULL,
+	AccountID 		int					NOT NULL,
+	ClientName		varchar(30)			NOT NULL,
 	Street			varchar(30)			NOT NULL,
 	Town			varchar(30)			NOT NULL,
 	County			varchar(30)			NOT NULL,
 	PostCode		varchar(8)			NOT NULL,
 	TelNo			varchar(11)			NOT NULL,
-	Email                   varchar(20)			NOT NULL,
+	Email           varchar(30)			NOT NULL,
 
 	--PK
 	CONSTRAINT pkAccID PRIMARY KEY (AccountID),
@@ -68,7 +68,7 @@ CREATE TABLE Account
 CREATE TABLE OfficeLocation
 (
 	LocationID 		varchar(5)			NOT NULL,
-	LocationName            varchar(20)			NOT NULL,
+	LocationName    varchar(30)			NOT NULL,
 	Street			varchar(30)			NOT NULL,
 	Town			varchar(30)			NOT NULL,
 	County			varchar(30)			NOT NULL,
@@ -82,6 +82,7 @@ CREATE TABLE OfficeLocation
 	
 
 )
+
 
 CREATE TABLE Project
 (
@@ -102,10 +103,9 @@ CREATE TABLE Project
 
 	CONSTRAINT ckB48Rate CHECK (B48Rate > 0),
 	CONSTRAINT ckA48Rate CHECK (A48Rate > 0),
-	CONSTRAINT ckBHRate CHECK (BHRate > 0),
-
-	CONSTRAINT ckStartDate CHECK (StartDate >=  getDate())
+	CONSTRAINT ckBHRate CHECK (BHRate > 0)
 )
+
 
 CREATE TABLE CostCentre
 (
@@ -119,4 +119,77 @@ CREATE TABLE CostCentre
 	--FK
 	CONSTRAINT fkLocId   FOREIGN KEY (LocationID) REFERENCES OfficeLocation(LocationID)
 
+)
+
+CREATE TABLE ProjectTask
+(
+	ProjectID 		int	     		NOT NULL,
+	TaskID          int             NOT NULL,
+	TaskDesc        varchar(30)     NOT NULL,
+
+	--PK
+	CONSTRAINT pkProjTask  PRIMARY KEY (ProjectID, TaskID),
+
+	--FK
+	CONSTRAINT fkProjId FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID)
+	
+)
+
+
+CREATE TABLE ProjectTaskEmployee
+(
+    ProjectID 		int	     		NOT NULL,
+	TaskID 			int	     		NOT NULL,
+	EmployeeID      int            	NOT NULL,
+
+	--PK
+	CONSTRAINT pkProjTaskEmp PRIMARY KEY (ProjectID, TaskID, EmployeeID),
+
+	--FK
+	CONSTRAINT fkProjId2 FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID),
+	CONSTRAINT fkTaskId FOREIGN KEY (ProjectID,TaskID) REFERENCES ProjectTask (ProjectID,TaskID),
+	CONSTRAINT fkEmployeeId FOREIGN KEY (EmployeeID) REFERENCES Employee (EmployeeID)
+
+)
+
+
+
+CREATE TABLE EmployeeShift
+(
+	ShiftID			int			NOT NULL,
+	AccountID      	int         NOT NULL,
+	ProjectID 		int	     	NOT NULL,
+	TaskID 			int	     	NOT NULL,
+	StartDate       Date	    NOT NULL,
+	StartTime       Time 	    NOT NULL,
+	SlotCount       int			NOT NULL,
+
+	--PK
+	CONSTRAINT pkShift PRIMARY KEY (ShiftID),	
+
+	--FK
+	CONSTRAINT fkAccId2 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
+	CONSTRAINT fkProjId3 FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID),
+	CONSTRAINT fkTaskId2 FOREIGN KEY (ProjectID,TaskID) REFERENCES ProjectTask (ProjectID,TaskID)
+
+	--CONSTRAINT chkStartD CHECK (StartDate >= getDate())
+
+
+)
+
+
+
+CREATE TABLE EmployeeShiftDetails
+(
+	ShiftID				int					NOT NULL,
+	EmployeeID     		int             	NOT NULL,
+
+	--PK
+	CONSTRAINT pkShiftDet PRIMARY KEY (ShiftID, EmployeeID),
+
+	--FK
+	CONSTRAINT fkShiftID FOREIGN KEY (ShiftID) REFERENCES EmployeeShift (ShiftID),
+	CONSTRAINT fkEmployeeID2 FOREIGN KEY (EmployeeID) REFERENCES Employee (EmployeeID)
+
+	
 )
