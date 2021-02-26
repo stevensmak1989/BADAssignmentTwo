@@ -56,9 +56,9 @@ namespace FujitsuPayments
             get { return startSal; }
             set
             {
-                if (startSal < 0)
+                if (value > 0)
                 {
-                    startSal = startSal;
+                    startSal = value;
                 }
                 else
                     throw new MyException("Start salary muust be greater than £0.");
@@ -70,9 +70,9 @@ namespace FujitsuPayments
             get { return endSal; }
             set
             {
-                if (endSal < 0)
+                if (value > 0)
                 {
-                    endSal = endSal;
+                    endSal = value;
                 }
                 else
                     throw new MyException("End salary muust be greater than £0.");

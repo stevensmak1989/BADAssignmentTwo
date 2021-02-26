@@ -133,6 +133,7 @@ namespace FujitsuPayments.Forms
             this.lblTitlee.Size = new System.Drawing.Size(35, 18);
             this.lblTitlee.TabIndex = 46;
             this.lblTitlee.Text = "Title";
+            this.lblTitlee.Click += new System.EventHandler(this.lblTitlee_Click);
             // 
             // dtpDOB
             // 

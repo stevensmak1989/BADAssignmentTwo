@@ -38,7 +38,7 @@ namespace FujitsuPayments.Forms
             int noRows = dsFujitsuPayments.Tables["Project"].Rows.Count;
 
             if (noRows == 0)
-                lblPrjIDAdd.Text = "1000";
+                lblPrjIDAdd.Text = "1";
             else
             {
                 getNumber(noRows);
@@ -181,6 +181,11 @@ namespace FujitsuPayments.Forms
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtCappedhoursAdd_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void getNumber(int noRows)

@@ -200,13 +200,13 @@ namespace FujitsuPayments
             get { return salary; }
             set
             {
-                if (salary > 0)
+                if (value > 0)
                 {
-                    throw new MyException("Salary muust be greater than £0.");
+                    salary = value;
 
                 }
                 else
-                    salary = salary;
+                    throw new MyException("Salary muust be greater than £0."); 
             }
         }
 

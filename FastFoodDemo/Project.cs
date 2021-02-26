@@ -46,9 +46,9 @@ namespace FujitsuPayments
             get { return duration; }
             set
             {
-                if (duration > 0 )
+                if (value > 0 )
                 {
-                    duration = duration;
+                    duration = value;
                 }
                 else
                     throw new MyException("Duration muust be greater than 0 days.");
@@ -88,7 +88,7 @@ namespace FujitsuPayments
             get { return cappedHrs; }
             set
             {
-                if (cappedHrs > 0)
+                if (value > 0)
                 {
                     cappedHrs = value;
                 }
@@ -102,7 +102,7 @@ namespace FujitsuPayments
             get { return b48Rate; }
             set
             {
-                if (b48Rate > 0)
+                if (value > 0)
                 {
                     b48Rate = value;
                 }
@@ -116,12 +116,12 @@ namespace FujitsuPayments
             get { return a48Rate; }
             set
             {
-                if (a48Rate > 0)
+                if (value > 0)
                 {
                     a48Rate = value;
                 }
                 else
-                    throw new MyException("After 8 Hours must be greater than 0.");
+                    throw new MyException("Overtime Hours must be greater than 0.");
             }
         }
 
@@ -130,7 +130,7 @@ namespace FujitsuPayments
             get { return bHRate; }
             set
             {
-                if (bHRate > 0)
+                if (value > 0)
                 {
                     bHRate = value;
                 }

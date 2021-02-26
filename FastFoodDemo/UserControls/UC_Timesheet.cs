@@ -11,25 +11,20 @@ using System.Windows.Forms;
 
 namespace FujitsuPayments.UserControls
 {
-    public partial class UC_Project : UserControl
+    public partial class UC_Timesheet : UserControl
     {
-        public UC_Project()
+        public UC_Timesheet()
         {
             InitializeComponent();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void btnAddTimesheet_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnProjectAdd_Click(object sender, EventArgs e)
-        {
-            frmAddProject frm = new frmAddProject();
+            frmAddTimesheet frm = new frmAddTimesheet();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Visible = true;
-            frm.Location = new Point(180, 100);
+            frm.Location = new Point(100, 60);
             this.Controls.Add(frm);
             frm.BringToFront();
         }

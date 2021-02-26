@@ -236,6 +236,11 @@ namespace FujitsuPayments.Forms
 
         }
 
+        private void lblTitlee_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void getNumber(int noRows)
         {
             drEmployee = dsFujitsuPayments.Tables["Employee"].Rows[noRows - 1];

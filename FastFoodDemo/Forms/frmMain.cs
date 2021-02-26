@@ -28,7 +28,9 @@ namespace FujitsuPayments
         {
             SidePanel.Height = btnTimeSheet.Height;
             SidePanel.Top = btnTimeSheet.Top;
-          
+            UC_Timesheet uc = new UC_Timesheet();
+            addControls(uc);
+
         }
 
         private void button2_Click(object sender, EventArgs e)

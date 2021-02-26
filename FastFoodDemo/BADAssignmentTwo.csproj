@@ -31,6 +31,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>FJLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +70,12 @@
     </Compile>
     <Compile Include="Forms\frmAddShift.Designer.cs">
       <DependentUpon>frmAddShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddTimesheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddTimesheet.Designer.cs">
+      <DependentUpon>frmAddTimesheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
@@ -155,8 +168,17 @@
     <Compile Include="UserControls\UC_Schedule.Designer.cs">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_Timesheet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Timesheet.Designer.cs">
+      <DependentUpon>UC_Timesheet.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\frmAddProject.resx">
       <DependentUpon>frmAddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddTimesheet.resx">
+      <DependentUpon>frmAddTimesheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
@@ -209,6 +231,9 @@
     <EmbeddedResource Include="UserControls\UC_Schedule.resx">
       <DependentUpon>UC_Schedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Timesheet.resx">
+      <DependentUpon>UC_Timesheet.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -222,7 +247,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="FJLogo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
