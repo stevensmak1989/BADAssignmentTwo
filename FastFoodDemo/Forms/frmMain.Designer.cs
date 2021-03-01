@@ -82,7 +82,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1058, 0);
+            this.btnClose.Location = new System.Drawing.Point(1048, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(32, 25);
             this.btnClose.TabIndex = 4;
@@ -98,7 +98,7 @@
             this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(1024, 0);
+            this.button12.Location = new System.Drawing.Point(1012, 0);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(40, 25);
             this.button12.TabIndex = 4;
@@ -109,9 +109,9 @@
             // pnlForm
             // 
             this.pnlForm.Controls.Add(this.pictureBox2);
-            this.pnlForm.Location = new System.Drawing.Point(79, 25);
+            this.pnlForm.Location = new System.Drawing.Point(85, 25);
             this.pnlForm.Name = "pnlForm";
-            this.pnlForm.Size = new System.Drawing.Size(1090, 616);
+            this.pnlForm.Size = new System.Drawing.Size(1084, 616);
             this.pnlForm.TabIndex = 5;
             this.pnlForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlForm_Paint);
             // 
@@ -314,6 +314,7 @@
             this.pnlDropDown.Controls.Add(this.btnTask);
             this.pnlDropDown.Controls.Add(this.button1);
             this.pnlDropDown.Controls.Add(this.btnProject);
+            this.pnlDropDown.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlDropDown.Location = new System.Drawing.Point(3, 3);
             this.pnlDropDown.MaximumSize = new System.Drawing.Size(89, 140);
             this.pnlDropDown.MinimumSize = new System.Drawing.Size(89, 56);

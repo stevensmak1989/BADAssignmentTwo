@@ -195,6 +195,7 @@ namespace FujitsuPayments.Forms
             this.cmbAccountId.Name = "cmbAccountId";
             this.cmbAccountId.Size = new System.Drawing.Size(222, 29);
             this.cmbAccountId.TabIndex = 20;
+            this.cmbAccountId.SelectedIndexChanged += new System.EventHandler(this.cmbAccountId_SelectedIndexChanged);
             // 
             // txtShiftID
             // 
