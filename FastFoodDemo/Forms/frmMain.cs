@@ -174,18 +174,7 @@ namespace FujitsuPayments
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            SidePanel.Height = btnProject.Height;
-            SidePanel.Top = btnProject.Top;
-            UC_Project uc = new UC_Project();
-            addControls(uc);
-        }
 
-        private void btnTask_Click(object sender, EventArgs e)
-        {
-            SidePanel.Height = btnLocation.Height;
-            SidePanel.Top = btnLocation.Top;
-            UC_Task uc = new UC_Task();
-            addControls(uc);
         }
     }
 }

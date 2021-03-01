@@ -180,7 +180,7 @@
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 203);
+            this.button14.Location = new System.Drawing.Point(3, 127);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(46, 46);
             this.button14.TabIndex = 4;
@@ -318,7 +318,7 @@
             this.pnlDropDown.MaximumSize = new System.Drawing.Size(89, 140);
             this.pnlDropDown.MinimumSize = new System.Drawing.Size(89, 56);
             this.pnlDropDown.Name = "pnlDropDown";
-            this.pnlDropDown.Size = new System.Drawing.Size(89, 132);
+            this.pnlDropDown.Size = new System.Drawing.Size(89, 56);
             this.pnlDropDown.TabIndex = 6;
             this.pnlDropDown.Click += new System.EventHandler(this.btnProject_Click);
             // 
@@ -380,7 +380,7 @@
             this.btnLocation.ForeColor = System.Drawing.Color.White;
             this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
             this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLocation.Location = new System.Drawing.Point(3, 141);
+            this.btnLocation.Location = new System.Drawing.Point(3, 65);
             this.btnLocation.Name = "btnLocation";
             this.btnLocation.Size = new System.Drawing.Size(72, 56);
             this.btnLocation.TabIndex = 8;
