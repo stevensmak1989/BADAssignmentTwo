@@ -85,6 +85,7 @@ namespace FujitsuPayments.UserControls
             this.btnProjectView.Text = "View Project";
             this.btnProjectView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProjectView.UseVisualStyleBackColor = true;
+            this.btnProjectView.Click += new System.EventHandler(this.btnProjectView_Click);
             // 
             // btnProjectDel
             // 
@@ -146,6 +147,7 @@ namespace FujitsuPayments.UserControls
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(758, 451);
             this.panel2.TabIndex = 7;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // dvgProject
             // 
