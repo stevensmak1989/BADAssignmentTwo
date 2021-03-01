@@ -101,6 +101,18 @@
     <Compile Include="Forms\frmEditLocation.Designer.cs">
       <DependentUpon>frmEditLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmEditProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditProject.Designer.cs">
+      <DependentUpon>frmEditProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditTask.Designer.cs">
+      <DependentUpon>frmEditTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Forms\frmAddAccount.cs">
@@ -213,6 +225,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditLocation.resx">
       <DependentUpon>frmEditLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditProject.resx">
+      <DependentUpon>frmEditProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditTask.resx">
+      <DependentUpon>frmEditTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
