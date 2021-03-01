@@ -31,7 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Project));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnProjectView = new System.Windows.Forms.Button();
@@ -68,6 +68,7 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnProjectView
             // 
@@ -116,6 +117,7 @@ namespace FujitsuPayments.UserControls
             this.btnProjectEdit.Text = "Edit Project";
             this.btnProjectEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProjectEdit.UseVisualStyleBackColor = true;
+            this.btnProjectEdit.Click += new System.EventHandler(this.btnProjectEdit_Click);
             // 
             // btnProjectAdd
             // 
@@ -150,19 +152,20 @@ namespace FujitsuPayments.UserControls
             this.dvgProject.AllowUserToDeleteRows = false;
             this.dvgProject.BackgroundColor = System.Drawing.Color.Silver;
             this.dvgProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgProject.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dvgProject.Location = new System.Drawing.Point(3, 37);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgProject.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dvgProject.Location = new System.Drawing.Point(3, 48);
             this.dvgProject.Name = "dvgProject";
             this.dvgProject.ReadOnly = true;
-            this.dvgProject.Size = new System.Drawing.Size(1087, 488);
+            this.dvgProject.Size = new System.Drawing.Size(1087, 477);
             this.dvgProject.TabIndex = 0;
+            this.dvgProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProject_CellContentClick);
             // 
             // errorProvider1
             // 

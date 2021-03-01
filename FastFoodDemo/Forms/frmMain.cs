@@ -15,6 +15,7 @@ namespace FujitsuPayments
     {
         
 
+        private bool isCollapsed = true;
         public frmMain()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace FujitsuPayments
             SidePanel.Top = btnOvertime.Top;
 
         }
-
+       
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -89,12 +90,17 @@ namespace FujitsuPayments
 
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        private void btnProject_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btnProject.Height;
-            SidePanel.Top = btnProject.Top;
-            UC_Project uc = new UC_Project();
-            addControls(uc);
+
+           // label1.Text = "here";
+            timer1.Start();
+            timer1_Tick(sender,e);
+
+            //SidePanel.Height = btnProject.Height;
+            //SidePanel.Top = btnProject.Top;
+            //UC_Project uc = new UC_Project();
+            //addControls(uc);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -131,6 +137,47 @@ namespace FujitsuPayments
         {
             UC_Main um = new UC_Main();
             addControls(um);
+        }
+
+        
+
+        private void pnlForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(isCollapsed)
+            {
+                pnlDropDown.Size = pnlDropDown.MaximumSize;
+                pnlDropDown.Height += 10;
+                if(pnlDropDown.Size == pnlDropDown.MaximumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = false;
+                }
+            }
+            else
+            {
+                pnlDropDown.Size = pnlDropDown.MinimumSize;
+                pnlDropDown.Height -= 10;
+                if (pnlDropDown.Size == pnlDropDown.MinimumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = true;
+                }
+            }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
