@@ -30,6 +30,7 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEmployee));
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblEmpNoEdit = new System.Windows.Forms.Label();
             this.txtTitleEdit = new System.Windows.Forms.TextBox();
@@ -421,6 +422,7 @@ namespace FujitsuPayments.Forms
             this.ClientSize = new System.Drawing.Size(693, 366);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditEmployee";

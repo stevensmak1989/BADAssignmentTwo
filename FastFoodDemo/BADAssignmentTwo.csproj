@@ -177,6 +177,9 @@
     <EmbeddedResource Include="Forms\frmAddProject.resx">
       <DependentUpon>frmAddProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddShift.resx">
+      <DependentUpon>frmAddShift.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddTimesheet.resx">
       <DependentUpon>frmAddTimesheet.cs</DependentUpon>
     </EmbeddedResource>

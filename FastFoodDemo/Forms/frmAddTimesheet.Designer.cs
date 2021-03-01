@@ -29,6 +29,7 @@ namespace FujitsuPayments.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddTimesheet));
             this.cmbDates = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDateSun = new System.Windows.Forms.Label();
@@ -96,15 +97,15 @@ namespace FujitsuPayments.Forms
             this.lblWeekNo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblEmpID = new System.Windows.Forms.Label();
-            this.cmbEmployee = new System.Windows.Forms.ComboBox();
-            this.lblTimesheetId = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.lblTimesheetId = new System.Windows.Forms.Label();
+            this.cmbEmployee = new System.Windows.Forms.ComboBox();
+            this.lblEmpID = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cmbCostCentID = new System.Windows.Forms.ComboBox();
             this.lblCostCentreID = new System.Windows.Forms.Label();
             this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.lblApprovedBy = new System.Windows.Forms.Label();
-            this.cmbCostCentID = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -698,22 +699,14 @@ namespace FujitsuPayments.Forms
             this.panel3.Size = new System.Drawing.Size(221, 101);
             this.panel3.TabIndex = 67;
             // 
-            // lblEmpID
+            // label16
             // 
-            this.lblEmpID.AutoSize = true;
-            this.lblEmpID.Location = new System.Drawing.Point(4, 42);
-            this.lblEmpID.Name = "lblEmpID";
-            this.lblEmpID.Size = new System.Drawing.Size(53, 13);
-            this.lblEmpID.TabIndex = 68;
-            this.lblEmpID.Text = "Employee";
-            // 
-            // cmbEmployee
-            // 
-            this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(83, 39);
-            this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(114, 21);
-            this.cmbEmployee.TabIndex = 71;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(80, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(10, 13);
+            this.label16.TabIndex = 119;
+            this.label16.Text = "-";
             // 
             // lblTimesheetId
             // 
@@ -724,14 +717,22 @@ namespace FujitsuPayments.Forms
             this.lblTimesheetId.TabIndex = 72;
             this.lblTimesheetId.Text = "Timesheet ID";
             // 
-            // label16
+            // cmbEmployee
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(80, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(10, 13);
-            this.label16.TabIndex = 119;
-            this.label16.Text = "-";
+            this.cmbEmployee.FormattingEnabled = true;
+            this.cmbEmployee.Location = new System.Drawing.Point(83, 39);
+            this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.Size = new System.Drawing.Size(114, 21);
+            this.cmbEmployee.TabIndex = 71;
+            // 
+            // lblEmpID
+            // 
+            this.lblEmpID.AutoSize = true;
+            this.lblEmpID.Location = new System.Drawing.Point(4, 42);
+            this.lblEmpID.Name = "lblEmpID";
+            this.lblEmpID.Size = new System.Drawing.Size(53, 13);
+            this.lblEmpID.TabIndex = 68;
+            this.lblEmpID.Text = "Employee";
             // 
             // panel4
             // 
@@ -743,6 +744,14 @@ namespace FujitsuPayments.Forms
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(221, 101);
             this.panel4.TabIndex = 68;
+            // 
+            // cmbCostCentID
+            // 
+            this.cmbCostCentID.FormattingEnabled = true;
+            this.cmbCostCentID.Location = new System.Drawing.Point(83, 4);
+            this.cmbCostCentID.Name = "cmbCostCentID";
+            this.cmbCostCentID.Size = new System.Drawing.Size(114, 21);
+            this.cmbCostCentID.TabIndex = 73;
             // 
             // lblCostCentreID
             // 
@@ -770,14 +779,6 @@ namespace FujitsuPayments.Forms
             this.lblApprovedBy.TabIndex = 68;
             this.lblApprovedBy.Text = "Approved By";
             // 
-            // cmbCostCentID
-            // 
-            this.cmbCostCentID.FormattingEnabled = true;
-            this.cmbCostCentID.Location = new System.Drawing.Point(83, 4);
-            this.cmbCostCentID.Name = "cmbCostCentID";
-            this.cmbCostCentID.Size = new System.Drawing.Size(114, 21);
-            this.cmbCostCentID.TabIndex = 73;
-            // 
             // frmAddTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -788,6 +789,7 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddTimesheet";
             this.Text = "frmAddTimesheet";
             this.Load += new System.EventHandler(this.frmAddTimesheet_Load);

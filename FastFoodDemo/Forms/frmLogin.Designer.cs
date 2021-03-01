@@ -178,6 +178,7 @@ namespace FujitsuPayments
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(50, 50);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

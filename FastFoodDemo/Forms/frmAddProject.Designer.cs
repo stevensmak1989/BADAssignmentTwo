@@ -30,6 +30,7 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProject));
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblPrjIDAdd = new System.Windows.Forms.Label();
             this.lblProjectIdAdd = new System.Windows.Forms.Label();
@@ -349,6 +350,7 @@ namespace FujitsuPayments.Forms
             this.ClientSize = new System.Drawing.Size(653, 351);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddProject";
             this.Text = "frmAddProject";
             this.Load += new System.EventHandler(this.frmAddProject_Load);

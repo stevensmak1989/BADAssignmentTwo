@@ -30,29 +30,30 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddShift));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtShiftID = new System.Windows.Forms.TextBox();
-            this.lblShiftID = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblAccountId = new System.Windows.Forms.Label();
-            this.lblAddShift = new System.Windows.Forms.Label();
-            this.cmbAccountId = new System.Windows.Forms.ComboBox();
-            this.cmbProjectId = new System.Windows.Forms.ComboBox();
-            this.lblProjectId = new System.Windows.Forms.Label();
+            this.dtpShiftStartTime = new System.Windows.Forms.DateTimePicker();
+            this.cmbShiftSlotCount = new System.Windows.Forms.ComboBox();
+            this.lblShiftSlotCount = new System.Windows.Forms.Label();
+            this.lblShiftStartTime = new System.Windows.Forms.Label();
+            this.dtpShiftStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lblStartTime = new System.Windows.Forms.Label();
             this.cmbTaskId = new System.Windows.Forms.ComboBox();
             this.lblTaskId = new System.Windows.Forms.Label();
-            this.lblStartTime = new System.Windows.Forms.Label();
-            this.dtpShiftStartDate = new System.Windows.Forms.DateTimePicker();
-            this.lblShiftStartTime = new System.Windows.Forms.Label();
-            this.lblShiftSlotCount = new System.Windows.Forms.Label();
-            this.cmbShiftSlotCount = new System.Windows.Forms.ComboBox();
-            this.dtpShiftStartTime = new System.Windows.Forms.DateTimePicker();
+            this.cmbProjectId = new System.Windows.Forms.ComboBox();
+            this.lblProjectId = new System.Windows.Forms.Label();
+            this.cmbAccountId = new System.Windows.Forms.ComboBox();
+            this.txtShiftID = new System.Windows.Forms.TextBox();
+            this.lblShiftID = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblAccountId = new System.Windows.Forms.Label();
+            this.lblAddShift = new System.Windows.Forms.Label();
+            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,44 +65,6 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(775, 316);
             this.panel1.TabIndex = 0;
-            // 
-            // errP
-            // 
-            this.errP.ContainerControl = this;
-            // 
-            // txtShiftID
-            // 
-            this.txtShiftID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShiftID.Location = new System.Drawing.Point(133, 60);
-            this.txtShiftID.Name = "txtShiftID";
-            this.txtShiftID.Size = new System.Drawing.Size(222, 26);
-            this.txtShiftID.TabIndex = 15;
-            // 
-            // lblShiftID
-            // 
-            this.lblShiftID.AutoSize = true;
-            this.lblShiftID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShiftID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblShiftID.Location = new System.Drawing.Point(72, 66);
-            this.lblShiftID.Name = "lblShiftID";
-            this.lblShiftID.Size = new System.Drawing.Size(51, 17);
-            this.lblShiftID.TabIndex = 14;
-            this.lblShiftID.Text = "Shift ID";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatAppearance.BorderSize = 2;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.btnSave.Location = new System.Drawing.Point(414, 230);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(97, 27);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel2
             // 
@@ -130,6 +93,128 @@ namespace FujitsuPayments.Forms
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // dtpShiftStartTime
+            // 
+            this.dtpShiftStartTime.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpShiftStartTime.Location = new System.Drawing.Point(481, 128);
+            this.dtpShiftStartTime.Name = "dtpShiftStartTime";
+            this.dtpShiftStartTime.Size = new System.Drawing.Size(115, 26);
+            this.dtpShiftStartTime.TabIndex = 30;
+            // 
+            // cmbShiftSlotCount
+            // 
+            this.cmbShiftSlotCount.FormattingEnabled = true;
+            this.cmbShiftSlotCount.Location = new System.Drawing.Point(133, 159);
+            this.cmbShiftSlotCount.Name = "cmbShiftSlotCount";
+            this.cmbShiftSlotCount.Size = new System.Drawing.Size(125, 29);
+            this.cmbShiftSlotCount.TabIndex = 29;
+            // 
+            // lblShiftSlotCount
+            // 
+            this.lblShiftSlotCount.AutoSize = true;
+            this.lblShiftSlotCount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShiftSlotCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblShiftSlotCount.Location = new System.Drawing.Point(47, 167);
+            this.lblShiftSlotCount.Name = "lblShiftSlotCount";
+            this.lblShiftSlotCount.Size = new System.Drawing.Size(76, 17);
+            this.lblShiftSlotCount.TabIndex = 28;
+            this.lblShiftSlotCount.Text = "Slot Count";
+            // 
+            // lblShiftStartTime
+            // 
+            this.lblShiftStartTime.AutoSize = true;
+            this.lblShiftStartTime.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShiftStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblShiftStartTime.Location = new System.Drawing.Point(397, 135);
+            this.lblShiftStartTime.Name = "lblShiftStartTime";
+            this.lblShiftStartTime.Size = new System.Drawing.Size(70, 17);
+            this.lblShiftStartTime.TabIndex = 27;
+            this.lblShiftStartTime.Text = "Start Time";
+            // 
+            // dtpShiftStartDate
+            // 
+            this.dtpShiftStartDate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpShiftStartDate.Location = new System.Drawing.Point(133, 127);
+            this.dtpShiftStartDate.Name = "dtpShiftStartDate";
+            this.dtpShiftStartDate.Size = new System.Drawing.Size(222, 26);
+            this.dtpShiftStartDate.TabIndex = 26;
+            // 
+            // lblStartTime
+            // 
+            this.lblStartTime.AutoSize = true;
+            this.lblStartTime.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblStartTime.Location = new System.Drawing.Point(50, 135);
+            this.lblStartTime.Name = "lblStartTime";
+            this.lblStartTime.Size = new System.Drawing.Size(73, 17);
+            this.lblStartTime.TabIndex = 25;
+            this.lblStartTime.Text = "Start Date";
+            // 
+            // cmbTaskId
+            // 
+            this.cmbTaskId.FormattingEnabled = true;
+            this.cmbTaskId.Location = new System.Drawing.Point(481, 93);
+            this.cmbTaskId.Name = "cmbTaskId";
+            this.cmbTaskId.Size = new System.Drawing.Size(222, 29);
+            this.cmbTaskId.TabIndex = 24;
+            // 
+            // lblTaskId
+            // 
+            this.lblTaskId.AutoSize = true;
+            this.lblTaskId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblTaskId.Location = new System.Drawing.Point(420, 100);
+            this.lblTaskId.Name = "lblTaskId";
+            this.lblTaskId.Size = new System.Drawing.Size(51, 17);
+            this.lblTaskId.TabIndex = 23;
+            this.lblTaskId.Text = "Task ID";
+            // 
+            // cmbProjectId
+            // 
+            this.cmbProjectId.FormattingEnabled = true;
+            this.cmbProjectId.Location = new System.Drawing.Point(133, 92);
+            this.cmbProjectId.Name = "cmbProjectId";
+            this.cmbProjectId.Size = new System.Drawing.Size(222, 29);
+            this.cmbProjectId.TabIndex = 22;
+            // 
+            // lblProjectId
+            // 
+            this.lblProjectId.AutoSize = true;
+            this.lblProjectId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblProjectId.Location = new System.Drawing.Point(53, 99);
+            this.lblProjectId.Name = "lblProjectId";
+            this.lblProjectId.Size = new System.Drawing.Size(70, 17);
+            this.lblProjectId.TabIndex = 21;
+            this.lblProjectId.Text = "Project ID";
+            // 
+            // cmbAccountId
+            // 
+            this.cmbAccountId.FormattingEnabled = true;
+            this.cmbAccountId.Location = new System.Drawing.Point(481, 58);
+            this.cmbAccountId.Name = "cmbAccountId";
+            this.cmbAccountId.Size = new System.Drawing.Size(222, 29);
+            this.cmbAccountId.TabIndex = 20;
+            // 
+            // txtShiftID
+            // 
+            this.txtShiftID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtShiftID.Location = new System.Drawing.Point(133, 60);
+            this.txtShiftID.Name = "txtShiftID";
+            this.txtShiftID.Size = new System.Drawing.Size(222, 26);
+            this.txtShiftID.TabIndex = 15;
+            // 
+            // lblShiftID
+            // 
+            this.lblShiftID.AutoSize = true;
+            this.lblShiftID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShiftID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblShiftID.Location = new System.Drawing.Point(72, 66);
+            this.lblShiftID.Name = "lblShiftID";
+            this.lblShiftID.Size = new System.Drawing.Size(51, 17);
+            this.lblShiftID.TabIndex = 14;
+            this.lblShiftID.Text = "Shift ID";
+            // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -144,6 +229,21 @@ namespace FujitsuPayments.Forms
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderSize = 2;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.btnSave.Location = new System.Drawing.Point(414, 230);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(97, 27);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblAccountId
             // 
@@ -167,108 +267,9 @@ namespace FujitsuPayments.Forms
             this.lblAddShift.TabIndex = 1;
             this.lblAddShift.Text = "Add a New Shift";
             // 
-            // cmbAccountId
+            // errP
             // 
-            this.cmbAccountId.FormattingEnabled = true;
-            this.cmbAccountId.Location = new System.Drawing.Point(481, 58);
-            this.cmbAccountId.Name = "cmbAccountId";
-            this.cmbAccountId.Size = new System.Drawing.Size(222, 29);
-            this.cmbAccountId.TabIndex = 20;
-            // 
-            // cmbProjectId
-            // 
-            this.cmbProjectId.FormattingEnabled = true;
-            this.cmbProjectId.Location = new System.Drawing.Point(133, 92);
-            this.cmbProjectId.Name = "cmbProjectId";
-            this.cmbProjectId.Size = new System.Drawing.Size(222, 29);
-            this.cmbProjectId.TabIndex = 22;
-            // 
-            // lblProjectId
-            // 
-            this.lblProjectId.AutoSize = true;
-            this.lblProjectId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblProjectId.Location = new System.Drawing.Point(53, 99);
-            this.lblProjectId.Name = "lblProjectId";
-            this.lblProjectId.Size = new System.Drawing.Size(70, 17);
-            this.lblProjectId.TabIndex = 21;
-            this.lblProjectId.Text = "Project ID";
-            // 
-            // cmbTaskId
-            // 
-            this.cmbTaskId.FormattingEnabled = true;
-            this.cmbTaskId.Location = new System.Drawing.Point(481, 93);
-            this.cmbTaskId.Name = "cmbTaskId";
-            this.cmbTaskId.Size = new System.Drawing.Size(222, 29);
-            this.cmbTaskId.TabIndex = 24;
-            // 
-            // lblTaskId
-            // 
-            this.lblTaskId.AutoSize = true;
-            this.lblTaskId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaskId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblTaskId.Location = new System.Drawing.Point(420, 100);
-            this.lblTaskId.Name = "lblTaskId";
-            this.lblTaskId.Size = new System.Drawing.Size(51, 17);
-            this.lblTaskId.TabIndex = 23;
-            this.lblTaskId.Text = "Task ID";
-            // 
-            // lblStartTime
-            // 
-            this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblStartTime.Location = new System.Drawing.Point(50, 135);
-            this.lblStartTime.Name = "lblStartTime";
-            this.lblStartTime.Size = new System.Drawing.Size(73, 17);
-            this.lblStartTime.TabIndex = 25;
-            this.lblStartTime.Text = "Start Date";
-            // 
-            // dtpShiftStartDate
-            // 
-            this.dtpShiftStartDate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpShiftStartDate.Location = new System.Drawing.Point(133, 127);
-            this.dtpShiftStartDate.Name = "dtpShiftStartDate";
-            this.dtpShiftStartDate.Size = new System.Drawing.Size(222, 26);
-            this.dtpShiftStartDate.TabIndex = 26;
-            // 
-            // lblShiftStartTime
-            // 
-            this.lblShiftStartTime.AutoSize = true;
-            this.lblShiftStartTime.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShiftStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblShiftStartTime.Location = new System.Drawing.Point(397, 135);
-            this.lblShiftStartTime.Name = "lblShiftStartTime";
-            this.lblShiftStartTime.Size = new System.Drawing.Size(70, 17);
-            this.lblShiftStartTime.TabIndex = 27;
-            this.lblShiftStartTime.Text = "Start Time";
-            // 
-            // lblShiftSlotCount
-            // 
-            this.lblShiftSlotCount.AutoSize = true;
-            this.lblShiftSlotCount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShiftSlotCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblShiftSlotCount.Location = new System.Drawing.Point(47, 167);
-            this.lblShiftSlotCount.Name = "lblShiftSlotCount";
-            this.lblShiftSlotCount.Size = new System.Drawing.Size(76, 17);
-            this.lblShiftSlotCount.TabIndex = 28;
-            this.lblShiftSlotCount.Text = "Slot Count";
-            // 
-            // cmbShiftSlotCount
-            // 
-            this.cmbShiftSlotCount.FormattingEnabled = true;
-            this.cmbShiftSlotCount.Location = new System.Drawing.Point(133, 159);
-            this.cmbShiftSlotCount.Name = "cmbShiftSlotCount";
-            this.cmbShiftSlotCount.Size = new System.Drawing.Size(125, 29);
-            this.cmbShiftSlotCount.TabIndex = 29;
-            // 
-            // dtpShiftStartTime
-            // 
-            this.dtpShiftStartTime.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpShiftStartTime.Location = new System.Drawing.Point(481, 128);
-            this.dtpShiftStartTime.Name = "dtpShiftStartTime";
-            this.dtpShiftStartTime.Size = new System.Drawing.Size(115, 26);
-            this.dtpShiftStartTime.TabIndex = 30;
+            this.errP.ContainerControl = this;
             // 
             // frmAddShift
             // 
@@ -278,15 +279,16 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddShift";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddShift";
             this.Load += new System.EventHandler(this.frmAddShift_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
