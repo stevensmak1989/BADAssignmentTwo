@@ -1,7 +1,7 @@
 ﻿
 namespace FujitsuPayments.Forms
 {
-    partial class frmAddProject
+    partial class frmEditProject
     {
         /// <summary>
         /// Required designer variable.
@@ -30,61 +30,56 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProject));
-            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblPrjIDAdd = new System.Windows.Forms.Label();
-            this.lblProjectIdAdd = new System.Windows.Forms.Label();
+            this.lblPrjIDEdit = new System.Windows.Forms.Label();
+            this.lblProjectIdEdit = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.txtlblBankHolAdd = new System.Windows.Forms.TextBox();
+            this.txtlblBankHolEdit = new System.Windows.Forms.TextBox();
             this.lblBankHolAdd = new System.Windows.Forms.Label();
             this.txtAddManagerID = new System.Windows.Forms.TextBox();
             this.lblAddManagerId = new System.Windows.Forms.Label();
             this.lblProjDesc = new System.Windows.Forms.Label();
             this.cmbAccountId = new System.Windows.Forms.ComboBox();
             this.lblAccountID = new System.Windows.Forms.Label();
-            this.txtBasicAdd = new System.Windows.Forms.TextBox();
+            this.txtBasicEdit = new System.Windows.Forms.TextBox();
             this.lblB8Rate = new System.Windows.Forms.Label();
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
-            this.txtOvertimeAdd = new System.Windows.Forms.TextBox();
-            this.txtCappedhoursAdd = new System.Windows.Forms.TextBox();
+            this.txtOvertimeEdit = new System.Windows.Forms.TextBox();
+            this.txtCappedhoursEdit = new System.Windows.Forms.TextBox();
             this.lblOvertimeAdd = new System.Windows.Forms.Label();
             this.txtProjDesc = new System.Windows.Forms.TextBox();
             this.lblCappedHoursAdd = new System.Windows.Forms.Label();
-            this.btnEmpSave = new System.Windows.Forms.Button();
+            this.btnEmpClose = new System.Windows.Forms.Button();
+            this.btnPrjSave = new System.Windows.Forms.Button();
             this.lbltitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEmpClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
+            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
-            // errP
+            // lblPrjIDEdit
             // 
-            this.errP.ContainerControl = this;
+            this.lblPrjIDEdit.AutoSize = true;
+            this.lblPrjIDEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrjIDEdit.Location = new System.Drawing.Point(161, 34);
+            this.lblPrjIDEdit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrjIDEdit.Name = "lblPrjIDEdit";
+            this.lblPrjIDEdit.Size = new System.Drawing.Size(13, 18);
+            this.lblPrjIDEdit.TabIndex = 48;
+            this.lblPrjIDEdit.Text = "-";
             // 
-            // lblPrjIDAdd
+            // lblProjectIdEdit
             // 
-            this.lblPrjIDAdd.AutoSize = true;
-            this.lblPrjIDAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrjIDAdd.Location = new System.Drawing.Point(161, 34);
-            this.lblPrjIDAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPrjIDAdd.Name = "lblPrjIDAdd";
-            this.lblPrjIDAdd.Size = new System.Drawing.Size(13, 18);
-            this.lblPrjIDAdd.TabIndex = 48;
-            this.lblPrjIDAdd.Text = "-";
-            // 
-            // lblProjectIdAdd
-            // 
-            this.lblProjectIdAdd.AutoSize = true;
-            this.lblProjectIdAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectIdAdd.Location = new System.Drawing.Point(36, 34);
-            this.lblProjectIdAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProjectIdAdd.Name = "lblProjectIdAdd";
-            this.lblProjectIdAdd.Size = new System.Drawing.Size(73, 18);
-            this.lblProjectIdAdd.TabIndex = 46;
-            this.lblProjectIdAdd.Text = "Project ID";
+            this.lblProjectIdEdit.AutoSize = true;
+            this.lblProjectIdEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectIdEdit.Location = new System.Drawing.Point(36, 34);
+            this.lblProjectIdEdit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProjectIdEdit.Name = "lblProjectIdEdit";
+            this.lblProjectIdEdit.Size = new System.Drawing.Size(73, 18);
+            this.lblProjectIdEdit.TabIndex = 46;
+            this.lblProjectIdEdit.Text = "Project ID";
             // 
             // dtpStartDate
             // 
@@ -95,16 +90,15 @@ namespace FujitsuPayments.Forms
             this.dtpStartDate.Size = new System.Drawing.Size(106, 26);
             this.dtpStartDate.TabIndex = 45;
             this.dtpStartDate.Value = new System.DateTime(2021, 2, 26, 0, 0, 0, 0);
-            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
-            // txtlblBankHolAdd
+            // txtlblBankHolEdit
             // 
-            this.txtlblBankHolAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlblBankHolAdd.Location = new System.Drawing.Point(462, 225);
-            this.txtlblBankHolAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.txtlblBankHolAdd.Name = "txtlblBankHolAdd";
-            this.txtlblBankHolAdd.Size = new System.Drawing.Size(115, 26);
-            this.txtlblBankHolAdd.TabIndex = 43;
+            this.txtlblBankHolEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtlblBankHolEdit.Location = new System.Drawing.Point(462, 225);
+            this.txtlblBankHolEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtlblBankHolEdit.Name = "txtlblBankHolEdit";
+            this.txtlblBankHolEdit.Size = new System.Drawing.Size(115, 26);
+            this.txtlblBankHolEdit.TabIndex = 43;
             // 
             // lblBankHolAdd
             // 
@@ -169,14 +163,14 @@ namespace FujitsuPayments.Forms
             this.lblAccountID.TabIndex = 36;
             this.lblAccountID.Text = "Account ID";
             // 
-            // txtBasicAdd
+            // txtBasicEdit
             // 
-            this.txtBasicAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBasicAdd.Location = new System.Drawing.Point(462, 177);
-            this.txtBasicAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBasicAdd.Name = "txtBasicAdd";
-            this.txtBasicAdd.Size = new System.Drawing.Size(115, 26);
-            this.txtBasicAdd.TabIndex = 35;
+            this.txtBasicEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBasicEdit.Location = new System.Drawing.Point(462, 177);
+            this.txtBasicEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBasicEdit.Name = "txtBasicEdit";
+            this.txtBasicEdit.Size = new System.Drawing.Size(115, 26);
+            this.txtBasicEdit.TabIndex = 35;
             // 
             // lblB8Rate
             // 
@@ -220,24 +214,23 @@ namespace FujitsuPayments.Forms
             this.lblStartDate.TabIndex = 26;
             this.lblStartDate.Text = "Start Date";
             // 
-            // txtOvertimeAdd
+            // txtOvertimeEdit
             // 
-            this.txtOvertimeAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOvertimeAdd.Location = new System.Drawing.Point(164, 221);
-            this.txtOvertimeAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOvertimeAdd.Name = "txtOvertimeAdd";
-            this.txtOvertimeAdd.Size = new System.Drawing.Size(106, 26);
-            this.txtOvertimeAdd.TabIndex = 25;
+            this.txtOvertimeEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOvertimeEdit.Location = new System.Drawing.Point(164, 221);
+            this.txtOvertimeEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOvertimeEdit.Name = "txtOvertimeEdit";
+            this.txtOvertimeEdit.Size = new System.Drawing.Size(106, 26);
+            this.txtOvertimeEdit.TabIndex = 25;
             // 
-            // txtCappedhoursAdd
+            // txtCappedhoursEdit
             // 
-            this.txtCappedhoursAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCappedhoursAdd.Location = new System.Drawing.Point(164, 177);
-            this.txtCappedhoursAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCappedhoursAdd.Name = "txtCappedhoursAdd";
-            this.txtCappedhoursAdd.Size = new System.Drawing.Size(106, 26);
-            this.txtCappedhoursAdd.TabIndex = 23;
-            this.txtCappedhoursAdd.TextChanged += new System.EventHandler(this.txtCappedhoursAdd_TextChanged);
+            this.txtCappedhoursEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCappedhoursEdit.Location = new System.Drawing.Point(164, 177);
+            this.txtCappedhoursEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCappedhoursEdit.Name = "txtCappedhoursEdit";
+            this.txtCappedhoursEdit.Size = new System.Drawing.Size(106, 26);
+            this.txtCappedhoursEdit.TabIndex = 23;
             // 
             // lblOvertimeAdd
             // 
@@ -270,63 +263,6 @@ namespace FujitsuPayments.Forms
             this.lblCappedHoursAdd.TabIndex = 20;
             this.lblCappedHoursAdd.Text = "Capped Hours";
             // 
-            // btnEmpSave
-            // 
-            this.btnEmpSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEmpSave.FlatAppearance.BorderSize = 2;
-            this.btnEmpSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.btnEmpSave.Location = new System.Drawing.Point(339, 291);
-            this.btnEmpSave.Name = "btnEmpSave";
-            this.btnEmpSave.Size = new System.Drawing.Size(130, 31);
-            this.btnEmpSave.TabIndex = 12;
-            this.btnEmpSave.Text = "Save";
-            this.btnEmpSave.UseVisualStyleBackColor = true;
-            this.btnEmpSave.Click += new System.EventHandler(this.btnEmpSave_Click);
-            // 
-            // lbltitle
-            // 
-            this.lbltitle.AutoSize = true;
-            this.lbltitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitle.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbltitle.Location = new System.Drawing.Point(214, 0);
-            this.lbltitle.Name = "lbltitle";
-            this.lbltitle.Size = new System.Drawing.Size(206, 25);
-            this.lbltitle.TabIndex = 1;
-            this.lbltitle.Text = "Add a New Project";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblPrjIDAdd);
-            this.panel1.Controls.Add(this.lblProjectIdAdd);
-            this.panel1.Controls.Add(this.dtpStartDate);
-            this.panel1.Controls.Add(this.txtlblBankHolAdd);
-            this.panel1.Controls.Add(this.lblBankHolAdd);
-            this.panel1.Controls.Add(this.txtAddManagerID);
-            this.panel1.Controls.Add(this.lblAddManagerId);
-            this.panel1.Controls.Add(this.lblProjDesc);
-            this.panel1.Controls.Add(this.cmbAccountId);
-            this.panel1.Controls.Add(this.lblAccountID);
-            this.panel1.Controls.Add(this.txtBasicAdd);
-            this.panel1.Controls.Add(this.lblB8Rate);
-            this.panel1.Controls.Add(this.txtDuration);
-            this.panel1.Controls.Add(this.lblDuration);
-            this.panel1.Controls.Add(this.lblStartDate);
-            this.panel1.Controls.Add(this.txtOvertimeAdd);
-            this.panel1.Controls.Add(this.txtCappedhoursAdd);
-            this.panel1.Controls.Add(this.lblOvertimeAdd);
-            this.panel1.Controls.Add(this.txtProjDesc);
-            this.panel1.Controls.Add(this.lblCappedHoursAdd);
-            this.panel1.Controls.Add(this.btnEmpClose);
-            this.panel1.Controls.Add(this.btnEmpSave);
-            this.panel1.Controls.Add(this.lbltitle);
-            this.panel1.Location = new System.Drawing.Point(7, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 335);
-            this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // btnEmpClose
             // 
             this.btnEmpClose.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -340,7 +276,69 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose.Text = "Close";
             this.btnEmpClose.UseVisualStyleBackColor = true;
             // 
-            // frmAddProject
+            // btnPrjSave
+            // 
+            this.btnPrjSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrjSave.FlatAppearance.BorderSize = 2;
+            this.btnPrjSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrjSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.btnPrjSave.Location = new System.Drawing.Point(339, 291);
+            this.btnPrjSave.Name = "btnPrjSave";
+            this.btnPrjSave.Size = new System.Drawing.Size(130, 31);
+            this.btnPrjSave.TabIndex = 12;
+            this.btnPrjSave.Text = "Save";
+            this.btnPrjSave.UseVisualStyleBackColor = true;
+            this.btnPrjSave.Click += new System.EventHandler(this.btnPrjSave_Click);
+            // 
+            // lbltitle
+            // 
+            this.lbltitle.AutoSize = true;
+            this.lbltitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltitle.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbltitle.Location = new System.Drawing.Point(204, 1);
+            this.lbltitle.Name = "lbltitle";
+            this.lbltitle.Size = new System.Drawing.Size(154, 25);
+            this.lbltitle.TabIndex = 1;
+            this.lbltitle.Text = "Edit a Project";
+            this.lbltitle.Click += new System.EventHandler(this.lbltitle_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblPrjIDEdit);
+            this.panel1.Controls.Add(this.lblProjectIdEdit);
+            this.panel1.Controls.Add(this.dtpStartDate);
+            this.panel1.Controls.Add(this.txtlblBankHolEdit);
+            this.panel1.Controls.Add(this.lblBankHolAdd);
+            this.panel1.Controls.Add(this.txtAddManagerID);
+            this.panel1.Controls.Add(this.lblAddManagerId);
+            this.panel1.Controls.Add(this.lblProjDesc);
+            this.panel1.Controls.Add(this.cmbAccountId);
+            this.panel1.Controls.Add(this.lblAccountID);
+            this.panel1.Controls.Add(this.txtBasicEdit);
+            this.panel1.Controls.Add(this.lblB8Rate);
+            this.panel1.Controls.Add(this.txtDuration);
+            this.panel1.Controls.Add(this.lblDuration);
+            this.panel1.Controls.Add(this.lblStartDate);
+            this.panel1.Controls.Add(this.txtOvertimeEdit);
+            this.panel1.Controls.Add(this.txtCappedhoursEdit);
+            this.panel1.Controls.Add(this.lblOvertimeAdd);
+            this.panel1.Controls.Add(this.txtProjDesc);
+            this.panel1.Controls.Add(this.lblCappedHoursAdd);
+            this.panel1.Controls.Add(this.btnEmpClose);
+            this.panel1.Controls.Add(this.btnPrjSave);
+            this.panel1.Controls.Add(this.lbltitle);
+            this.panel1.Location = new System.Drawing.Point(9, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(635, 335);
+            this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // errP
+            // 
+            this.errP.ContainerControl = this;
+            // 
+            // frmEditProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -348,43 +346,43 @@ namespace FujitsuPayments.Forms
             this.ClientSize = new System.Drawing.Size(653, 351);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmAddProject";
-            this.Text = "frmAddProject";
-            this.Load += new System.EventHandler(this.frmAddProject_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
+            this.Name = "frmEditProject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmEditProject";
+            this.Load += new System.EventHandler(this.frmEditProject_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ErrorProvider errP;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblPrjIDAdd;
-        private System.Windows.Forms.Label lblProjectIdAdd;
+        private System.Windows.Forms.Label lblPrjIDEdit;
+        private System.Windows.Forms.Label lblProjectIdEdit;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.TextBox txtlblBankHolAdd;
+        private System.Windows.Forms.TextBox txtlblBankHolEdit;
         private System.Windows.Forms.Label lblBankHolAdd;
         private System.Windows.Forms.TextBox txtAddManagerID;
         private System.Windows.Forms.Label lblAddManagerId;
         private System.Windows.Forms.Label lblProjDesc;
         private System.Windows.Forms.ComboBox cmbAccountId;
         private System.Windows.Forms.Label lblAccountID;
-        private System.Windows.Forms.TextBox txtBasicAdd;
+        private System.Windows.Forms.TextBox txtBasicEdit;
         private System.Windows.Forms.Label lblB8Rate;
         private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label lblStartDate;
-        private System.Windows.Forms.TextBox txtOvertimeAdd;
-        private System.Windows.Forms.TextBox txtCappedhoursAdd;
+        private System.Windows.Forms.TextBox txtOvertimeEdit;
+        private System.Windows.Forms.TextBox txtCappedhoursEdit;
         private System.Windows.Forms.Label lblOvertimeAdd;
         private System.Windows.Forms.TextBox txtProjDesc;
         private System.Windows.Forms.Label lblCappedHoursAdd;
         private System.Windows.Forms.Button btnEmpClose;
-        private System.Windows.Forms.Button btnEmpSave;
+        private System.Windows.Forms.Button btnPrjSave;
         private System.Windows.Forms.Label lbltitle;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ErrorProvider errP;
     }
 }

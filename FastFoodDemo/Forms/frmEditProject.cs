@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FujitsuPayments.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,56 +12,16 @@ using System.Windows.Forms;
 
 namespace FujitsuPayments.Forms
 {
-    public partial class frmAddProject : Form
-    {
+    public partial class frmEditProject : Form
 
-        SqlDataAdapter daProject, daClient;
+    {
+        SqlDataAdapter daProject,daClient;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject, cmbBClient;
         DataRow drProject, drClient;
         String connStr, sqlProject, sqlClient;
 
-        public frmAddProject()
-        {
-            InitializeComponent();
-        }
-
-        private void frmAddProject_Load(object sender, EventArgs e)
-        {
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-
-            sqlProject = @"select * from Project";
-            daProject = new SqlDataAdapter(sqlProject, connStr);
-            cmbBProject = new SqlCommandBuilder(daProject);
-            daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
-            daProject.Fill(dsFujitsuPayments, "Project");
-
-            sqlClient = @"select * from Account";
-            daClient = new SqlDataAdapter(sqlClient, connStr);
-            cmbBClient = new SqlCommandBuilder(daClient);
-            daClient.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
-            daClient.Fill(dsFujitsuPayments, "Account");
-
-            cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
-            cmbAccountId.ValueMember = "AccountID";
-            cmbAccountId.DisplayMember = "ClientName";
-
-            int noRows = dsFujitsuPayments.Tables["Project"].Rows.Count;
-
-            if (noRows == 0)
-                lblPrjIDAdd.Text = "1";
-            else
-            {
-                getNumber(noRows);
-            }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnEmpSave_Click(object sender, EventArgs e)
+        private void btnPrjSave_Click(object sender, EventArgs e)
         {
             Project myProject = new Project();
             bool ok = true;
@@ -69,14 +30,14 @@ namespace FujitsuPayments.Forms
             //employee number
             try
             {
-                myProject.ProjectId = Convert.ToInt32(lblPrjIDAdd.Text.Trim());
+                myProject.ProjectId = Convert.ToInt32(lblPrjIDEdit.Text.Trim());
                 //passed to employee Class to check
 
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(lblPrjIDAdd, MyEx.toString());
+                errP.SetError(lblPrjIDEdit, MyEx.toString());
             }
             //employee Title
             try
@@ -121,52 +82,51 @@ namespace FujitsuPayments.Forms
             //employee Town
             try
             {
-                myProject.CappedHrs = decimal.Parse(txtCappedhoursAdd.Text.Trim());
+                myProject.CappedHrs = decimal.Parse(txtCappedhoursEdit.Text.Trim());
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtCappedhoursAdd, MyEx.toString());
+                errP.SetError(txtCappedhoursEdit, MyEx.toString());
             }
             //employee County
             try
             {
-                myProject.B48Rate = decimal.Parse(txtBasicAdd.Text.Trim());
+                myProject.B48Rate = decimal.Parse(txtBasicEdit.Text.Trim());
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtBasicAdd, MyEx.toString());
+                errP.SetError(txtBasicEdit, MyEx.toString());
             }
 
             //employee Postcode
             try
             {
-                myProject.A48Rate = decimal.Parse(txtlblBankHolAdd.Text.Trim());
+                myProject.A48Rate = decimal.Parse(txtlblBankHolEdit.Text.Trim());
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtlblBankHolAdd, MyEx.toString());
+                errP.SetError(txtlblBankHolEdit, MyEx.toString());
             }
 
             //employee TelNo
             try
             {
-                myProject.BHRate = decimal.Parse(txtlblBankHolAdd.Text.Trim());
+                myProject.BHRate = decimal.Parse(txtlblBankHolEdit.Text.Trim());
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtlblBankHolAdd, MyEx.toString());
+                errP.SetError(txtlblBankHolEdit, MyEx.toString());
             }
-           
+
             try
             {
                 if (ok)
                 {
-
-                    drProject = dsFujitsuPayments.Tables["Project"].NewRow();
+                    drProject.BeginEdit();
 
                     drProject["ProjectID"] = myProject.ProjectId;
                     drProject["ProjDesc"] = myProject.ProjDesc;
@@ -178,12 +138,12 @@ namespace FujitsuPayments.Forms
                     drProject["A48Rate"] = myProject.A48Rate;
                     drProject["BHRate"] = myProject.BHRate;
 
-
-                    dsFujitsuPayments.Tables["Project"].Rows.Add(drProject);
+                    drProject.EndEdit();
                     daProject.Update(dsFujitsuPayments, "Project");
 
-                    MessageBox.Show("Project Added");
+                    MessageBox.Show("Project Updated");
                     this.Dispose();
+                    UC_Employee.refresh = true;
 
                 }
             }
@@ -192,21 +152,59 @@ namespace FujitsuPayments.Forms
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
         }
+    
 
-        private void txtCappedhoursAdd_TextChanged(object sender, EventArgs e)
+        public frmEditProject()
+        {
+            InitializeComponent();
+        }
+
+        private void lbltitle_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void getNumber(int noRows)
+        private void frmEditProject_Load(object sender, EventArgs e)
         {
-            drProject = dsFujitsuPayments.Tables["Project"].Rows[noRows - 1];
-            lblPrjIDAdd.Text = (int.Parse(drProject["ProjectID"].ToString()) + 1).ToString();
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
+
+            sqlProject = @"select * from Project";
+            daProject = new SqlDataAdapter(sqlProject, connStr);
+            cmbBProject = new SqlCommandBuilder(daProject);
+            daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
+            daProject.Fill(dsFujitsuPayments, "Project");
+
+
+            sqlClient = @"select * from Account";
+            daClient = new SqlDataAdapter(sqlClient, connStr);
+            cmbBClient = new SqlCommandBuilder(daClient);
+            daClient.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
+            daClient.Fill(dsFujitsuPayments, "Account");
+
+
+            lblPrjIDEdit.Text = UC_Project.prjNoSelected.ToString();
+
+            drProject = dsFujitsuPayments.Tables["Project"].Rows.Find(lblPrjIDEdit.Text);
+
+
+
+            cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
+            cmbAccountId.ValueMember = "AccountID";
+            cmbAccountId.DisplayMember = "ClientName";
+
+            cmbAccountId.Text = drProject["AccountID"].ToString();
+            txtProjDesc.Text = drProject["ProjDesc"].ToString();
+            dtpStartDate.Text =  drProject["StartDate"].ToString();
+           txtDuration.Text =  drProject["Duration"].ToString();
+           txtCappedhoursEdit.Text = drProject["CappedHrs"].ToString();
+            txtBasicEdit.Text = drProject["B48Rate"].ToString();
+           txtOvertimeEdit.Text= drProject["A48Rate"].ToString();
+           txtlblBankHolEdit.Text = drProject["BHRate"].ToString();
         }
     }
 }

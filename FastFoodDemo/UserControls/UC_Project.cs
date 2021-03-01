@@ -94,7 +94,7 @@ namespace FujitsuPayments.UserControls
                 prjSelected = true;
                 prjNoSelected = Convert.ToInt32(dvgProject.SelectedRows[0].Cells[0].Value);
 
-                frmEditEmployee frm = new frmEditEmployee();
+                frmEditProject frm = new frmEditProject();
                 frm.TopLevel = false;
                 frm.FormBorderStyle = FormBorderStyle.None;
                 frm.Visible = true;
@@ -102,6 +102,36 @@ namespace FujitsuPayments.UserControls
                 this.Controls.Add(frm);
                 frm.BringToFront();
             }
+        }
+
+        private void btnProjectDel_Click(object sender, EventArgs e)
+        {
+            if (dvgProject.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an Project from the list.", "Select Project");
+            }
+            else
+            {
+                drProject = dsFujitsuPayments.Tables["Project"].Rows.Find(dvgProject.SelectedRows[0].Cells[0].Value);
+
+                string tempName = drProject["ProjDesc"].ToString();
+
+                if (MessageBox.Show("Are you sure you want to delete project " + tempName + "?", "Delete Project", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    drProject.Delete();
+                    daProject.Update(dsFujitsuPayments, "Project");
+                }
+            }
+        }
+
+        private void btnProjectView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
