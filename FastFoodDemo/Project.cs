@@ -60,9 +60,9 @@ namespace FujitsuPayments
             get { return projDesc; }
             set
             {
-                if (MyValidation.validLength(value, 2,15) && MyValidation.validLetter(value))
+                if (MyValidation.validLength(value, 2,15) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
-                    projDesc = MyValidation.firstLetterEachWordToUpper(value);
+                    projDesc = value;
                 }
                 else
                     throw new MyException("Project Description must be 2-15 letters.");

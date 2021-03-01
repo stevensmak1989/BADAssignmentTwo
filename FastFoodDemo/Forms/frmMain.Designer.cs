@@ -46,20 +46,20 @@
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlDropDown = new System.Windows.Forms.Panel();
             this.btnEmpTask = new System.Windows.Forms.Button();
             this.btnTask = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnLocation = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             this.pnlForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
-            this.pnlDropDown.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.pnlDropDown.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -180,7 +180,7 @@
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 127);
+            this.button14.Location = new System.Drawing.Point(3, 130);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(46, 46);
             this.button14.TabIndex = 4;
@@ -298,6 +298,16 @@
             this.pnlMenu.Size = new System.Drawing.Size(85, 641);
             this.pnlMenu.TabIndex = 0;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.pnlDropDown);
+            this.flowLayoutPanel1.Controls.Add(this.btnLocation);
+            this.flowLayoutPanel1.Controls.Add(this.button14);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 341);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 641);
+            this.flowLayoutPanel1.TabIndex = 7;
+            // 
             // pnlDropDown
             // 
             this.pnlDropDown.Controls.Add(this.btnEmpTask);
@@ -308,7 +318,7 @@
             this.pnlDropDown.MaximumSize = new System.Drawing.Size(89, 140);
             this.pnlDropDown.MinimumSize = new System.Drawing.Size(89, 56);
             this.pnlDropDown.Name = "pnlDropDown";
-            this.pnlDropDown.Size = new System.Drawing.Size(89, 56);
+            this.pnlDropDown.Size = new System.Drawing.Size(89, 59);
             this.pnlDropDown.TabIndex = 6;
             this.pnlDropDown.Click += new System.EventHandler(this.btnProject_Click);
             // 
@@ -369,7 +379,7 @@
             this.btnLocation.ForeColor = System.Drawing.Color.White;
             this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
             this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLocation.Location = new System.Drawing.Point(3, 65);
+            this.btnLocation.Location = new System.Drawing.Point(3, 68);
             this.btnLocation.Name = "btnLocation";
             this.btnLocation.Size = new System.Drawing.Size(72, 56);
             this.btnLocation.TabIndex = 8;
@@ -377,16 +387,6 @@
             this.btnLocation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLocation.UseVisualStyleBackColor = true;
             this.btnLocation.Click += new System.EventHandler(this.btnMore_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.pnlDropDown);
-            this.flowLayoutPanel1.Controls.Add(this.btnLocation);
-            this.flowLayoutPanel1.Controls.Add(this.button14);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 341);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 641);
-            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // frmMain
             // 
@@ -409,8 +409,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
-            this.pnlDropDown.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.pnlDropDown.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
