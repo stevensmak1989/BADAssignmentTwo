@@ -337,6 +337,7 @@
             this.btnEmpTask.Text = "Employee Task";
             this.btnEmpTask.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEmpTask.UseVisualStyleBackColor = true;
+            this.btnEmpTask.Click += new System.EventHandler(this.btnEmpTask_Click);
             // 
             // btnTask
             // 

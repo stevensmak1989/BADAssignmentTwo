@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeTask.cs" />
     <Compile Include="Forms\frmAddLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +114,12 @@
     <Compile Include="Forms\frmEditTask.Designer.cs">
       <DependentUpon>frmEditTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmEmpTaskAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmpTaskAdd.Designer.cs">
+      <DependentUpon>frmEmpTaskAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grade.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Forms\frmAddAccount.cs">
@@ -162,6 +169,12 @@
     </Compile>
     <Compile Include="UserControls\UC_Employee.Designer.cs">
       <DependentUpon>UC_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_EmpProTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_EmpProTask.Designer.cs">
+      <DependentUpon>UC_EmpProTask.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_Location.cs">
       <SubType>UserControl</SubType>
@@ -232,6 +245,9 @@
     <EmbeddedResource Include="Forms\frmEditTask.resx">
       <DependentUpon>frmEditTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmpTaskAdd.resx">
+      <DependentUpon>frmEmpTaskAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Employee.resx">
       <DependentUpon>UC_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_EmpProTask.resx">
+      <DependentUpon>UC_EmpProTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Location.resx">
       <DependentUpon>UC_Location.cs</DependentUpon>

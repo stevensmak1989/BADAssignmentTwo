@@ -134,7 +134,9 @@ namespace FujitsuPayments.UserControls
 
         }
 
-        private void btnProjectDel_Click(object sender, EventArgs e)
+       
+
+        private void btnProjectDel_Click_1(object sender, EventArgs e)
         {
             if (dvgProject.SelectedRows.Count == 0)
             {

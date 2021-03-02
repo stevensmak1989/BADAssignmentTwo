@@ -102,7 +102,7 @@ namespace FujitsuPayments.UserControls
             this.btnProjectDel.Text = "Delete Project";
             this.btnProjectDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProjectDel.UseVisualStyleBackColor = true;
-            this.btnProjectDel.Click += new System.EventHandler(this.btnProjectDel_Click);
+            this.btnProjectDel.Click += new System.EventHandler(this.btnProjectDel_Click_1);
             // 
             // btnProjectEdit
             // 
