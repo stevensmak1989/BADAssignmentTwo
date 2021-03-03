@@ -37,11 +37,11 @@ namespace FujitsuPayments.Forms
             this.lblTaskCode = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbEmp = new System.Windows.Forms.ComboBox();
             this.lblEmployee = new System.Windows.Forms.Label();
             this.cmbTaskCode = new System.Windows.Forms.ComboBox();
             this.cmbProjectId = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +88,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTaskCode
             // 
@@ -129,6 +130,15 @@ namespace FujitsuPayments.Forms
             this.panel1.Size = new System.Drawing.Size(612, 279);
             this.panel1.TabIndex = 2;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(76, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "label1";
+            // 
             // cmbEmp
             // 
             this.cmbEmp.FormattingEnabled = true;
@@ -165,15 +175,6 @@ namespace FujitsuPayments.Forms
             this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
             this.cmbProjectId.TabIndex = 20;
             this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "label1";
             // 
             // frmEmpTaskAdd
             // 

@@ -18,34 +18,90 @@ namespace FujitsuPayments.Forms
         SqlCommandBuilder cmbBProject, cmbBTask, cmbBEmp, cmbBEmpTask;
         SqlCommand cmdTask;
         DataRow drProject, drTask, drEmp, drEmpTask;
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            EmployeeTask myProject = new EmployeeTask();
+            bool ok = true;
+            errP.Clear();
+
+            try
+            {
+                myProject.TaskId = Convert.ToInt32(cmbTaskCode.SelectedValue);
+            
+
+            }
+            catch (MyException MyEx)
+            {
+                ok = false;
+                errP.SetError(cmbTaskCode, MyEx.toString());
+            }
+
+            try
+            {
+                myProject.EmployeeId = Convert.ToInt32(cmbEmp.SelectedValue);
+            }
+            catch (MyException MyEx)
+            {
+                ok = false;
+                errP.SetError(cmbEmp, MyEx.toString());
+            }
+
+            try
+            {
+                myProject.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
+            }
+            catch (MyException MyEx)
+            {
+                ok = false;
+                errP.SetError(cmbProjectId, MyEx.toString());
+            }
+            try
+            {
+                if (ok)
+                {
+
+                    drEmpTask = dsFujitsuPayments.Tables["ProjectTaskEmployee"].NewRow();
+
+                    drEmpTask["ProjectID"] = myProject.ProjectId;
+                    drEmpTask["TaskID"] = myProject.TaskId;
+                    drEmpTask["EmployeeID"] = myProject.EmployeeId;
+
+                    dsFujitsuPayments.Tables["ProjectTaskEmployee"].Rows.Add(drTask);
+                    daTask.Update(dsFujitsuPayments, "ProjectTaskEmployee");
+
+                    MessageBox.Show("Employee Task Added");
+                    this.Dispose();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+            }
+
+        }
+
         String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
         SqlConnection conn;
 
         private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-            sqlTask = @"Select ProjectID, TaskId, TaskDesc from ProjectTask where ProjectID = @ProjectID ";
-            
-            cmdTask = new SqlCommand(sqlTask, conn);
-            daTask = new SqlDataAdapter(cmdTask);
 
+            if (cmbProjectId.Focused == true)
+            {
 
-            label1.Text = cmbProjectId.SelectedValue.ToString();
-            cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
-            cmdTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue.ToString();
-           
+                dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                cmdTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
 
-            cmbBTask = new SqlCommandBuilder(daTask);
+                daTask.Fill(dsFujitsuPayments, "ProjectTask");
 
-            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
-            cmbEmp.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
-            cmbEmp.ValueMember = "TaskID";
-            cmbEmp.DisplayMember = "TaskDesc";
+             
+                cmbTaskCode.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                cmbTaskCode.ValueMember = "TaskID";
+                cmbTaskCode.DisplayMember = "TaskDesc";
+            }
         }
-
-     
-
-
 
 
 
@@ -68,19 +124,14 @@ namespace FujitsuPayments.Forms
             daProject.Fill(dsFujitsuPayments, "Project");
 
 
-            
-            
 
 
-
-
-
-            //sqlTask = @"select * from ProjectTask  WHERE ProjectID = @ProjectTask";
-            //cmdTask = new SqlCommand(sqlTask, conn);
-            //cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
-            //daTask = new SqlDataAdapter(cmdTask.ToString(), connStr);
-            //daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
-            //daTask.Fill(dsFujitsuPayments, "ProjectTask");
+            sqlTask = @"Select ProjectID, TaskDesc, TaskID from ProjectTask where ProjectID like @ProjectID";
+            conn = new SqlConnection(connStr);
+            cmdTask = new SqlCommand(sqlTask, conn);
+            cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daTask = new SqlDataAdapter(cmdTask);
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
 
             sqlEmp = @"select EmployeeID, Surname + ' ' + Forename as EmpName from Employee";
             daEmployee = new SqlDataAdapter(sqlEmp, connStr);
