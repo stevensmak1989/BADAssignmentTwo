@@ -21,6 +21,30 @@ namespace FujitsuPayments.Forms
         String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
         SqlConnection conn;
 
+        private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
+            sqlTask = @"Select ProjectID, TaskId, TaskDesc from ProjectTask where ProjectID = @ProjectID ";
+            
+            cmdTask = new SqlCommand(sqlTask, conn);
+            daTask = new SqlDataAdapter(cmdTask);
+
+
+            label1.Text = cmbProjectId.SelectedValue.ToString();
+            cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            cmdTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue.ToString();
+           
+
+            cmbBTask = new SqlCommandBuilder(daTask);
+
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+            cmbEmp.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+            cmbEmp.ValueMember = "TaskID";
+            cmbEmp.DisplayMember = "TaskDesc";
+        }
+
+     
+
 
 
 
@@ -30,6 +54,8 @@ namespace FujitsuPayments.Forms
         {
             InitializeComponent();
         }
+
+
 
         private void frmEmpTaskAdd_Load(object sender, EventArgs e)
         {
@@ -41,13 +67,20 @@ namespace FujitsuPayments.Forms
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
             daProject.Fill(dsFujitsuPayments, "Project");
 
-            sqlTask = @"select * from ProjectTask  WHERE ProjectID = @ProjectID";
-            daTask = new SqlDataAdapter(sqlTask, connStr);
-            cmdTask = new SqlCommand(sqlTask, conn);
-            cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
-            cmbBTask = new SqlCommandBuilder(daTask);
-            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+
             
+            
+
+
+
+
+
+            //sqlTask = @"select * from ProjectTask  WHERE ProjectID = @ProjectTask";
+            //cmdTask = new SqlCommand(sqlTask, conn);
+            //cmdTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            //daTask = new SqlDataAdapter(cmdTask.ToString(), connStr);
+            //daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+            //daTask.Fill(dsFujitsuPayments, "ProjectTask");
 
             sqlEmp = @"select EmployeeID, Surname + ' ' + Forename as EmpName from Employee";
             daEmployee = new SqlDataAdapter(sqlEmp, connStr);
@@ -68,12 +101,9 @@ namespace FujitsuPayments.Forms
 
         private void cmbTaskCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            cmdTask.Parameters["@ProjectTask"].Value = cmbProjectId.SelectedValue;
+            
 
-            cmbEmp.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
-            cmbEmp.ValueMember = "TaskID";
-            cmbEmp.DisplayMember = "TaskDesc";
+           
 
         }
     }

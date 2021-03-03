@@ -37,10 +37,11 @@ namespace FujitsuPayments.Forms
             this.lblTaskCode = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbTaskCode = new System.Windows.Forms.ComboBox();
-            this.cmbProjectId = new System.Windows.Forms.ComboBox();
             this.cmbEmp = new System.Windows.Forms.ComboBox();
             this.lblEmployee = new System.Windows.Forms.Label();
+            this.cmbTaskCode = new System.Windows.Forms.ComboBox();
+            this.cmbProjectId = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +114,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cmbEmp);
             this.panel1.Controls.Add(this.lblEmployee);
             this.panel1.Controls.Add(this.cmbTaskCode);
@@ -126,23 +128,6 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(612, 279);
             this.panel1.TabIndex = 2;
-            // 
-            // cmbTaskCode
-            // 
-            this.cmbTaskCode.FormattingEnabled = true;
-            this.cmbTaskCode.Location = new System.Drawing.Point(283, 170);
-            this.cmbTaskCode.Name = "cmbTaskCode";
-            this.cmbTaskCode.Size = new System.Drawing.Size(138, 21);
-            this.cmbTaskCode.TabIndex = 21;
-            this.cmbTaskCode.SelectedIndexChanged += new System.EventHandler(this.cmbTaskCode_SelectedIndexChanged);
-            // 
-            // cmbProjectId
-            // 
-            this.cmbProjectId.FormattingEnabled = true;
-            this.cmbProjectId.Location = new System.Drawing.Point(283, 124);
-            this.cmbProjectId.Name = "cmbProjectId";
-            this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
-            this.cmbProjectId.TabIndex = 20;
             // 
             // cmbEmp
             // 
@@ -162,6 +147,33 @@ namespace FujitsuPayments.Forms
             this.lblEmployee.Size = new System.Drawing.Size(70, 16);
             this.lblEmployee.TabIndex = 23;
             this.lblEmployee.Text = "Employee";
+            // 
+            // cmbTaskCode
+            // 
+            this.cmbTaskCode.FormattingEnabled = true;
+            this.cmbTaskCode.Location = new System.Drawing.Point(283, 170);
+            this.cmbTaskCode.Name = "cmbTaskCode";
+            this.cmbTaskCode.Size = new System.Drawing.Size(138, 21);
+            this.cmbTaskCode.TabIndex = 21;
+            this.cmbTaskCode.SelectedIndexChanged += new System.EventHandler(this.cmbTaskCode_SelectedIndexChanged);
+            // 
+            // cmbProjectId
+            // 
+            this.cmbProjectId.FormattingEnabled = true;
+            this.cmbProjectId.Location = new System.Drawing.Point(283, 124);
+            this.cmbProjectId.Name = "cmbProjectId";
+            this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
+            this.cmbProjectId.TabIndex = 20;
+            this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(76, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "label1";
             // 
             // frmEmpTaskAdd
             // 
@@ -194,5 +206,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbTaskCode;
         private System.Windows.Forms.ComboBox cmbEmp;
         private System.Windows.Forms.Label lblEmployee;
+        private System.Windows.Forms.Label label1;
     }
 }
