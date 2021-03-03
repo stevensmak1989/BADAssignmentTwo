@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FujitsuPayments.UserControls;
 
 namespace FujitsuPayments.Forms
 {
-    public partial class frmAddShift : Form
+    public partial class frmEditShift : Form
     {
 
 
@@ -19,40 +20,28 @@ namespace FujitsuPayments.Forms
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
         SqlCommandBuilder cmbBShift, cmbBAccount, cmbBProject, cmbBTask;
+
+
         SqlCommand cmbProject, cmbTask;
+
+
+
         DataRow drShift, drAccount, drProject, drTask;
         String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        
-
-        private void dtpShiftStartTime_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public frmAddShift()
+        public frmEditShift()
         {
             InitializeComponent();
         }
 
-        private void frmAddShift_Load(object sender, EventArgs e)
+        private void frmEditShift_Load(object sender, EventArgs e)
         {
-            // converts date time picker to time only
-           // dtpShiftStartTime.CustomFormat = "hh:mm tt";
-            //dtpShiftStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            //dtpShiftStartTime.ShowUpDown = true;
-            
-
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
-           // -------- set up data adapter for project ID drop down
+            // -------- set up data adapter for project ID drop down
             sqlProject = @"Select ProjectID, ProjDesc, AccountID from Project where AccountID like @AccountID";
             conn = new SqlConnection(connStr);
             cmbProject = new SqlCommand(sqlProject, conn);
@@ -62,25 +51,25 @@ namespace FujitsuPayments.Forms
 
 
             // ----------set up data adapter for Task ID drop down
-           sqlTask = @"Select ProjectID, TaskDesc, TaskID from ProjectTask where ProjectID like @ProjectID";
-           conn = new SqlConnection(connStr);
-           cmbTask = new SqlCommand(sqlTask, conn);
-           cmbTask.Parameters.Add("@ProjectID", SqlDbType.Int);
-           daTask = new SqlDataAdapter(cmbTask);
-           daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+            sqlTask = @"Select ProjectID, TaskDesc, TaskID from ProjectTask where ProjectID like @ProjectID";
+            conn = new SqlConnection(connStr);
+            cmbTask = new SqlCommand(sqlTask, conn);
+            cmbTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daTask = new SqlDataAdapter(cmbTask);
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
 
 
-           sqlShift = @"select * from EmployeeShift";
-           daShift = new SqlDataAdapter(sqlShift, connStr);
-           cmbBShift = new SqlCommandBuilder(daShift);
-           daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
-           daShift.Fill(dsFujitsuPayments, "EmployeeShift");
+            sqlShift = @"select * from EmployeeShift";
+            daShift = new SqlDataAdapter(sqlShift, connStr);
+            cmbBShift = new SqlCommandBuilder(daShift);
+            daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
+            daShift.Fill(dsFujitsuPayments, "EmployeeShift");
 
-           sqlAccount = @"select * from Account";
-           daAccount = new SqlDataAdapter(sqlAccount, connStr);
-           cmbBAccount = new SqlCommandBuilder(daAccount);
-           daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
-           daAccount.Fill(dsFujitsuPayments, "Account");
+            sqlAccount = @"select * from Account";
+            daAccount = new SqlDataAdapter(sqlAccount, connStr);
+            cmbBAccount = new SqlCommandBuilder(daAccount);
+            daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
+            daAccount.Fill(dsFujitsuPayments, "Account");
 
 
             // ------- populate account ID combo box
@@ -88,44 +77,85 @@ namespace FujitsuPayments.Forms
             cmbAccountId.ValueMember = "AccountID";
             cmbAccountId.DisplayMember = "ClientName";
 
-            cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
-            cmbProjectId.ValueMember = "ProjectID";
-            cmbProjectId.DisplayMember = "ProjDesc";
-
             cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
             cmbTaskId.ValueMember = "TaskID";
             cmbTaskId.DisplayMember = "TaskDesc";
 
-           
+            txtShiftID.Text = UC_Schedule.shiftIdSelected.ToString();
 
+            drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(UC_Schedule.shiftIdSelected.ToString());
+            drAccount = dsFujitsuPayments.Tables["Account"].Rows.Find(UC_Schedule.accIdSelected.ToString());
 
-            int noRows = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Count;
+            // populate account drop down
+            cmbAccountId.Text = drAccount["ClientName"].ToString();
 
-            if (noRows == 0)
-                txtShiftID.Text = "100000";
-            else
+            // -------------- populate project drop down -----------------------//
+            cmbProject.Parameters["@AccountID"].Value = UC_Schedule.accIdSelected.ToString();
+            try
             {
-                getNumberProject(noRows);
+                // fill data adapter with returned values
+                daProject.Fill(dsFujitsuPayments, "Project");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error message " + ex);
+            }
+            cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
+            cmbProjectId.ValueMember = "ProjectID";
+            cmbProjectId.DisplayMember = "ProjDesc";
+            drProject = dsFujitsuPayments.Tables["Project"].Rows.Find(UC_Schedule.projIdSelected.ToString());
+            cmbProjectId.Text = drProject["ProjDesc"].ToString();
+            // ----------------------------- end ---------------------------------//
+
+            // ----------------- populate task drop down --------------------- //
+
+            cmbTask.Parameters["@ProjectID"].Value = UC_Schedule.projIdSelected.ToString();
+            try
+            {
+                daTask.Fill(dsFujitsuPayments, "ProjectTask");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error message " + ex);
+            }
+            cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+            cmbTaskId.ValueMember = "TaskID";
+            cmbTaskId.DisplayMember = "TaskDesc";
+            // create primaye key object -- composite primary key
+            object[] primaryKey = new object[2];
+            primaryKey[0] = Convert.ToInt32(UC_Schedule.projIdSelected.ToString());
+            primaryKey[1] = Convert.ToInt32(UC_Schedule.taskIdSelected.ToString());
+            drTask = dsFujitsuPayments.Tables["ProjectTask"].Rows.Find(primaryKey);
+            cmbTaskId.Text = drTask["TaskDesc"].ToString();
+            // ----------------------------- end ---------------------------------//
+
+
+            dtpShiftStartDate.Text = drShift["StartDate"].ToString();
+
+            // format date time to only show time for combo box
+            DateTime st = DateTime.Parse(drShift["StartTime"].ToString());
+            cmbStartTime.Text = st.ToString("HH:mm");
+
+            DateTime et = DateTime.Parse(drShift["EndTime"].ToString());
+            cmbEndTime.Text = et.ToString("HH:mm");
+
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void btnEditClose_Click(object sender, EventArgs e)
         {
-
+            this.Dispose();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Dispose(); // close window
-        }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        private void btnEditSave_Click(object sender, EventArgs e)
         {
+
+
             EmployeeShift myShift = new EmployeeShift();
 
             bool ok = true;
             errP.Clear();
-
             // pass data to class for validation
             try
             {
@@ -201,36 +231,32 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
+                if (ok)
+                {
 
-                drShift["ShiftID"] = myShift.ShiftId;
-                drShift["AccountID"] = myShift.AccountId;
-                drShift["ProjectID"] = myShift.ProjectId;
-                drShift["TaskID"] = myShift.TaskId;
-                drShift["StartDate"] = myShift.StartDate;
-                drShift["StartTime"] = myShift.StartTime;
-                drShift["EndTime"] = myShift.EndTime;
+                    drShift.BeginEdit();
 
-                dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
-                daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                    drShift["ShiftID"] = myShift.ShiftId;
+                    drShift["AccountID"] = myShift.AccountId;
+                    drShift["ProjectID"] = myShift.ProjectId;
+                    drShift["TaskID"] = myShift.TaskId;
+                    drShift["StartDate"] = myShift.StartDate;
+                    drShift["StartTime"] = myShift.StartTime;
+                    drShift["EndTime"] = myShift.EndTime;
 
-                MessageBox.Show("Shift Added");
-                this.Dispose();
+                    drShift.EndEdit();
+                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
 
-
+                    MessageBox.Show("Shift Updated");
+                    this.Dispose();
+      
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
 
-
-        }
-
-        private void getNumberProject(int noRows)
-        {
-            drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows[noRows - 1];
-            txtShiftID.Text = (int.Parse(drShift["ShiftID"].ToString()) + 1).ToString();
         }
 
 
@@ -290,8 +316,8 @@ namespace FujitsuPayments.Forms
 
             }
 
-
         }
+
 
         private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -320,20 +346,11 @@ namespace FujitsuPayments.Forms
             }
         }
 
-
         private void cmbTaskId_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        private void fillProjectDropDown()
-        {
-
-        }
-
-
-        private void fillTaskDropDown()
-        {
-
-        }
     }
+
+
 }

@@ -193,3 +193,55 @@ CREATE TABLE EmployeeShiftDetails
 
 	
 )
+CREATE TABLE ClaimType
+(
+	ClaimTypeID			int			NOT NULL,
+	ClaimTypeDesc        varchar(30)     NOT NULL,
+
+	--PK
+	CONSTRAINT pkClaimType PRIMARY KEY (ClaimTypeID)
+
+)
+
+CREATE TABLE Timesheet
+(
+	TimesheetID			int			NOT NULL,
+	EmployeeID      	int         NOT NULL,
+	CostCentreID 		int	     	NOT NULL,
+	WkBeginning 			Date	    NOT NULL,
+	ApprovedBy			varchar(30) NOT NULL,
+	
+
+	--PK
+	CONSTRAINT pkTimesheetID PRIMARY KEY (TimesheetID),	
+
+	--FK
+	CONSTRAINT fkEmpID FOREIGN KEY (EmployeeID) REFERENCES Employee (EmployeeID),
+	CONSTRAINT fkCosteCentID FOREIGN KEY (CostCentreID) REFERENCES CostCentre (CostCentreID),
+
+
+)
+
+CREATE TABLE TimesheetDetails
+(
+    TimesheetID 		int	     	NOT NULL,
+	WorkedDay 			Date	    NOT NULL,
+	StartTime			time(2)		NOT NULL,
+	EndTime				time(2)		NOT NULL,
+	ClaimTypeID			int			NOT NULL,
+	ProjectID		    int        	NOT NULL,
+	TaskID				int        	NOT NULL
+
+	--PK
+	CONSTRAINT pkTimeDetails PRIMARY KEY (TimesheetID, WorkedDay, StartTime),
+
+	--FK
+	CONSTRAINT fkClaimType FOREIGN KEY (ClaimTypeID) REFERENCES ClaimType (ClaimTypeID),
+	CONSTRAINT fkTProjID FOREIGN KEY (ProjectID) REFERENCES Project (ProjectID),
+	CONSTRAINT fkTTaskID FOREIGN KEY (ProjectID,TaskID) REFERENCES ProjectTask (ProjectID,TaskID),	
+
+)
+
+  insert into ClaimType([ClaimTypeID]
+      ,[ClaimTypeDesc])
+	  values(1,'Basic Hours'),(2,'Overtime Hours'),(3,'OnCall Hours')
