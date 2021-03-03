@@ -31,7 +31,10 @@ namespace FujitsuPayments.Forms
 
         String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
 
+        private void dtpShiftStartTime_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
 
         public frmAddShift()
         {
@@ -41,9 +44,10 @@ namespace FujitsuPayments.Forms
         private void frmAddShift_Load(object sender, EventArgs e)
         {
             // converts date time picker to time only
-            dtpShiftStartTime.CustomFormat = "hh:mm tt";
-            dtpShiftStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dtpShiftStartTime.ShowUpDown = true;
+           // dtpShiftStartTime.CustomFormat = "hh:mm tt";
+            //dtpShiftStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            //dtpShiftStartTime.ShowUpDown = true;
+            
 
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
@@ -112,11 +116,14 @@ namespace FujitsuPayments.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Dispose(); // close window
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+
+
 
         }
 
@@ -132,13 +139,14 @@ namespace FujitsuPayments.Forms
         {
             if (cmbAccountId.Focused == true)
             {
-
+                // clear data set
                 dsFujitsuPayments.Tables["Project"].Clear();
+                // pass in account ID from combo box
                 cmbProject.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
 
-               // MessageBox.Show("Selected Value = " + cmbAccountId.SelectedValue);
                 try
                 {
+                    // fill data adapter with returned values
                     daProject.Fill(dsFujitsuPayments, "Project");
                 }
                 catch (Exception ex)
@@ -149,11 +157,39 @@ namespace FujitsuPayments.Forms
                 cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
                 cmbProjectId.ValueMember = "ProjectID";
                 cmbProjectId.DisplayMember = "ProjDesc";
+
+
+                if (cmbProjectId.Focused == true)
+                {
+
+
+                    dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                    cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+
+                    try
+                    {
+                        daTask.Fill(dsFujitsuPayments, "ProjectTask");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error message " + ex);
+                    }
+
+                    cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                    cmbTaskId.ValueMember = "TaskID";
+                    cmbTaskId.DisplayMember = "TaskDesc";
+
+                }
+                else
+                {
+
+                }
             }
             else
             {
 
             }
+
 
         }
 
@@ -162,10 +198,7 @@ namespace FujitsuPayments.Forms
             if (cmbProjectId.Focused == true)
             {
                 dsFujitsuPayments.Tables["ProjectTask"].Clear();
-
-                MessageBox.Show("Project ID = " + cmbProjectId.SelectedValue);
-
-                cmbTask.Parameters["ProjectID"].Value = cmbProjectId.SelectedValue;
+                cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
 
                 try
                 {

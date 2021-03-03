@@ -33,9 +33,8 @@ namespace FujitsuPayments.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddShift));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dtpShiftStartTime = new System.Windows.Forms.DateTimePicker();
-            this.cmbShiftSlotCount = new System.Windows.Forms.ComboBox();
-            this.lblShiftSlotCount = new System.Windows.Forms.Label();
+            this.cmbEndTime = new System.Windows.Forms.ComboBox();
+            this.lblEndTime = new System.Windows.Forms.Label();
             this.lblShiftStartTime = new System.Windows.Forms.Label();
             this.dtpShiftStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblStartTime = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@ namespace FujitsuPayments.Forms
             this.lblAccountId = new System.Windows.Forms.Label();
             this.lblAddShift = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbStartTime = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
@@ -69,9 +69,9 @@ namespace FujitsuPayments.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.dtpShiftStartTime);
-            this.panel2.Controls.Add(this.cmbShiftSlotCount);
-            this.panel2.Controls.Add(this.lblShiftSlotCount);
+            this.panel2.Controls.Add(this.cmbStartTime);
+            this.panel2.Controls.Add(this.cmbEndTime);
+            this.panel2.Controls.Add(this.lblEndTime);
             this.panel2.Controls.Add(this.lblShiftStartTime);
             this.panel2.Controls.Add(this.dtpShiftStartDate);
             this.panel2.Controls.Add(this.lblStartTime);
@@ -93,32 +93,66 @@ namespace FujitsuPayments.Forms
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // dtpShiftStartTime
+            // cmbEndTime
             // 
-            this.dtpShiftStartTime.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpShiftStartTime.Location = new System.Drawing.Point(481, 128);
-            this.dtpShiftStartTime.Name = "dtpShiftStartTime";
-            this.dtpShiftStartTime.Size = new System.Drawing.Size(115, 26);
-            this.dtpShiftStartTime.TabIndex = 30;
+            this.cmbEndTime.FormattingEnabled = true;
+            this.cmbEndTime.Items.AddRange(new object[] {
+            "08:00",
+            "08:15",
+            "08:30",
+            "08:45",
+            "09:00",
+            "09:15",
+            "09:30",
+            "09:45",
+            "10:00",
+            "10:15",
+            "10:30",
+            "10:45",
+            "11:00",
+            "11:15",
+            "11:30",
+            "11:45",
+            "12:00",
+            "12:15",
+            "12:30",
+            "12:45",
+            "13:00",
+            "13:15",
+            "13:30",
+            "13:45",
+            "14:00",
+            "14:15",
+            "14:30",
+            "14:45",
+            "15:00",
+            "15:15",
+            "15:30",
+            "15:45",
+            "16:00",
+            "16:15",
+            "16:30",
+            "16:45",
+            "17:00",
+            "17:15",
+            "17:30",
+            "17:45",
+            "18:00"});
+            this.cmbEndTime.Location = new System.Drawing.Point(481, 163);
+            this.cmbEndTime.Name = "cmbEndTime";
+            this.cmbEndTime.Size = new System.Drawing.Size(102, 29);
+            this.cmbEndTime.TabIndex = 29;
             // 
-            // cmbShiftSlotCount
+            // lblEndTime
             // 
-            this.cmbShiftSlotCount.FormattingEnabled = true;
-            this.cmbShiftSlotCount.Location = new System.Drawing.Point(133, 159);
-            this.cmbShiftSlotCount.Name = "cmbShiftSlotCount";
-            this.cmbShiftSlotCount.Size = new System.Drawing.Size(125, 29);
-            this.cmbShiftSlotCount.TabIndex = 29;
-            // 
-            // lblShiftSlotCount
-            // 
-            this.lblShiftSlotCount.AutoSize = true;
-            this.lblShiftSlotCount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShiftSlotCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblShiftSlotCount.Location = new System.Drawing.Point(47, 167);
-            this.lblShiftSlotCount.Name = "lblShiftSlotCount";
-            this.lblShiftSlotCount.Size = new System.Drawing.Size(76, 17);
-            this.lblShiftSlotCount.TabIndex = 28;
-            this.lblShiftSlotCount.Text = "Slot Count";
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEndTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblEndTime.Location = new System.Drawing.Point(397, 170);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(65, 17);
+            this.lblEndTime.TabIndex = 28;
+            this.lblEndTime.Text = "End Time";
             // 
             // lblShiftStartTime
             // 
@@ -225,7 +259,7 @@ namespace FujitsuPayments.Forms
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.button2.Location = new System.Drawing.Point(264, 230);
+            this.button2.Location = new System.Drawing.Point(264, 236);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 27);
             this.button2.TabIndex = 13;
@@ -240,7 +274,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.btnSave.Location = new System.Drawing.Point(414, 230);
+            this.btnSave.Location = new System.Drawing.Point(414, 236);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(97, 27);
             this.btnSave.TabIndex = 12;
@@ -273,6 +307,56 @@ namespace FujitsuPayments.Forms
             // errP
             // 
             this.errP.ContainerControl = this;
+            // 
+            // cmbStartTime
+            // 
+            this.cmbStartTime.FormattingEnabled = true;
+            this.cmbStartTime.Items.AddRange(new object[] {
+            "08:00",
+            "08:15",
+            "08:30",
+            "08:45",
+            "09:00",
+            "09:15",
+            "09:30",
+            "09:45",
+            "10:00",
+            "10:15",
+            "10:30",
+            "10:45",
+            "11:00",
+            "11:15",
+            "11:30",
+            "11:45",
+            "12:00",
+            "12:15",
+            "12:30",
+            "12:45",
+            "13:00",
+            "13:15",
+            "13:30",
+            "13:45",
+            "14:00",
+            "14:15",
+            "14:30",
+            "14:45",
+            "15:00",
+            "15:15",
+            "15:30",
+            "15:45",
+            "16:00",
+            "16:15",
+            "16:30",
+            "16:45",
+            "17:00",
+            "17:15",
+            "17:30",
+            "17:45",
+            "18:00"});
+            this.cmbStartTime.Location = new System.Drawing.Point(481, 128);
+            this.cmbStartTime.Name = "cmbStartTime";
+            this.cmbStartTime.Size = new System.Drawing.Size(102, 29);
+            this.cmbStartTime.TabIndex = 30;
             // 
             // frmAddShift
             // 
@@ -307,9 +391,8 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblAccountId;
         private System.Windows.Forms.Label lblAddShift;
-        private System.Windows.Forms.DateTimePicker dtpShiftStartTime;
-        private System.Windows.Forms.ComboBox cmbShiftSlotCount;
-        private System.Windows.Forms.Label lblShiftSlotCount;
+        private System.Windows.Forms.ComboBox cmbEndTime;
+        private System.Windows.Forms.Label lblEndTime;
         private System.Windows.Forms.Label lblShiftStartTime;
         private System.Windows.Forms.DateTimePicker dtpShiftStartDate;
         private System.Windows.Forms.Label lblStartTime;
@@ -318,5 +401,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbProjectId;
         private System.Windows.Forms.Label lblProjectId;
         private System.Windows.Forms.ComboBox cmbAccountId;
+        private System.Windows.Forms.ComboBox cmbStartTime;
     }
 }
