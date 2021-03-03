@@ -53,15 +53,7 @@ namespace FujitsuPayments
         public DateTime StartDate
         {
             get { return startDate; }
-            set
-            {
-                if (MyValidation.validDays(Convert.ToString(value), 1))
-                {
-                    startDate = value;
-                }
-                else
-                    throw new MyException("Start days must be greater than 1 day.");
-            }
+            set { startDate = value; }
         }
 
         public DateTime StartTime

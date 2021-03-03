@@ -111,8 +111,6 @@ namespace FujitsuPayments.Forms
 
             object[] primaryKey = new object[2];
 
-            
-
             primaryKey[0] = Convert.ToInt32(prjno);
             primaryKey[1] = Convert.ToInt32(lblTaskId.Text);
 

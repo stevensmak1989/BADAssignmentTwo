@@ -25,7 +25,7 @@ namespace FujitsuPayments
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // timesheets
         {
             SidePanel.Height = btnTimeSheet.Height;
             SidePanel.Top = btnTimeSheet.Top;
@@ -46,7 +46,7 @@ namespace FujitsuPayments
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // schedule
         {
             SidePanel.Height = btnOnCall.Height;
             SidePanel.Top = btnOnCall.Top;
@@ -93,7 +93,8 @@ namespace FujitsuPayments
         private void btnProject_Click(object sender, EventArgs e)
         {
 
-          
+            SidePanel.Height = btnProject.Height;
+            SidePanel.Top = btnProject.Top;
             timer1.Start();
             timer1_Tick(sender,e);
 
@@ -111,7 +112,7 @@ namespace FujitsuPayments
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) // project
         {
             SidePanel.Height = btnProject.Height;
             SidePanel.Top = btnProject.Top;
@@ -174,7 +175,7 @@ namespace FujitsuPayments
             }
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void button1_Click_2(object sender, EventArgs e) 
         {
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;

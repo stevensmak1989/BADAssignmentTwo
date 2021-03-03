@@ -20,6 +20,10 @@ namespace FujitsuPayments.UserControls
         DataRow drShift;
         String connStr, sqlShift;
 
+        // Static varibales to pass to form's
+        public static bool shiftSelected = false;
+        public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0; 
+
         public UC_Schedule()
         {
             InitializeComponent();
@@ -67,6 +71,44 @@ namespace FujitsuPayments.UserControls
         private void lable5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblSaturday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditShift_Click(object sender, EventArgs e)
+        {
+            if (dgvShift.SelectedRows.Count == 0)
+            {
+                shiftSelected = false;
+                shiftIdSelected = 0;
+                MessageBox.Show("Please select a record.", "Select Shift");
+            }
+            else if (dgvShift.SelectedRows.Count > 1)
+            {
+                shiftSelected = false;
+                shiftIdSelected = 0;
+                MessageBox.Show("Please select a single record, cannot edit multiple records", "Select Account");
+
+            }
+            else if (dgvShift.SelectedRows.Count == 1)
+            {
+                shiftSelected = true;
+                shiftIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[0].Value);
+                accIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[1].Value);
+                projIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[2].Value);
+                taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
+
+                frmEditShift frm = new frmEditShift();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(180, 100);
+                this.Controls.Add(frm);
+                frm.BringToFront();
+            }
         }
 
         private void btnDeleteShift_Click(object sender, EventArgs e)
