@@ -39,44 +39,16 @@ namespace FujitsuPayments.Forms
             this.lblDateWed = new System.Windows.Forms.Label();
             this.lblDateTue = new System.Windows.Forms.Label();
             this.lblDateMon = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.textBox36 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -86,7 +58,7 @@ namespace FujitsuPayments.Forms
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbEmpTask = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -106,6 +78,8 @@ namespace FujitsuPayments.Forms
             this.lblCostCentreID = new System.Windows.Forms.Label();
             this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.lblApprovedBy = new System.Windows.Forms.Label();
+            this.lblClaimType = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -130,44 +104,16 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.lblDateWed);
             this.panel1.Controls.Add(this.lblDateTue);
             this.panel1.Controls.Add(this.lblDateMon);
-            this.panel1.Controls.Add(this.textBox31);
-            this.panel1.Controls.Add(this.textBox32);
-            this.panel1.Controls.Add(this.textBox33);
-            this.panel1.Controls.Add(this.textBox34);
             this.panel1.Controls.Add(this.textBox35);
             this.panel1.Controls.Add(this.textBox36);
-            this.panel1.Controls.Add(this.textBox25);
-            this.panel1.Controls.Add(this.textBox26);
-            this.panel1.Controls.Add(this.textBox27);
-            this.panel1.Controls.Add(this.textBox28);
             this.panel1.Controls.Add(this.textBox29);
             this.panel1.Controls.Add(this.textBox30);
-            this.panel1.Controls.Add(this.textBox19);
-            this.panel1.Controls.Add(this.textBox20);
-            this.panel1.Controls.Add(this.textBox21);
-            this.panel1.Controls.Add(this.textBox22);
             this.panel1.Controls.Add(this.textBox23);
             this.panel1.Controls.Add(this.textBox24);
-            this.panel1.Controls.Add(this.textBox13);
-            this.panel1.Controls.Add(this.textBox14);
-            this.panel1.Controls.Add(this.textBox15);
-            this.panel1.Controls.Add(this.textBox16);
             this.panel1.Controls.Add(this.textBox17);
             this.panel1.Controls.Add(this.textBox18);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.textBox10);
             this.panel1.Controls.Add(this.textBox11);
             this.panel1.Controls.Add(this.textBox12);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.textBox1);
@@ -177,7 +123,7 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.comboBox4);
             this.panel1.Controls.Add(this.comboBox3);
             this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbEmpTask);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -185,9 +131,9 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 141);
+            this.panel1.Location = new System.Drawing.Point(16, 140);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(738, 281);
+            this.panel1.Size = new System.Drawing.Size(506, 281);
             this.panel1.TabIndex = 64;
             // 
             // lblDateSun
@@ -253,291 +199,87 @@ namespace FujitsuPayments.Forms
             this.lblDateMon.TabIndex = 118;
             this.lblDateMon.Text = "-";
             // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(660, 252);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(63, 20);
-            this.textBox31.TabIndex = 117;
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(575, 252);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(63, 20);
-            this.textBox32.TabIndex = 116;
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(481, 252);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(63, 20);
-            this.textBox33.TabIndex = 115;
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(396, 252);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(63, 20);
-            this.textBox34.TabIndex = 114;
-            // 
             // textBox35
             // 
-            this.textBox35.Location = new System.Drawing.Point(305, 252);
+            this.textBox35.Location = new System.Drawing.Point(375, 252);
             this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(63, 20);
+            this.textBox35.Size = new System.Drawing.Size(80, 20);
             this.textBox35.TabIndex = 113;
             // 
             // textBox36
             // 
-            this.textBox36.Location = new System.Drawing.Point(220, 252);
+            this.textBox36.Location = new System.Drawing.Point(248, 252);
             this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(63, 20);
+            this.textBox36.Size = new System.Drawing.Size(76, 20);
             this.textBox36.TabIndex = 112;
-            // 
-            // textBox25
-            // 
-            this.textBox25.Location = new System.Drawing.Point(660, 212);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(63, 20);
-            this.textBox25.TabIndex = 111;
-            // 
-            // textBox26
-            // 
-            this.textBox26.Location = new System.Drawing.Point(575, 212);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(63, 20);
-            this.textBox26.TabIndex = 110;
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(481, 212);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(63, 20);
-            this.textBox27.TabIndex = 109;
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(396, 212);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(63, 20);
-            this.textBox28.TabIndex = 108;
             // 
             // textBox29
             // 
-            this.textBox29.Location = new System.Drawing.Point(305, 212);
+            this.textBox29.Location = new System.Drawing.Point(375, 212);
             this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(63, 20);
+            this.textBox29.Size = new System.Drawing.Size(80, 20);
             this.textBox29.TabIndex = 107;
             // 
             // textBox30
             // 
-            this.textBox30.Location = new System.Drawing.Point(220, 212);
+            this.textBox30.Location = new System.Drawing.Point(248, 212);
             this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(63, 20);
+            this.textBox30.Size = new System.Drawing.Size(76, 20);
             this.textBox30.TabIndex = 106;
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(660, 170);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(63, 20);
-            this.textBox19.TabIndex = 105;
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(575, 170);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(63, 20);
-            this.textBox20.TabIndex = 104;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(481, 170);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(63, 20);
-            this.textBox21.TabIndex = 103;
-            // 
-            // textBox22
-            // 
-            this.textBox22.Location = new System.Drawing.Point(396, 170);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(63, 20);
-            this.textBox22.TabIndex = 102;
             // 
             // textBox23
             // 
-            this.textBox23.Location = new System.Drawing.Point(305, 170);
+            this.textBox23.Location = new System.Drawing.Point(375, 170);
             this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(63, 20);
+            this.textBox23.Size = new System.Drawing.Size(80, 20);
             this.textBox23.TabIndex = 101;
             // 
             // textBox24
             // 
-            this.textBox24.Location = new System.Drawing.Point(220, 170);
+            this.textBox24.Location = new System.Drawing.Point(248, 170);
             this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(63, 20);
+            this.textBox24.Size = new System.Drawing.Size(76, 20);
             this.textBox24.TabIndex = 100;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(660, 125);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(63, 20);
-            this.textBox13.TabIndex = 99;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(575, 125);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(63, 20);
-            this.textBox14.TabIndex = 98;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(481, 125);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(63, 20);
-            this.textBox15.TabIndex = 97;
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(396, 125);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(63, 20);
-            this.textBox16.TabIndex = 96;
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(305, 125);
+            this.textBox17.Location = new System.Drawing.Point(375, 125);
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(63, 20);
+            this.textBox17.Size = new System.Drawing.Size(80, 20);
             this.textBox17.TabIndex = 95;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(220, 125);
+            this.textBox18.Location = new System.Drawing.Point(248, 125);
             this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(63, 20);
+            this.textBox18.Size = new System.Drawing.Size(76, 20);
             this.textBox18.TabIndex = 94;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(660, 86);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(63, 20);
-            this.textBox7.TabIndex = 93;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(575, 86);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(63, 20);
-            this.textBox8.TabIndex = 92;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(481, 86);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(63, 20);
-            this.textBox9.TabIndex = 91;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(396, 86);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(63, 20);
-            this.textBox10.TabIndex = 90;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(305, 86);
+            this.textBox11.Location = new System.Drawing.Point(375, 86);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(63, 20);
+            this.textBox11.Size = new System.Drawing.Size(80, 20);
             this.textBox11.TabIndex = 89;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(220, 86);
+            this.textBox12.Location = new System.Drawing.Point(248, 86);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(63, 20);
+            this.textBox12.Size = new System.Drawing.Size(76, 20);
             this.textBox12.TabIndex = 88;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(660, 47);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(63, 20);
-            this.textBox5.TabIndex = 87;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(657, 18);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 13);
-            this.label12.TabIndex = 86;
-            this.label12.Text = "OnCall End";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(575, 47);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(63, 20);
-            this.textBox6.TabIndex = 85;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(572, 18);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 84;
-            this.label13.Text = "OnCall Start";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(481, 47);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(63, 20);
-            this.textBox3.TabIndex = 83;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(478, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 13);
-            this.label10.TabIndex = 82;
-            this.label10.Text = "Overtime End";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(396, 47);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(63, 20);
-            this.textBox4.TabIndex = 81;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(393, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
-            this.label11.TabIndex = 80;
-            this.label11.Text = "Overtime Start";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(305, 47);
+            this.textBox2.Location = new System.Drawing.Point(375, 47);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(63, 20);
+            this.textBox2.Size = new System.Drawing.Size(80, 20);
             this.textBox2.TabIndex = 79;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(302, 18);
+            this.label9.Location = new System.Drawing.Point(372, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 78;
@@ -545,15 +287,15 @@ namespace FujitsuPayments.Forms
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(220, 47);
+            this.textBox1.Location = new System.Drawing.Point(248, 47);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(63, 20);
+            this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 77;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(217, 18);
+            this.label8.Location = new System.Drawing.Point(245, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 76;
@@ -566,6 +308,7 @@ namespace FujitsuPayments.Forms
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(60, 21);
             this.comboBox6.TabIndex = 75;
+            this.comboBox6.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // comboBox5
             // 
@@ -574,6 +317,7 @@ namespace FujitsuPayments.Forms
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(60, 21);
             this.comboBox5.TabIndex = 74;
+            this.comboBox5.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // comboBox4
             // 
@@ -582,6 +326,7 @@ namespace FujitsuPayments.Forms
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(60, 21);
             this.comboBox4.TabIndex = 73;
+            this.comboBox4.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -590,6 +335,7 @@ namespace FujitsuPayments.Forms
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(60, 21);
             this.comboBox3.TabIndex = 72;
+            this.comboBox3.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -598,14 +344,16 @@ namespace FujitsuPayments.Forms
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(60, 21);
             this.comboBox2.TabIndex = 71;
+            this.comboBox2.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cmbEmpTask
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(129, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(60, 21);
-            this.comboBox1.TabIndex = 70;
+            this.cmbEmpTask.FormattingEnabled = true;
+            this.cmbEmpTask.Location = new System.Drawing.Point(129, 46);
+            this.cmbEmpTask.Name = "cmbEmpTask";
+            this.cmbEmpTask.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask.TabIndex = 70;
+            this.cmbEmpTask.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -681,11 +429,13 @@ namespace FujitsuPayments.Forms
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblClaimType);
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.lblWeekNo);
             this.panel2.Controls.Add(this.cmbDates);
             this.panel2.Location = new System.Drawing.Point(575, 9);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(223, 37);
+            this.panel2.Size = new System.Drawing.Size(223, 103);
             this.panel2.TabIndex = 66;
             // 
             // panel3
@@ -724,6 +474,7 @@ namespace FujitsuPayments.Forms
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(114, 21);
             this.cmbEmployee.TabIndex = 71;
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // lblEmpID
             // 
@@ -779,6 +530,23 @@ namespace FujitsuPayments.Forms
             this.lblApprovedBy.TabIndex = 68;
             this.lblApprovedBy.Text = "Approved By";
             // 
+            // lblClaimType
+            // 
+            this.lblClaimType.AutoSize = true;
+            this.lblClaimType.Location = new System.Drawing.Point(9, 44);
+            this.lblClaimType.Name = "lblClaimType";
+            this.lblClaimType.Size = new System.Drawing.Size(59, 13);
+            this.lblClaimType.TabIndex = 67;
+            this.lblClaimType.Text = "Claim Type";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(115, 44);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(98, 21);
+            this.comboBox1.TabIndex = 66;
+            // 
             // frmAddTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -815,44 +583,16 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblDateWed;
         private System.Windows.Forms.Label lblDateTue;
         private System.Windows.Forms.Label lblDateMon;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox1;
@@ -862,7 +602,7 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbEmpTask;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -882,5 +622,7 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbApprovedBy;
         private System.Windows.Forms.Label lblApprovedBy;
         private System.Windows.Forms.ComboBox cmbCostCentID;
+        private System.Windows.Forms.Label lblClaimType;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

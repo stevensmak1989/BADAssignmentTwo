@@ -66,6 +66,7 @@ namespace FujitsuPayments.UserControls
             this.dvgEmpTask.ReadOnly = true;
             this.dvgEmpTask.Size = new System.Drawing.Size(1087, 477);
             this.dvgEmpTask.TabIndex = 0;
+            this.dvgEmpTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgEmpTask_CellContentClick);
             // 
             // flowLayoutPanel1
             // 

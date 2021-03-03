@@ -14,15 +14,15 @@ namespace FujitsuPayments.Forms
     public partial class frmAddTimesheet : Form
     {
 
-        SqlDataAdapter daEmployee;
+        SqlDataAdapter daProject, daTask, daEmployee, daEmpTask;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBEmployee;
-        DataRow drEmployee;
-        String connStr, sqlEmployee;
-        private Array [] dates ;
-        private int count = 0;
-        
-         
+        SqlCommandBuilder cmbBProject, cmbBTask, cmbBEmp, cmbBEmpTask;
+        SqlCommand cmdEmp;
+        DataRow drProject, drTask, drEmp, drEmpTask;
+        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
+        SqlConnection conn;
+
+
 
         public frmAddTimesheet()
         {
@@ -42,15 +42,22 @@ namespace FujitsuPayments.Forms
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
-            sqlEmployee = @"select * from Employee";
-            daEmployee = new SqlDataAdapter(sqlEmployee, connStr);
-            cmbBEmployee = new SqlCommandBuilder(daEmployee);
+            sqlEmp = @"select EmployeeID, Surname + ' ' + Forename as EmpName from Employee";
+            daEmployee = new SqlDataAdapter(sqlEmp, connStr);
+            cmbBEmp = new SqlCommandBuilder(daEmployee);
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
             cmbEmployee.DataSource = dsFujitsuPayments.Tables["Employee"];
             cmbEmployee.ValueMember = "EmployeeID";
-            cmbEmployee.DisplayMember = "Forename" + " " + "Surname";
+            cmbEmployee.DisplayMember = "EmpName";
+
+            sqlEmpTask = @"select * from ProjectTaskEmployee where EmployeeID like @EmployeeID";
+            conn = new SqlConnection(connStr);
+            cmdEmp = new SqlCommand(sqlEmpTask, conn);
+            cmdEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            daEmpTask = new SqlDataAdapter(cmdEmp);
+            daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
 
 
@@ -97,6 +104,32 @@ namespace FujitsuPayments.Forms
             lblDateSat.Text = sat.ToShortDateString();
             DateTime sun = sat.AddDays(1).Date;
             lblDateSun.Text = sun.ToShortDateString();
+        }
+
+        private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cmbEmployee.Focused == true)
+            {
+
+
+                dsFujitsuPayments.Tables["ProjectTaskEmployee"].Clear();
+                cmdEmp.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
+
+                daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
+                foreach (Control c in panel1.Controls)
+                {
+                    
+                    if (c is ComboBox)
+                    {
+                        ComboBox x = (ComboBox)c;
+                        x.DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+                        x.ValueMember = "TaskID";
+                        x.DisplayMember = "ProjectID" + "TaskID";
+                    }
+                    
+                }
+            }
         }
 
         private void cmbDates_SelectedIndexChanged(object sender, EventArgs e)

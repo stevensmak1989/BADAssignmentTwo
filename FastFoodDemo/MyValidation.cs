@@ -227,6 +227,27 @@ namespace FujitsuPayments
             }
             return ok;
         }
+        public static bool validStartWeek(string txt)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime DOB = Convert.ToDateTime(txt);
+
+            TimeSpan t = currentDate - DOB;
+            double noOfDays = t.TotalDays;
+
+            bool ok = true;
+
+            if (txt.Trim().Length == 0)
+            {
+                ok = false;
+            }
+            else
+            {
+                if (noOfDays <= 5848)
+                    ok = false;
+            }
+            return ok;
+        }
 
         public static bool validDays(string txt, int Min)
         {

@@ -24,6 +24,11 @@ namespace FujitsuPayments.UserControls
         public static bool tskSelected = false;
         public static int tskNoSelected = 0, prjNoSelected = 0, empNoSelected =0;
 
+        private void dvgEmpTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         public UC_EmpProTask()
         {
             InitializeComponent();

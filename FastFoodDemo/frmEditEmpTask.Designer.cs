@@ -1,7 +1,7 @@
 ﻿
-namespace FujitsuPayments.Forms
+namespace FujitsuPayments
 {
-    partial class frmEmpTaskAdd
+    partial class frmEditEmpTask
     {
         /// <summary>
         /// Required designer variable.
@@ -87,7 +87,6 @@ namespace FujitsuPayments.Forms
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTaskCode
             // 
@@ -126,7 +125,7 @@ namespace FujitsuPayments.Forms
             this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(612, 279);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 3;
             // 
             // cmbEmp
             // 
@@ -135,7 +134,6 @@ namespace FujitsuPayments.Forms
             this.cmbEmp.Name = "cmbEmp";
             this.cmbEmp.Size = new System.Drawing.Size(138, 21);
             this.cmbEmp.TabIndex = 24;
-            this.cmbEmp.SelectedIndexChanged += new System.EventHandler(this.cmbEmp_SelectedIndexChanged);
             // 
             // lblEmployee
             // 
@@ -155,7 +153,6 @@ namespace FujitsuPayments.Forms
             this.cmbTaskCode.Name = "cmbTaskCode";
             this.cmbTaskCode.Size = new System.Drawing.Size(138, 21);
             this.cmbTaskCode.TabIndex = 21;
-            this.cmbTaskCode.SelectedIndexChanged += new System.EventHandler(this.cmbTaskCode_SelectedIndexChanged);
             // 
             // cmbProjectId
             // 
@@ -164,9 +161,8 @@ namespace FujitsuPayments.Forms
             this.cmbProjectId.Name = "cmbProjectId";
             this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
             this.cmbProjectId.TabIndex = 20;
-            this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
             // 
-            // frmEmpTaskAdd
+            // frmEditEmpTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,9 +170,8 @@ namespace FujitsuPayments.Forms
             this.ClientSize = new System.Drawing.Size(628, 295);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmEmpTaskAdd";
-            this.Text = "frmEmpTaskAdd";
-            this.Load += new System.EventHandler(this.frmEmpTaskAdd_Load);
+            this.Name = "frmEditEmpTask";
+            this.Text = "frmEditEmpTask";
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -188,14 +183,14 @@ namespace FujitsuPayments.Forms
 
         private System.Windows.Forms.ErrorProvider errP;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cmbEmp;
+        private System.Windows.Forms.Label lblEmployee;
+        private System.Windows.Forms.ComboBox cmbTaskCode;
         private System.Windows.Forms.ComboBox cmbProjectId;
         private System.Windows.Forms.Label lblAccountId;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTaskCode;
         private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.ComboBox cmbTaskCode;
-        private System.Windows.Forms.ComboBox cmbEmp;
-        private System.Windows.Forms.Label lblEmployee;
     }
 }

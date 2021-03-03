@@ -19,6 +19,11 @@ namespace FujitsuPayments.Forms
         SqlCommand cmdTask;
         DataRow drProject, drTask, drEmp, drEmpTask;
 
+        private void cmbEmp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             EmployeeTask myProject = new EmployeeTask();
@@ -60,17 +65,16 @@ namespace FujitsuPayments.Forms
             {
                 if (ok)
                 {
-
                     drEmpTask = dsFujitsuPayments.Tables["ProjectTaskEmployee"].NewRow();
 
                     drEmpTask["ProjectID"] = myProject.ProjectId;
                     drEmpTask["TaskID"] = myProject.TaskId;
                     drEmpTask["EmployeeID"] = myProject.EmployeeId;
 
-                    dsFujitsuPayments.Tables["ProjectTaskEmployee"].Rows.Add(drTask);
-                    daTask.Update(dsFujitsuPayments, "ProjectTaskEmployee");
+                    dsFujitsuPayments.Tables["ProjectTaskEmployee"].Rows.Add(drEmpTask);
+                    daEmpTask.Update(dsFujitsuPayments, "ProjectTaskEmployee");
 
-                    MessageBox.Show("Employee Task Added");
+                    MessageBox.Show("Task Added");
                     this.Dispose();
 
                 }
@@ -90,6 +94,7 @@ namespace FujitsuPayments.Forms
 
             if (cmbProjectId.Focused == true)
             {
+                
 
                 dsFujitsuPayments.Tables["ProjectTask"].Clear();
                 cmdTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
@@ -139,6 +144,14 @@ namespace FujitsuPayments.Forms
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
+           
+
+            sqlEmpTask = @"select * from ProjectTaskEmployee";
+            daEmpTask = new SqlDataAdapter(sqlEmpTask, connStr);
+            cmbBEmpTask = new SqlCommandBuilder(daEmpTask);
+            daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
+            daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
+
             cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
             cmbProjectId.ValueMember = "ProjectID";
             cmbProjectId.DisplayMember = "ProjDesc";
@@ -147,7 +160,6 @@ namespace FujitsuPayments.Forms
             cmbEmp.ValueMember = "EmployeeID";
             cmbEmp.DisplayMember = "EmpName";
 
-          
         }
 
         private void cmbTaskCode_SelectedIndexChanged(object sender, EventArgs e)
