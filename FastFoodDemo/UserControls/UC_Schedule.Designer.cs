@@ -79,6 +79,7 @@ namespace FujitsuPayments.UserControls
             this.panel37 = new System.Windows.Forms.Panel();
             this.panel38 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
+            this.panel40 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -139,7 +140,8 @@ namespace FujitsuPayments.UserControls
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.panel40);
             this.panel3.Controls.Add(this.panel39);
             this.panel3.Controls.Add(this.panel38);
             this.panel3.Controls.Add(this.panel37);
@@ -185,7 +187,7 @@ namespace FujitsuPayments.UserControls
             // 
             // calShift
             // 
-            this.calShift.Location = new System.Drawing.Point(863, 23);
+            this.calShift.Location = new System.Drawing.Point(863, 45);
             this.calShift.Name = "calShift";
             this.calShift.TabIndex = 0;
             // 
@@ -199,8 +201,7 @@ namespace FujitsuPayments.UserControls
             this.panel4.Controls.Add(this.lblWednesday);
             this.panel4.Controls.Add(this.lblTuesday);
             this.panel4.Controls.Add(this.lblMonday);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Location = new System.Drawing.Point(0, 19);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1090, 22);
             this.panel4.TabIndex = 1;
@@ -279,7 +280,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Location = new System.Drawing.Point(3, 28);
+            this.panel5.Location = new System.Drawing.Point(3, 50);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(98, 79);
             this.panel5.TabIndex = 2;
@@ -288,7 +289,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Location = new System.Drawing.Point(107, 28);
+            this.panel6.Location = new System.Drawing.Point(107, 50);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(98, 79);
             this.panel6.TabIndex = 3;
@@ -297,7 +298,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Location = new System.Drawing.Point(211, 28);
+            this.panel7.Location = new System.Drawing.Point(211, 50);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(98, 79);
             this.panel7.TabIndex = 4;
@@ -306,7 +307,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Location = new System.Drawing.Point(315, 28);
+            this.panel8.Location = new System.Drawing.Point(315, 50);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(98, 79);
             this.panel8.TabIndex = 4;
@@ -315,7 +316,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Location = new System.Drawing.Point(419, 28);
+            this.panel9.Location = new System.Drawing.Point(419, 50);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(98, 79);
             this.panel9.TabIndex = 4;
@@ -324,7 +325,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Location = new System.Drawing.Point(523, 28);
+            this.panel10.Location = new System.Drawing.Point(523, 50);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(98, 79);
             this.panel10.TabIndex = 4;
@@ -333,7 +334,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel11.BackColor = System.Drawing.Color.White;
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Location = new System.Drawing.Point(627, 28);
+            this.panel11.Location = new System.Drawing.Point(627, 50);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(98, 79);
             this.panel11.TabIndex = 4;
@@ -342,7 +343,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel12.BackColor = System.Drawing.Color.White;
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Location = new System.Drawing.Point(3, 113);
+            this.panel12.Location = new System.Drawing.Point(3, 135);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(98, 79);
             this.panel12.TabIndex = 4;
@@ -351,7 +352,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel13.BackColor = System.Drawing.Color.White;
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Location = new System.Drawing.Point(107, 113);
+            this.panel13.Location = new System.Drawing.Point(107, 135);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(98, 79);
             this.panel13.TabIndex = 4;
@@ -360,7 +361,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel14.BackColor = System.Drawing.Color.White;
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Location = new System.Drawing.Point(211, 113);
+            this.panel14.Location = new System.Drawing.Point(211, 135);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(98, 79);
             this.panel14.TabIndex = 4;
@@ -369,7 +370,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel15.BackColor = System.Drawing.Color.White;
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Location = new System.Drawing.Point(315, 113);
+            this.panel15.Location = new System.Drawing.Point(315, 135);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(98, 79);
             this.panel15.TabIndex = 4;
@@ -378,7 +379,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel16.BackColor = System.Drawing.Color.White;
             this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Location = new System.Drawing.Point(419, 113);
+            this.panel16.Location = new System.Drawing.Point(419, 135);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(98, 79);
             this.panel16.TabIndex = 4;
@@ -387,7 +388,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel17.BackColor = System.Drawing.Color.White;
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Location = new System.Drawing.Point(523, 113);
+            this.panel17.Location = new System.Drawing.Point(523, 135);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(98, 79);
             this.panel17.TabIndex = 4;
@@ -396,7 +397,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel18.BackColor = System.Drawing.Color.White;
             this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Location = new System.Drawing.Point(627, 113);
+            this.panel18.Location = new System.Drawing.Point(627, 135);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(98, 79);
             this.panel18.TabIndex = 4;
@@ -405,7 +406,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel19.BackColor = System.Drawing.Color.White;
             this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel19.Location = new System.Drawing.Point(3, 198);
+            this.panel19.Location = new System.Drawing.Point(3, 220);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(98, 79);
             this.panel19.TabIndex = 4;
@@ -414,7 +415,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel20.BackColor = System.Drawing.Color.White;
             this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel20.Location = new System.Drawing.Point(107, 198);
+            this.panel20.Location = new System.Drawing.Point(107, 220);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(98, 79);
             this.panel20.TabIndex = 4;
@@ -423,7 +424,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel21.BackColor = System.Drawing.Color.White;
             this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel21.Location = new System.Drawing.Point(211, 198);
+            this.panel21.Location = new System.Drawing.Point(211, 220);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(98, 79);
             this.panel21.TabIndex = 4;
@@ -432,7 +433,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel22.BackColor = System.Drawing.Color.White;
             this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel22.Location = new System.Drawing.Point(315, 198);
+            this.panel22.Location = new System.Drawing.Point(315, 220);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(98, 79);
             this.panel22.TabIndex = 4;
@@ -441,7 +442,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel23.BackColor = System.Drawing.Color.White;
             this.panel23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel23.Location = new System.Drawing.Point(419, 198);
+            this.panel23.Location = new System.Drawing.Point(419, 220);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(98, 79);
             this.panel23.TabIndex = 4;
@@ -450,7 +451,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel24.BackColor = System.Drawing.Color.White;
             this.panel24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel24.Location = new System.Drawing.Point(523, 198);
+            this.panel24.Location = new System.Drawing.Point(523, 220);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(98, 79);
             this.panel24.TabIndex = 4;
@@ -459,7 +460,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel25.BackColor = System.Drawing.Color.White;
             this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel25.Location = new System.Drawing.Point(627, 198);
+            this.panel25.Location = new System.Drawing.Point(627, 220);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(98, 79);
             this.panel25.TabIndex = 4;
@@ -468,7 +469,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel26.BackColor = System.Drawing.Color.White;
             this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel26.Location = new System.Drawing.Point(3, 283);
+            this.panel26.Location = new System.Drawing.Point(3, 305);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(98, 79);
             this.panel26.TabIndex = 4;
@@ -477,7 +478,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel27.BackColor = System.Drawing.Color.White;
             this.panel27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel27.Location = new System.Drawing.Point(107, 283);
+            this.panel27.Location = new System.Drawing.Point(107, 305);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(98, 79);
             this.panel27.TabIndex = 4;
@@ -486,7 +487,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel28.BackColor = System.Drawing.Color.White;
             this.panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel28.Location = new System.Drawing.Point(211, 283);
+            this.panel28.Location = new System.Drawing.Point(211, 305);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(98, 79);
             this.panel28.TabIndex = 4;
@@ -495,7 +496,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel29.BackColor = System.Drawing.Color.White;
             this.panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel29.Location = new System.Drawing.Point(315, 283);
+            this.panel29.Location = new System.Drawing.Point(315, 305);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(98, 79);
             this.panel29.TabIndex = 4;
@@ -504,7 +505,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel30.BackColor = System.Drawing.Color.White;
             this.panel30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel30.Location = new System.Drawing.Point(419, 283);
+            this.panel30.Location = new System.Drawing.Point(419, 305);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(98, 79);
             this.panel30.TabIndex = 4;
@@ -513,7 +514,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel31.BackColor = System.Drawing.Color.White;
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel31.Location = new System.Drawing.Point(523, 283);
+            this.panel31.Location = new System.Drawing.Point(523, 305);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(98, 79);
             this.panel31.TabIndex = 4;
@@ -522,7 +523,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel32.BackColor = System.Drawing.Color.White;
             this.panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel32.Location = new System.Drawing.Point(627, 283);
+            this.panel32.Location = new System.Drawing.Point(627, 305);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(98, 79);
             this.panel32.TabIndex = 4;
@@ -531,7 +532,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel33.BackColor = System.Drawing.Color.White;
             this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel33.Location = new System.Drawing.Point(3, 368);
+            this.panel33.Location = new System.Drawing.Point(3, 390);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(98, 79);
             this.panel33.TabIndex = 4;
@@ -540,7 +541,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel34.BackColor = System.Drawing.Color.White;
             this.panel34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel34.Location = new System.Drawing.Point(107, 368);
+            this.panel34.Location = new System.Drawing.Point(107, 390);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(98, 79);
             this.panel34.TabIndex = 4;
@@ -549,7 +550,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel35.BackColor = System.Drawing.Color.White;
             this.panel35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel35.Location = new System.Drawing.Point(211, 368);
+            this.panel35.Location = new System.Drawing.Point(211, 390);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(98, 79);
             this.panel35.TabIndex = 4;
@@ -558,7 +559,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel36.BackColor = System.Drawing.Color.White;
             this.panel36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel36.Location = new System.Drawing.Point(315, 368);
+            this.panel36.Location = new System.Drawing.Point(315, 390);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(98, 79);
             this.panel36.TabIndex = 4;
@@ -567,7 +568,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel37.BackColor = System.Drawing.Color.White;
             this.panel37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel37.Location = new System.Drawing.Point(419, 368);
+            this.panel37.Location = new System.Drawing.Point(419, 390);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(98, 79);
             this.panel37.TabIndex = 4;
@@ -576,7 +577,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel38.BackColor = System.Drawing.Color.White;
             this.panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel38.Location = new System.Drawing.Point(522, 368);
+            this.panel38.Location = new System.Drawing.Point(522, 390);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(98, 79);
             this.panel38.TabIndex = 4;
@@ -585,10 +586,19 @@ namespace FujitsuPayments.UserControls
             // 
             this.panel39.BackColor = System.Drawing.Color.White;
             this.panel39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel39.Location = new System.Drawing.Point(627, 368);
+            this.panel39.Location = new System.Drawing.Point(627, 390);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(98, 79);
             this.panel39.TabIndex = 4;
+            // 
+            // panel40
+            // 
+            this.panel40.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel40.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel40.Location = new System.Drawing.Point(0, 0);
+            this.panel40.Name = "panel40";
+            this.panel40.Size = new System.Drawing.Size(1090, 20);
+            this.panel40.TabIndex = 5;
             // 
             // UC_Schedule
             // 
@@ -659,5 +669,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel40;
     }
 }

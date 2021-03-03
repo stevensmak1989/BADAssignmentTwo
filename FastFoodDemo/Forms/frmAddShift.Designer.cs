@@ -157,6 +157,7 @@ namespace FujitsuPayments.Forms
             this.cmbTaskId.Name = "cmbTaskId";
             this.cmbTaskId.Size = new System.Drawing.Size(222, 29);
             this.cmbTaskId.TabIndex = 24;
+            this.cmbTaskId.SelectedIndexChanged += new System.EventHandler(this.cmbTaskId_SelectedIndexChanged);
             // 
             // lblTaskId
             // 
@@ -176,6 +177,7 @@ namespace FujitsuPayments.Forms
             this.cmbProjectId.Name = "cmbProjectId";
             this.cmbProjectId.Size = new System.Drawing.Size(222, 29);
             this.cmbProjectId.TabIndex = 22;
+            this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
             // 
             // lblProjectId
             // 
