@@ -38,5 +38,10 @@ namespace FujitsuPayments.UserControls
             this.Controls.Add(frm);
             frm.BringToFront();
         }
+
+        private void lable5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
