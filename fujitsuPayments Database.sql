@@ -208,7 +208,7 @@ CREATE TABLE Timesheet
 	TimesheetID			int			NOT NULL,
 	EmployeeID      	int         NOT NULL,
 	CostCentreID 		int	     	NOT NULL,
-	WkEnding 			Date	    NOT NULL,
+	WkBeginning 			Date	    NOT NULL,
 	ApprovedBy			varchar(30) NOT NULL,
 	
 
