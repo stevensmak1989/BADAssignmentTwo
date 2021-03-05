@@ -64,7 +64,7 @@ namespace FujitsuPayments.UserControls
             this.dvgTask.Location = new System.Drawing.Point(3, 48);
             this.dvgTask.Name = "dvgTask";
             this.dvgTask.ReadOnly = true;
-            this.dvgTask.Size = new System.Drawing.Size(1087, 477);
+            this.dvgTask.Size = new System.Drawing.Size(1081, 332);
             this.dvgTask.TabIndex = 0;
             this.dvgTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgTask_CellContentClick);
             // 

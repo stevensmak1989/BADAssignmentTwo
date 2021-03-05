@@ -14,13 +14,43 @@ namespace FujitsuPayments.Forms
     public partial class frmAddTimesheet : Form
     {
 
-        SqlDataAdapter daProject, daTask, daEmployee, daEmpTask;
+        SqlDataAdapter daProject, daTask, daEmployee, daEmpTask,daClaim, daTime, daMan;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBProject, cmbBTask, cmbBEmp, cmbBEmpTask;
-        SqlCommand cmdEmp;
-        DataRow drProject, drTask, drEmp, drEmpTask;
-        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
+        SqlCommandBuilder cmbBProject,cmbBClaim, cmbBMan,cmbBTask, cmbBEmp, cmbBEmpTask,cmbBTime;
+        SqlCommand cmdEmp, cmdMan;
+        DataRow drProject, drMan, drTask,drClaim, drEmp, drEmpTask;
+        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask, sqlClaim, sqlMan,sqlTime;
         SqlConnection conn;
+
+       private int no;
+
+
+
+
+
+        private void cmbApprovedBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+     
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
 
 
@@ -42,15 +72,52 @@ namespace FujitsuPayments.Forms
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
+            sqlClaim = @"select * from ClaimType";
+            daClaim = new SqlDataAdapter(sqlClaim, connStr);
+            cmbBClaim = new SqlCommandBuilder(daClaim);
+            daClaim.FillSchema(dsFujitsuPayments, SchemaType.Source, "ClaimType");
+            daClaim.Fill(dsFujitsuPayments, "ClaimType");
+
             sqlEmp = @"select EmployeeID, Surname + ' ' + Forename as EmpName from Employee";
             daEmployee = new SqlDataAdapter(sqlEmp, connStr);
             cmbBEmp = new SqlCommandBuilder(daEmployee);
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
+            sqlTime = @"select * from Timesheet";
+            daTime = new SqlDataAdapter(sqlTime, connStr);
+            cmbBTime = new SqlCommandBuilder(daTime);
+            daTime.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheet");
+            daTime.Fill(dsFujitsuPayments, "Timesheet");
+
+
+            sqlMan = @"Select  EmployeeID, Surname + ' ' + Forename as EmpName from Employee where Manager = 1";
+            daMan = new SqlDataAdapter(sqlMan, connStr);
+            daMan.Fill(dsFujitsuPayments, "Manager");
+
+
+            foreach (DataRow dr in dsFujitsuPayments.Tables["Manager"].Rows)
+            {
+                // Console.WriteLine(dr["Manager"].ToString());
+
+               
+                    cmbApprovedBy.DataSource = dsFujitsuPayments.Tables["Manager"];
+                    cmbApprovedBy.ValueMember = "EmployeeID";
+                    cmbApprovedBy.DisplayMember = "EmpName";
+                
+            }
+
+
             cmbEmployee.DataSource = dsFujitsuPayments.Tables["Employee"];
             cmbEmployee.ValueMember = "EmployeeID";
             cmbEmployee.DisplayMember = "EmpName";
+
+
+            cmbClaimType.DataSource = dsFujitsuPayments.Tables["ClaimType"];
+            cmbClaimType.ValueMember = "ClaimTypeID";
+            cmbClaimType.DisplayMember = "ClaimTypeDesc";
+
+
 
             sqlEmpTask = @"select * from ProjectTaskEmployee where EmployeeID like @EmployeeID";
             conn = new SqlConnection(connStr);
@@ -60,6 +127,18 @@ namespace FujitsuPayments.Forms
             daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
 
+            
+
+            
+
+            int noRows = dsFujitsuPayments.Tables["Timesheet"].Rows.Count;
+
+            if (noRows == 0)
+                lblTimsheetId.Text = "1000";
+            else
+            {
+                getNumber(noRows);
+            }
 
         }
 
@@ -163,6 +242,11 @@ namespace FujitsuPayments.Forms
                     // code block
                     break;
             }
+        }
+        private void getNumber(int noRows)
+        {
+            drClaim = dsFujitsuPayments.Tables["Timesheet"].Rows[noRows - 1];
+            lblTimesheetId.Text = (int.Parse(drClaim["TimesheetID"].ToString()) + 1).ToString();
         }
     }
 }

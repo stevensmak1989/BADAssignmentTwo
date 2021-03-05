@@ -62,6 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose = new System.Windows.Forms.Button();
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitleEdit = new System.Windows.Forms.Label();
+            this.cbManager = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -220,6 +221,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoEdit);
             this.panel1.Controls.Add(this.txtTitleEdit);
             this.panel1.Controls.Add(this.lblTitleeEdit);
@@ -414,6 +416,16 @@ namespace FujitsuPayments.Forms
             this.lbltitleEdit.TabIndex = 1;
             this.lbltitleEdit.Text = "Edit Employee";
             // 
+            // cbManager
+            // 
+            this.cbManager.AutoSize = true;
+            this.cbManager.Location = new System.Drawing.Point(533, 284);
+            this.cbManager.Name = "cbManager";
+            this.cbManager.Size = new System.Drawing.Size(68, 17);
+            this.cbManager.TabIndex = 50;
+            this.cbManager.Text = "Manager";
+            this.cbManager.UseVisualStyleBackColor = true;
+            // 
             // frmEditEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,5 +479,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnEmpClose;
         private System.Windows.Forms.Button btnEmpSave;
         private System.Windows.Forms.Label lbltitleEdit;
+        private System.Windows.Forms.CheckBox cbManager;
     }
 }

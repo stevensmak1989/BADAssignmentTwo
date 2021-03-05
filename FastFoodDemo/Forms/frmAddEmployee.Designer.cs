@@ -62,6 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitle = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbManager = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +70,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoAdd);
             this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.lblTitlee);
@@ -114,6 +116,7 @@ namespace FujitsuPayments.Forms
             this.lblEmpNoAdd.Size = new System.Drawing.Size(13, 18);
             this.lblEmpNoAdd.TabIndex = 48;
             this.lblEmpNoAdd.Text = "-";
+            this.lblEmpNoAdd.Click += new System.EventHandler(this.lblEmpNoAdd_Click);
             // 
             // txtTitle
             // 
@@ -415,6 +418,17 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
+            // cbManager
+            // 
+            this.cbManager.AutoSize = true;
+            this.cbManager.Location = new System.Drawing.Point(533, 284);
+            this.cbManager.Name = "cbManager";
+            this.cbManager.Size = new System.Drawing.Size(68, 17);
+            this.cbManager.TabIndex = 49;
+            this.cbManager.Text = "Manager";
+            this.cbManager.UseVisualStyleBackColor = true;
+            this.cbManager.CheckedChanged += new System.EventHandler(this.cbManager_CheckedChanged);
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,5 +482,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblTitlee;
         private System.Windows.Forms.Label lblEmpNoAdd;
+        private System.Windows.Forms.CheckBox cbManager;
     }
 }

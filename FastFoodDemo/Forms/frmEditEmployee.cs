@@ -55,6 +55,11 @@ namespace FujitsuPayments.Forms
                    txtEditManagerID.Text = drEmployee["ManagerID"].ToString();
                     cmbGradeEdit.Text = drEmployee["Grade"].ToString();
                    txtEditSalary.Text =  drEmployee["Salary"].ToString();
+
+            if (drEmployee["Manager"].ToString().Equals("1"))
+                cbManager.Checked = true;
+            else
+                cbManager.Checked = false;
         }
 
         private void btnEmpSave_Click(object sender, EventArgs e)
@@ -134,6 +139,22 @@ namespace FujitsuPayments.Forms
             {
                 ok = false;
                 errP.SetError(txtCountyEdit, MyEx.toString());
+            }
+            try
+            {
+                if (cbManager.Checked == true)
+                {
+                    myEmployee.Manager = 1;
+                }
+                else
+                {
+                    myEmployee.Manager = 0;
+                }
+            }
+            catch (MyException MyEx)
+            {
+                ok = false;
+                errP.SetError(cbManager, MyEx.toString());
             }
 
             //employee Postcode
@@ -221,6 +242,7 @@ namespace FujitsuPayments.Forms
                     drEmployee["TelNo"] = myEmployee.TelNo;
                     drEmployee["DOB"] = myEmployee.Dob;
                     drEmployee["ManagerID"] = myEmployee.ManagerId;
+                    drEmployee["Manager"] = myEmployee.Manager;
                     drEmployee["Grade"] = myEmployee.Grade;
                     drEmployee["Salary"] = myEmployee.Salary;
 

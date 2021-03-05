@@ -68,8 +68,10 @@ namespace FujitsuPayments.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.lblWeekNo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblClaimType = new System.Windows.Forms.Label();
+            this.cmbClaimType = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblTimsheetId = new System.Windows.Forms.Label();
             this.lblTimesheetId = new System.Windows.Forms.Label();
             this.cmbEmployee = new System.Windows.Forms.ComboBox();
             this.lblEmpID = new System.Windows.Forms.Label();
@@ -78,8 +80,8 @@ namespace FujitsuPayments.Forms
             this.lblCostCentreID = new System.Windows.Forms.Label();
             this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.lblApprovedBy = new System.Windows.Forms.Label();
-            this.lblClaimType = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -430,7 +432,7 @@ namespace FujitsuPayments.Forms
             // panel2
             // 
             this.panel2.Controls.Add(this.lblClaimType);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cmbClaimType);
             this.panel2.Controls.Add(this.lblWeekNo);
             this.panel2.Controls.Add(this.cmbDates);
             this.panel2.Location = new System.Drawing.Point(575, 9);
@@ -438,9 +440,27 @@ namespace FujitsuPayments.Forms
             this.panel2.Size = new System.Drawing.Size(223, 103);
             this.panel2.TabIndex = 66;
             // 
+            // lblClaimType
+            // 
+            this.lblClaimType.AutoSize = true;
+            this.lblClaimType.Location = new System.Drawing.Point(9, 44);
+            this.lblClaimType.Name = "lblClaimType";
+            this.lblClaimType.Size = new System.Drawing.Size(59, 13);
+            this.lblClaimType.TabIndex = 67;
+            this.lblClaimType.Text = "Claim Type";
+            // 
+            // cmbClaimType
+            // 
+            this.cmbClaimType.FormattingEnabled = true;
+            this.cmbClaimType.Location = new System.Drawing.Point(115, 44);
+            this.cmbClaimType.Name = "cmbClaimType";
+            this.cmbClaimType.Size = new System.Drawing.Size(98, 21);
+            this.cmbClaimType.TabIndex = 66;
+            this.cmbClaimType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.lblTimsheetId);
             this.panel3.Controls.Add(this.lblTimesheetId);
             this.panel3.Controls.Add(this.cmbEmployee);
             this.panel3.Controls.Add(this.lblEmpID);
@@ -449,14 +469,15 @@ namespace FujitsuPayments.Forms
             this.panel3.Size = new System.Drawing.Size(221, 101);
             this.panel3.TabIndex = 67;
             // 
-            // label16
+            // lblTimsheetId
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(80, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(10, 13);
-            this.label16.TabIndex = 119;
-            this.label16.Text = "-";
+            this.lblTimsheetId.AutoSize = true;
+            this.lblTimsheetId.Location = new System.Drawing.Point(80, 9);
+            this.lblTimsheetId.Name = "lblTimsheetId";
+            this.lblTimsheetId.Size = new System.Drawing.Size(10, 13);
+            this.lblTimsheetId.TabIndex = 119;
+            this.lblTimsheetId.Text = "-";
+            this.lblTimsheetId.Click += new System.EventHandler(this.label16_Click);
             // 
             // lblTimesheetId
             // 
@@ -520,6 +541,7 @@ namespace FujitsuPayments.Forms
             this.cmbApprovedBy.Name = "cmbApprovedBy";
             this.cmbApprovedBy.Size = new System.Drawing.Size(114, 21);
             this.cmbApprovedBy.TabIndex = 71;
+            this.cmbApprovedBy.SelectedIndexChanged += new System.EventHandler(this.cmbApprovedBy_SelectedIndexChanged);
             // 
             // lblApprovedBy
             // 
@@ -530,28 +552,42 @@ namespace FujitsuPayments.Forms
             this.lblApprovedBy.TabIndex = 68;
             this.lblApprovedBy.Text = "Approved By";
             // 
-            // lblClaimType
+            // button2
             // 
-            this.lblClaimType.AutoSize = true;
-            this.lblClaimType.Location = new System.Drawing.Point(9, 44);
-            this.lblClaimType.Name = "lblClaimType";
-            this.lblClaimType.Size = new System.Drawing.Size(59, 13);
-            this.lblClaimType.TabIndex = 67;
-            this.lblClaimType.Text = "Claim Type";
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.button2.Location = new System.Drawing.Point(546, 392);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 27);
+            this.button2.TabIndex = 69;
+            this.button2.Text = "Close";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // btnSave
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(115, 44);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(98, 21);
-            this.comboBox1.TabIndex = 66;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderSize = 2;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.btnSave.Location = new System.Drawing.Point(696, 392);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(97, 27);
+            this.btnSave.TabIndex = 68;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmAddTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -613,7 +649,7 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblWeekNo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblTimsheetId;
         private System.Windows.Forms.Label lblTimesheetId;
         private System.Windows.Forms.ComboBox cmbEmployee;
         private System.Windows.Forms.Label lblEmpID;
@@ -623,6 +659,8 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblApprovedBy;
         private System.Windows.Forms.ComboBox cmbCostCentID;
         private System.Windows.Forms.Label lblClaimType;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbClaimType;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
     }
 }

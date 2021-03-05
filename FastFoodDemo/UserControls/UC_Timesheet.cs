@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,32 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Timesheet : UserControl
     {
+        SqlDataAdapter daTime;
+        DataSet dsFujitsuPayments = new DataSet();
+        SqlCommandBuilder cmbBTime;
+        DataRow drTime;
+        String connStr, sqlTime;
         public UC_Timesheet()
         {
             InitializeComponent();
+
+            // style fornt of data grid cell and header
+            this.dvgTimesheetDets.DefaultCellStyle.Font = new Font("Century Gothic", 9);
+            this.dvgTimesheetDets.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
+
+
+
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
+
+            sqlTime = @"select * from Timesheet";
+            daTime = new SqlDataAdapter(sqlTime, connStr);
+            cmbBTime = new SqlCommandBuilder(daTime);
+            daTime.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheet");
+            daTime.Fill(dsFujitsuPayments, "Timesheet");
+
+            dvgTimesheetDets.DataSource = dsFujitsuPayments.Tables["Timesheet"];
+            // resize the datagridview columns to fit the newly loaded content
+            //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void btnAddTimesheet_Click(object sender, EventArgs e)
@@ -27,6 +51,11 @@ namespace FujitsuPayments.UserControls
             frm.Location = new Point(100, 60);
             this.Controls.Add(frm);
             frm.BringToFront();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

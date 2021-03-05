@@ -8,7 +8,7 @@ namespace FujitsuPayments
 {
     class Employee
     {
-        private int employeeId, managerId;
+        private int employeeId, managerId, manager;
         private String title, surname, forename, street, town, county, country, postcode, telNo, grade;
         private DateTime DOB;
         private Decimal salary;
@@ -16,16 +16,16 @@ namespace FujitsuPayments
 
         public Employee()
         {
-            employeeId = 0; managerId = 0;
+            employeeId = 0; managerId = 0; manager = 0;
             title = ""; surname = ""; forename = ""; street = ""; town = ""; county = ""; country = ""; postcode = ""; telNo = ""; grade = "";
             DOB = new DateTime(1999, 01, 01);
             salary = 0;
         }
 
-        public Employee(int employeeId, int managerId, String title, String surname, String forename, String street, String town, String county,
+        public Employee(int employeeId, int managerId,int manager, String title, String surname, String forename, String street, String town, String county,
             String country, String postcode, String telNo, String grade, DateTime DOB, Decimal salary)
         {
-            this.employeeId = employeeId; this.managerId = managerId;
+            this.employeeId = employeeId; this.managerId = managerId; this.manager = manager; ;
             this.title = title; this.surname = surname; this.forename = forename; this.street = street; this.town = town; this.county = county; this.country = country; this.postcode = postcode; this.telNo = telNo; this.grade = grade;
             this.DOB = DOB;
             this.salary = salary;
@@ -41,6 +41,11 @@ namespace FujitsuPayments
         {
             get { return managerId; }
             set { managerId = value; }
+        }
+        public int Manager
+        {
+            get { return manager; }
+            set { manager = value; }
         }
 
         public string Title

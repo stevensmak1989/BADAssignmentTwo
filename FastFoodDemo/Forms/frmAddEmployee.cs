@@ -170,6 +170,22 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(cmbGrade, MyEx.toString());
             }
+            try
+            {
+                if (cbManager.Checked == true)
+                {
+                    myEmployee.Manager = 1;
+                }
+                else
+                {
+                    myEmployee.Manager = 0;
+                }
+            }
+            catch (MyException MyEx)
+            {
+                ok = false;
+                errP.SetError(cbManager, MyEx.toString());
+            }
             //employee Manager number
             try
             {
@@ -214,6 +230,7 @@ namespace FujitsuPayments.Forms
                     drEmployee["TelNo"] = myEmployee.TelNo;
                     drEmployee["DOB"] = myEmployee.Dob;
                     drEmployee["ManagerID"] = myEmployee.ManagerId;
+                    drEmployee["Manager"] = myEmployee.Manager;
                     drEmployee["Grade"] = myEmployee.Grade;
                     drEmployee["Salary"] = myEmployee.Salary;
 
@@ -239,6 +256,16 @@ namespace FujitsuPayments.Forms
         private void lblTitlee_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblEmpNoAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbManager_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void getNumber(int noRows)
