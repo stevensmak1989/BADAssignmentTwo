@@ -29,43 +29,54 @@ namespace FujitsuPayments.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddTimesheet));
             this.cmbDates = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.lblDateSun = new System.Windows.Forms.Label();
-            this.lblDateSat = new System.Windows.Forms.Label();
-            this.lblDateFri = new System.Windows.Forms.Label();
-            this.lblDateThur = new System.Windows.Forms.Label();
-            this.lblDateWed = new System.Windows.Forms.Label();
-            this.lblDateTue = new System.Windows.Forms.Label();
-            this.lblDateMon = new System.Windows.Forms.Label();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.cmbEmpTask = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtEnd7 = new System.Windows.Forms.TextBox();
+            this.txtStart7 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask7 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lblDateSat = new System.Windows.Forms.Label();
+            this.txtEnd6 = new System.Windows.Forms.TextBox();
+            this.txtStart6 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask6 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lblDateFri = new System.Windows.Forms.Label();
+            this.txtEnd5 = new System.Windows.Forms.TextBox();
+            this.txtStart5 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask5 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblDateMon = new System.Windows.Forms.Label();
+            this.txtEnd1 = new System.Windows.Forms.TextBox();
+            this.txtStart1 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtEnd4 = new System.Windows.Forms.TextBox();
+            this.txtStart4 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask4 = new System.Windows.Forms.ComboBox();
+            this.lblDateThur = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblDateWed = new System.Windows.Forms.Label();
+            this.txtEnd3 = new System.Windows.Forms.TextBox();
+            this.txtStart3 = new System.Windows.Forms.TextBox();
+            this.cmbEmpTask3 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.cmbEmpTask2 = new System.Windows.Forms.ComboBox();
+            this.lblDateTue = new System.Windows.Forms.Label();
+            this.txtEnd2 = new System.Windows.Forms.TextBox();
+            this.txtStart2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lblWeekNo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblClaimType = new System.Windows.Forms.Label();
@@ -82,10 +93,19 @@ namespace FujitsuPayments.Forms
             this.lblApprovedBy = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDates
@@ -99,184 +119,387 @@ namespace FujitsuPayments.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblDateSun);
-            this.panel1.Controls.Add(this.lblDateSat);
-            this.panel1.Controls.Add(this.lblDateFri);
-            this.panel1.Controls.Add(this.lblDateThur);
-            this.panel1.Controls.Add(this.lblDateWed);
-            this.panel1.Controls.Add(this.lblDateTue);
-            this.panel1.Controls.Add(this.lblDateMon);
-            this.panel1.Controls.Add(this.textBox35);
-            this.panel1.Controls.Add(this.textBox36);
-            this.panel1.Controls.Add(this.textBox29);
-            this.panel1.Controls.Add(this.textBox30);
-            this.panel1.Controls.Add(this.textBox23);
-            this.panel1.Controls.Add(this.textBox24);
-            this.panel1.Controls.Add(this.textBox17);
-            this.panel1.Controls.Add(this.textBox18);
-            this.panel1.Controls.Add(this.textBox11);
-            this.panel1.Controls.Add(this.textBox12);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.panel11);
+            this.panel1.Controls.Add(this.panel10);
+            this.panel1.Controls.Add(this.panel9);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel8);
+            this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.comboBox6);
-            this.panel1.Controls.Add(this.comboBox5);
-            this.panel1.Controls.Add(this.comboBox4);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.cmbEmpTask);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(16, 140);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 281);
+            this.panel1.Size = new System.Drawing.Size(506, 298);
             this.panel1.TabIndex = 64;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.lblDateSun);
+            this.panel11.Controls.Add(this.txtEnd7);
+            this.panel11.Controls.Add(this.txtStart7);
+            this.panel11.Controls.Add(this.cmbEmpTask7);
+            this.panel11.Controls.Add(this.label6);
+            this.panel11.Location = new System.Drawing.Point(2, 267);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(503, 30);
+            this.panel11.TabIndex = 134;
             // 
             // lblDateSun
             // 
             this.lblDateSun.AutoSize = true;
-            this.lblDateSun.Location = new System.Drawing.Point(59, 252);
+            this.lblDateSun.Location = new System.Drawing.Point(57, 8);
             this.lblDateSun.Name = "lblDateSun";
             this.lblDateSun.Size = new System.Drawing.Size(10, 13);
             this.lblDateSun.TabIndex = 124;
             this.lblDateSun.Text = "-";
             // 
+            // txtEnd7
+            // 
+            this.txtEnd7.Location = new System.Drawing.Point(373, 8);
+            this.txtEnd7.Name = "txtEnd7";
+            this.txtEnd7.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd7.TabIndex = 113;
+            // 
+            // txtStart7
+            // 
+            this.txtStart7.Location = new System.Drawing.Point(246, 8);
+            this.txtStart7.Name = "txtStart7";
+            this.txtStart7.Size = new System.Drawing.Size(76, 20);
+            this.txtStart7.TabIndex = 112;
+            // 
+            // cmbEmpTask7
+            // 
+            this.cmbEmpTask7.FormattingEnabled = true;
+            this.cmbEmpTask7.Location = new System.Drawing.Point(127, 8);
+            this.cmbEmpTask7.Name = "cmbEmpTask7";
+            this.cmbEmpTask7.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask7.TabIndex = 75;
+            this.cmbEmpTask7.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 68;
+            this.label6.Text = "Sun";
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.lblDateSat);
+            this.panel10.Controls.Add(this.txtEnd6);
+            this.panel10.Controls.Add(this.txtStart6);
+            this.panel10.Controls.Add(this.cmbEmpTask6);
+            this.panel10.Controls.Add(this.label7);
+            this.panel10.Location = new System.Drawing.Point(1, 230);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(503, 32);
+            this.panel10.TabIndex = 133;
+            // 
             // lblDateSat
             // 
             this.lblDateSat.AutoSize = true;
-            this.lblDateSat.Location = new System.Drawing.Point(59, 212);
+            this.lblDateSat.Location = new System.Drawing.Point(57, 3);
             this.lblDateSat.Name = "lblDateSat";
             this.lblDateSat.Size = new System.Drawing.Size(10, 13);
             this.lblDateSat.TabIndex = 123;
             this.lblDateSat.Text = "-";
             // 
+            // txtEnd6
+            // 
+            this.txtEnd6.Location = new System.Drawing.Point(373, 3);
+            this.txtEnd6.Name = "txtEnd6";
+            this.txtEnd6.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd6.TabIndex = 107;
+            // 
+            // txtStart6
+            // 
+            this.txtStart6.Location = new System.Drawing.Point(246, 3);
+            this.txtStart6.Name = "txtStart6";
+            this.txtStart6.Size = new System.Drawing.Size(76, 20);
+            this.txtStart6.TabIndex = 106;
+            // 
+            // cmbEmpTask6
+            // 
+            this.cmbEmpTask6.FormattingEnabled = true;
+            this.cmbEmpTask6.Location = new System.Drawing.Point(127, 2);
+            this.cmbEmpTask6.Name = "cmbEmpTask6";
+            this.cmbEmpTask6.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask6.TabIndex = 74;
+            this.cmbEmpTask6.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(23, 13);
+            this.label7.TabIndex = 69;
+            this.label7.Text = "Sat";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.lblDateFri);
+            this.panel9.Controls.Add(this.txtEnd5);
+            this.panel9.Controls.Add(this.txtStart5);
+            this.panel9.Controls.Add(this.cmbEmpTask5);
+            this.panel9.Controls.Add(this.label5);
+            this.panel9.Location = new System.Drawing.Point(5, 187);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(498, 37);
+            this.panel9.TabIndex = 132;
+            // 
             // lblDateFri
             // 
             this.lblDateFri.AutoSize = true;
-            this.lblDateFri.Location = new System.Drawing.Point(59, 178);
+            this.lblDateFri.Location = new System.Drawing.Point(55, 13);
             this.lblDateFri.Name = "lblDateFri";
             this.lblDateFri.Size = new System.Drawing.Size(10, 13);
             this.lblDateFri.TabIndex = 122;
             this.lblDateFri.Text = "-";
             // 
+            // txtEnd5
+            // 
+            this.txtEnd5.Location = new System.Drawing.Point(371, 9);
+            this.txtEnd5.Name = "txtEnd5";
+            this.txtEnd5.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd5.TabIndex = 101;
+            // 
+            // txtStart5
+            // 
+            this.txtStart5.Location = new System.Drawing.Point(244, 9);
+            this.txtStart5.Name = "txtStart5";
+            this.txtStart5.Size = new System.Drawing.Size(76, 20);
+            this.txtStart5.TabIndex = 100;
+            // 
+            // cmbEmpTask5
+            // 
+            this.cmbEmpTask5.FormattingEnabled = true;
+            this.cmbEmpTask5.Location = new System.Drawing.Point(125, 5);
+            this.cmbEmpTask5.Name = "cmbEmpTask5";
+            this.cmbEmpTask5.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask5.TabIndex = 73;
+            this.cmbEmpTask5.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 13);
+            this.label5.TabIndex = 67;
+            this.label5.Text = "Fri";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lblDateMon);
+            this.panel5.Controls.Add(this.txtEnd1);
+            this.panel5.Controls.Add(this.txtStart1);
+            this.panel5.Controls.Add(this.cmbEmpTask);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Location = new System.Drawing.Point(1, 49);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(503, 26);
+            this.panel5.TabIndex = 131;
+            // 
+            // lblDateMon
+            // 
+            this.lblDateMon.AutoSize = true;
+            this.lblDateMon.Location = new System.Drawing.Point(59, 6);
+            this.lblDateMon.Name = "lblDateMon";
+            this.lblDateMon.Size = new System.Drawing.Size(10, 13);
+            this.lblDateMon.TabIndex = 123;
+            this.lblDateMon.Text = "-";
+            // 
+            // txtEnd1
+            // 
+            this.txtEnd1.Location = new System.Drawing.Point(375, 3);
+            this.txtEnd1.Name = "txtEnd1";
+            this.txtEnd1.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd1.TabIndex = 122;
+            // 
+            // txtStart1
+            // 
+            this.txtStart1.Location = new System.Drawing.Point(248, 3);
+            this.txtStart1.Name = "txtStart1";
+            this.txtStart1.Size = new System.Drawing.Size(76, 20);
+            this.txtStart1.TabIndex = 121;
+            // 
+            // cmbEmpTask
+            // 
+            this.cmbEmpTask.FormattingEnabled = true;
+            this.cmbEmpTask.Location = new System.Drawing.Point(129, 2);
+            this.cmbEmpTask.Name = "cmbEmpTask";
+            this.cmbEmpTask.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask.TabIndex = 120;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 119;
+            this.label1.Text = "Mon";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.txtEnd4);
+            this.panel8.Controls.Add(this.txtStart4);
+            this.panel8.Controls.Add(this.cmbEmpTask4);
+            this.panel8.Controls.Add(this.lblDateThur);
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Location = new System.Drawing.Point(0, 153);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(504, 29);
+            this.panel8.TabIndex = 130;
+            // 
+            // txtEnd4
+            // 
+            this.txtEnd4.Location = new System.Drawing.Point(373, 4);
+            this.txtEnd4.Name = "txtEnd4";
+            this.txtEnd4.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd4.TabIndex = 129;
+            // 
+            // txtStart4
+            // 
+            this.txtStart4.Location = new System.Drawing.Point(246, 4);
+            this.txtStart4.Name = "txtStart4";
+            this.txtStart4.Size = new System.Drawing.Size(76, 20);
+            this.txtStart4.TabIndex = 128;
+            // 
+            // cmbEmpTask4
+            // 
+            this.cmbEmpTask4.FormattingEnabled = true;
+            this.cmbEmpTask4.Location = new System.Drawing.Point(127, 0);
+            this.cmbEmpTask4.Name = "cmbEmpTask4";
+            this.cmbEmpTask4.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask4.TabIndex = 127;
+            // 
             // lblDateThur
             // 
             this.lblDateThur.AutoSize = true;
-            this.lblDateThur.Location = new System.Drawing.Point(59, 147);
+            this.lblDateThur.Location = new System.Drawing.Point(57, 3);
             this.lblDateThur.Name = "lblDateThur";
             this.lblDateThur.Size = new System.Drawing.Size(10, 13);
             this.lblDateThur.TabIndex = 121;
             this.lblDateThur.Text = "-";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Thu";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.lblDateWed);
+            this.panel7.Controls.Add(this.txtEnd3);
+            this.panel7.Controls.Add(this.txtStart3);
+            this.panel7.Controls.Add(this.cmbEmpTask3);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Location = new System.Drawing.Point(3, 113);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(503, 34);
+            this.panel7.TabIndex = 126;
+            // 
             // lblDateWed
             // 
             this.lblDateWed.AutoSize = true;
-            this.lblDateWed.Location = new System.Drawing.Point(59, 115);
+            this.lblDateWed.Location = new System.Drawing.Point(57, 2);
             this.lblDateWed.Name = "lblDateWed";
             this.lblDateWed.Size = new System.Drawing.Size(10, 13);
             this.lblDateWed.TabIndex = 120;
             this.lblDateWed.Text = "-";
             // 
+            // txtEnd3
+            // 
+            this.txtEnd3.Location = new System.Drawing.Point(370, 8);
+            this.txtEnd3.Name = "txtEnd3";
+            this.txtEnd3.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd3.TabIndex = 95;
+            // 
+            // txtStart3
+            // 
+            this.txtStart3.Location = new System.Drawing.Point(245, 7);
+            this.txtStart3.Name = "txtStart3";
+            this.txtStart3.Size = new System.Drawing.Size(76, 20);
+            this.txtStart3.TabIndex = 94;
+            // 
+            // cmbEmpTask3
+            // 
+            this.cmbEmpTask3.FormattingEnabled = true;
+            this.cmbEmpTask3.Location = new System.Drawing.Point(127, 7);
+            this.cmbEmpTask3.Name = "cmbEmpTask3";
+            this.cmbEmpTask3.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask3.TabIndex = 72;
+            this.cmbEmpTask3.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Wed";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.cmbEmpTask2);
+            this.panel6.Controls.Add(this.lblDateTue);
+            this.panel6.Controls.Add(this.txtEnd2);
+            this.panel6.Controls.Add(this.txtStart2);
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Location = new System.Drawing.Point(0, 81);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(503, 30);
+            this.panel6.TabIndex = 125;
+            // 
+            // cmbEmpTask2
+            // 
+            this.cmbEmpTask2.FormattingEnabled = true;
+            this.cmbEmpTask2.Location = new System.Drawing.Point(129, 5);
+            this.cmbEmpTask2.Name = "cmbEmpTask2";
+            this.cmbEmpTask2.Size = new System.Drawing.Size(60, 21);
+            this.cmbEmpTask2.TabIndex = 121;
+            // 
             // lblDateTue
             // 
             this.lblDateTue.AutoSize = true;
-            this.lblDateTue.Location = new System.Drawing.Point(59, 86);
+            this.lblDateTue.Location = new System.Drawing.Point(57, 4);
             this.lblDateTue.Name = "lblDateTue";
             this.lblDateTue.Size = new System.Drawing.Size(10, 13);
             this.lblDateTue.TabIndex = 119;
             this.lblDateTue.Text = "-";
             // 
-            // lblDateMon
+            // txtEnd2
             // 
-            this.lblDateMon.AutoSize = true;
-            this.lblDateMon.Location = new System.Drawing.Point(59, 50);
-            this.lblDateMon.Name = "lblDateMon";
-            this.lblDateMon.Size = new System.Drawing.Size(10, 13);
-            this.lblDateMon.TabIndex = 118;
-            this.lblDateMon.Text = "-";
+            this.txtEnd2.Location = new System.Drawing.Point(373, 4);
+            this.txtEnd2.Name = "txtEnd2";
+            this.txtEnd2.Size = new System.Drawing.Size(80, 20);
+            this.txtEnd2.TabIndex = 89;
             // 
-            // textBox35
+            // txtStart2
             // 
-            this.textBox35.Location = new System.Drawing.Point(375, 252);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(80, 20);
-            this.textBox35.TabIndex = 113;
+            this.txtStart2.Location = new System.Drawing.Point(246, 4);
+            this.txtStart2.Name = "txtStart2";
+            this.txtStart2.Size = new System.Drawing.Size(76, 20);
+            this.txtStart2.TabIndex = 88;
             // 
-            // textBox36
+            // label2
             // 
-            this.textBox36.Location = new System.Drawing.Point(248, 252);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(76, 20);
-            this.textBox36.TabIndex = 112;
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(375, 212);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(80, 20);
-            this.textBox29.TabIndex = 107;
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(248, 212);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(76, 20);
-            this.textBox30.TabIndex = 106;
-            // 
-            // textBox23
-            // 
-            this.textBox23.Location = new System.Drawing.Point(375, 170);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(80, 20);
-            this.textBox23.TabIndex = 101;
-            // 
-            // textBox24
-            // 
-            this.textBox24.Location = new System.Drawing.Point(248, 170);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(76, 20);
-            this.textBox24.TabIndex = 100;
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(375, 125);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(80, 20);
-            this.textBox17.TabIndex = 95;
-            // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(248, 125);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(76, 20);
-            this.textBox18.TabIndex = 94;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(375, 86);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(80, 20);
-            this.textBox11.TabIndex = 89;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(248, 86);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(76, 20);
-            this.textBox12.TabIndex = 88;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(375, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(80, 20);
-            this.textBox2.TabIndex = 79;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Tue";
             // 
             // label9
             // 
@@ -287,13 +510,6 @@ namespace FujitsuPayments.Forms
             this.label9.TabIndex = 78;
             this.label9.Text = "End Time";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(248, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 77;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -302,123 +518,6 @@ namespace FujitsuPayments.Forms
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 76;
             this.label8.Text = "Start Time";
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(129, 252);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(60, 21);
-            this.comboBox6.TabIndex = 75;
-            this.comboBox6.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(129, 211);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(60, 21);
-            this.comboBox5.TabIndex = 74;
-            this.comboBox5.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(129, 166);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(60, 21);
-            this.comboBox4.TabIndex = 73;
-            this.comboBox4.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(129, 120);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(60, 21);
-            this.comboBox3.TabIndex = 72;
-            this.comboBox3.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(129, 81);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(60, 21);
-            this.comboBox2.TabIndex = 71;
-            this.comboBox2.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // cmbEmpTask
-            // 
-            this.cmbEmpTask.FormattingEnabled = true;
-            this.cmbEmpTask.Location = new System.Drawing.Point(129, 46);
-            this.cmbEmpTask.Name = "cmbEmpTask";
-            this.cmbEmpTask.Size = new System.Drawing.Size(60, 21);
-            this.cmbEmpTask.TabIndex = 70;
-            this.cmbEmpTask.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 215);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 13);
-            this.label7.TabIndex = 69;
-            this.label7.Text = "Sat";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 252);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 68;
-            this.label6.Text = "Sun";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 178);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 13);
-            this.label5.TabIndex = 67;
-            this.label5.Text = "Fri";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 147);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Thu";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 115);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "Wed";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Tue";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Mon";
             // 
             // lblWeekNo
             // 
@@ -581,6 +680,10 @@ namespace FujitsuPayments.Forms
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // errP
+            // 
+            this.errP.ContainerControl = this;
+            // 
             // frmAddTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,12 +702,27 @@ namespace FujitsuPayments.Forms
             this.Load += new System.EventHandler(this.frmAddTimesheet_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -618,34 +736,28 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblDateThur;
         private System.Windows.Forms.Label lblDateWed;
         private System.Windows.Forms.Label lblDateTue;
-        private System.Windows.Forms.Label lblDateMon;
-        private System.Windows.Forms.TextBox textBox35;
-        private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtEnd7;
+        private System.Windows.Forms.TextBox txtStart7;
+        private System.Windows.Forms.TextBox txtEnd6;
+        private System.Windows.Forms.TextBox txtStart6;
+        private System.Windows.Forms.TextBox txtEnd5;
+        private System.Windows.Forms.TextBox txtStart5;
+        private System.Windows.Forms.TextBox txtEnd3;
+        private System.Windows.Forms.TextBox txtStart3;
+        private System.Windows.Forms.TextBox txtEnd2;
+        private System.Windows.Forms.TextBox txtStart2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox cmbEmpTask;
+        private System.Windows.Forms.ComboBox cmbEmpTask7;
+        private System.Windows.Forms.ComboBox cmbEmpTask6;
+        private System.Windows.Forms.ComboBox cmbEmpTask5;
+        private System.Windows.Forms.ComboBox cmbEmpTask3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblWeekNo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -662,5 +774,22 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbClaimType;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lblDateMon;
+        private System.Windows.Forms.TextBox txtEnd1;
+        private System.Windows.Forms.TextBox txtStart1;
+        private System.Windows.Forms.ComboBox cmbEmpTask;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox txtEnd4;
+        private System.Windows.Forms.TextBox txtStart4;
+        private System.Windows.Forms.ComboBox cmbEmpTask4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox cmbEmpTask2;
+        private System.Windows.Forms.ErrorProvider errP;
     }
 }
