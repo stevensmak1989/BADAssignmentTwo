@@ -31,6 +31,7 @@ CREATE TABLE Employee
 	ManagerID		int					NOT NULL,
 	Grade			varchar(5)			NOT NULL,
 	Salary			DECIMAL(10,2)		Not NULL,
+	 Manager bit not null
 
 	--PK
 	CONSTRAINT pkEmpID PRIMARY KEY (EmployeeID),
