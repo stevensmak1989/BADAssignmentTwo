@@ -35,11 +35,9 @@ namespace FujitsuPayments.UserControls
             // style fornt of data grid cell and header
             this.dgvShift.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-
             this.calShift.MaxSelectionCount = 1;
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-
 
             sqlShift = @"select * from EmployeeShift";
             daShift = new SqlDataAdapter(sqlShift, connStr);
@@ -50,6 +48,8 @@ namespace FujitsuPayments.UserControls
             dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             // resize the datagridview columns to fit the newly loaded content
             dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            hidePanels();
         }
 
 
@@ -174,19 +174,42 @@ namespace FujitsuPayments.UserControls
                     lblSunDate.Text = calShift.SelectionRange.Start.Day.ToString();
                     break;
 
-
             }
-            //lblMonDate.Text = calShift.SelectionRange.Start.DayOfWeek.ToString();
+           
         }
 
-        private void lable5_Click(object sender, EventArgs e)
+
+
+        private void hidePanels()
         {
-
-        }
-
-        private void lblSaturday_Click(object sender, EventArgs e)
-        {
-
+            pnlMonShift1.Visible = false;
+            pnlMonShift2.Visible = false;
+            pnlMonShift3.Visible = false;
+            pnlMonShift4.Visible = false;
+            pnlTueShift1.Visible = false;
+            pnlTueShift2.Visible = false;
+            pnlTueShift3.Visible = false;
+            pnlTueShift4.Visible = false;
+            pnlWedShift1.Visible = false;
+            pnlWedShift2.Visible = false;
+            pnlWedShift3.Visible = false;
+            pnlWedShift4.Visible = false;
+            pnlThuShift1.Visible = false;
+            pnlThuShift2.Visible = false;
+            pnlThuShift3.Visible = false;
+            pnlThuShift4.Visible = false;
+            pnlFriShift1.Visible = false;
+            pnlFriShift2.Visible = false;
+            pnlFriShift3.Visible = false;
+            pnlFriShift4.Visible = false;
+            pnlSatShift1.Visible = false;
+            pnlSatShift2.Visible = false;
+            pnlSatShift3.Visible = false;
+            pnlSatShift4.Visible = false;
+            pnlSunShift1.Visible = false;
+            pnlSunShift2.Visible = false;
+            pnlSunShift3.Visible = false;
+            pnlSunShift4.Visible = false;
         }
 
         private void btnEditShift_Click(object sender, EventArgs e)
@@ -241,5 +264,19 @@ namespace FujitsuPayments.UserControls
                 }
             }
         }
+
+
+
+        private void calLocYAxis()
+        {
+
+        }
+
+
+        private void calSizeHeight()
+        {
+
+        }
     }
+
 }

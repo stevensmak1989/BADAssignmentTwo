@@ -22,6 +22,7 @@ namespace FujitsuPayments.Forms
         SqlCommand cmbProject, cmbTask;
         DataRow drShift, drAccount, drProject, drTask;
         String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
+        static String startTime, endTime;
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -121,8 +122,53 @@ namespace FujitsuPayments.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            EmployeeShift myShift = new EmployeeShift();
 
+
+            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all time fields");
+            }
+            else
+            {
+                // convert combobox and radio button to string
+                if (rbStAM.Checked == true)
+                {
+                    startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                }
+                else
+                {
+                    if(Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) == 12)
+                    {
+                        
+                        startTime = "00" + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        int startHour = Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) + 12;
+                        startTime = Convert.ToString(startHour) + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
+                }
+
+                if (rbEtAM.Checked == true)
+                {
+                    endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                }
+                else
+                {
+                    if(Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) == 12)
+                    {
+                        endTime = "00" + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        int endHour = Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) + 12;
+                        endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
+                }
+            }
+
+
+            EmployeeShift myShift = new EmployeeShift();
             bool ok = true;
             errP.Clear();
 
@@ -179,8 +225,8 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                String time = cmbStartTime.SelectedItem.ToString();
-                myShift.StartTime = DateTime.Parse(time);
+                //String time = cmbStartTime.SelectedItem.ToString();
+                myShift.StartTime = TimeSpan.Parse(startTime);
             }
             catch (MyException MyEx)
             {
@@ -190,8 +236,8 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                String time = cmbEndTime.SelectedItem.ToString();
-                myShift.EndTime = DateTime.Parse(time);
+               // String time = cmbEndTime.SelectedItem.ToString();
+                myShift.EndTime = TimeSpan.Parse(endTime);
             }
             catch (MyException MyEx)
             {
@@ -201,22 +247,24 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
+                if (ok)
+                {
+                    drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
 
-                drShift["ShiftID"] = myShift.ShiftId;
-                drShift["AccountID"] = myShift.AccountId;
-                drShift["ProjectID"] = myShift.ProjectId;
-                drShift["TaskID"] = myShift.TaskId;
-                drShift["StartDate"] = myShift.StartDate;
-                drShift["StartTime"] = myShift.StartTime;
-                drShift["EndTime"] = myShift.EndTime;
+                    drShift["ShiftID"] = myShift.ShiftId;
+                    drShift["AccountID"] = myShift.AccountId;
+                    drShift["ProjectID"] = myShift.ProjectId;
+                    drShift["TaskID"] = myShift.TaskId;
+                    drShift["StartDate"] = myShift.StartDate;
+                    drShift["StartTime"] = myShift.StartTime;
+                    drShift["EndTime"] = myShift.EndTime;
 
-                dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
-                daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                    dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
+                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
 
-                MessageBox.Show("Shift Added");
-                this.Dispose();
-
+                    MessageBox.Show("Shift Added");
+                    this.Dispose();
+                }
 
             }
             catch(Exception ex)
