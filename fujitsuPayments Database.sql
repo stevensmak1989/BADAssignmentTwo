@@ -157,13 +157,13 @@ CREATE TABLE ProjectTaskEmployee
 
 CREATE TABLE EmployeeShift
 (
-	ShiftID			int			NOT NULL,
-	AccountID      	int         NOT NULL,
-	ProjectID 		int	     	NOT NULL,
-	TaskID 			int	     	NOT NULL,
-	StartDate       Date	    NOT NULL,
-	StartTime       Time 	    NOT NULL,
-	SlotCount       int			NOT NULL,
+	ShiftID		int		NOT NULL,
+	AccountID      	int         	NOT NULL,
+	ProjectID 	int	     	NOT NULL,
+	TaskID 		int	     	NOT NULL,
+	StartDate       Date	    	NOT NULL,
+	StartTime       Time(2) 	NOT NULL,
+	EndTime		Time(2)       	NOT NULL,
 
 	--PK
 	CONSTRAINT pkShift PRIMARY KEY (ShiftID),	
