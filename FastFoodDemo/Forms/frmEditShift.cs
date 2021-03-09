@@ -23,6 +23,7 @@ namespace FujitsuPayments.Forms
         SqlCommand cmbProject, cmbTask;
         DataRow drShift, drAccount, drProject, drTask;
         String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
+        static String startTime, endTime;
 
 
 
@@ -146,6 +147,38 @@ namespace FujitsuPayments.Forms
         private void btnEditSave_Click(object sender, EventArgs e)
         {
 
+            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all time fields");
+            }
+            else
+            {
+                // convert combobox and radio button to string
+                if (rbStAM.Checked == true)
+                {
+                    startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    MessageBox.Show("Starttime : " + startTime);
+                }
+                else
+                {
+                    int startHour = Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) + 12;
+                    startTime = Convert.ToString(startHour) + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    MessageBox.Show("Starttime : " + startTime);
+                }
+
+                if (rbEtAM.Checked == true)
+                {
+                    endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    MessageBox.Show("Endtime : " + endTime);
+                }
+                else
+                {
+                    int endHour = Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) + 12;
+                    endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    MessageBox.Show("Endtime : " + endTime);
+                }
+            }
+
 
             EmployeeShift myShift = new EmployeeShift();
 
@@ -204,8 +237,8 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                String time = cmbStartTime.SelectedItem.ToString();
-                myShift.StartTime = DateTime.Parse(time);
+               // String time = cmbStartTime.SelectedItem.ToString();
+                myShift.StartTime = TimeSpan.Parse(startTime);
             }
             catch (MyException MyEx)
             {
@@ -215,8 +248,8 @@ namespace FujitsuPayments.Forms
 
             try
             {
-                String time = cmbEndTime.SelectedItem.ToString();
-                myShift.EndTime = DateTime.Parse(time);
+                //String time = cmbEndTime.SelectedItem.ToString();
+                myShift.EndTime = TimeSpan.Parse(endTime);
             }
             catch (MyException MyEx)
             {

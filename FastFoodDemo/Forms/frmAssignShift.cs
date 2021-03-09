@@ -20,9 +20,6 @@ namespace FujitsuPayments.Forms
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
         SqlCommandBuilder cmbBEmployeeShift, cmbBAccount, cmbBProject, cmbBTask, cmbBEmployee;
-
-
-
         SqlCommand cmbShift, cmbEmployee;
         DataRow drEmployeeShift, drEmployee, drAccount, drProject, drTask;
         String connStr, sqlEmployeeShift, sqlAccount, sqlProject, sqlTask, sqlEmployee;
@@ -62,13 +59,20 @@ namespace FujitsuPayments.Forms
 
 
             // -- setup datat adapter for employee dropdown
-            sqlEmployee = @"  select e.EmployeeID, e.Forename, e.Surname from Employee e
+            sqlEmployee = @"select e.EmployeeID, e.Forename, e.Surname from Employee e
                              inner join ProjectTaskEmployee pte
-                               on e.EmployeeID = pte.EmployeeID";
+                               on e.EmployeeID = pte.EmployeeID
+							   where pte.TaskID like @TaskID and pte.ProjectID like @ProjectID";
             conn = new SqlConnection(connStr);
-            daEmployee = new SqlDataAdapter(sqlEmployee, conn);
-            cmbBEmployee = new SqlCommandBuilder(daEmployee);
+            cmbEmployee = new SqlCommand(sqlEmployee, conn);
+            cmbEmployee.Parameters.Add("@TaskID", SqlDbType.Int);
+            cmbEmployee.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daEmployee = new SqlDataAdapter(cmbEmployee);
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
+
+            cmbEmployee.Parameters["@TaskID"].Value = UC_Schedule.taskIdSelected.ToString();
+            cmbEmployee.Parameters["@ProjectID"].Value = UC_Schedule.projIdSelected.ToString();
+
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
             cmbEmployeeID.DataSource = dsFujitsuPayments.Tables["Employee"];
