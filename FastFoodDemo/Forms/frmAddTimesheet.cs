@@ -123,140 +123,132 @@ namespace FujitsuPayments.Forms
                 if (ok)
                 {
 
-                    //drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
 
-                    //drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                    //drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                    //drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                    //drTimesheet["WKBeginning"] = myTime.WkEnding;
-                    //drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                    drTimesheet["WKBeginning"] = myTime.WkEnding;
+                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
 
 
-                    //dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                    //daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
 
+
+                    foreach (Control c in panel1.Controls)
+                    {
+                        if (c is Panel)
+                        {
+                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+
+                            try
+                            {
+                                timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
+                                //passed to employee Class to check
+
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(lblTimsheetId, MyEx.toString());
+                            }
+                            try
+                            {
+                                timeDets.ClaimTypeId = Convert.ToInt32(cmbCostCentID.SelectedValue.ToString());
+                                //passed to employee Class to check
+
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(cmbCostCentID, MyEx.toString());
+                            }
+                            try
+                            {
+                                DateTime datee = DateTime.Parse(date[no].Text.Trim());
+                                myTime.WkEnding = datee;
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(cmbDates, MyEx.toString());
+                            }
+                            try
+                            {
+
+                                TimeSpan startTime = TimeSpan.Parse(start[no].Text.Trim());
+                                timeDets.StartTime = startTime;
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(start[no], MyEx.toString());
+                            }
+                            try
+                            {
+                                TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
+                                timeDets.EndTime = endTime;
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(end[no], MyEx.toString());
+                            }
+
+                            try
+                            {
+                                TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
+                                timeDets.EndTime = endTime;
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(end[no], MyEx.toString());
+                            }
+                            try
+                            {
+                                TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
+                                timeDets.EndTime = endTime;
+                            }
+                            catch (MyException MyEx)
+                            {
+                                ok = false;
+                                errP.SetError(end[no], MyEx.toString());
+                            }
+
+
+                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                            drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                            drTimeDets["WorkedDay"] = timeDets.WorkedDay;
+                            drTimeDets["StartTime"] = timeDets.StartTime;
+                            drTimeDets["EndTime"] = timeDets.EndTime;
+                            drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                            drTimeDets["ProjectID"] = 1;
+                            drTimeDets["TaskID"] = 1;
+
+                            dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
+                            daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+
+
+
+                            MessageBox.Show(start[no].Text.Trim());
+
+                            no++;
+                        }
+                    }
                     MessageBox.Show("Timesheet Added");
                     this.Dispose();
 
-                    
-                   
+
+
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
-            foreach (Control c in panel1.Controls)
-            {
-                if (c is Panel)
-                {
-                    //    drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-
-                    //    try
-                    //    {
-                    //        timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
-                    //        //passed to employee Class to check
-
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(lblTimsheetId, MyEx.toString());
-                    //    }
-                    //    try
-                    //    {
-                    //        timeDets.ClaimTypeId = Convert.ToInt32(cmbCostCentID.SelectedValue.ToString());
-                    //        //passed to employee Class to check
-
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(cmbCostCentID, MyEx.toString());
-                    //    }
-                    //    try
-                    //    {
-                    //        DateTime datee = DateTime.Parse(date[no].Text.Trim());
-                    //        myTime.WkEnding = datee;
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(cmbDates, MyEx.toString());
-                    //    }
-                    //    try
-                    //    {
-
-                    //        TimeSpan startTime = TimeSpan.Parse(start[no].Text.Trim());
-                    //        timeDets.StartTime = startTime;
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(start[no], MyEx.toString());
-                    //    }
-                    //    try
-                    //    {
-                    //        TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                    //        timeDets.EndTime = endTime;
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(end[no], MyEx.toString());
-                    //    }
-
-                    //    try
-                    //    {
-                    //        TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                    //        timeDets.EndTime = endTime;
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(end[no], MyEx.toString());
-                    //    }
-                    //    try
-                    //    {
-                    //        TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                    //        timeDets.EndTime = endTime;
-                    //    }
-                    //    catch (MyException MyEx)
-                    //    {
-                    //        ok = false;
-                    //        errP.SetError(end[no], MyEx.toString());
-                    //    }
-
-
-                    //    drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-                    //    drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                    //    drTimeDets["WorkedDay"] = timeDets.WorkedDay;
-                    //    drTimeDets["StartTime"] = timeDets.StartTime;
-                    //    drTimeDets["EndTime"] = timeDets.EndTime;
-                    //    drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                    //    drTimeDets["ProjectID"] = 1;
-                    //    drTimeDets["TaskID"] = 1;
-
-                    //    dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
-                    //    daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
-
-
-
-                    MessageBox.Show(start[no].Text.Trim());
-
-                    no++;
-                }
-            }
-
-
-
-
-
-
-
-
-
-
 
 
         }
