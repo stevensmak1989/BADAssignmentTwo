@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FujitsuPayments.UserControls;
 
 namespace FujitsuPayments.Forms
 {
@@ -166,6 +167,10 @@ namespace FujitsuPayments.Forms
                     }
                 }
             }
+
+            UC_Schedule.calSizeHeight(startTime, endTime);
+
+            
 
 
             EmployeeShift myShift = new EmployeeShift();

@@ -115,6 +115,13 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift3 = new System.Windows.Forms.Panel();
             this.pnlSunShift4 = new System.Windows.Forms.Panel();
+            this.lblProjectId = new System.Windows.Forms.Label();
+            this.cmbProjectId = new System.Windows.Forms.ComboBox();
+            this.cmbTaskId = new System.Windows.Forms.ComboBox();
+            this.lblTaskId = new System.Windows.Forms.Label();
+            this.cmbShiftId = new System.Windows.Forms.ComboBox();
+            this.lblShiftId = new System.Windows.Forms.Label();
+            this.btnViewShifts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -133,6 +140,7 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel1.Controls.Add(this.btnViewShifts);
             this.panel1.Controls.Add(this.btnEditShift);
             this.panel1.Controls.Add(this.btnDeleteShift);
             this.panel1.Controls.Add(this.btnAssignShift);
@@ -246,71 +254,71 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblSunDate.AutoSize = true;
             this.lblSunDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSunDate.Location = new System.Drawing.Point(605, 2);
+            this.lblSunDate.Location = new System.Drawing.Point(579, 2);
             this.lblSunDate.Name = "lblSunDate";
-            this.lblSunDate.Size = new System.Drawing.Size(15, 17);
+            this.lblSunDate.Size = new System.Drawing.Size(12, 17);
             this.lblSunDate.TabIndex = 6;
-            this.lblSunDate.Text = "7";
+            this.lblSunDate.Text = "-";
             // 
             // lblSatDate
             // 
             this.lblSatDate.AutoSize = true;
             this.lblSatDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSatDate.Location = new System.Drawing.Point(524, 2);
+            this.lblSatDate.Location = new System.Drawing.Point(498, 2);
             this.lblSatDate.Name = "lblSatDate";
-            this.lblSatDate.Size = new System.Drawing.Size(15, 17);
+            this.lblSatDate.Size = new System.Drawing.Size(12, 17);
             this.lblSatDate.TabIndex = 5;
-            this.lblSatDate.Text = "6";
+            this.lblSatDate.Text = "-";
             // 
             // lblFriDate
             // 
             this.lblFriDate.AutoSize = true;
             this.lblFriDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFriDate.Location = new System.Drawing.Point(433, 2);
+            this.lblFriDate.Location = new System.Drawing.Point(407, 2);
             this.lblFriDate.Name = "lblFriDate";
-            this.lblFriDate.Size = new System.Drawing.Size(15, 17);
+            this.lblFriDate.Size = new System.Drawing.Size(12, 17);
             this.lblFriDate.TabIndex = 4;
-            this.lblFriDate.Text = "5";
+            this.lblFriDate.Text = "-";
             // 
             // lblThuDate
             // 
             this.lblThuDate.AutoSize = true;
             this.lblThuDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThuDate.Location = new System.Drawing.Point(345, 2);
+            this.lblThuDate.Location = new System.Drawing.Point(319, 2);
             this.lblThuDate.Name = "lblThuDate";
-            this.lblThuDate.Size = new System.Drawing.Size(15, 17);
+            this.lblThuDate.Size = new System.Drawing.Size(12, 17);
             this.lblThuDate.TabIndex = 3;
-            this.lblThuDate.Text = "4";
+            this.lblThuDate.Text = "-";
             // 
             // lblWedDate
             // 
             this.lblWedDate.AutoSize = true;
             this.lblWedDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWedDate.Location = new System.Drawing.Point(260, 2);
+            this.lblWedDate.Location = new System.Drawing.Point(234, 2);
             this.lblWedDate.Name = "lblWedDate";
-            this.lblWedDate.Size = new System.Drawing.Size(15, 17);
+            this.lblWedDate.Size = new System.Drawing.Size(12, 17);
             this.lblWedDate.TabIndex = 2;
-            this.lblWedDate.Text = "3";
+            this.lblWedDate.Text = "-";
             // 
             // lblTueDate
             // 
             this.lblTueDate.AutoSize = true;
             this.lblTueDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTueDate.Location = new System.Drawing.Point(169, 2);
+            this.lblTueDate.Location = new System.Drawing.Point(143, 2);
             this.lblTueDate.Name = "lblTueDate";
-            this.lblTueDate.Size = new System.Drawing.Size(15, 17);
+            this.lblTueDate.Size = new System.Drawing.Size(12, 17);
             this.lblTueDate.TabIndex = 1;
-            this.lblTueDate.Text = "2";
+            this.lblTueDate.Text = "-";
             // 
             // lblMonDate
             // 
             this.lblMonDate.AutoSize = true;
             this.lblMonDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonDate.Location = new System.Drawing.Point(82, 2);
+            this.lblMonDate.Location = new System.Drawing.Point(56, 2);
             this.lblMonDate.Name = "lblMonDate";
-            this.lblMonDate.Size = new System.Drawing.Size(15, 17);
+            this.lblMonDate.Size = new System.Drawing.Size(12, 17);
             this.lblMonDate.TabIndex = 0;
-            this.lblMonDate.Text = "1";
+            this.lblMonDate.Text = "-";
             // 
             // lblSunday
             // 
@@ -410,6 +418,12 @@ namespace FujitsuPayments.UserControls
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.cmbShiftId);
+            this.panel3.Controls.Add(this.lblShiftId);
+            this.panel3.Controls.Add(this.cmbTaskId);
+            this.panel3.Controls.Add(this.lblTaskId);
+            this.panel3.Controls.Add(this.cmbProjectId);
+            this.panel3.Controls.Add(this.lblProjectId);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.dgvShift);
             this.panel3.Controls.Add(this.panel40);
@@ -464,7 +478,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(3, 67);
+            this.label24.Location = new System.Drawing.Point(3, 77);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(35, 16);
             this.label24.TabIndex = 30;
@@ -474,7 +488,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(3, 147);
+            this.label23.Location = new System.Drawing.Point(3, 157);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(35, 16);
             this.label23.TabIndex = 29;
@@ -484,7 +498,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 227);
+            this.label22.Location = new System.Drawing.Point(3, 237);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(35, 16);
             this.label22.TabIndex = 28;
@@ -494,7 +508,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 307);
+            this.label21.Location = new System.Drawing.Point(3, 317);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(35, 16);
             this.label21.TabIndex = 27;
@@ -514,7 +528,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(3, 387);
+            this.label20.Location = new System.Drawing.Point(3, 397);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 16);
             this.label20.TabIndex = 25;
@@ -524,7 +538,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 467);
+            this.label19.Location = new System.Drawing.Point(3, 477);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 16);
             this.label19.TabIndex = 24;
@@ -534,7 +548,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 547);
+            this.label18.Location = new System.Drawing.Point(3, 557);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 16);
             this.label18.TabIndex = 23;
@@ -544,7 +558,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 1827);
+            this.label16.Location = new System.Drawing.Point(3, 1837);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 16);
             this.label16.TabIndex = 21;
@@ -554,7 +568,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 1751);
+            this.label15.Location = new System.Drawing.Point(3, 1761);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 16);
             this.label15.TabIndex = 20;
@@ -564,7 +578,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(3, 1673);
+            this.label14.Location = new System.Drawing.Point(3, 1683);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(35, 16);
             this.label14.TabIndex = 19;
@@ -574,7 +588,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 1593);
+            this.label13.Location = new System.Drawing.Point(3, 1603);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 16);
             this.label13.TabIndex = 18;
@@ -584,7 +598,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 1512);
+            this.label12.Location = new System.Drawing.Point(3, 1522);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 16);
             this.label12.TabIndex = 17;
@@ -594,7 +608,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 1433);
+            this.label11.Location = new System.Drawing.Point(3, 1443);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 16);
             this.label11.TabIndex = 16;
@@ -604,7 +618,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 1347);
+            this.label10.Location = new System.Drawing.Point(3, 1357);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 16);
             this.label10.TabIndex = 15;
@@ -614,7 +628,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 1272);
+            this.label9.Location = new System.Drawing.Point(3, 1282);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 16);
             this.label9.TabIndex = 14;
@@ -624,7 +638,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 1193);
+            this.label8.Location = new System.Drawing.Point(3, 1203);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 16);
             this.label8.TabIndex = 13;
@@ -634,7 +648,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 1113);
+            this.label7.Location = new System.Drawing.Point(3, 1123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 16);
             this.label7.TabIndex = 12;
@@ -644,7 +658,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 1032);
+            this.label6.Location = new System.Drawing.Point(3, 1042);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 16);
             this.label6.TabIndex = 11;
@@ -654,7 +668,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 952);
+            this.label5.Location = new System.Drawing.Point(3, 962);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 16);
             this.label5.TabIndex = 10;
@@ -664,7 +678,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 871);
+            this.label4.Location = new System.Drawing.Point(3, 881);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 16);
             this.label4.TabIndex = 9;
@@ -674,7 +688,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 792);
+            this.label3.Location = new System.Drawing.Point(3, 802);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 8;
@@ -684,7 +698,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 707);
+            this.label2.Location = new System.Drawing.Point(3, 717);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 16);
             this.label2.TabIndex = 7;
@@ -694,7 +708,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 627);
+            this.label1.Location = new System.Drawing.Point(3, 637);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 16);
             this.label1.TabIndex = 0;
@@ -787,9 +801,9 @@ namespace FujitsuPayments.UserControls
             // pnlMonShift1
             // 
             this.pnlMonShift1.BackColor = System.Drawing.Color.Maroon;
-            this.pnlMonShift1.Location = new System.Drawing.Point(0, 1760);
+            this.pnlMonShift1.Location = new System.Drawing.Point(0, 240);
             this.pnlMonShift1.Name = "pnlMonShift1";
-            this.pnlMonShift1.Size = new System.Drawing.Size(20, 80);
+            this.pnlMonShift1.Size = new System.Drawing.Size(20, 480);
             this.pnlMonShift1.TabIndex = 0;
             // 
             // pnlMonShift2
@@ -1008,6 +1022,80 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift4.TabIndex = 17;
             // 
+            // lblProjectId
+            // 
+            this.lblProjectId.AutoSize = true;
+            this.lblProjectId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectId.Location = new System.Drawing.Point(925, 97);
+            this.lblProjectId.Name = "lblProjectId";
+            this.lblProjectId.Size = new System.Drawing.Size(57, 17);
+            this.lblProjectId.TabIndex = 8;
+            this.lblProjectId.Text = "Project ";
+            // 
+            // cmbProjectId
+            // 
+            this.cmbProjectId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProjectId.FormattingEnabled = true;
+            this.cmbProjectId.Location = new System.Drawing.Point(925, 118);
+            this.cmbProjectId.Name = "cmbProjectId";
+            this.cmbProjectId.Size = new System.Drawing.Size(151, 25);
+            this.cmbProjectId.TabIndex = 9;
+            // 
+            // cmbTaskId
+            // 
+            this.cmbTaskId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTaskId.FormattingEnabled = true;
+            this.cmbTaskId.Location = new System.Drawing.Point(925, 168);
+            this.cmbTaskId.Name = "cmbTaskId";
+            this.cmbTaskId.Size = new System.Drawing.Size(151, 25);
+            this.cmbTaskId.TabIndex = 11;
+            // 
+            // lblTaskId
+            // 
+            this.lblTaskId.AutoSize = true;
+            this.lblTaskId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskId.Location = new System.Drawing.Point(925, 147);
+            this.lblTaskId.Name = "lblTaskId";
+            this.lblTaskId.Size = new System.Drawing.Size(34, 17);
+            this.lblTaskId.TabIndex = 10;
+            this.lblTaskId.Text = "Task";
+            // 
+            // cmbShiftId
+            // 
+            this.cmbShiftId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbShiftId.FormattingEnabled = true;
+            this.cmbShiftId.Location = new System.Drawing.Point(925, 68);
+            this.cmbShiftId.Name = "cmbShiftId";
+            this.cmbShiftId.Size = new System.Drawing.Size(151, 25);
+            this.cmbShiftId.TabIndex = 13;
+            // 
+            // lblShiftId
+            // 
+            this.lblShiftId.AutoSize = true;
+            this.lblShiftId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShiftId.Location = new System.Drawing.Point(925, 47);
+            this.lblShiftId.Name = "lblShiftId";
+            this.lblShiftId.Size = new System.Drawing.Size(34, 17);
+            this.lblShiftId.TabIndex = 12;
+            this.lblShiftId.Text = "Shift";
+            // 
+            // btnViewShifts
+            // 
+            this.btnViewShifts.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnViewShifts.FlatAppearance.BorderSize = 0;
+            this.btnViewShifts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewShifts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewShifts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnViewShifts.Image = ((System.Drawing.Image)(resources.GetObject("btnViewShifts.Image")));
+            this.btnViewShifts.Location = new System.Drawing.Point(507, 0);
+            this.btnViewShifts.Name = "btnViewShifts";
+            this.btnViewShifts.Size = new System.Drawing.Size(129, 42);
+            this.btnViewShifts.TabIndex = 6;
+            this.btnViewShifts.Text = "View Shifts";
+            this.btnViewShifts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnViewShifts.UseVisualStyleBackColor = true;
+            this.btnViewShifts.Click += new System.EventHandler(this.btnViewShifts_Click);
+            // 
             // UC_Schedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1026,6 +1114,7 @@ namespace FujitsuPayments.UserControls
             this.panel40.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.pnlMon.ResumeLayout(false);
@@ -1126,5 +1215,12 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Panel pnlSunShift3;
         private System.Windows.Forms.Panel pnlSunShift2;
         private System.Windows.Forms.Panel pnlSunShift1;
+        private System.Windows.Forms.ComboBox cmbShiftId;
+        private System.Windows.Forms.Label lblShiftId;
+        private System.Windows.Forms.ComboBox cmbTaskId;
+        private System.Windows.Forms.Label lblTaskId;
+        private System.Windows.Forms.ComboBox cmbProjectId;
+        private System.Windows.Forms.Label lblProjectId;
+        private System.Windows.Forms.Button btnViewShifts;
     }
 }
