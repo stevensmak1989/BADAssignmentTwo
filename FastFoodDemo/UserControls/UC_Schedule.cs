@@ -36,6 +36,8 @@ namespace FujitsuPayments.UserControls
             this.dgvShift.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
 
+            this.calShift.MaxSelectionCount = 1;
+
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
 
@@ -66,6 +68,115 @@ namespace FujitsuPayments.UserControls
             frm.Location = new Point(180, 100);
             this.Controls.Add(frm);
             frm.BringToFront();
+        }
+
+        private void btnAssignShift_Click(object sender, EventArgs e)
+        {
+            if (dgvShift.SelectedRows.Count == 0)
+            {
+                shiftSelected = false;
+                shiftIdSelected = 0;
+                MessageBox.Show("Please select a record.", "Select Shift");
+            }
+            else if (dgvShift.SelectedRows.Count > 1)
+            {
+                shiftSelected = false;
+                shiftIdSelected = 0;
+                MessageBox.Show("Please select a single record, cannot assign multiple shifts", "Select Shift");
+
+            }
+            else if (dgvShift.SelectedRows.Count == 1)
+            {
+                shiftSelected = true;
+                shiftIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[0].Value);
+                accIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[1].Value);
+                projIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[2].Value);
+                taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
+
+                frmAssignShift frm = new frmAssignShift();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(180, 100);
+                this.Controls.Add(frm);
+                frm.BringToFront();
+            }
+
+        }
+
+        private void calShift_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            String dayOfWeek = calShift.SelectionRange.Start.DayOfWeek.ToString();
+
+            switch(dayOfWeek)
+            {
+                case "Monday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(5).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(6).Day.ToString();
+                    break;
+                case "Tuesday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(5).Day.ToString();
+                    break;
+                case "Wednesday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
+                    break;
+                case "Thursday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
+                    break;
+                case "Friday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    break;
+                case "Saturday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-5).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    break;
+                case "Sunday":
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-6).Day.ToString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-5).Day.ToString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    break;
+
+
+            }
+            //lblMonDate.Text = calShift.SelectionRange.Start.DayOfWeek.ToString();
         }
 
         private void lable5_Click(object sender, EventArgs e)

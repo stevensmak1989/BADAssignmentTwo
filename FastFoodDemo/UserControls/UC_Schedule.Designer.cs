@@ -38,50 +38,58 @@ namespace FujitsuPayments.UserControls
             this.panel2 = new System.Windows.Forms.Panel();
             this.calShift = new System.Windows.Forms.MonthCalendar();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblMonday = new System.Windows.Forms.Label();
-            this.lblTuesday = new System.Windows.Forms.Label();
-            this.lblWednesday = new System.Windows.Forms.Label();
-            this.lblThursday = new System.Windows.Forms.Label();
-            this.lblFriday = new System.Windows.Forms.Label();
-            this.lblSaturday = new System.Windows.Forms.Label();
+            this.lblSunDate = new System.Windows.Forms.Label();
+            this.lblSatDate = new System.Windows.Forms.Label();
+            this.lblFriDate = new System.Windows.Forms.Label();
+            this.lblThuDate = new System.Windows.Forms.Label();
+            this.lblWedDate = new System.Windows.Forms.Label();
+            this.lblTueDate = new System.Windows.Forms.Label();
+            this.lblMonDate = new System.Windows.Forms.Label();
             this.lblSunday = new System.Windows.Forms.Label();
+            this.lblSaturday = new System.Windows.Forms.Label();
+            this.lblFriday = new System.Windows.Forms.Label();
+            this.lblThursday = new System.Windows.Forms.Label();
+            this.lblWednesday = new System.Windows.Forms.Label();
+            this.lblTuesday = new System.Windows.Forms.Label();
+            this.lblMonday = new System.Windows.Forms.Label();
             this.panel40 = new System.Windows.Forms.Panel();
             this.dgvShift = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pnlSun = new System.Windows.Forms.Panel();
-            this.pnlSat = new System.Windows.Forms.Panel();
-            this.pnlFri = new System.Windows.Forms.Panel();
-            this.pnlThu = new System.Windows.Forms.Panel();
-            this.pnlWed = new System.Windows.Forms.Panel();
-            this.pnlTue = new System.Windows.Forms.Panel();
-            this.pnlMon = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlMon = new System.Windows.Forms.Panel();
+            this.pnlTue = new System.Windows.Forms.Panel();
+            this.pnlWed = new System.Windows.Forms.Panel();
+            this.pnlThu = new System.Windows.Forms.Panel();
+            this.pnlFri = new System.Windows.Forms.Panel();
+            this.pnlSat = new System.Windows.Forms.Panel();
+            this.pnlSun = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -149,6 +157,7 @@ namespace FujitsuPayments.UserControls
             this.btnAssignShift.Text = "  Assign Shift";
             this.btnAssignShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAssignShift.UseVisualStyleBackColor = true;
+            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click);
             // 
             // btnAddShift
             // 
@@ -181,96 +190,174 @@ namespace FujitsuPayments.UserControls
             this.calShift.Location = new System.Drawing.Point(686, 47);
             this.calShift.Name = "calShift";
             this.calShift.TabIndex = 0;
+            this.calShift.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calShift_DateChanged);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lblSunday);
-            this.panel4.Controls.Add(this.lblSaturday);
-            this.panel4.Controls.Add(this.lblFriday);
-            this.panel4.Controls.Add(this.lblThursday);
-            this.panel4.Controls.Add(this.lblWednesday);
-            this.panel4.Controls.Add(this.lblTuesday);
-            this.panel4.Controls.Add(this.lblMonday);
+            this.panel4.Controls.Add(this.lblSunDate);
+            this.panel4.Controls.Add(this.lblSatDate);
+            this.panel4.Controls.Add(this.lblFriDate);
+            this.panel4.Controls.Add(this.lblThuDate);
+            this.panel4.Controls.Add(this.lblWedDate);
+            this.panel4.Controls.Add(this.lblTueDate);
+            this.panel4.Controls.Add(this.lblMonDate);
             this.panel4.Location = new System.Drawing.Point(0, 19);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1090, 22);
             this.panel4.TabIndex = 1;
             // 
-            // lblMonday
+            // lblSunDate
             // 
-            this.lblMonday.AutoSize = true;
-            this.lblMonday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonday.Location = new System.Drawing.Point(54, 2);
-            this.lblMonday.Name = "lblMonday";
-            this.lblMonday.Size = new System.Drawing.Size(60, 17);
-            this.lblMonday.TabIndex = 2;
-            this.lblMonday.Text = "Monday";
+            this.lblSunDate.AutoSize = true;
+            this.lblSunDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSunDate.Location = new System.Drawing.Point(605, 2);
+            this.lblSunDate.Name = "lblSunDate";
+            this.lblSunDate.Size = new System.Drawing.Size(15, 17);
+            this.lblSunDate.TabIndex = 6;
+            this.lblSunDate.Text = "7";
             // 
-            // lblTuesday
+            // lblSatDate
             // 
-            this.lblTuesday.AutoSize = true;
-            this.lblTuesday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTuesday.Location = new System.Drawing.Point(145, 2);
-            this.lblTuesday.Name = "lblTuesday";
-            this.lblTuesday.Size = new System.Drawing.Size(58, 17);
-            this.lblTuesday.TabIndex = 3;
-            this.lblTuesday.Text = "Tuesday";
+            this.lblSatDate.AutoSize = true;
+            this.lblSatDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSatDate.Location = new System.Drawing.Point(524, 2);
+            this.lblSatDate.Name = "lblSatDate";
+            this.lblSatDate.Size = new System.Drawing.Size(15, 17);
+            this.lblSatDate.TabIndex = 5;
+            this.lblSatDate.Text = "6";
             // 
-            // lblWednesday
+            // lblFriDate
             // 
-            this.lblWednesday.AutoSize = true;
-            this.lblWednesday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWednesday.Location = new System.Drawing.Point(222, 2);
-            this.lblWednesday.Name = "lblWednesday";
-            this.lblWednesday.Size = new System.Drawing.Size(83, 17);
-            this.lblWednesday.TabIndex = 4;
-            this.lblWednesday.Text = "Wednesday";
+            this.lblFriDate.AutoSize = true;
+            this.lblFriDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFriDate.Location = new System.Drawing.Point(433, 2);
+            this.lblFriDate.Name = "lblFriDate";
+            this.lblFriDate.Size = new System.Drawing.Size(15, 17);
+            this.lblFriDate.TabIndex = 4;
+            this.lblFriDate.Text = "5";
             // 
-            // lblThursday
+            // lblThuDate
             // 
-            this.lblThursday.AutoSize = true;
-            this.lblThursday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThursday.Location = new System.Drawing.Point(316, 2);
-            this.lblThursday.Name = "lblThursday";
-            this.lblThursday.Size = new System.Drawing.Size(62, 17);
-            this.lblThursday.TabIndex = 5;
-            this.lblThursday.Text = "Thursday";
+            this.lblThuDate.AutoSize = true;
+            this.lblThuDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThuDate.Location = new System.Drawing.Point(345, 2);
+            this.lblThuDate.Name = "lblThuDate";
+            this.lblThuDate.Size = new System.Drawing.Size(15, 17);
+            this.lblThuDate.TabIndex = 3;
+            this.lblThuDate.Text = "4";
             // 
-            // lblFriday
+            // lblWedDate
             // 
-            this.lblFriday.AutoSize = true;
-            this.lblFriday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFriday.Location = new System.Drawing.Point(413, 2);
-            this.lblFriday.Name = "lblFriday";
-            this.lblFriday.Size = new System.Drawing.Size(45, 17);
-            this.lblFriday.TabIndex = 6;
-            this.lblFriday.Text = "Friday";
+            this.lblWedDate.AutoSize = true;
+            this.lblWedDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWedDate.Location = new System.Drawing.Point(260, 2);
+            this.lblWedDate.Name = "lblWedDate";
+            this.lblWedDate.Size = new System.Drawing.Size(15, 17);
+            this.lblWedDate.TabIndex = 2;
+            this.lblWedDate.Text = "3";
+            // 
+            // lblTueDate
+            // 
+            this.lblTueDate.AutoSize = true;
+            this.lblTueDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTueDate.Location = new System.Drawing.Point(169, 2);
+            this.lblTueDate.Name = "lblTueDate";
+            this.lblTueDate.Size = new System.Drawing.Size(15, 17);
+            this.lblTueDate.TabIndex = 1;
+            this.lblTueDate.Text = "2";
+            // 
+            // lblMonDate
+            // 
+            this.lblMonDate.AutoSize = true;
+            this.lblMonDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonDate.Location = new System.Drawing.Point(82, 2);
+            this.lblMonDate.Name = "lblMonDate";
+            this.lblMonDate.Size = new System.Drawing.Size(15, 17);
+            this.lblMonDate.TabIndex = 0;
+            this.lblMonDate.Text = "1";
+            // 
+            // lblSunday
+            // 
+            this.lblSunday.AutoSize = true;
+            this.lblSunday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSunday.Location = new System.Drawing.Point(589, 0);
+            this.lblSunday.Name = "lblSunday";
+            this.lblSunday.Size = new System.Drawing.Size(54, 17);
+            this.lblSunday.TabIndex = 8;
+            this.lblSunday.Text = "Sunday";
             // 
             // lblSaturday
             // 
             this.lblSaturday.AutoSize = true;
             this.lblSaturday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaturday.Location = new System.Drawing.Point(493, 2);
+            this.lblSaturday.Location = new System.Drawing.Point(495, 0);
             this.lblSaturday.Name = "lblSaturday";
             this.lblSaturday.Size = new System.Drawing.Size(64, 17);
             this.lblSaturday.TabIndex = 7;
             this.lblSaturday.Text = "Saturday";
             this.lblSaturday.Click += new System.EventHandler(this.lblSaturday_Click);
             // 
-            // lblSunday
+            // lblFriday
             // 
-            this.lblSunday.AutoSize = true;
-            this.lblSunday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSunday.Location = new System.Drawing.Point(587, 2);
-            this.lblSunday.Name = "lblSunday";
-            this.lblSunday.Size = new System.Drawing.Size(54, 17);
-            this.lblSunday.TabIndex = 8;
-            this.lblSunday.Text = "Sunday";
+            this.lblFriday.AutoSize = true;
+            this.lblFriday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFriday.Location = new System.Drawing.Point(415, 0);
+            this.lblFriday.Name = "lblFriday";
+            this.lblFriday.Size = new System.Drawing.Size(45, 17);
+            this.lblFriday.TabIndex = 6;
+            this.lblFriday.Text = "Friday";
+            // 
+            // lblThursday
+            // 
+            this.lblThursday.AutoSize = true;
+            this.lblThursday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThursday.Location = new System.Drawing.Point(318, 0);
+            this.lblThursday.Name = "lblThursday";
+            this.lblThursday.Size = new System.Drawing.Size(62, 17);
+            this.lblThursday.TabIndex = 5;
+            this.lblThursday.Text = "Thursday";
+            // 
+            // lblWednesday
+            // 
+            this.lblWednesday.AutoSize = true;
+            this.lblWednesday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWednesday.Location = new System.Drawing.Point(224, 0);
+            this.lblWednesday.Name = "lblWednesday";
+            this.lblWednesday.Size = new System.Drawing.Size(83, 17);
+            this.lblWednesday.TabIndex = 4;
+            this.lblWednesday.Text = "Wednesday";
+            // 
+            // lblTuesday
+            // 
+            this.lblTuesday.AutoSize = true;
+            this.lblTuesday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTuesday.Location = new System.Drawing.Point(147, 0);
+            this.lblTuesday.Name = "lblTuesday";
+            this.lblTuesday.Size = new System.Drawing.Size(58, 17);
+            this.lblTuesday.TabIndex = 3;
+            this.lblTuesday.Text = "Tuesday";
+            // 
+            // lblMonday
+            // 
+            this.lblMonday.AutoSize = true;
+            this.lblMonday.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonday.Location = new System.Drawing.Point(56, 0);
+            this.lblMonday.Name = "lblMonday";
+            this.lblMonday.Size = new System.Drawing.Size(60, 17);
+            this.lblMonday.TabIndex = 2;
+            this.lblMonday.Text = "Monday";
             // 
             // panel40
             // 
             this.panel40.BackColor = System.Drawing.Color.MistyRose;
+            this.panel40.Controls.Add(this.lblSunday);
+            this.panel40.Controls.Add(this.lblMonday);
+            this.panel40.Controls.Add(this.lblSaturday);
+            this.panel40.Controls.Add(this.lblTuesday);
+            this.panel40.Controls.Add(this.lblFriday);
+            this.panel40.Controls.Add(this.lblWednesday);
+            this.panel40.Controls.Add(this.lblThursday);
             this.panel40.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel40.Location = new System.Drawing.Point(0, 0);
             this.panel40.Name = "panel40";
@@ -339,281 +426,15 @@ namespace FujitsuPayments.UserControls
             this.panel5.Size = new System.Drawing.Size(677, 439);
             this.panel5.TabIndex = 7;
             // 
-            // pnlSun
+            // label24
             // 
-            this.pnlSun.BackColor = System.Drawing.Color.White;
-            this.pnlSun.Location = new System.Drawing.Point(572, 3);
-            this.pnlSun.Name = "pnlSun";
-            this.pnlSun.Size = new System.Drawing.Size(82, 1045);
-            this.pnlSun.TabIndex = 0;
-            // 
-            // pnlSat
-            // 
-            this.pnlSat.BackColor = System.Drawing.Color.White;
-            this.pnlSat.Location = new System.Drawing.Point(484, 3);
-            this.pnlSat.Name = "pnlSat";
-            this.pnlSat.Size = new System.Drawing.Size(82, 1045);
-            this.pnlSat.TabIndex = 1;
-            // 
-            // pnlFri
-            // 
-            this.pnlFri.BackColor = System.Drawing.Color.White;
-            this.pnlFri.Location = new System.Drawing.Point(396, 3);
-            this.pnlFri.Name = "pnlFri";
-            this.pnlFri.Size = new System.Drawing.Size(82, 1045);
-            this.pnlFri.TabIndex = 2;
-            // 
-            // pnlThu
-            // 
-            this.pnlThu.BackColor = System.Drawing.Color.White;
-            this.pnlThu.Location = new System.Drawing.Point(308, 3);
-            this.pnlThu.Name = "pnlThu";
-            this.pnlThu.Size = new System.Drawing.Size(82, 1045);
-            this.pnlThu.TabIndex = 3;
-            // 
-            // pnlWed
-            // 
-            this.pnlWed.BackColor = System.Drawing.Color.White;
-            this.pnlWed.Location = new System.Drawing.Point(220, 3);
-            this.pnlWed.Name = "pnlWed";
-            this.pnlWed.Size = new System.Drawing.Size(82, 1045);
-            this.pnlWed.TabIndex = 4;
-            // 
-            // pnlTue
-            // 
-            this.pnlTue.BackColor = System.Drawing.Color.White;
-            this.pnlTue.Location = new System.Drawing.Point(132, 3);
-            this.pnlTue.Name = "pnlTue";
-            this.pnlTue.Size = new System.Drawing.Size(82, 1045);
-            this.pnlTue.TabIndex = 5;
-            // 
-            // pnlMon
-            // 
-            this.pnlMon.BackColor = System.Drawing.Color.White;
-            this.pnlMon.Location = new System.Drawing.Point(44, 3);
-            this.pnlMon.Name = "pnlMon";
-            this.pnlMon.Size = new System.Drawing.Size(82, 1045);
-            this.pnlMon.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 314);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "08:00";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 358);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "09:00";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 402);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "10:00";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 446);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "11:00";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 490);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "12:00";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 534);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "13:00";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 578);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 16);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "14:00";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 622);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 16);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "15:00";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 666);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 16);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "16:00";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 710);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 16);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "17:00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 754);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 16);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "18:00";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 798);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 16);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "19:00";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 842);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 16);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "20:00";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(3, 886);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 16);
-            this.label14.TabIndex = 19;
-            this.label14.Text = "21:00";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 930);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 16);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "22:00";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 974);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 16);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "23:00";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 270);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 16);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "07:00";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 226);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(35, 16);
-            this.label19.TabIndex = 24;
-            this.label19.Text = "06:00";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(3, 182);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 16);
-            this.label20.TabIndex = 25;
-            this.label20.Text = "05:00";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 1018);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 16);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "00:00";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 138);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(35, 16);
-            this.label21.TabIndex = 27;
-            this.label21.Text = "04:00";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 94);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(35, 16);
-            this.label22.TabIndex = 28;
-            this.label22.Text = "03:00";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(3, 6);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(35, 16);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "01:00";
             // 
             // label23
             // 
@@ -625,15 +446,281 @@ namespace FujitsuPayments.UserControls
             this.label23.TabIndex = 29;
             this.label23.Text = "02:00";
             // 
-            // label24
+            // label22
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(3, 6);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(35, 16);
-            this.label24.TabIndex = 30;
-            this.label24.Text = "01:00";
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(3, 94);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 16);
+            this.label22.TabIndex = 28;
+            this.label22.Text = "03:00";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 138);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(35, 16);
+            this.label21.TabIndex = 27;
+            this.label21.Text = "04:00";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 1018);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 16);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "00:00";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 182);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(35, 16);
+            this.label20.TabIndex = 25;
+            this.label20.Text = "05:00";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 226);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 16);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "06:00";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 270);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 16);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "07:00";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 974);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 16);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "23:00";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 930);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(35, 16);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "22:00";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 886);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(35, 16);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "21:00";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 842);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 16);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "20:00";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 798);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(35, 16);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "19:00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 754);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 16);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "18:00";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 710);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 16);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "17:00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 666);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 16);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "16:00";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 622);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 16);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "15:00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 578);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 16);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "14:00";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 534);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 16);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "13:00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 490);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 16);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "12:00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 446);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "11:00";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 402);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "10:00";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 358);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "09:00";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 314);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "08:00";
+            // 
+            // pnlMon
+            // 
+            this.pnlMon.BackColor = System.Drawing.Color.White;
+            this.pnlMon.Location = new System.Drawing.Point(44, 3);
+            this.pnlMon.Name = "pnlMon";
+            this.pnlMon.Size = new System.Drawing.Size(82, 1045);
+            this.pnlMon.TabIndex = 6;
+            // 
+            // pnlTue
+            // 
+            this.pnlTue.BackColor = System.Drawing.Color.White;
+            this.pnlTue.Location = new System.Drawing.Point(132, 3);
+            this.pnlTue.Name = "pnlTue";
+            this.pnlTue.Size = new System.Drawing.Size(82, 1045);
+            this.pnlTue.TabIndex = 5;
+            // 
+            // pnlWed
+            // 
+            this.pnlWed.BackColor = System.Drawing.Color.White;
+            this.pnlWed.Location = new System.Drawing.Point(220, 3);
+            this.pnlWed.Name = "pnlWed";
+            this.pnlWed.Size = new System.Drawing.Size(82, 1045);
+            this.pnlWed.TabIndex = 4;
+            // 
+            // pnlThu
+            // 
+            this.pnlThu.BackColor = System.Drawing.Color.White;
+            this.pnlThu.Location = new System.Drawing.Point(308, 3);
+            this.pnlThu.Name = "pnlThu";
+            this.pnlThu.Size = new System.Drawing.Size(82, 1045);
+            this.pnlThu.TabIndex = 3;
+            // 
+            // pnlFri
+            // 
+            this.pnlFri.BackColor = System.Drawing.Color.White;
+            this.pnlFri.Location = new System.Drawing.Point(396, 3);
+            this.pnlFri.Name = "pnlFri";
+            this.pnlFri.Size = new System.Drawing.Size(82, 1045);
+            this.pnlFri.TabIndex = 2;
+            // 
+            // pnlSat
+            // 
+            this.pnlSat.BackColor = System.Drawing.Color.White;
+            this.pnlSat.Location = new System.Drawing.Point(484, 3);
+            this.pnlSat.Name = "pnlSat";
+            this.pnlSat.Size = new System.Drawing.Size(82, 1045);
+            this.pnlSat.TabIndex = 1;
+            // 
+            // pnlSun
+            // 
+            this.pnlSun.BackColor = System.Drawing.Color.White;
+            this.pnlSun.Location = new System.Drawing.Point(572, 3);
+            this.pnlSun.Name = "pnlSun";
+            this.pnlSun.Size = new System.Drawing.Size(82, 1045);
+            this.pnlSun.TabIndex = 0;
             // 
             // UC_Schedule
             // 
@@ -649,6 +736,8 @@ namespace FujitsuPayments.UserControls
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel40.ResumeLayout(false);
+            this.panel40.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -709,5 +798,12 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSunDate;
+        private System.Windows.Forms.Label lblSatDate;
+        private System.Windows.Forms.Label lblFriDate;
+        private System.Windows.Forms.Label lblThuDate;
+        private System.Windows.Forms.Label lblWedDate;
+        private System.Windows.Forms.Label lblTueDate;
+        private System.Windows.Forms.Label lblMonDate;
     }
 }

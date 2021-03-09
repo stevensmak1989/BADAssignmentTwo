@@ -20,12 +20,7 @@ namespace FujitsuPayments.Forms
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
         SqlCommandBuilder cmbBShift, cmbBAccount, cmbBProject, cmbBTask;
-
-
         SqlCommand cmbProject, cmbTask;
-
-
-
         DataRow drShift, drAccount, drProject, drTask;
         String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
 
