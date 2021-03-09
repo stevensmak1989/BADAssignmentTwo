@@ -271,6 +271,39 @@ namespace FujitsuPayments
             return ok;
         }
 
+        public static Boolean validTimespan(TimeSpan txt)
+        {
+            //DateTime currentDate = DateTime.Now;
+            //DateTime DOB = Convert.ToDateTime(txt);
+
+            //TimeSpan t = DOB - currentDate;
+            //double noOfDays = t.TotalDays;
+
+            bool ok = true;
+            
+            try
+            {
+                string str = Convert.ToString(txt);
+                TimeSpan ts = new TimeSpan();
+                ts = TimeSpan.Parse(str);
+                return ok;
+            }
+            catch (Exception ex)
+            {
+                ok = false;
+                return ok;
+            }
+
+            if (ok)
+            {
+                ok = true;
+            }
+            else
+            {
+                ok = false;
+            }
+            return ok;
+        }
 
         public static String firstLetterEachWordToUpper(string word) // not working
         {

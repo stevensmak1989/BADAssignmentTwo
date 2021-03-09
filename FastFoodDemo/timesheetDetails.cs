@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FujitsuPayments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,7 +61,28 @@ namespace FujistuPayments
             get { return startTime; }
             set
             {
+
+                //try
+                //{
+                //    string str = Convert.ToString(value);
+                //    TimeSpan ts = new TimeSpan();
+                //    ts = TimeSpan.Parse(str);
+
+
+                //}
+                //catch (Exception ex)
+                //{
+
+                //    throw new MyException("Please enter a valid time formatt HH:MM");
+                //    errP.SetError(start[no], MyException("Please enter a valid time formatt HH:MM"));
+                //}
+
+                //if (MyValidation.validTimespan(value) == true)
+                //{
                 startTime = value;
+                //}
+                //else
+                //    throw new MyException("Please enter a valid time formatt HH:MM");
             }
         }
         public TimeSpan EndTime
