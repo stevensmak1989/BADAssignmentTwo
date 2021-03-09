@@ -86,6 +86,12 @@
     <Compile Include="Forms\frmAddTimesheet.Designer.cs">
       <DependentUpon>frmAddTimesheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAssignShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAssignShift.Designer.cs">
+      <DependentUpon>frmAssignShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddTimesheet.resx">
       <DependentUpon>frmAddTimesheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAssignShift.resx">
+      <DependentUpon>frmAssignShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
