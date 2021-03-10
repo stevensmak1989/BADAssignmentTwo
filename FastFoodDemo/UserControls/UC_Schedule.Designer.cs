@@ -432,6 +432,8 @@ namespace FujitsuPayments.UserControls
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.Size = new System.Drawing.Size(399, 214);
             this.dgvShift.TabIndex = 6;
+            this.dgvShift.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellContentClick);
+            this.dgvShift.SelectionChanged += new System.EventHandler(this.DataGridSelectionChanged);
             // 
             // panel3
             // 

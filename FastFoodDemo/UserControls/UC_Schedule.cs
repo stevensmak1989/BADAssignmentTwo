@@ -19,7 +19,7 @@ namespace FujitsuPayments.UserControls
         SqlConnection conn;
         SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift;
         SqlCommand cmbProject, cmbTask, cmbEmpShift;
-        DataRow drShift;
+        DataRow drShift, drEmpShift;
         String connStr, sqlShift;
         String sqlAccount, sqlProject, sqlTask, sqlEmpShift;
 
@@ -32,6 +32,15 @@ namespace FujitsuPayments.UserControls
             InitializeComponent();
             
         }
+
+        private void dgvShift_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+
 
         private void UC_Schedule_Load(object sender, EventArgs e)
         {
@@ -477,6 +486,24 @@ namespace FujitsuPayments.UserControls
             daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
             dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+        }
+
+
+        private void DataGridSelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvShift.Focused == true)
+            {
+                drEmpShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
+
+                DateTime startDate = Convert.ToDateTime(drEmpShift["StartDate"].ToString());
+                string pnlStartDate = startDate.ToShortDateString();
+                string pnlStartTime = drEmpShift["StartTime"].ToString();
+                string pnlEndTime = drEmpShift["EndTime"].ToString();
+
+
+                MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
+            }
 
         }
 
