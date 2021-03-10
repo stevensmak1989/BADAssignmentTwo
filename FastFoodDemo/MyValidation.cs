@@ -271,30 +271,17 @@ namespace FujitsuPayments
             return ok;
         }
 
-        public static Boolean validTimespan(TimeSpan txt)
+        public static Boolean validTimespan(DateTime txt)
         {
             //DateTime currentDate = DateTime.Now;
             //DateTime DOB = Convert.ToDateTime(txt);
-
+            String str = txt.ToLongTimeString();
+            DateTime temp = DateTime.Parse(str);
             //TimeSpan t = DOB - currentDate;
             //double noOfDays = t.TotalDays;
 
             bool ok = true;
-            
-            try
-            {
-                string str = Convert.ToString(txt);
-                TimeSpan ts = new TimeSpan();
-                ts = TimeSpan.Parse(str);
-                return ok;
-            }
-            catch (Exception ex)
-            {
-                ok = false;
-                return ok;
-            }
-
-            if (ok)
+            if(temp != null)
             {
                 ok = true;
             }
@@ -302,6 +289,31 @@ namespace FujitsuPayments
             {
                 ok = false;
             }
+            
+            return ok;
+        }
+
+        public static Boolean validTimespan1(string txt)
+        {
+            //DateTime currentDate = DateTime.Now;
+            //DateTime DOB = Convert.ToDateTime(txt);
+            String str = Convert.ToString(txt);
+            DateTime temp = Convert.ToDateTime(str);
+            
+            TimeSpan t = temp.TimeOfDay;
+            string tempTime = t.ToString();
+            //double noOfDays = t.TotalDays;
+
+            bool ok = true;
+            if (tempTime.Contains(txt))
+            {
+                ok = true;
+            }
+            else
+            {
+                ok = false;
+            }
+
             return ok;
         }
 

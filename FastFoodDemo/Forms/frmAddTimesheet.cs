@@ -122,17 +122,7 @@ namespace FujitsuPayments.Forms
             {
                 if (ok)
                 {
-                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
-
-                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                    drTimesheet["WKBeginning"] = myTime.WkEnding;
-                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
-
-
-                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                   
 
                     foreach (Control c in panel1.Controls )
                     {
@@ -177,93 +167,110 @@ namespace FujitsuPayments.Forms
                                 }
                                 try
                                 {
-                                    string str = Convert.ToString(start[no].Text.Trim());
-                                    TimeSpan ts = new TimeSpan();
-                                    ts = TimeSpan.Parse(str);
-                                    timeDets.StartTime = ts;
+                                    //string str = Convert.ToString(start[no].Text.Trim());
+                                    //TimeSpan ts = new TimeSpan();
+                                    //ts = TimeSpan.Parse(str);
+                                    //timeDets.StartTime = ts;
+
+                                    //DateTime dt = Convert.ToDateTime(start[no].Text);
+                                   // MyValidation.validTimespan(Convert.ToDateTime(start[no].Text));
+
+                                    string str = start[no].Text;
+                                    MessageBox.Show(str);
+                                    timeDets.StartTime = str.ToString();
+
 
                                 }
-                                catch (Exception ex)
-                                {
-                                    ok = false;
-                                    //throw new Exception("Please enter a valid time formatt HH:MM",ex);
-                                    errP.SetError(start[no], ("Please enter a valid time formatt HH:MM"));
-                                    MessageBox.Show("Please enter a valid time formatt HH:MM");
-                                    break;
-                                }
+                                //catch (Exception ex)
+                                //{
+                                //    ok = false;
+
+                                //    errP.SetError(start[no], MyEx.toString());
+
+                                //    break;
+                                //}
                                 //try
                                 //{
 
                                 //    TimeSpan startTime = TimeSpan.Parse(start[no].Text.Trim());
                                 //    timeDets.StartTime = startTime;
                                 //}
-                                //catch (MyException MyEx)
-                                //{
-                                //    ok = false;
-                                //    errP.SetError(start[no], MyEx.toString());
-                                //}
+                                catch (MyException MyEx)
+                                {
+                                    ok = false;
+                                    errP.SetError(start[no], MyEx.toString());
+                                    break;
+                                }
                                 try
                                 {
-                                    TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                                    timeDets.EndTime = endTime;
+                                   
+                                    timeDets.EndTime = end[no].Text;  
                                 }
                                 catch (MyException MyEx)
                                 {
                                     ok = false;
                                     errP.SetError(end[no], MyEx.toString());
+                                    break;
                                 }
 
-                                try
-                                {
-                                    TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                                    timeDets.EndTime = endTime;
+                                
+                               if(ok)
+                                { 
+
+                                    no++;
                                 }
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(end[no], MyEx.toString());
-                                }
-                                try
-                                {
-                                    TimeSpan endTime = TimeSpan.Parse(end[no].Text.Trim());
-                                    timeDets.EndTime = endTime;
-                                }
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(end[no], MyEx.toString());
-                                }
-                                if(ok)
+                            }
+                            
+                           
+                        }
+                    }
+
+                    if(ok)
+                    {
+                        drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+
+                        drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                        drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                        drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                        drTimesheet["WKBeginning"] = myTime.WkEnding;
+                        drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+
+
+                        dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                        daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                        MessageBox.Show("Timesheet Added");
+                        no = 0;
+                        foreach (Control c in panel1.Controls)
+                        {
+                            if (c is Panel && ok)
+                            {
+                                if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                 {
 
+
+                                    DateTime dt = Convert.ToDateTime(start[no].Text);
+                                    TimeSpan ts = dt.TimeOfDay;
+
+                                    DateTime dte = Convert.ToDateTime(end[no].Text);
+                                    TimeSpan tse = dt.TimeOfDay;
 
                                     drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
                                     drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                    drTimeDets["WorkedDay"] = timeDets.WorkedDay;
-                                    drTimeDets["StartTime"] = timeDets.StartTime;
-                                    drTimeDets["EndTime"] = timeDets.EndTime;
+                                    drTimeDets["WorkedDay"] = date[no].Text.Trim();
+                                    drTimeDets["StartTime"] = ts;
+                                    drTimeDets["EndTime"] = tse;
                                     drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
                                     drTimeDets["ProjectID"] = 1;
                                     drTimeDets["TaskID"] = 1;
 
                                     dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                     daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
-
-
-
-                                    MessageBox.Show(timeDets.WorkedDay.ToString());
-
-                                    no++;
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Please enter a valid start or end time");
-                            }
-                           
+                            }no++;
                         }
+                           
+                            
                     }
-                    MessageBox.Show("Timesheet Added");
                     this.Dispose();
 
 

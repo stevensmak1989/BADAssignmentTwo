@@ -11,17 +11,18 @@ namespace FujistuPayments
     {
         private int timesheetId, projectId, taskId, claimTypeId;
         private DateTime workedDay;
-        private TimeSpan startTime, endTime;
+        private string endTime;
+        private string startTime;
 
         public timesheetDetails()
         {
             timesheetId = 0; projectId = 0; taskId = 0; claimTypeId = 0;
-            startTime = new TimeSpan(); endTime = new TimeSpan();
+            startTime = ""; endTime = "";
             workedDay = new DateTime(2021, 05, 01);
 
         }
 
-        public timesheetDetails(int timesheetId, int projectId, int taskId, int claimTypeId, DateTime workedDay, TimeSpan startTime, TimeSpan endTime)
+        public timesheetDetails(int timesheetId, int projectId, int taskId, int claimTypeId, DateTime workedDay, string startTime, string endTime)
         {
             this.timesheetId = timesheetId; this.projectId = projectId; this.taskId = taskId; this.claimTypeId = claimTypeId;
             this.startTime = startTime; this.endTime = endTime;
@@ -56,42 +57,35 @@ namespace FujistuPayments
                 workedDay = value;
             }
         }
-        public TimeSpan StartTime
+        public string StartTime
         {
             get { return startTime; }
             set
             {
 
-                //try
-                //{
-                //    string str = Convert.ToString(value);
-                //    TimeSpan ts = new TimeSpan();
-                //    ts = TimeSpan.Parse(str);
-
-
-                //}
-                //catch (Exception ex)
-                //{
-
-                //    throw new MyException("Please enter a valid time formatt HH:MM");
-                //    errP.SetError(start[no], MyException("Please enter a valid time formatt HH:MM"));
-                //}
-
-                //if (MyValidation.validTimespan(value) == true)
-                //{
-                startTime = value;
-                //}
-                //else
-                //    throw new MyException("Please enter a valid time formatt HH:MM");
+                if (MyValidation.validTimespan1(value) )
+                {
+                    startTime = value;
+                }
+                else
+                    throw new MyException("Please enter a valid time formatt HH:MM");
             }
         }
-        public TimeSpan EndTime
+        public string EndTime
         {
             get { return endTime; }
             set
             {
-                endTime = value;
+                if (MyValidation.validTimespan1(value) == true)
+                {
+                    endTime = value;
+                }
+
+                else
+                    throw new MyException("Please enter a valid time formatt HH:MM");
             }
         }
+
     }
 }
+
