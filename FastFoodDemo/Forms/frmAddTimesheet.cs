@@ -23,7 +23,7 @@ namespace FujitsuPayments.Forms
         String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask, sqlClaim, sqlMan,sqlTime, sqlTimesheet, sqlTimeDets, sqlCost;
         SqlConnection conn;
 
-       
+       private double count;
 
 
         private int no;
@@ -42,7 +42,7 @@ namespace FujitsuPayments.Forms
         {
 
         }
-
+       // public static int Compare(TimeSpan t1, TimeSpan t2);
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -122,7 +122,7 @@ namespace FujitsuPayments.Forms
             {
                 if (ok)
                 {
-                   
+                    
 
                     foreach (Control c in panel1.Controls )
                     {
@@ -130,102 +130,155 @@ namespace FujitsuPayments.Forms
                         {
                            if(start[no].Text.Length != 0 && end[no].Text.Length !=0 )                                
                             {
+                                TimeSpan ts = TimeSpan.Parse(start[no].Text);
+                                TimeSpan te = TimeSpan.Parse(end[no].Text);
+                                DateTime timeStart = DateTime.Parse("07:59 AM");
+                                DateTime timeEnd = DateTime.Parse("06:01 PM");
 
-                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                TimeSpan ds = timeStart.TimeOfDay;
+                                TimeSpan de = timeEnd.TimeOfDay;
 
-                                try
+                                if (ts.CompareTo(te) == -1)
                                 {
-                                    timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
-                                    //passed to employee Class to check
+                                    if (ds.CompareTo(te) == 1 && te.CompareTo(de) == -1)
+                                    {
+
+                                        try
+                                        {
+                                            timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
+                                            //passed to employee Class to check
+
+                                        }
+                                        catch (MyException MyEx)
+                                        {
+                                            ok = false;
+                                            errP.SetError(lblTimsheetId, MyEx.toString());
+                                            count = 0;
+                                            no = 0;
+                                            break;
+                                        }
+                                        try
+                                        {
+                                            timeDets.ClaimTypeId = Convert.ToInt32(cmbCostCentID.SelectedValue.ToString());
+                                            //passed to employee Class to check
+
+                                        }
+                                        catch (MyException MyEx)
+                                        {
+                                            ok = false;
+                                            errP.SetError(cmbCostCentID, MyEx.toString());
+                                            count = 0;
+                                            no = 0;
+                                            break;
+                                        }
+                                        try
+                                        {
+                                            DateTime datee = DateTime.Parse(date[no].Text.Trim());
+                                            timeDets.WorkedDay = datee;
+                                        }
+                                        catch (MyException MyEx)
+                                        {
+                                            ok = false;
+                                            errP.SetError(cmbDates, MyEx.toString());
+                                            count = 0;
+                                            no = 0;
+                                            break;
+                                        }
+                                        try
+                                        {
+                                            //string str = Convert.ToString(start[no].Text.Trim());
+                                            //TimeSpan ts = new TimeSpan();
+                                            //ts = TimeSpan.Parse(str);
+                                            //timeDets.StartTime = ts;
+
+                                            //DateTime dt = Convert.ToDateTime(start[no].Text);
+                                            // MyValidation.validTimespan(Convert.ToDateTime(start[no].Text));
+
+                                            string str = start[no].Text;
+                                            MessageBox.Show(str);
+                                            timeDets.StartTime = str.ToString();
+
+
+                                        }
+                                        //catch (Exception ex)
+                                        //{
+                                        //    ok = false;
+
+                                        //    errP.SetError(start[no], MyEx.toString());
+
+                                        //    break;
+                                        //}
+                                        //try
+                                        //{
+
+                                        //    TimeSpan startTime = TimeSpan.Parse(start[no].Text.Trim());
+                                        //    timeDets.StartTime = startTime;
+                                        //}
+                                        catch (MyException MyEx)
+                                        {
+                                            ok = false;
+                                            errP.SetError(start[no], MyEx.toString());
+                                            count = 0;
+                                            no = 0;
+                                            break;
+                                        }
+                                        try
+                                        {
+
+                                            timeDets.EndTime = end[no].Text;
+                                        }
+                                        catch (MyException MyEx)
+                                        {
+                                            ok = false;
+                                            errP.SetError(end[no], MyEx.toString());
+                                            count = 0;
+                                            no = 0;
+                                            break;
+                                        }
+
+
+                                        if (ok)
+                                        {
+                                            TimeSpan timediff = DateTime.Parse(end[no].Text).Subtract(DateTime.Parse(start[no].Text));
+                                            count += (double) timediff.TotalMinutes;
+                                            MessageBox.Show(Convert.ToString(count));
+                                            no++;
+
+                                            
+                                            
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Basic hours must be between 8AM and 6PM");
+                                        ok = false;
+                                        break;
+                                    }
+
 
                                 }
-                                catch (MyException MyEx)
+                                else
                                 {
+                                    MessageBox.Show("Start time must be less than end time");
                                     ok = false;
-                                    errP.SetError(lblTimsheetId, MyEx.toString());
-                                }
-                                try
-                                {
-                                    timeDets.ClaimTypeId = Convert.ToInt32(cmbCostCentID.SelectedValue.ToString());
-                                    //passed to employee Class to check
-
-                                }
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(cmbCostCentID, MyEx.toString());
-                                }
-                                try
-                                {
-                                    DateTime datee = DateTime.Parse(date[no].Text.Trim());
-                                    timeDets.WorkedDay = datee;
-                                }
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(cmbDates, MyEx.toString());
-                                }
-                                try
-                                {
-                                    //string str = Convert.ToString(start[no].Text.Trim());
-                                    //TimeSpan ts = new TimeSpan();
-                                    //ts = TimeSpan.Parse(str);
-                                    //timeDets.StartTime = ts;
-
-                                    //DateTime dt = Convert.ToDateTime(start[no].Text);
-                                   // MyValidation.validTimespan(Convert.ToDateTime(start[no].Text));
-
-                                    string str = start[no].Text;
-                                    MessageBox.Show(str);
-                                    timeDets.StartTime = str.ToString();
-
-
-                                }
-                                //catch (Exception ex)
-                                //{
-                                //    ok = false;
-
-                                //    errP.SetError(start[no], MyEx.toString());
-
-                                //    break;
-                                //}
-                                //try
-                                //{
-
-                                //    TimeSpan startTime = TimeSpan.Parse(start[no].Text.Trim());
-                                //    timeDets.StartTime = startTime;
-                                //}
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(start[no], MyEx.toString());
                                     break;
                                 }
-                                try
-                                {
-                                   
-                                    timeDets.EndTime = end[no].Text;  
-                                }
-                                catch (MyException MyEx)
-                                {
-                                    ok = false;
-                                    errP.SetError(end[no], MyEx.toString());
-                                    break;
-                                }
-
                                 
-                               if(ok)
-                                { 
-
-                                    no++;
-                                }
                             }
                             
                            
                         }
                     }
-
-                    if(ok)
+                    if (count != 2400)
+                    {
+                        MessageBox.Show("Basic hours must be 40 hours a week ");
+                        ok = false;
+                        count = 0;
+                        no = 0;
+                        
+                    }
+                   
+                    if (ok)
                     {
                         drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
 
@@ -246,6 +299,7 @@ namespace FujitsuPayments.Forms
                             {
                                 if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                 {
+                                    drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
 
 
                                     DateTime dt = Convert.ToDateTime(start[no].Text);
@@ -268,10 +322,10 @@ namespace FujitsuPayments.Forms
                                 }
                             }no++;
                         }
-                           
-                            
+
+                        this.Dispose();
                     }
-                    this.Dispose();
+                    
 
 
 
