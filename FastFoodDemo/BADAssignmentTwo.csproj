@@ -134,6 +134,12 @@
     <Compile Include="Forms\frmEmpTaskAdd.Designer.cs">
       <DependentUpon>frmEmpTaskAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmViewShifts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmViewShifts.Designer.cs">
+      <DependentUpon>frmViewShifts.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditEmpTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmViewShifts.resx">
+      <DependentUpon>frmViewShifts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditEmpTask.resx">
       <DependentUpon>frmEditEmpTask.cs</DependentUpon>

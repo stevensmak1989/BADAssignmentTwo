@@ -14,11 +14,14 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Schedule : UserControl
     {
-        SqlDataAdapter daShift;
+        SqlDataAdapter daShift, daAccount, daProject, daTask;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBShift;
+        SqlConnection conn;
+        SqlCommandBuilder cmbBShift, cmbBAccount;
+        SqlCommand cmbProject, cmbTask;
         DataRow drShift;
         String connStr, sqlShift;
+        String sqlAccount, sqlProject, sqlTask;
 
         // Static varibales to pass to form's
         public static bool shiftSelected = false;
@@ -39,15 +42,50 @@ namespace FujitsuPayments.UserControls
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
+            // -------- set up data adapter for project ID drop down
+            sqlProject = @"Select ProjectID, ProjDesc, AccountID from Project where AccountID like @AccountID";
+            conn = new SqlConnection(connStr);
+            cmbProject = new SqlCommand(sqlProject, conn);
+            cmbProject.Parameters.Add("@AccountID", SqlDbType.Int);
+            daProject = new SqlDataAdapter(cmbProject);
+            daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
+
+            // ----------set up data adapter for Task ID drop down
+            sqlTask = @"Select ProjectID, TaskDesc, TaskID from ProjectTask where ProjectID like @ProjectID";
+            conn = new SqlConnection(connStr);
+            cmbTask = new SqlCommand(sqlTask, conn);
+            cmbTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daTask = new SqlDataAdapter(cmbTask);
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+
             sqlShift = @"select * from EmployeeShift";
             daShift = new SqlDataAdapter(sqlShift, connStr);
             cmbBShift = new SqlCommandBuilder(daShift);
             daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
             daShift.Fill(dsFujitsuPayments, "EmployeeShift");
 
+            sqlAccount = @"select * from Account";
+            daAccount = new SqlDataAdapter(sqlAccount, connStr);
+            cmbBAccount = new SqlCommandBuilder(daAccount);
+            daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
+            daAccount.Fill(dsFujitsuPayments, "Account");
+
             dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             // resize the datagridview columns to fit the newly loaded content
             dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            // ------- populate account ID combo box
+            cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
+            cmbAccountId.ValueMember = "AccountID";
+            cmbAccountId.DisplayMember = "ClientName";
+
+            cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
+            cmbProjectId.ValueMember = "ProjectID";
+            cmbProjectId.DisplayMember = "ProjDesc";
+
+            cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+            cmbTaskId.ValueMember = "TaskID";
+            cmbTaskId.DisplayMember = "TaskDesc";
 
             hidePanels();
         }
@@ -55,6 +93,11 @@ namespace FujitsuPayments.UserControls
 
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
@@ -111,67 +154,67 @@ namespace FujitsuPayments.UserControls
             switch(dayOfWeek)
             {
                 case "Monday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(5).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(6).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(2).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(3).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(4).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(5).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(6).ToShortDateString();
                     break;
                 case "Tuesday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(5).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(2).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(3).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(4).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(5).ToShortDateString();
                     break;
                 case "Wednesday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(4).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(2).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(3).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(4).ToShortDateString();
                     break;
                 case "Thursday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(3).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-3).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(2).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(3).ToShortDateString();
                     break;
                 case "Friday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(2).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-4).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-3).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(2).ToShortDateString();
                     break;
                 case "Saturday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-5).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(1).Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-5).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-4).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-3).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.AddDays(1).ToShortDateString();
                     break;
                 case "Sunday":
-                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-6).Day.ToString();
-                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-5).Day.ToString();
-                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-4).Day.ToString();
-                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-3).Day.ToString();
-                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-2).Day.ToString();
-                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).Day.ToString();
-                    lblSunDate.Text = calShift.SelectionRange.Start.Day.ToString();
+                    lblMonDate.Text = calShift.SelectionRange.Start.AddDays(-6).ToShortDateString();
+                    lblTueDate.Text = calShift.SelectionRange.Start.AddDays(-5).ToShortDateString();
+                    lblWedDate.Text = calShift.SelectionRange.Start.AddDays(-4).ToShortDateString();
+                    lblThuDate.Text = calShift.SelectionRange.Start.AddDays(-3).ToShortDateString();
+                    lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
+                    lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
+                    lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
                     break;
 
             }
@@ -210,6 +253,93 @@ namespace FujitsuPayments.UserControls
             pnlSunShift2.Visible = false;
             pnlSunShift3.Visible = false;
             pnlSunShift4.Visible = false;
+        }
+
+        private void btnViewShifts_Click(object sender, EventArgs e)
+        {
+
+            frmViewShifts frm = new frmViewShifts();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Visible = true;
+            frm.Location = new Point(100, 100);
+            this.Controls.Add(frm);
+            frm.BringToFront();
+        }
+
+        private void cmbAccountId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAccountId.Focused == true)
+            {
+                // clear data set
+                dsFujitsuPayments.Tables["Project"].Clear();
+                // pass in account ID from combo box
+                cmbProject.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
+                try
+                {
+                    // fill data adapter with returned values
+                    daProject.Fill(dsFujitsuPayments, "Project");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error message " + ex);
+                }
+                cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
+                cmbProjectId.ValueMember = "ProjectID";
+                cmbProjectId.DisplayMember = "ProjDesc";
+                if (cmbProjectId.Focused == true)
+                {
+                    dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                    cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+                    try
+                    {
+                        daTask.Fill(dsFujitsuPayments, "ProjectTask");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error message " + ex);
+                    }
+                    cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                    cmbTaskId.ValueMember = "TaskID";
+                    cmbTaskId.DisplayMember = "TaskDesc";
+
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProjectId.Focused == true)
+            {
+                dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+
+                try
+                {
+                    daTask.Fill(dsFujitsuPayments, "ProjectTask");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error message " + ex);
+                }
+
+                cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                cmbTaskId.ValueMember = "TaskID";
+                cmbTaskId.DisplayMember = "TaskDesc";
+
+            }
+            else
+            {
+
+            }
         }
 
         private void btnEditShift_Click(object sender, EventArgs e)
@@ -267,15 +397,53 @@ namespace FujitsuPayments.UserControls
 
 
 
-        private void calLocYAxis()
+        public static int calLocYAxis(String startTime)
         {
+            // var charsToRemove = new string[] { "@", ",", ".", ";", "'", ":" };
+            // foreach (var c in charsToRemove)
+            // {
+            //     startTime = startTime.Replace(c, string.Empty);
+            // }
+            // start time as a whole integer
 
+            string[] splitTime = startTime.Split(':');
+            int hr = Convert.ToInt32(startTime[0]);
+            int min = Convert.ToInt32(startTime[1]);
+            int newMin = 0; ;
+
+            if(min == 15)
+            {
+                newMin = 20;
+            }
+            else if(min == 30)
+            {
+                newMin = 40;
+            }
+            else if(min == 45)
+            {
+                newMin = 60;
+            }
+
+            return (hr*80) + newMin; // returns y axis value to position panel
         }
 
 
-        private void calSizeHeight()
+        public static int calSizeHeight(string startTime, string endTime)
         {
+  
+            var charsToRemove = new string[] { "@", ",", ".", ";", "'", ":" };
+            foreach (var c in charsToRemove)
+            {
+                startTime = startTime.Replace(c, string.Empty);
+            }
+            foreach (var c in charsToRemove)
+            {
+                endTime = endTime.Replace(c, string.Empty);
+            }
+            int st = Convert.ToInt32(startTime);
+            int et = Convert.ToInt32(endTime);
 
+            return (((et - st)-100) * 20);
         }
     }
 
