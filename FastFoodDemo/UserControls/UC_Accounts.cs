@@ -127,6 +127,11 @@ namespace FujitsuPayments.UserControls
 
         }
 
+        private void btnViewAccount_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 

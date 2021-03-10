@@ -14,11 +14,14 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Schedule : UserControl
     {
-        SqlDataAdapter daShift;
+        SqlDataAdapter daShift, daAccount, daProject, daTask;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBShift;
+        SqlConnection conn;
+        SqlCommandBuilder cmbBShift, cmbBAccount;
+        SqlCommand cmbProject, cmbTask;
         DataRow drShift;
         String connStr, sqlShift;
+        String sqlAccount, sqlProject, sqlTask;
 
         // Static varibales to pass to form's
         public static bool shiftSelected = false;
@@ -39,15 +42,50 @@ namespace FujitsuPayments.UserControls
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
+            // -------- set up data adapter for project ID drop down
+            sqlProject = @"Select ProjectID, ProjDesc, AccountID from Project where AccountID like @AccountID";
+            conn = new SqlConnection(connStr);
+            cmbProject = new SqlCommand(sqlProject, conn);
+            cmbProject.Parameters.Add("@AccountID", SqlDbType.Int);
+            daProject = new SqlDataAdapter(cmbProject);
+            daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
+
+            // ----------set up data adapter for Task ID drop down
+            sqlTask = @"Select ProjectID, TaskDesc, TaskID from ProjectTask where ProjectID like @ProjectID";
+            conn = new SqlConnection(connStr);
+            cmbTask = new SqlCommand(sqlTask, conn);
+            cmbTask.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daTask = new SqlDataAdapter(cmbTask);
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+
             sqlShift = @"select * from EmployeeShift";
             daShift = new SqlDataAdapter(sqlShift, connStr);
             cmbBShift = new SqlCommandBuilder(daShift);
             daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
             daShift.Fill(dsFujitsuPayments, "EmployeeShift");
 
+            sqlAccount = @"select * from Account";
+            daAccount = new SqlDataAdapter(sqlAccount, connStr);
+            cmbBAccount = new SqlCommandBuilder(daAccount);
+            daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
+            daAccount.Fill(dsFujitsuPayments, "Account");
+
             dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             // resize the datagridview columns to fit the newly loaded content
             dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            // ------- populate account ID combo box
+            cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
+            cmbAccountId.ValueMember = "AccountID";
+            cmbAccountId.DisplayMember = "ClientName";
+
+            cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
+            cmbProjectId.ValueMember = "ProjectID";
+            cmbProjectId.DisplayMember = "ProjDesc";
+
+            cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+            cmbTaskId.ValueMember = "TaskID";
+            cmbTaskId.DisplayMember = "TaskDesc";
 
             hidePanels();
         }
@@ -55,6 +93,11 @@ namespace FujitsuPayments.UserControls
 
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
@@ -222,6 +265,81 @@ namespace FujitsuPayments.UserControls
             frm.Location = new Point(100, 100);
             this.Controls.Add(frm);
             frm.BringToFront();
+        }
+
+        private void cmbAccountId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAccountId.Focused == true)
+            {
+                // clear data set
+                dsFujitsuPayments.Tables["Project"].Clear();
+                // pass in account ID from combo box
+                cmbProject.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
+                try
+                {
+                    // fill data adapter with returned values
+                    daProject.Fill(dsFujitsuPayments, "Project");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error message " + ex);
+                }
+                cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
+                cmbProjectId.ValueMember = "ProjectID";
+                cmbProjectId.DisplayMember = "ProjDesc";
+                if (cmbProjectId.Focused == true)
+                {
+                    dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                    cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+                    try
+                    {
+                        daTask.Fill(dsFujitsuPayments, "ProjectTask");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error message " + ex);
+                    }
+                    cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                    cmbTaskId.ValueMember = "TaskID";
+                    cmbTaskId.DisplayMember = "TaskDesc";
+
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProjectId.Focused == true)
+            {
+                dsFujitsuPayments.Tables["ProjectTask"].Clear();
+                cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+
+                try
+                {
+                    daTask.Fill(dsFujitsuPayments, "ProjectTask");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error message " + ex);
+                }
+
+                cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+                cmbTaskId.ValueMember = "TaskID";
+                cmbTaskId.DisplayMember = "TaskDesc";
+
+            }
+            else
+            {
+
+            }
         }
 
         private void btnEditShift_Click(object sender, EventArgs e)

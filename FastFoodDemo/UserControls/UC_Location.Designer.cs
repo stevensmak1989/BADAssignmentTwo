@@ -31,7 +31,6 @@ namespace FujitsuPayments.UserControls
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Location));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnViewLocation = new System.Windows.Forms.Button();
             this.btnDeleteLocation = new System.Windows.Forms.Button();
             this.btnEditLocation = new System.Windows.Forms.Button();
             this.btnAddLocation = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel1.Controls.Add(this.btnViewLocation);
             this.panel1.Controls.Add(this.btnDeleteLocation);
             this.panel1.Controls.Add(this.btnEditLocation);
             this.panel1.Controls.Add(this.btnAddLocation);
@@ -55,22 +53,6 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 0;
-            // 
-            // btnViewLocation
-            // 
-            this.btnViewLocation.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnViewLocation.FlatAppearance.BorderSize = 0;
-            this.btnViewLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnViewLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnViewLocation.Image")));
-            this.btnViewLocation.Location = new System.Drawing.Point(484, 0);
-            this.btnViewLocation.Name = "btnViewLocation";
-            this.btnViewLocation.Size = new System.Drawing.Size(163, 42);
-            this.btnViewLocation.TabIndex = 4;
-            this.btnViewLocation.Text = "View Location";
-            this.btnViewLocation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnViewLocation.UseVisualStyleBackColor = true;
             // 
             // btnDeleteLocation
             // 
@@ -179,6 +161,5 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Button btnAddLocation;
         private System.Windows.Forms.Button btnEditLocation;
         private System.Windows.Forms.Button btnDeleteLocation;
-        private System.Windows.Forms.Button btnViewLocation;
     }
 }

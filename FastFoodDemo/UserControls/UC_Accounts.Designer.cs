@@ -32,7 +32,6 @@ namespace FujitsuPayments.UserControls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Accounts));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnViewAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
@@ -47,7 +46,6 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel1.Controls.Add(this.btnViewAccount);
             this.panel1.Controls.Add(this.btnDeleteAccount);
             this.panel1.Controls.Add(this.btnEditAccount);
             this.panel1.Controls.Add(this.btnAddAccount);
@@ -57,22 +55,6 @@ namespace FujitsuPayments.UserControls
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnViewAccount
-            // 
-            this.btnViewAccount.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnViewAccount.FlatAppearance.BorderSize = 0;
-            this.btnViewAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnViewAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnViewAccount.Image")));
-            this.btnViewAccount.Location = new System.Drawing.Point(484, 0);
-            this.btnViewAccount.Name = "btnViewAccount";
-            this.btnViewAccount.Size = new System.Drawing.Size(163, 42);
-            this.btnViewAccount.TabIndex = 3;
-            this.btnViewAccount.Text = "View Account";
-            this.btnViewAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnViewAccount.UseVisualStyleBackColor = true;
             // 
             // btnDeleteAccount
             // 
@@ -192,6 +174,5 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.DataGridView dgvAccounts;
-        private System.Windows.Forms.Button btnViewAccount;
     }
 }
