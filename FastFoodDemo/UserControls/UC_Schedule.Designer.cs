@@ -56,6 +56,7 @@ namespace FujitsuPayments.UserControls
             this.panel40 = new System.Windows.Forms.Panel();
             this.dgvShift = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSearchShifts = new System.Windows.Forms.Button();
             this.cmbAccountId = new System.Windows.Forms.ComboBox();
             this.lblAccountId = new System.Windows.Forms.Label();
             this.cmbTaskId = new System.Windows.Forms.ComboBox();
@@ -122,7 +123,6 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift3 = new System.Windows.Forms.Panel();
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
-            this.btnSearchShifts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -432,6 +432,8 @@ namespace FujitsuPayments.UserControls
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.Size = new System.Drawing.Size(399, 214);
             this.dgvShift.TabIndex = 6;
+            this.dgvShift.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellContentClick);
+            this.dgvShift.SelectionChanged += new System.EventHandler(this.DataGridSelectionChanged);
             // 
             // panel3
             // 
@@ -453,6 +455,21 @@ namespace FujitsuPayments.UserControls
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1090, 483);
             this.panel3.TabIndex = 2;
+            // 
+            // btnSearchShifts
+            // 
+            this.btnSearchShifts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchShifts.FlatAppearance.BorderSize = 2;
+            this.btnSearchShifts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearchShifts.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchShifts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnSearchShifts.Location = new System.Drawing.Point(925, 216);
+            this.btnSearchShifts.Name = "btnSearchShifts";
+            this.btnSearchShifts.Size = new System.Drawing.Size(151, 25);
+            this.btnSearchShifts.TabIndex = 15;
+            this.btnSearchShifts.Text = "Search Shifts";
+            this.btnSearchShifts.UseVisualStyleBackColor = true;
+            this.btnSearchShifts.Click += new System.EventHandler(this.btnSearchShifts_Click);
             // 
             // cmbAccountId
             // 
@@ -1100,20 +1117,6 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift1.Name = "pnlSunShift1";
             this.pnlSunShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift1.TabIndex = 14;
-            // 
-            // btnSearchShifts
-            // 
-            this.btnSearchShifts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearchShifts.FlatAppearance.BorderSize = 2;
-            this.btnSearchShifts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearchShifts.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchShifts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnSearchShifts.Location = new System.Drawing.Point(925, 216);
-            this.btnSearchShifts.Name = "btnSearchShifts";
-            this.btnSearchShifts.Size = new System.Drawing.Size(151, 25);
-            this.btnSearchShifts.TabIndex = 15;
-            this.btnSearchShifts.Text = "Search Shifts";
-            this.btnSearchShifts.UseVisualStyleBackColor = true;
             // 
             // UC_Schedule
             // 

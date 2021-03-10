@@ -16,13 +16,13 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmViewShifts : Form
     {
-        SqlDataAdapter daEmpShift, daEmpShiftDet;
+        SqlDataAdapter daEmpShift, daEmpShiftDet, daEmpShiftDet2;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
-        SqlCommandBuilder cmbBEmpShift, cmbBEmpShiftDet;
-        SqlCommand cmbEmpShift, cmbEmpShiftDet;
-        DataRow drEmpShift, drEmpShiftDet;
-        String connStr, sqlEmpShift, sqlEmpShiftDet;
+        SqlCommandBuilder cmbBEmpShift, cmbBEmpShiftDet, cmbBEmpShiftDet2;
+        SqlCommand cmbEmpShift, cmbEmpShiftDet, cmbEmpShiftDet2;
+        DataRow drEmpShift, drEmpShiftDet, drEmpShiftDet2;
+        String connStr, sqlEmpShift, sqlEmpShiftDet, sqlEmpShiftDet2;
 
 
 
@@ -35,6 +35,9 @@ namespace FujitsuPayments.Forms
         {
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
+
+
+            // -------------------set up adapter for employee shift gridview
             sqlEmpShift = @"select emp.ShiftID, emp.AccountID, a.ClientName, emp.ProjectID ,p.ProjDesc, emp.TaskID, pj.TaskDesc, emp.StartDate, 
 		                    emp.StartTime, emp.EndTime 
                             from EmployeeShift emp
@@ -49,19 +52,33 @@ namespace FujitsuPayments.Forms
             daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
             daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
 
+
+            // -------------------set up adapter for employeeshiftdetails gridiview
+            sqlEmpShiftDet = @" select esd.ShiftID, esd.EmployeeID, e.Forename, e.Surname
+                                from EmployeeShiftDetails esd
+                                inner join Employee e
+                                on esd.EmployeeID = e.EmployeeID where ShiftID like @ShiftID";
+            conn = new SqlConnection(connStr);
+            cmbEmpShiftDet = new SqlCommand(sqlEmpShiftDet, conn);
+            cmbEmpShiftDet.Parameters.Add("@ShiftID", SqlDbType.Int);
+            daEmpShiftDet = new SqlDataAdapter(cmbEmpShiftDet);
+            daEmpShiftDet.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
+
+
+            // ---------------basic adapter for deleting employee shift details
+            sqlEmpShiftDet2 = @"select * from EmployeeShiftDetails";
+            daEmpShiftDet2 = new SqlDataAdapter(sqlEmpShiftDet2, connStr);
+            cmbBEmpShiftDet2 = new SqlCommandBuilder(daEmpShiftDet2);
+            daEmpShiftDet2.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails2");
+            daEmpShiftDet2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
+
+
+            //  populate employee shift datagridview
             dgvEmpShift.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             dgvEmpShift.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-
             dgvEmpShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
-            // resize the datagridview columns to fit the newly loaded content
             dgvEmpShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-
-            sqlEmpShiftDet = @"select * from EmployeeShiftDetails";
-            daEmpShiftDet = new SqlDataAdapter(sqlEmpShiftDet, connStr);
-            cmbBEmpShiftDet = new SqlCommandBuilder(daEmpShiftDet);
-            daEmpShiftDet.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
-            daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -75,31 +92,7 @@ namespace FujitsuPayments.Forms
 
             if (dgvEmpShift.Focused == true)
             {
-
-                dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
-
-                // dgvEmpShiftDetails.DataSource = null;
-
-                sqlEmpShiftDet = @"select * from EmployeeShiftDetails where ShiftID like @ShiftID";
-                conn = new SqlConnection(connStr);
-                cmbEmpShiftDet = new SqlCommand(sqlEmpShiftDet, conn);
-                cmbEmpShiftDet.Parameters.Add("@ShiftID", SqlDbType.Int);
-                daEmpShiftDet = new SqlDataAdapter(cmbEmpShiftDet);
-                daEmpShiftDet.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
-
-                
-
-                cmbEmpShiftDet.Parameters["@ShiftID"].Value = Convert.ToInt32(dgvEmpShift.SelectedRows[0].Cells[0].Value);
-                daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
-
-                dgvEmpShiftDetails.DefaultCellStyle.Font = new Font("Century Gothic", 9);
-                dgvEmpShiftDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-                dgvEmpShiftDetails.DataSource = dsFujitsuPayments.Tables["EmployeeShiftDetails"];
-
-                // resize the datagridview columns to fit the newly loaded content
-                dgvEmpShiftDetails.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-                dgvEmpShiftDetails.Refresh();
+                refreshEmpoyeeShiftDetGridView();
             }
             else
             {
@@ -110,6 +103,7 @@ namespace FujitsuPayments.Forms
 
         private void btnDeleteShift_Click(object sender, EventArgs e)
         {
+
             if (dgvEmpShiftDetails.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an Employee Shift from the list.", "Select Shift");
@@ -120,16 +114,35 @@ namespace FujitsuPayments.Forms
                 primaryKey[0] = Convert.ToInt32(dgvEmpShiftDetails.SelectedRows[0].Cells[0].Value);
                 primaryKey[1] = Convert.ToInt32(dgvEmpShiftDetails.SelectedRows[0].Cells[1].Value);
 
-                drEmpShiftDet = dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Find(primaryKey);
-                string tempName = drEmpShiftDet["ShiftID"].ToString() + "\'s";
+                drEmpShiftDet2 = dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Rows.Find(primaryKey);
+                string tempName = drEmpShiftDet2["ShiftID"].ToString() + " " + drEmpShiftDet2["EmployeeID"].ToString() + "\'s";
 
 
-                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName +  "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drEmpShiftDet.Delete();
-                    daEmpShiftDet.Update(dsFujitsuPayments, "EmployeeShiftDetails");
+                    drEmpShiftDet2.Delete();
+                    daEmpShiftDet2.Update(dsFujitsuPayments, "EmployeeShiftDetails2");
+                    MessageBox.Show("Record Deleted");
+
+                    refreshEmpoyeeShiftDetGridView();
+
                 }
             }
+        }
+
+
+
+        private void refreshEmpoyeeShiftDetGridView()
+        {
+            dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
+
+            cmbEmpShiftDet.Parameters["@ShiftID"].Value = Convert.ToInt32(dgvEmpShift.SelectedRows[0].Cells[0].Value);
+            daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
+            dgvEmpShiftDetails.DefaultCellStyle.Font = new Font("Century Gothic", 9);
+
+            dgvEmpShiftDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
+            dgvEmpShiftDetails.DataSource = dsFujitsuPayments.Tables["EmployeeShiftDetails"];
+            dgvEmpShiftDetails.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }

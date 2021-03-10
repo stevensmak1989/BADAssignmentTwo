@@ -14,14 +14,14 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Schedule : UserControl
     {
-        SqlDataAdapter daShift, daAccount, daProject, daTask;
+        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
-        SqlCommandBuilder cmbBShift, cmbBAccount;
-        SqlCommand cmbProject, cmbTask;
-        DataRow drShift;
+        SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift;
+        SqlCommand cmbProject, cmbTask, cmbEmpShift;
+        DataRow drShift, drEmpShift;
         String connStr, sqlShift;
-        String sqlAccount, sqlProject, sqlTask;
+        String sqlAccount, sqlProject, sqlTask, sqlEmpShift;
 
         // Static varibales to pass to form's
         public static bool shiftSelected = false;
@@ -33,6 +33,15 @@ namespace FujitsuPayments.UserControls
             
         }
 
+        private void dgvShift_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+
+
         private void UC_Schedule_Load(object sender, EventArgs e)
         {
             // style fornt of data grid cell and header
@@ -41,6 +50,22 @@ namespace FujitsuPayments.UserControls
             this.calShift.MaxSelectionCount = 1;
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
+
+
+            // ------------ set up adapter for shift data grid view --------------- //////
+            sqlEmpShift = @"select ShiftID,AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime  
+                            from EmployeeShift where AccountID like @AccountID
+                            and ProjectID like @ProjectID and TaskID like @TaskID";
+            conn = new SqlConnection(connStr);
+            cmbEmpShift = new SqlCommand(sqlEmpShift, conn);
+            // add parameters
+            cmbEmpShift.Parameters.Add("@AccountID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@ProjectID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@TaskID", SqlDbType.Int);
+
+            daEmpShift = new SqlDataAdapter(cmbEmpShift);
+            daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
+
 
             // -------- set up data adapter for project ID drop down
             sqlProject = @"Select ProjectID, ProjDesc, AccountID from Project where AccountID like @AccountID";
@@ -61,18 +86,20 @@ namespace FujitsuPayments.UserControls
             sqlShift = @"select * from EmployeeShift";
             daShift = new SqlDataAdapter(sqlShift, connStr);
             cmbBShift = new SqlCommandBuilder(daShift);
-            daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
-            daShift.Fill(dsFujitsuPayments, "EmployeeShift");
+            daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift2");
+            daShift.Fill(dsFujitsuPayments, "EmployeeShift2");
 
+
+            // -- basic adapater for account
             sqlAccount = @"select * from Account";
             daAccount = new SqlDataAdapter(sqlAccount, connStr);
             cmbBAccount = new SqlCommandBuilder(daAccount);
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
 
-            dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
+           // dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             // resize the datagridview columns to fit the newly loaded content
-            dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
 
             // ------- populate account ID combo box
             cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
@@ -101,6 +128,7 @@ namespace FujitsuPayments.UserControls
         {
 
         }
+
 
         private void btnAddShift_Click(object sender, EventArgs e)
         {
@@ -216,7 +244,6 @@ namespace FujitsuPayments.UserControls
                     lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
                     lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
                     break;
-
             }
            
         }
@@ -302,7 +329,6 @@ namespace FujitsuPayments.UserControls
                     cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
                     cmbTaskId.ValueMember = "TaskID";
                     cmbTaskId.DisplayMember = "TaskDesc";
-
                 }
                 else
                 {
@@ -330,11 +356,9 @@ namespace FujitsuPayments.UserControls
                 {
                     MessageBox.Show("Error message " + ex);
                 }
-
                 cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
                 cmbTaskId.ValueMember = "TaskID";
                 cmbTaskId.DisplayMember = "TaskDesc";
-
             }
             else
             {
@@ -391,6 +415,7 @@ namespace FujitsuPayments.UserControls
                 {
                     drShift.Delete();
                     daShift.Update(dsFujitsuPayments, "EmployeeShift");
+
                 }
             }
         }
@@ -444,6 +469,58 @@ namespace FujitsuPayments.UserControls
             int et = Convert.ToInt32(endTime);
 
             return (((et - st)-100) * 20);
+        }
+
+
+
+
+        private void btnSearchShifts_Click(object sender, EventArgs e)
+        {
+            dsFujitsuPayments.Tables["EmployeeShift"].Clear();
+
+            // set parameters
+            cmbEmpShift.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
+            cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+            cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
+
+            daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
+            dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
+            dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+        }
+
+
+        private void DataGridSelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvShift.Focused == true)
+            {
+                drEmpShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
+
+                DateTime startDate = Convert.ToDateTime(drEmpShift["StartDate"].ToString());
+                string pnlStartDate = startDate.ToShortDateString();
+                string pnlStartTime = drEmpShift["StartTime"].ToString();
+                string pnlEndTime = drEmpShift["EndTime"].ToString();
+
+
+                MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
+            }
+
+        }
+
+
+
+        private void refreshShiftGridView()
+        {
+            dsFujitsuPayments.Tables["EmployeeShift2"].Clear();
+
+            // set parameters
+            cmbEmpShift.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
+            cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+            cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
+
+            daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift2");
+            dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift2"];
+            dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 
