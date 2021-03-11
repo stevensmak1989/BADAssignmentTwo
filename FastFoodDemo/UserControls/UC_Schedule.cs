@@ -53,15 +53,21 @@ namespace FujitsuPayments.UserControls
 
 
             // ------------ set up adapter for shift data grid view --------------- //////
-            sqlEmpShift = @"select ShiftID,AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime  
-                            from EmployeeShift where AccountID like @AccountID
-                            and ProjectID like @ProjectID and TaskID like @TaskID";
+            sqlEmpShift = @"SET DATEFIRST 1 -- Define beginning of week as Monday
+                        SELECT ShiftID,AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime 
+                        FROM EmployeeShift
+                        WHERE AccountID like @AccountID
+                        And ProjectID like @ProjectID and TaskID like @TaskID
+                        And StartDate >= DATEADD(day, 1 - DATEPART(dw, @StartDate), CONVERT(DATE, @StartDate)) 
+                        AND StartDate <  DATEADD(day, 8 - DATEPART(dw, @StartDate), CONVERT(DATE, @StartDate))";
+            // --- only return shifts were account/project/task match and only records for a week range from the start date
             conn = new SqlConnection(connStr);
             cmbEmpShift = new SqlCommand(sqlEmpShift, conn);
             // add parameters
             cmbEmpShift.Parameters.Add("@AccountID", SqlDbType.Int);
             cmbEmpShift.Parameters.Add("@ProjectID", SqlDbType.Int);
             cmbEmpShift.Parameters.Add("@TaskID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@StartDate", SqlDbType.DateTime);
 
             daEmpShift = new SqlDataAdapter(cmbEmpShift);
             daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
@@ -177,6 +183,7 @@ namespace FujitsuPayments.UserControls
 
         private void calShift_DateChanged(object sender, DateRangeEventArgs e)
         {
+            
             String dayOfWeek = calShift.SelectionRange.Start.DayOfWeek.ToString();
 
             switch(dayOfWeek)
@@ -478,14 +485,24 @@ namespace FujitsuPayments.UserControls
         {
             dsFujitsuPayments.Tables["EmployeeShift"].Clear();
 
-            // set parameters
-            cmbEmpShift.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
-            cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
-            cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
+            if(calShift.SelectionRange == null || cmbAccountId.SelectedIndex < 0 || cmbProjectId.SelectedIndex < 0 || cmbTaskId.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select all values");
+            }
+            else
+            {
+                // set parameters
+                cmbEmpShift.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
+                cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
+                cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
+                cmbEmpShift.Parameters["@StartDate"].Value = calShift.SelectionRange.Start.ToString();
 
-            daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
-            dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
-            dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
+                dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
+                dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            }
+
 
         }
 
