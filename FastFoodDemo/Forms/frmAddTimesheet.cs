@@ -816,7 +816,7 @@ namespace FujitsuPayments.Forms
             for(int i = 0; i< 7; i++)
             {
                 start[i].Clear();
-               end[i].Clear
+                end[i].Clear(); // was missing ();
             }
         }
        
