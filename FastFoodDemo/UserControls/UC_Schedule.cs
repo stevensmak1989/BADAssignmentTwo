@@ -14,18 +14,20 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Schedule : UserControl
     {
-        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift;
+        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift, daEmpShiftDet;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
-        SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift;
-        SqlCommand cmbProject, cmbTask, cmbEmpShift;
-        DataRow drShift, drEmpShift;
+        SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift, cmbBEmpShiftDet;
+        SqlCommand cmbProject, cmbTask, cmbEmpShift, cmbEmpShiftDet;
+        DataRow drShift, drEmpShift, drEmpShiftDet;
         String connStr, sqlShift;
-        String sqlAccount, sqlProject, sqlTask, sqlEmpShift;
+        String sqlAccount, sqlProject, sqlTask, sqlEmpShift, sqlEmpShiftDet;
 
         // Static varibales to pass to form's
         public static bool shiftSelected = false;
-        public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0; 
+        public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0;
+
+
 
         public UC_Schedule()
         {
@@ -68,9 +70,17 @@ namespace FujitsuPayments.UserControls
             cmbEmpShift.Parameters.Add("@ProjectID", SqlDbType.Int);
             cmbEmpShift.Parameters.Add("@TaskID", SqlDbType.Int);
             cmbEmpShift.Parameters.Add("@StartDate", SqlDbType.DateTime);
-
             daEmpShift = new SqlDataAdapter(cmbEmpShift);
             daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
+
+
+            // -------- set up data adpater for employee shift details, to populate panels--------------- //
+            sqlEmpShiftDet = @"select * from EmployeeShiftDetails where ShiftID like @ShiftID";
+            conn = new SqlConnection(connStr);
+            cmbEmpShiftDet = new SqlCommand(sqlEmpShiftDet, conn);      
+            cmbEmpShiftDet.Parameters.Add("@ShiftID", SqlDbType.Int);
+            daEmpShiftDet = new SqlDataAdapter(cmbEmpShiftDet);
+            daEmpShiftDet.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
 
 
             // -------- set up data adapter for project ID drop down
@@ -491,15 +501,60 @@ namespace FujitsuPayments.UserControls
             }
             else
             {
-                // set parameters
+                // set parameters from combobox for query
                 cmbEmpShift.Parameters["@AccountID"].Value = cmbAccountId.SelectedValue;
                 cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
                 cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
                 cmbEmpShift.Parameters["@StartDate"].Value = calShift.SelectionRange.Start.ToString();
 
                 daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
+
                 dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
                 dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+
+                foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift"].Rows)
+                {
+                    // get date time from data row, extract day of week and set it to a string variable, used for switch
+                    DateTime dateValue = Convert.ToDateTime(dr["StartDate"].ToString());
+                    String dayOfWeek = dateValue.DayOfWeek.ToString();
+
+                    ////MessageBox.Show("ShiftID" + dr["ShiftID"].ToString() + "Day of week; " + dayOfWeek);
+
+                    // use shiftID to pass to employee shift details query
+                    cmbEmpShiftDet.Parameters["@ShiftID"].Value = dr["ShiftID"].ToString();
+                    daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
+
+                    foreach(DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
+                    {
+                        switch (dayOfWeek)
+                        {
+                            case "Monday":
+                                pnlMonShift1.Visible = true;
+                                break;
+                            case "Tuesday":
+                                pnlTueShift1.Visible = true;
+                                break;
+                            case "Wednesday":
+                                pnlWedShift1.Visible = true;
+                                break;
+                            case "Thursday":
+                                pnlThuShift1.Visible = true;
+                                break;
+                            case "Friday":
+                                pnlFriShift1.Visible = true;
+                                break;
+                            case "Saturday":
+                                pnlSatShift1.Visible = true;
+                                break;
+                            case "Sunday":
+                                pnlSunShift1.Visible = true;
+                                break;
+                        }
+                    }
+
+
+                }
 
             }
 
@@ -538,6 +593,12 @@ namespace FujitsuPayments.UserControls
             daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift2");
             dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift2"];
             dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            hidePanels();
         }
     }
 

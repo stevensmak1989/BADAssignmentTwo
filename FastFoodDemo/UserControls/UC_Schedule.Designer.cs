@@ -123,6 +123,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift3 = new System.Windows.Forms.Panel();
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -438,6 +439,7 @@ namespace FujitsuPayments.UserControls
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.btnReset);
             this.panel3.Controls.Add(this.btnSearchShifts);
             this.panel3.Controls.Add(this.cmbAccountId);
             this.panel3.Controls.Add(this.lblAccountId);
@@ -1118,6 +1120,21 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift1.TabIndex = 14;
             // 
+            // btnReset
+            // 
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReset.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnReset.Location = new System.Drawing.Point(755, 216);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(82, 25);
+            this.btnReset.TabIndex = 16;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // UC_Schedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1245,5 +1262,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Label lblProjectId;
         private System.Windows.Forms.Button btnViewShifts;
         private System.Windows.Forms.Button btnSearchShifts;
+        private System.Windows.Forms.Button btnReset;
     }
 }
