@@ -34,47 +34,54 @@ namespace FujitsuPayments.Forms
             this.cmbDates = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.cmbProject7 = new System.Windows.Forms.ComboBox();
             this.lblDateSun = new System.Windows.Forms.Label();
             this.txtEnd7 = new System.Windows.Forms.TextBox();
             this.txtStart7 = new System.Windows.Forms.TextBox();
             this.cmbEmpTask7 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblSun = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.cmbProject6 = new System.Windows.Forms.ComboBox();
             this.lblDateSat = new System.Windows.Forms.Label();
             this.txtEnd6 = new System.Windows.Forms.TextBox();
             this.txtStart6 = new System.Windows.Forms.TextBox();
             this.cmbEmpTask6 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblSat = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.cmbProject5 = new System.Windows.Forms.ComboBox();
             this.lblDateFri = new System.Windows.Forms.Label();
             this.txtEnd5 = new System.Windows.Forms.TextBox();
             this.txtStart5 = new System.Windows.Forms.TextBox();
             this.cmbEmpTask5 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblFri = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblDateMon = new System.Windows.Forms.Label();
             this.txtEnd1 = new System.Windows.Forms.TextBox();
             this.txtStart1 = new System.Windows.Forms.TextBox();
+            this.cmbProject = new System.Windows.Forms.ComboBox();
             this.cmbEmpTask = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMon = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cmbProject4 = new System.Windows.Forms.ComboBox();
             this.txtEnd4 = new System.Windows.Forms.TextBox();
             this.txtStart4 = new System.Windows.Forms.TextBox();
             this.cmbEmpTask4 = new System.Windows.Forms.ComboBox();
             this.lblDateThur = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblThur = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cmbProject3 = new System.Windows.Forms.ComboBox();
             this.lblDateWed = new System.Windows.Forms.Label();
             this.txtEnd3 = new System.Windows.Forms.TextBox();
             this.txtStart3 = new System.Windows.Forms.TextBox();
             this.cmbEmpTask3 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblWed = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cmbProject2 = new System.Windows.Forms.ComboBox();
             this.cmbEmpTask2 = new System.Windows.Forms.ComboBox();
             this.lblDateTue = new System.Windows.Forms.Label();
             this.txtEnd2 = new System.Windows.Forms.TextBox();
             this.txtStart2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTue = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblWeekNo = new System.Windows.Forms.Label();
@@ -130,20 +137,29 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(16, 140);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 298);
+            this.panel1.Size = new System.Drawing.Size(565, 298);
             this.panel1.TabIndex = 64;
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.cmbProject7);
             this.panel11.Controls.Add(this.lblDateSun);
             this.panel11.Controls.Add(this.txtEnd7);
             this.panel11.Controls.Add(this.txtStart7);
             this.panel11.Controls.Add(this.cmbEmpTask7);
-            this.panel11.Controls.Add(this.label6);
+            this.panel11.Controls.Add(this.lblSun);
             this.panel11.Location = new System.Drawing.Point(2, 267);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(503, 30);
+            this.panel11.Size = new System.Drawing.Size(561, 30);
             this.panel11.TabIndex = 134;
+            // 
+            // cmbProject7
+            // 
+            this.cmbProject7.FormattingEnabled = true;
+            this.cmbProject7.Location = new System.Drawing.Point(125, 5);
+            this.cmbProject7.Name = "cmbProject7";
+            this.cmbProject7.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject7.TabIndex = 125;
             // 
             // lblDateSun
             // 
@@ -156,14 +172,14 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd7
             // 
-            this.txtEnd7.Location = new System.Drawing.Point(373, 8);
+            this.txtEnd7.Location = new System.Drawing.Point(451, 8);
             this.txtEnd7.Name = "txtEnd7";
             this.txtEnd7.Size = new System.Drawing.Size(80, 20);
             this.txtEnd7.TabIndex = 113;
             // 
             // txtStart7
             // 
-            this.txtStart7.Location = new System.Drawing.Point(246, 8);
+            this.txtStart7.Location = new System.Drawing.Point(324, 8);
             this.txtStart7.Name = "txtStart7";
             this.txtStart7.Size = new System.Drawing.Size(76, 20);
             this.txtStart7.TabIndex = 112;
@@ -171,32 +187,42 @@ namespace FujitsuPayments.Forms
             // cmbEmpTask7
             // 
             this.cmbEmpTask7.FormattingEnabled = true;
-            this.cmbEmpTask7.Location = new System.Drawing.Point(127, 8);
+            this.cmbEmpTask7.Location = new System.Drawing.Point(212, 8);
             this.cmbEmpTask7.Name = "cmbEmpTask7";
             this.cmbEmpTask7.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask7.TabIndex = 75;
+            this.cmbEmpTask7.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask7_SelectedIndexChanged);
             this.cmbEmpTask7.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
-            // label6
+            // lblSun
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 68;
-            this.label6.Text = "Sun";
+            this.lblSun.AutoSize = true;
+            this.lblSun.Location = new System.Drawing.Point(4, 8);
+            this.lblSun.Name = "lblSun";
+            this.lblSun.Size = new System.Drawing.Size(26, 13);
+            this.lblSun.TabIndex = 68;
+            this.lblSun.Text = "Sun";
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.cmbProject6);
             this.panel10.Controls.Add(this.lblDateSat);
             this.panel10.Controls.Add(this.txtEnd6);
             this.panel10.Controls.Add(this.txtStart6);
             this.panel10.Controls.Add(this.cmbEmpTask6);
-            this.panel10.Controls.Add(this.label7);
+            this.panel10.Controls.Add(this.lblSat);
             this.panel10.Location = new System.Drawing.Point(1, 230);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(503, 32);
+            this.panel10.Size = new System.Drawing.Size(561, 32);
             this.panel10.TabIndex = 133;
+            // 
+            // cmbProject6
+            // 
+            this.cmbProject6.FormattingEnabled = true;
+            this.cmbProject6.Location = new System.Drawing.Point(126, 6);
+            this.cmbProject6.Name = "cmbProject6";
+            this.cmbProject6.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject6.TabIndex = 124;
             // 
             // lblDateSat
             // 
@@ -209,14 +235,14 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd6
             // 
-            this.txtEnd6.Location = new System.Drawing.Point(373, 3);
+            this.txtEnd6.Location = new System.Drawing.Point(451, 3);
             this.txtEnd6.Name = "txtEnd6";
             this.txtEnd6.Size = new System.Drawing.Size(80, 20);
             this.txtEnd6.TabIndex = 107;
             // 
             // txtStart6
             // 
-            this.txtStart6.Location = new System.Drawing.Point(246, 3);
+            this.txtStart6.Location = new System.Drawing.Point(324, 3);
             this.txtStart6.Name = "txtStart6";
             this.txtStart6.Size = new System.Drawing.Size(76, 20);
             this.txtStart6.TabIndex = 106;
@@ -224,32 +250,42 @@ namespace FujitsuPayments.Forms
             // cmbEmpTask6
             // 
             this.cmbEmpTask6.FormattingEnabled = true;
-            this.cmbEmpTask6.Location = new System.Drawing.Point(127, 2);
+            this.cmbEmpTask6.Location = new System.Drawing.Point(212, 2);
             this.cmbEmpTask6.Name = "cmbEmpTask6";
             this.cmbEmpTask6.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask6.TabIndex = 74;
+            this.cmbEmpTask6.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask6_SelectedIndexChanged);
             this.cmbEmpTask6.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
-            // label7
+            // lblSat
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 13);
-            this.label7.TabIndex = 69;
-            this.label7.Text = "Sat";
+            this.lblSat.AutoSize = true;
+            this.lblSat.Location = new System.Drawing.Point(4, 6);
+            this.lblSat.Name = "lblSat";
+            this.lblSat.Size = new System.Drawing.Size(23, 13);
+            this.lblSat.TabIndex = 69;
+            this.lblSat.Text = "Sat";
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.cmbProject5);
             this.panel9.Controls.Add(this.lblDateFri);
             this.panel9.Controls.Add(this.txtEnd5);
             this.panel9.Controls.Add(this.txtStart5);
             this.panel9.Controls.Add(this.cmbEmpTask5);
-            this.panel9.Controls.Add(this.label5);
+            this.panel9.Controls.Add(this.lblFri);
             this.panel9.Location = new System.Drawing.Point(5, 187);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(498, 37);
+            this.panel9.Size = new System.Drawing.Size(556, 37);
             this.panel9.TabIndex = 132;
+            // 
+            // cmbProject5
+            // 
+            this.cmbProject5.FormattingEnabled = true;
+            this.cmbProject5.Location = new System.Drawing.Point(122, 8);
+            this.cmbProject5.Name = "cmbProject5";
+            this.cmbProject5.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject5.TabIndex = 123;
             // 
             // lblDateFri
             // 
@@ -262,14 +298,14 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd5
             // 
-            this.txtEnd5.Location = new System.Drawing.Point(371, 9);
+            this.txtEnd5.Location = new System.Drawing.Point(449, 9);
             this.txtEnd5.Name = "txtEnd5";
             this.txtEnd5.Size = new System.Drawing.Size(80, 20);
             this.txtEnd5.TabIndex = 101;
             // 
             // txtStart5
             // 
-            this.txtStart5.Location = new System.Drawing.Point(244, 9);
+            this.txtStart5.Location = new System.Drawing.Point(322, 9);
             this.txtStart5.Name = "txtStart5";
             this.txtStart5.Size = new System.Drawing.Size(76, 20);
             this.txtStart5.TabIndex = 100;
@@ -277,31 +313,33 @@ namespace FujitsuPayments.Forms
             // cmbEmpTask5
             // 
             this.cmbEmpTask5.FormattingEnabled = true;
-            this.cmbEmpTask5.Location = new System.Drawing.Point(125, 5);
+            this.cmbEmpTask5.Location = new System.Drawing.Point(210, 5);
             this.cmbEmpTask5.Name = "cmbEmpTask5";
             this.cmbEmpTask5.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask5.TabIndex = 73;
+            this.cmbEmpTask5.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask5_SelectedIndexChanged);
             this.cmbEmpTask5.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
-            // label5
+            // lblFri
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 13);
-            this.label5.TabIndex = 67;
-            this.label5.Text = "Fri";
+            this.lblFri.AutoSize = true;
+            this.lblFri.Location = new System.Drawing.Point(2, 13);
+            this.lblFri.Name = "lblFri";
+            this.lblFri.Size = new System.Drawing.Size(18, 13);
+            this.lblFri.TabIndex = 67;
+            this.lblFri.Text = "Fri";
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.lblDateMon);
             this.panel5.Controls.Add(this.txtEnd1);
             this.panel5.Controls.Add(this.txtStart1);
+            this.panel5.Controls.Add(this.cmbProject);
             this.panel5.Controls.Add(this.cmbEmpTask);
-            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.lblMon);
             this.panel5.Location = new System.Drawing.Point(1, 49);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(503, 26);
+            this.panel5.Size = new System.Drawing.Size(561, 26);
             this.panel5.TabIndex = 131;
             // 
             // lblDateMon
@@ -315,57 +353,76 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd1
             // 
-            this.txtEnd1.Location = new System.Drawing.Point(375, 3);
+            this.txtEnd1.Location = new System.Drawing.Point(453, 3);
             this.txtEnd1.Name = "txtEnd1";
             this.txtEnd1.Size = new System.Drawing.Size(80, 20);
             this.txtEnd1.TabIndex = 122;
             // 
             // txtStart1
             // 
-            this.txtStart1.Location = new System.Drawing.Point(248, 3);
+            this.txtStart1.Location = new System.Drawing.Point(326, 3);
             this.txtStart1.Name = "txtStart1";
             this.txtStart1.Size = new System.Drawing.Size(76, 20);
             this.txtStart1.TabIndex = 121;
             // 
+            // cmbProject
+            // 
+            this.cmbProject.FormattingEnabled = true;
+            this.cmbProject.Location = new System.Drawing.Point(126, 3);
+            this.cmbProject.Name = "cmbProject";
+            this.cmbProject.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject.TabIndex = 120;
+            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask_SelectedIndexChanged);
+            // 
             // cmbEmpTask
             // 
             this.cmbEmpTask.FormattingEnabled = true;
-            this.cmbEmpTask.Location = new System.Drawing.Point(129, 2);
+            this.cmbEmpTask.Location = new System.Drawing.Point(214, 2);
             this.cmbEmpTask.Name = "cmbEmpTask";
             this.cmbEmpTask.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask.TabIndex = 120;
+            this.cmbEmpTask.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask_SelectedIndexChanged);
             // 
-            // label1
+            // lblMon
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 119;
-            this.label1.Text = "Mon";
+            this.lblMon.AutoSize = true;
+            this.lblMon.Location = new System.Drawing.Point(6, 6);
+            this.lblMon.Name = "lblMon";
+            this.lblMon.Size = new System.Drawing.Size(28, 13);
+            this.lblMon.TabIndex = 119;
+            this.lblMon.Text = "Mon";
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.cmbProject4);
             this.panel8.Controls.Add(this.txtEnd4);
             this.panel8.Controls.Add(this.txtStart4);
             this.panel8.Controls.Add(this.cmbEmpTask4);
             this.panel8.Controls.Add(this.lblDateThur);
-            this.panel8.Controls.Add(this.label4);
+            this.panel8.Controls.Add(this.lblThur);
             this.panel8.Location = new System.Drawing.Point(0, 153);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(504, 29);
+            this.panel8.Size = new System.Drawing.Size(562, 29);
             this.panel8.TabIndex = 130;
+            // 
+            // cmbProject4
+            // 
+            this.cmbProject4.FormattingEnabled = true;
+            this.cmbProject4.Location = new System.Drawing.Point(127, 3);
+            this.cmbProject4.Name = "cmbProject4";
+            this.cmbProject4.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject4.TabIndex = 130;
             // 
             // txtEnd4
             // 
-            this.txtEnd4.Location = new System.Drawing.Point(373, 4);
+            this.txtEnd4.Location = new System.Drawing.Point(451, 4);
             this.txtEnd4.Name = "txtEnd4";
             this.txtEnd4.Size = new System.Drawing.Size(80, 20);
             this.txtEnd4.TabIndex = 129;
             // 
             // txtStart4
             // 
-            this.txtStart4.Location = new System.Drawing.Point(246, 4);
+            this.txtStart4.Location = new System.Drawing.Point(324, 4);
             this.txtStart4.Name = "txtStart4";
             this.txtStart4.Size = new System.Drawing.Size(76, 20);
             this.txtStart4.TabIndex = 128;
@@ -373,10 +430,11 @@ namespace FujitsuPayments.Forms
             // cmbEmpTask4
             // 
             this.cmbEmpTask4.FormattingEnabled = true;
-            this.cmbEmpTask4.Location = new System.Drawing.Point(127, 0);
+            this.cmbEmpTask4.Location = new System.Drawing.Point(212, 0);
             this.cmbEmpTask4.Name = "cmbEmpTask4";
             this.cmbEmpTask4.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask4.TabIndex = 127;
+            this.cmbEmpTask4.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask4_SelectedIndexChanged);
             // 
             // lblDateThur
             // 
@@ -387,26 +445,35 @@ namespace FujitsuPayments.Forms
             this.lblDateThur.TabIndex = 121;
             this.lblDateThur.Text = "-";
             // 
-            // label4
+            // lblThur
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Thu";
+            this.lblThur.AutoSize = true;
+            this.lblThur.Location = new System.Drawing.Point(4, 3);
+            this.lblThur.Name = "lblThur";
+            this.lblThur.Size = new System.Drawing.Size(26, 13);
+            this.lblThur.TabIndex = 66;
+            this.lblThur.Text = "Thu";
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.cmbProject3);
             this.panel7.Controls.Add(this.lblDateWed);
             this.panel7.Controls.Add(this.txtEnd3);
             this.panel7.Controls.Add(this.txtStart3);
             this.panel7.Controls.Add(this.cmbEmpTask3);
-            this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.lblWed);
             this.panel7.Location = new System.Drawing.Point(3, 113);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(503, 34);
+            this.panel7.Size = new System.Drawing.Size(561, 34);
             this.panel7.TabIndex = 126;
+            // 
+            // cmbProject3
+            // 
+            this.cmbProject3.FormattingEnabled = true;
+            this.cmbProject3.Location = new System.Drawing.Point(124, 7);
+            this.cmbProject3.Name = "cmbProject3";
+            this.cmbProject3.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject3.TabIndex = 121;
             // 
             // lblDateWed
             // 
@@ -419,14 +486,14 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd3
             // 
-            this.txtEnd3.Location = new System.Drawing.Point(370, 8);
+            this.txtEnd3.Location = new System.Drawing.Point(448, 8);
             this.txtEnd3.Name = "txtEnd3";
             this.txtEnd3.Size = new System.Drawing.Size(80, 20);
             this.txtEnd3.TabIndex = 95;
             // 
             // txtStart3
             // 
-            this.txtStart3.Location = new System.Drawing.Point(245, 7);
+            this.txtStart3.Location = new System.Drawing.Point(323, 7);
             this.txtStart3.Name = "txtStart3";
             this.txtStart3.Size = new System.Drawing.Size(76, 20);
             this.txtStart3.TabIndex = 94;
@@ -434,40 +501,51 @@ namespace FujitsuPayments.Forms
             // cmbEmpTask3
             // 
             this.cmbEmpTask3.FormattingEnabled = true;
-            this.cmbEmpTask3.Location = new System.Drawing.Point(127, 7);
+            this.cmbEmpTask3.Location = new System.Drawing.Point(212, 7);
             this.cmbEmpTask3.Name = "cmbEmpTask3";
             this.cmbEmpTask3.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask3.TabIndex = 72;
+            this.cmbEmpTask3.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask3_SelectedIndexChanged);
             this.cmbEmpTask3.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
-            // label3
+            // lblWed
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "Wed";
+            this.lblWed.AutoSize = true;
+            this.lblWed.Location = new System.Drawing.Point(4, 2);
+            this.lblWed.Name = "lblWed";
+            this.lblWed.Size = new System.Drawing.Size(30, 13);
+            this.lblWed.TabIndex = 65;
+            this.lblWed.Text = "Wed";
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.cmbProject2);
             this.panel6.Controls.Add(this.cmbEmpTask2);
             this.panel6.Controls.Add(this.lblDateTue);
             this.panel6.Controls.Add(this.txtEnd2);
             this.panel6.Controls.Add(this.txtStart2);
-            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.lblTue);
             this.panel6.Location = new System.Drawing.Point(0, 81);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(503, 30);
+            this.panel6.Size = new System.Drawing.Size(561, 30);
             this.panel6.TabIndex = 125;
+            // 
+            // cmbProject2
+            // 
+            this.cmbProject2.FormattingEnabled = true;
+            this.cmbProject2.Location = new System.Drawing.Point(127, 5);
+            this.cmbProject2.Name = "cmbProject2";
+            this.cmbProject2.Size = new System.Drawing.Size(60, 21);
+            this.cmbProject2.TabIndex = 124;
             // 
             // cmbEmpTask2
             // 
             this.cmbEmpTask2.FormattingEnabled = true;
-            this.cmbEmpTask2.Location = new System.Drawing.Point(129, 5);
+            this.cmbEmpTask2.Location = new System.Drawing.Point(214, 5);
             this.cmbEmpTask2.Name = "cmbEmpTask2";
             this.cmbEmpTask2.Size = new System.Drawing.Size(60, 21);
             this.cmbEmpTask2.TabIndex = 121;
+            this.cmbEmpTask2.SelectedIndexChanged += new System.EventHandler(this.cmbEmpTask2_SelectedIndexChanged);
             // 
             // lblDateTue
             // 
@@ -480,31 +558,31 @@ namespace FujitsuPayments.Forms
             // 
             // txtEnd2
             // 
-            this.txtEnd2.Location = new System.Drawing.Point(373, 4);
+            this.txtEnd2.Location = new System.Drawing.Point(451, 4);
             this.txtEnd2.Name = "txtEnd2";
             this.txtEnd2.Size = new System.Drawing.Size(80, 20);
             this.txtEnd2.TabIndex = 89;
             // 
             // txtStart2
             // 
-            this.txtStart2.Location = new System.Drawing.Point(246, 4);
+            this.txtStart2.Location = new System.Drawing.Point(324, 4);
             this.txtStart2.Name = "txtStart2";
             this.txtStart2.Size = new System.Drawing.Size(76, 20);
             this.txtStart2.TabIndex = 88;
             // 
-            // label2
+            // lblTue
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Tue";
+            this.lblTue.AutoSize = true;
+            this.lblTue.Location = new System.Drawing.Point(4, 3);
+            this.lblTue.Name = "lblTue";
+            this.lblTue.Size = new System.Drawing.Size(26, 13);
+            this.lblTue.TabIndex = 64;
+            this.lblTue.Text = "Tue";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(372, 18);
+            this.label9.Location = new System.Drawing.Point(465, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 78;
@@ -513,7 +591,7 @@ namespace FujitsuPayments.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(245, 18);
+            this.label8.Location = new System.Drawing.Point(336, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 76;
@@ -658,12 +736,13 @@ namespace FujitsuPayments.Forms
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.button2.Location = new System.Drawing.Point(546, 392);
+            this.button2.Location = new System.Drawing.Point(587, 392);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 27);
             this.button2.TabIndex = 69;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSave
             // 
@@ -752,12 +831,12 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbEmpTask6;
         private System.Windows.Forms.ComboBox cmbEmpTask5;
         private System.Windows.Forms.ComboBox cmbEmpTask3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSat;
+        private System.Windows.Forms.Label lblSun;
+        private System.Windows.Forms.Label lblFri;
+        private System.Windows.Forms.Label lblThur;
+        private System.Windows.Forms.Label lblWed;
+        private System.Windows.Forms.Label lblTue;
         private System.Windows.Forms.Label lblWeekNo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -782,7 +861,7 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.TextBox txtEnd1;
         private System.Windows.Forms.TextBox txtStart1;
         private System.Windows.Forms.ComboBox cmbEmpTask;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMon;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox txtEnd4;
         private System.Windows.Forms.TextBox txtStart4;
@@ -791,5 +870,12 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ComboBox cmbEmpTask2;
         private System.Windows.Forms.ErrorProvider errP;
+        private System.Windows.Forms.ComboBox cmbProject7;
+        private System.Windows.Forms.ComboBox cmbProject6;
+        private System.Windows.Forms.ComboBox cmbProject5;
+        private System.Windows.Forms.ComboBox cmbProject;
+        private System.Windows.Forms.ComboBox cmbProject4;
+        private System.Windows.Forms.ComboBox cmbProject3;
+        private System.Windows.Forms.ComboBox cmbProject2;
     }
 }
