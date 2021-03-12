@@ -18,7 +18,8 @@ namespace FujitsuPayments.Forms
         SqlDataAdapter daProject, daTask, daEmployee, daEmpTask,daClaim, daTime, daMan, daTimesheet, daTimeDets, daCost;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject,cmbBClaim, cmbBMan,cmbBTask, cmbBEmp, cmbBEmpTask,cmbBTime, cmbBTimesheet, cmbBTimeDets, cmbBCost;
-        SqlCommand cmdEmp, cmdMan;
+        SqlCommand cmdEmp, cmdMan, cmdProj;
+       
 
         private void cmbEmpTask6_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -390,8 +391,13 @@ namespace FujitsuPayments.Forms
                             }
                             break;
                         case 2:
+                            int digit = checkOT();
+                            MessageBox.Show(Convert.ToString(digit));
+
                             foreach (Control c in panel1.Controls)
                             {
+                                
+
                                 if (c is Panel && ok)
                                 {
                                     if (start[no].Text.Length != 0 && end[no].Text.Length != 0 )
@@ -816,7 +822,7 @@ namespace FujitsuPayments.Forms
             for(int i = 0; i< 7; i++)
             {
                 start[i].Clear();
-               end[i].Clear
+                end[i].Clear();
             }
         }
        
@@ -982,6 +988,65 @@ namespace FujitsuPayments.Forms
             lblDateSat.Text = sat.ToShortDateString();
             DateTime sun = sat.AddDays(1).Date;
             lblDateSun.Text = sun.ToShortDateString();
+        }
+
+        private int checkOT()
+        {
+            Boolean ok = true;
+
+           
+
+           
+
+            sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet";
+            conn = new SqlConnection(connStr);
+            cmdProj = new SqlCommand(sqlProject, conn);
+            cmdProj.Parameters.Add("@Timesheet", SqlDbType.Int);
+            daProject = new SqlDataAdapter(cmdProj);
+            daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheets");
+
+            cmdProj.Parameters["@Timesheet"].Value = Convert.ToInt32(lblTimsheetId.Text);
+
+            daProject.Fill(dsFujitsuPayments, "Timesheets");
+
+            TextBox[] start = { txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6, txtStart7 };
+            TextBox[] end = { txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6, txtEnd7 };
+            Label[] date = { lblDateMon, lblDateTue, lblDateWed, lblDateThur, lblDateFri, lblDateSat, lblDateSun };
+           
+
+            DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
+            int numb = 0, count = 0 , x = 0;
+
+            string startime, endtime;
+
+
+
+            foreach (DataRow row in dt.Rows)
+                { 
+                    
+                    numb++;
+    
+                }
+               
+                
+            DateTime[] startTime = new DateTime[numb];
+            DateTime[] endTime = new DateTime[numb];
+
+            foreach (DataRow row in dt.Rows)
+            {
+                drProject = row;
+                startime = Convert.ToString(drProject["StartTime"].ToString());
+
+                endtime = Convert.ToString(drProject["EndTime"].ToString());
+            
+                startTime[x] = Convert.ToDateTime(startime);
+                endTime[x] = Convert.ToDateTime(endtime);
+                x++;
+
+            }
+
+
+            return count;
         }
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
