@@ -29,6 +29,7 @@ namespace FujitsuPayments.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Schedule));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewShifts = new System.Windows.Forms.Button();
@@ -124,6 +125,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
             this.btnReset = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -1145,6 +1147,7 @@ namespace FujitsuPayments.UserControls
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UC_Schedule";
             this.Size = new System.Drawing.Size(1090, 616);
+            this.toolTip1.SetToolTip(this, "hi");
             this.Load += new System.EventHandler(this.UC_Schedule_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1263,5 +1266,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Button btnViewShifts;
         private System.Windows.Forms.Button btnSearchShifts;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

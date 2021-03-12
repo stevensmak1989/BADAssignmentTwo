@@ -448,11 +448,19 @@ namespace FujitsuPayments.UserControls
             // }
             // start time as a whole integer
 
+            MessageBox.Show("start time: " + startTime);
+
             string[] splitTime = startTime.Split(':');
-            int hr = Convert.ToInt32(startTime[0]);
-            int min = Convert.ToInt32(startTime[1]);
+            String stHr = Convert.ToString(startTime[1]);
+            String stMin = Convert.ToString(startTime[0]);
+            int hr = Convert.ToInt32(stHr);
+            int min = Convert.ToInt32(stMin);
+           
+
+            MessageBox.Show("hr: " + hr + "min: " + min);
             int newMin = 0; ;
 
+            
             if(min == 15)
             {
                 newMin = 20;
@@ -465,8 +473,14 @@ namespace FujitsuPayments.UserControls
             {
                 newMin = 60;
             }
+            
 
-            return (hr*80) + newMin; // returns y axis value to position panel
+            MessageBox.Show("new min: " + newMin);
+
+            int yAxis = (hr*80);
+            MessageBox.Show("YAxis Value = : " + yAxis);
+
+            return yAxis; // returns y axis value to position panel
         }
 
 
@@ -493,11 +507,16 @@ namespace FujitsuPayments.UserControls
 
         private void btnSearchShifts_Click(object sender, EventArgs e)
         {
+            int yAxis = 0;
+            int height = 0;
+
+            hidePanels();  
+
             dsFujitsuPayments.Tables["EmployeeShift"].Clear();
 
             if(calShift.SelectionRange == null || cmbAccountId.SelectedIndex < 0 || cmbProjectId.SelectedIndex < 0 || cmbTaskId.SelectedIndex < 0)
             {
-                MessageBox.Show("Please select all values");
+                MessageBox.Show("Please select all required values");
             }
             else
             {
@@ -515,6 +534,10 @@ namespace FujitsuPayments.UserControls
 
                 foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift"].Rows)
                 {
+
+
+                    //yAxis = 0;
+                   // height = 0;
                     // get date time from data row, extract day of week and set it to a string variable, used for switch
                     DateTime dateValue = Convert.ToDateTime(dr["StartDate"].ToString());
                     String dayOfWeek = dateValue.DayOfWeek.ToString();
@@ -527,10 +550,20 @@ namespace FujitsuPayments.UserControls
 
                     foreach(DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
                     {
+
+                        yAxis = 0;
+                        height = 0;
+
                         switch (dayOfWeek)
                         {
                             case "Monday":
+                                //String st = dr["StartTime"].ToString();
+                                yAxis = calLocYAxis(dr["StartTime"].ToString());
+                                height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 pnlMonShift1.Visible = true;
+                                //pnlMonShift1.Top = yAxis;
+                                pnlMonShift1.Height = height;
+                                
                                 break;
                             case "Tuesday":
                                 pnlTueShift1.Visible = true;
