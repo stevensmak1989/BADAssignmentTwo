@@ -448,7 +448,7 @@ namespace FujitsuPayments.UserControls
             // }
             // start time as a whole integer
 
-            MessageBox.Show("start time: " + startTime);
+            //MessageBox.Show("start time: " + startTime);
 
             string[] splitTime = startTime.Split(':');
             String stHr = Convert.ToString(startTime[1]);
@@ -457,7 +457,7 @@ namespace FujitsuPayments.UserControls
             int min = Convert.ToInt32(stMin);
            
 
-            MessageBox.Show("hr: " + hr + "min: " + min);
+            //MessageBox.Show("hr: " + hr + "min: " + min);
             int newMin = 0; ;
 
             
@@ -475,10 +475,10 @@ namespace FujitsuPayments.UserControls
             }
             
 
-            MessageBox.Show("new min: " + newMin);
+            //MessageBox.Show("new min: " + newMin);
 
             int yAxis = (hr*80);
-            MessageBox.Show("YAxis Value = : " + yAxis);
+            //MessageBox.Show("YAxis Value = : " + yAxis);
 
             return yAxis; // returns y axis value to position panel
         }
@@ -491,15 +491,20 @@ namespace FujitsuPayments.UserControls
             foreach (var c in charsToRemove)
             {
                 startTime = startTime.Replace(c, string.Empty);
+               // startTime.Remove(4, 2);
             }
             foreach (var c in charsToRemove)
             {
                 endTime = endTime.Replace(c, string.Empty);
+               // endTime.Remove(4,2);
             }
-            int st = Convert.ToInt32(startTime);
-            int et = Convert.ToInt32(endTime);
+            int st = Convert.ToInt32(startTime) / 100;
+            int et = Convert.ToInt32(endTime) / 100;
+            //MessageBox.Show("Starttime: " + st + "endtime: " + et);
 
-            return (((et - st)-100) * 20);
+            int height = ((et - st)/20)*4*4 ;
+
+            return height;
         }
 
 
@@ -507,12 +512,12 @@ namespace FujitsuPayments.UserControls
 
         private void btnSearchShifts_Click(object sender, EventArgs e)
         {
-            int yAxis = 0;
-            int height = 0;
+
 
             hidePanels();  
 
             dsFujitsuPayments.Tables["EmployeeShift"].Clear();
+            dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
 
             if(calShift.SelectionRange == null || cmbAccountId.SelectedIndex < 0 || cmbProjectId.SelectedIndex < 0 || cmbTaskId.SelectedIndex < 0)
             {
@@ -547,41 +552,54 @@ namespace FujitsuPayments.UserControls
                     // use shiftID to pass to employee shift details query
                     cmbEmpShiftDet.Parameters["@ShiftID"].Value = dr["ShiftID"].ToString();
                     daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
-
-                    foreach(DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
+                    //MessageBox.Show("Day of week: " + dayOfWeek);
+                    foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
                     {
+                        
 
-                        yAxis = 0;
-                        height = 0;
 
                         switch (dayOfWeek)
                         {
                             case "Monday":
                                 //String st = dr["StartTime"].ToString();
-                                yAxis = calLocYAxis(dr["StartTime"].ToString());
-                                height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                //int yAxis = calLocYAxis(dr["StartTime"].ToString());
+                                //int height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 pnlMonShift1.Visible = true;
-                                //pnlMonShift1.Top = yAxis;
-                                pnlMonShift1.Height = height;
-                                
+                                pnlMonShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlMonShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+
                                 break;
                             case "Tuesday":
+                                //yAxis = calLocYAxis(dr["StartTime"].ToString());
+                                //height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 pnlTueShift1.Visible = true;
+                                pnlTueShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlTueShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Wednesday":
                                 pnlWedShift1.Visible = true;
+                                pnlWedShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlWedShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Thursday":
                                 pnlThuShift1.Visible = true;
+                                pnlThuShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlThuShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Friday":
                                 pnlFriShift1.Visible = true;
+                                pnlFriShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlFriShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Saturday":
                                 pnlSatShift1.Visible = true;
+                                pnlSatShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlSatShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Sunday":
                                 pnlSunShift1.Visible = true;
+                                pnlSunShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                pnlSunShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                         }
                     }

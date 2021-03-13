@@ -170,111 +170,121 @@ namespace FujitsuPayments.Forms
 
             UC_Schedule.calSizeHeight(startTime, endTime);
 
-            
 
+            int compare = TimeSpan.Compare(TimeSpan.Parse(startTime), TimeSpan.Parse(endTime));
+            //MessageBox.Show("Compare is" + compare);
 
             EmployeeShift myShift = new EmployeeShift();
             bool ok = true;
             errP.Clear();
+            if (compare == -1)
+            {
 
-            // pass data to class for validation
-            try
-            {
-                myShift.ShiftId = Convert.ToInt32(txtShiftID.Text);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(txtShiftID, MyEx.toString());
-            }
 
-            try
-            {
-                myShift.AccountId = Convert.ToInt32(cmbAccountId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbAccountId, MyEx.toString());
-            }
-
-            try
-            {
-                myShift.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbProjectId, MyEx.toString());
-            }
-
-            try
-            {
-                myShift.TaskId = Convert.ToInt32(cmbTaskId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbTaskId, MyEx.toString());
-            }
-
-            try
-            {
-                myShift.StartDate = DateTime.Parse(dtpShiftStartDate.Text.Trim());
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(dtpShiftStartDate, MyEx.toString());
-            }
-
-            try
-            {
-                //String time = cmbStartTime.SelectedItem.ToString();
-                myShift.StartTime = TimeSpan.Parse(startTime);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbStartTime, MyEx.toString());
-            }
-
-            try
-            {
-               // String time = cmbEndTime.SelectedItem.ToString();
-                myShift.EndTime = TimeSpan.Parse(endTime);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbEndTime, MyEx.toString());
-            }
-
-            try
-            {
-                if (ok)
+                // pass data to class for validation
+                try
                 {
-                    drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
+                    myShift.ShiftId = Convert.ToInt32(txtShiftID.Text);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(txtShiftID, MyEx.toString());
+                }
 
-                    drShift["ShiftID"] = myShift.ShiftId;
-                    drShift["AccountID"] = myShift.AccountId;
-                    drShift["ProjectID"] = myShift.ProjectId;
-                    drShift["TaskID"] = myShift.TaskId;
-                    drShift["StartDate"] = myShift.StartDate;
-                    drShift["StartTime"] = myShift.StartTime;
-                    drShift["EndTime"] = myShift.EndTime;
+                try
+                {
+                    myShift.AccountId = Convert.ToInt32(cmbAccountId.SelectedValue);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(cmbAccountId, MyEx.toString());
+                }
 
-                    dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
-                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                try
+                {
+                    myShift.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(cmbProjectId, MyEx.toString());
+                }
 
-                    MessageBox.Show("Shift Added");
-                    this.Dispose();
+                try
+                {
+                    myShift.TaskId = Convert.ToInt32(cmbTaskId.SelectedValue);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(cmbTaskId, MyEx.toString());
+                }
+
+                try
+                {
+                    myShift.StartDate = DateTime.Parse(dtpShiftStartDate.Text.Trim());
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(dtpShiftStartDate, MyEx.toString());
+                }
+
+                try
+                {
+                    //String time = cmbStartTime.SelectedItem.ToString();
+                    myShift.StartTime = TimeSpan.Parse(startTime);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(cmbStartTime, MyEx.toString());
+                }
+
+                try
+                {
+                    // String time = cmbEndTime.SelectedItem.ToString();
+                    myShift.EndTime = TimeSpan.Parse(endTime);
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(cmbEndTime, MyEx.toString());
+                }
+
+                try
+                {
+                    if (ok)
+                    {
+                        drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
+
+                        drShift["ShiftID"] = myShift.ShiftId;
+                        drShift["AccountID"] = myShift.AccountId;
+                        drShift["ProjectID"] = myShift.ProjectId;
+                        drShift["TaskID"] = myShift.TaskId;
+                        drShift["StartDate"] = myShift.StartDate;
+                        drShift["StartTime"] = myShift.StartTime;
+                        drShift["EndTime"] = myShift.EndTime;
+
+                        dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
+                        daShift.Update(dsFujitsuPayments, "EmployeeShift");
+
+                        MessageBox.Show("Shift Added");
+                        this.Dispose();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
                 }
 
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                MessageBox.Show("End time cannot be before start time, please try again!");
             }
 
 
