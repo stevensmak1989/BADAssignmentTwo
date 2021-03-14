@@ -33,6 +33,16 @@ namespace FujitsuPayments.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddShift));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlEndTime = new System.Windows.Forms.Panel();
+            this.rbEtPM = new System.Windows.Forms.RadioButton();
+            this.rbEtAM = new System.Windows.Forms.RadioButton();
+            this.pnlStartTime = new System.Windows.Forms.Panel();
+            this.rbStPM = new System.Windows.Forms.RadioButton();
+            this.rbStAM = new System.Windows.Forms.RadioButton();
+            this.cmbEndTimeMin = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTimeIndent = new System.Windows.Forms.Label();
+            this.cmbStartTimeMin = new System.Windows.Forms.ComboBox();
             this.cmbStartTime = new System.Windows.Forms.ComboBox();
             this.cmbEndTime = new System.Windows.Forms.ComboBox();
             this.lblEndTime = new System.Windows.Forms.Label();
@@ -51,21 +61,12 @@ namespace FujitsuPayments.Forms
             this.lblAccountId = new System.Windows.Forms.Label();
             this.lblAddShift = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cmbStartTimeMin = new System.Windows.Forms.ComboBox();
-            this.lblTimeIndent = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbEndTimeMin = new System.Windows.Forms.ComboBox();
-            this.pnlStartTime = new System.Windows.Forms.Panel();
-            this.rbStAM = new System.Windows.Forms.RadioButton();
-            this.rbStPM = new System.Windows.Forms.RadioButton();
-            this.pnlEndTime = new System.Windows.Forms.Panel();
-            this.rbEtPM = new System.Windows.Forms.RadioButton();
-            this.rbEtAM = new System.Windows.Forms.RadioButton();
+            this.rbFullWeek = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
-            this.pnlStartTime.SuspendLayout();
             this.pnlEndTime.SuspendLayout();
+            this.pnlStartTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,6 +82,7 @@ namespace FujitsuPayments.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.rbFullWeek);
             this.panel2.Controls.Add(this.pnlEndTime);
             this.panel2.Controls.Add(this.pnlStartTime);
             this.panel2.Controls.Add(this.cmbEndTimeMin);
@@ -110,6 +112,119 @@ namespace FujitsuPayments.Forms
             this.panel2.Size = new System.Drawing.Size(775, 316);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // pnlEndTime
+            // 
+            this.pnlEndTime.BackColor = System.Drawing.Color.White;
+            this.pnlEndTime.Controls.Add(this.rbEtPM);
+            this.pnlEndTime.Controls.Add(this.rbEtAM);
+            this.pnlEndTime.Location = new System.Drawing.Point(601, 163);
+            this.pnlEndTime.Name = "pnlEndTime";
+            this.pnlEndTime.Size = new System.Drawing.Size(112, 29);
+            this.pnlEndTime.TabIndex = 37;
+            // 
+            // rbEtPM
+            // 
+            this.rbEtPM.AutoSize = true;
+            this.rbEtPM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEtPM.Location = new System.Drawing.Point(60, 4);
+            this.rbEtPM.Name = "rbEtPM";
+            this.rbEtPM.Size = new System.Drawing.Size(44, 21);
+            this.rbEtPM.TabIndex = 1;
+            this.rbEtPM.TabStop = true;
+            this.rbEtPM.Text = "PM";
+            this.rbEtPM.UseVisualStyleBackColor = true;
+            // 
+            // rbEtAM
+            // 
+            this.rbEtAM.AutoSize = true;
+            this.rbEtAM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEtAM.Location = new System.Drawing.Point(8, 4);
+            this.rbEtAM.Name = "rbEtAM";
+            this.rbEtAM.Size = new System.Drawing.Size(46, 21);
+            this.rbEtAM.TabIndex = 0;
+            this.rbEtAM.TabStop = true;
+            this.rbEtAM.Text = "AM";
+            this.rbEtAM.UseVisualStyleBackColor = true;
+            // 
+            // pnlStartTime
+            // 
+            this.pnlStartTime.BackColor = System.Drawing.Color.White;
+            this.pnlStartTime.Controls.Add(this.rbStPM);
+            this.pnlStartTime.Controls.Add(this.rbStAM);
+            this.pnlStartTime.Location = new System.Drawing.Point(601, 128);
+            this.pnlStartTime.Name = "pnlStartTime";
+            this.pnlStartTime.Size = new System.Drawing.Size(112, 29);
+            this.pnlStartTime.TabIndex = 36;
+            // 
+            // rbStPM
+            // 
+            this.rbStPM.AutoSize = true;
+            this.rbStPM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbStPM.Location = new System.Drawing.Point(60, 4);
+            this.rbStPM.Name = "rbStPM";
+            this.rbStPM.Size = new System.Drawing.Size(44, 21);
+            this.rbStPM.TabIndex = 1;
+            this.rbStPM.TabStop = true;
+            this.rbStPM.Text = "PM";
+            this.rbStPM.UseVisualStyleBackColor = true;
+            // 
+            // rbStAM
+            // 
+            this.rbStAM.AutoSize = true;
+            this.rbStAM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbStAM.Location = new System.Drawing.Point(8, 4);
+            this.rbStAM.Name = "rbStAM";
+            this.rbStAM.Size = new System.Drawing.Size(46, 21);
+            this.rbStAM.TabIndex = 0;
+            this.rbStAM.TabStop = true;
+            this.rbStAM.Text = "AM";
+            this.rbStAM.UseVisualStyleBackColor = true;
+            // 
+            // cmbEndTimeMin
+            // 
+            this.cmbEndTimeMin.FormattingEnabled = true;
+            this.cmbEndTimeMin.Items.AddRange(new object[] {
+            "00",
+            "15",
+            "30",
+            "45",
+            ""});
+            this.cmbEndTimeMin.Location = new System.Drawing.Point(551, 163);
+            this.cmbEndTimeMin.Name = "cmbEndTimeMin";
+            this.cmbEndTimeMin.Size = new System.Drawing.Size(44, 29);
+            this.cmbEndTimeMin.TabIndex = 35;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(531, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 21);
+            this.label1.TabIndex = 34;
+            this.label1.Text = ":";
+            // 
+            // lblTimeIndent
+            // 
+            this.lblTimeIndent.AutoSize = true;
+            this.lblTimeIndent.Location = new System.Drawing.Point(531, 135);
+            this.lblTimeIndent.Name = "lblTimeIndent";
+            this.lblTimeIndent.Size = new System.Drawing.Size(14, 21);
+            this.lblTimeIndent.TabIndex = 32;
+            this.lblTimeIndent.Text = ":";
+            // 
+            // cmbStartTimeMin
+            // 
+            this.cmbStartTimeMin.FormattingEnabled = true;
+            this.cmbStartTimeMin.Items.AddRange(new object[] {
+            "00",
+            "15",
+            "30",
+            "45"});
+            this.cmbStartTimeMin.Location = new System.Drawing.Point(551, 128);
+            this.cmbStartTimeMin.Name = "cmbStartTimeMin";
+            this.cmbStartTimeMin.Size = new System.Drawing.Size(44, 29);
+            this.cmbStartTimeMin.TabIndex = 31;
             // 
             // cmbStartTime
             // 
@@ -320,118 +435,16 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
-            // cmbStartTimeMin
+            // rbFullWeek
             // 
-            this.cmbStartTimeMin.FormattingEnabled = true;
-            this.cmbStartTimeMin.Items.AddRange(new object[] {
-            "00",
-            "15",
-            "30",
-            "45"});
-            this.cmbStartTimeMin.Location = new System.Drawing.Point(551, 128);
-            this.cmbStartTimeMin.Name = "cmbStartTimeMin";
-            this.cmbStartTimeMin.Size = new System.Drawing.Size(44, 29);
-            this.cmbStartTimeMin.TabIndex = 31;
-            // 
-            // lblTimeIndent
-            // 
-            this.lblTimeIndent.AutoSize = true;
-            this.lblTimeIndent.Location = new System.Drawing.Point(531, 135);
-            this.lblTimeIndent.Name = "lblTimeIndent";
-            this.lblTimeIndent.Size = new System.Drawing.Size(14, 21);
-            this.lblTimeIndent.TabIndex = 32;
-            this.lblTimeIndent.Text = ":";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(531, 170);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 21);
-            this.label1.TabIndex = 34;
-            this.label1.Text = ":";
-            // 
-            // cmbEndTimeMin
-            // 
-            this.cmbEndTimeMin.FormattingEnabled = true;
-            this.cmbEndTimeMin.Items.AddRange(new object[] {
-            "00",
-            "15",
-            "30",
-            "45",
-            ""});
-            this.cmbEndTimeMin.Location = new System.Drawing.Point(551, 163);
-            this.cmbEndTimeMin.Name = "cmbEndTimeMin";
-            this.cmbEndTimeMin.Size = new System.Drawing.Size(44, 29);
-            this.cmbEndTimeMin.TabIndex = 35;
-            // 
-            // pnlStartTime
-            // 
-            this.pnlStartTime.BackColor = System.Drawing.Color.White;
-            this.pnlStartTime.Controls.Add(this.rbStPM);
-            this.pnlStartTime.Controls.Add(this.rbStAM);
-            this.pnlStartTime.Location = new System.Drawing.Point(601, 128);
-            this.pnlStartTime.Name = "pnlStartTime";
-            this.pnlStartTime.Size = new System.Drawing.Size(112, 29);
-            this.pnlStartTime.TabIndex = 36;
-            // 
-            // rbStAM
-            // 
-            this.rbStAM.AutoSize = true;
-            this.rbStAM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbStAM.Location = new System.Drawing.Point(8, 4);
-            this.rbStAM.Name = "rbStAM";
-            this.rbStAM.Size = new System.Drawing.Size(46, 21);
-            this.rbStAM.TabIndex = 0;
-            this.rbStAM.TabStop = true;
-            this.rbStAM.Text = "AM";
-            this.rbStAM.UseVisualStyleBackColor = true;
-            // 
-            // rbStPM
-            // 
-            this.rbStPM.AutoSize = true;
-            this.rbStPM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbStPM.Location = new System.Drawing.Point(60, 4);
-            this.rbStPM.Name = "rbStPM";
-            this.rbStPM.Size = new System.Drawing.Size(44, 21);
-            this.rbStPM.TabIndex = 1;
-            this.rbStPM.TabStop = true;
-            this.rbStPM.Text = "PM";
-            this.rbStPM.UseVisualStyleBackColor = true;
-            // 
-            // pnlEndTime
-            // 
-            this.pnlEndTime.BackColor = System.Drawing.Color.White;
-            this.pnlEndTime.Controls.Add(this.rbEtPM);
-            this.pnlEndTime.Controls.Add(this.rbEtAM);
-            this.pnlEndTime.Location = new System.Drawing.Point(601, 163);
-            this.pnlEndTime.Name = "pnlEndTime";
-            this.pnlEndTime.Size = new System.Drawing.Size(112, 29);
-            this.pnlEndTime.TabIndex = 37;
-            // 
-            // rbEtPM
-            // 
-            this.rbEtPM.AutoSize = true;
-            this.rbEtPM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbEtPM.Location = new System.Drawing.Point(60, 4);
-            this.rbEtPM.Name = "rbEtPM";
-            this.rbEtPM.Size = new System.Drawing.Size(44, 21);
-            this.rbEtPM.TabIndex = 1;
-            this.rbEtPM.TabStop = true;
-            this.rbEtPM.Text = "PM";
-            this.rbEtPM.UseVisualStyleBackColor = true;
-            // 
-            // rbEtAM
-            // 
-            this.rbEtAM.AutoSize = true;
-            this.rbEtAM.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbEtAM.Location = new System.Drawing.Point(8, 4);
-            this.rbEtAM.Name = "rbEtAM";
-            this.rbEtAM.Size = new System.Drawing.Size(46, 21);
-            this.rbEtAM.TabIndex = 0;
-            this.rbEtAM.TabStop = true;
-            this.rbEtAM.Text = "AM";
-            this.rbEtAM.UseVisualStyleBackColor = true;
+            this.rbFullWeek.AutoSize = true;
+            this.rbFullWeek.Location = new System.Drawing.Point(133, 159);
+            this.rbFullWeek.Name = "rbFullWeek";
+            this.rbFullWeek.Size = new System.Drawing.Size(146, 25);
+            this.rbFullWeek.TabIndex = 38;
+            this.rbFullWeek.TabStop = true;
+            this.rbFullWeek.Text = "Select for week";
+            this.rbFullWeek.UseVisualStyleBackColor = true;
             // 
             // frmAddShift
             // 
@@ -450,11 +463,11 @@ namespace FujitsuPayments.Forms
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
-            this.pnlStartTime.ResumeLayout(false);
-            this.pnlStartTime.PerformLayout();
             this.pnlEndTime.ResumeLayout(false);
             this.pnlEndTime.PerformLayout();
+            this.pnlStartTime.ResumeLayout(false);
+            this.pnlStartTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -491,5 +504,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Panel pnlStartTime;
         private System.Windows.Forms.RadioButton rbStPM;
         private System.Windows.Forms.RadioButton rbStAM;
+        private System.Windows.Forms.RadioButton rbFullWeek;
     }
 }

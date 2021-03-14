@@ -539,15 +539,9 @@ namespace FujitsuPayments.UserControls
 
                 foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift"].Rows)
                 {
-
-
-                    //yAxis = 0;
-                   // height = 0;
                     // get date time from data row, extract day of week and set it to a string variable, used for switch
                     DateTime dateValue = Convert.ToDateTime(dr["StartDate"].ToString());
                     String dayOfWeek = dateValue.DayOfWeek.ToString();
-
-                    ////MessageBox.Show("ShiftID" + dr["ShiftID"].ToString() + "Day of week; " + dayOfWeek);
 
                     // use shiftID to pass to employee shift details query
                     cmbEmpShiftDet.Parameters["@ShiftID"].Value = dr["ShiftID"].ToString();
@@ -555,9 +549,7 @@ namespace FujitsuPayments.UserControls
                     //MessageBox.Show("Day of week: " + dayOfWeek);
                     foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
                     {
-                        
-
-
+                     
                         switch (dayOfWeek)
                         {
                             case "Monday":
