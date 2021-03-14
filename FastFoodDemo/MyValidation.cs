@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FujitsuPayments
@@ -298,14 +299,15 @@ namespace FujitsuPayments
             //DateTime currentDate = DateTime.Now;
             //DateTime DOB = Convert.ToDateTime(txt);
             String str = Convert.ToString(txt);
-            DateTime temp = Convert.ToDateTime(str);
-            
-            TimeSpan t = temp.TimeOfDay;
-            string tempTime = t.ToString();
-            //double noOfDays = t.TotalDays;
+          //  DateTime temp = DateTime.Parse(str);
+            string pattern = "\\d{1,2}:\\d{2}";
+
+            //TimeSpan t = temp.TimeOfDay;
+            //string tempTime = t.ToString();
+            ////double noOfDays = t.TotalDays;
 
             bool ok = true;
-            if (tempTime.Contains(txt))
+            if (Regex.IsMatch(str, pattern, RegexOptions.CultureInvariant))
             {
                 ok = true;
             }
