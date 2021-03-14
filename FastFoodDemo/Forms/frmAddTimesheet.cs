@@ -176,155 +176,160 @@ namespace FujitsuPayments.Forms
                                 {
                                     if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                     {
-                                        TimeSpan ts = TimeSpan.Parse(start[no].Text);
-                                        TimeSpan te = TimeSpan.Parse(end[no].Text);
-                                        DateTime timeStart = DateTime.Parse("07:59 AM");
-                                        DateTime timeEnd = DateTime.Parse("06:01 PM");
-
-                                        TimeSpan ds = timeStart.TimeOfDay;
-                                        TimeSpan de = timeEnd.TimeOfDay;
-
-                                        if (ts.CompareTo(te) == -1)
+                                        if (MyValidation.validTimespan1(start[no].Text) == true && MyValidation.validTimespan1(end[no].Text))
                                         {
-                                            if (ds.CompareTo(ts) != -1 || te.CompareTo(de) != -1)
+                                            TimeSpan ts = TimeSpan.Parse(start[no].Text);
+                                            TimeSpan te = TimeSpan.Parse(end[no].Text);
+                                            DateTime timeStart = DateTime.Parse("07:59 AM");
+                                            DateTime timeEnd = DateTime.Parse("06:01 PM");
+
+                                            TimeSpan ds = timeStart.TimeOfDay;
+                                            TimeSpan de = timeEnd.TimeOfDay;
+
+                                            if (ts.CompareTo(te) == -1)
                                             {
-                                                MessageBox.Show("Basic hours must be between 8AM and 6PM");
-                                                ok = false;
-                                                break;
+                                                if (ds.CompareTo(ts) != -1 || te.CompareTo(de) != -1)
+                                                {
+                                                    MessageBox.Show("Basic hours must be between 8AM and 6PM");
+                                                    ok = false;
+                                                    break;
+
+                                                }
+                                                else
+                                                {
+
+                                                    try
+                                                    {
+                                                        timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
+                                                        //passed to employee Class to check
+
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(lblTimsheetId, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
+
+                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
+                                                        //passed to employee Class to check
+
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbCostCentID, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        DateTime datee = DateTime.Parse(date[no].Text.Trim());
+                                                        timeDets.WorkedDay = datee;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbDates, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+
+                                                        string str = start[no].Text;
+                                                        MessageBox.Show(str);
+                                                        timeDets.StartTime = str.ToString();
+
+
+                                                    }
+
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(start[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.EndTime = end[no].Text;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(end[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+
+
+                                                    if (ok)
+                                                    {
+                                                        TimeSpan timediff = DateTime.Parse(end[no].Text).Subtract(DateTime.Parse(start[no].Text));
+                                                        count += (double)timediff.TotalMinutes;
+                                                        MessageBox.Show(Convert.ToString(count));
+                                                        no++;
+
+
+
+                                                    }
+                                                }
+
 
                                             }
                                             else
                                             {
-
-                                                try
-                                                {
-                                                    timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
-                                                    //passed to employee Class to check
-
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(lblTimsheetId, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-                                                    timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
-
-                                                    MessageBox.Show(cmbClaimType.SelectedValue.ToString());
-                                                    //passed to employee Class to check
-
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(cmbCostCentID, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-                                                    DateTime datee = DateTime.Parse(date[no].Text.Trim());
-                                                    timeDets.WorkedDay = datee;
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(cmbDates, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-
-                                                    string str = start[no].Text;
-                                                    MessageBox.Show(str);
-                                                    timeDets.StartTime = str.ToString();
-
-
-                                                }
-
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(start[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.EndTime = end[no].Text;
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(end[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(project[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(task[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-
-
-                                                if (ok)
-                                                {
-                                                    TimeSpan timediff = DateTime.Parse(end[no].Text).Subtract(DateTime.Parse(start[no].Text));
-                                                    count += (double)timediff.TotalMinutes;
-                                                    MessageBox.Show(Convert.ToString(count));
-                                                    no++;
-
-
-
-                                                }
+                                                MessageBox.Show("Start time must be less than end time");
+                                                ok = false;
+                                                break;
                                             }
 
+                                        }
 
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Start time must be less than end time");
-                                            ok = false;
-                                            break;
-                                        }
 
                                     }
-
-
                                 }
                             }
+                                        
+                                          
                             if (count != 2400)
                             {
                                 MessageBox.Show("Basic hours must be 40 hours a week ");
@@ -391,406 +396,443 @@ namespace FujitsuPayments.Forms
                             }
                             break;
                         case 2:
-                            int digit = checkOT();
-                            MessageBox.Show(Convert.ToString(digit));
-
-                            foreach (Control c in panel1.Controls)
+                            if(checkOT() == true)
                             {
-                                
+                               
 
-                                if (c is Panel && ok)
+                                foreach (Control c in panel1.Controls)
                                 {
-                                    if (start[no].Text.Length != 0 && end[no].Text.Length != 0 )
+
+
+                                    if (c is Panel && ok)
                                     {
-                                        TimeSpan ts = TimeSpan.Parse(start[no].Text);
-                                        TimeSpan te = TimeSpan.Parse(end[no].Text);
-                                        DateTime timeStart = DateTime.Parse("07:59 AM");
-                                        DateTime timeEnd = DateTime.Parse("05:59 PM");
-
-                                        TimeSpan ds = timeStart.TimeOfDay;
-                                        TimeSpan de = timeEnd.TimeOfDay;
-
-                                       
-                                            if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1 )
+                                        if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
+                                        {
+                                            if(MyValidation.validTimespan1(start[no].Text) == true && MyValidation.validTimespan1(end[no].Text))
                                             {
-                                                MessageBox.Show("Overtime hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
-                                                ok = false;
-                                                break;
+                                                TimeSpan ts = TimeSpan.Parse(start[no].Text);
+                                                TimeSpan te = TimeSpan.Parse(end[no].Text);
+                                                DateTime timeStart = DateTime.Parse("07:59 AM");
+                                                DateTime timeEnd = DateTime.Parse("05:59 PM");
+
+                                                TimeSpan ds = timeStart.TimeOfDay;
+                                                TimeSpan de = timeEnd.TimeOfDay;
+
+
+                                                if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1 && no < 5)
+                                                {
+                                                    MessageBox.Show("Overtime hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
+                                                    ok = false;
+                                                    break;
+
+                                                }
+                                                else
+                                                {
+
+                                                    try
+                                                    {
+                                                        timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
+                                                        //passed to employee Class to check
+
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(lblTimsheetId, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
+
+                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
+                                                        //passed to employee Class to check
+
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbCostCentID, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        DateTime datee = DateTime.Parse(date[no].Text.Trim());
+                                                        timeDets.WorkedDay = datee;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbDates, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+
+                                                        string str = start[no].Text;
+                                                        MessageBox.Show(str);
+                                                        timeDets.StartTime = str.ToString();
+
+
+                                                    }
+
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(start[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.EndTime = end[no].Text;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(end[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+
+
+
+                                                }
+
+
+
 
                                             }
                                             else
                                             {
-
-                                                try
-                                                {
-                                                    timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
-                                                    //passed to employee Class to check
-
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(lblTimsheetId, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-                                                    timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
-
-                                                    MessageBox.Show(cmbClaimType.SelectedValue.ToString());
-                                                    //passed to employee Class to check
-
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(cmbCostCentID, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-                                                    DateTime datee = DateTime.Parse(date[no].Text.Trim());
-                                                    timeDets.WorkedDay = datee;
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(cmbDates, MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-
-                                                    string str = start[no].Text;
-                                                    MessageBox.Show(str);
-                                                    timeDets.StartTime = str.ToString();
-
-
-                                                }
-
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(start[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.EndTime = end[no].Text;
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(end[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(project[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-                                                try
-                                                {
-
-                                                    timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
-                                                }
-                                                catch (MyException MyEx)
-                                                {
-                                                    ok = false;
-                                                    errP.SetError(task[no], MyEx.toString());
-                                                    count = 0;
-                                                    no = 0;
-                                                    break;
-                                                }
-
-
-                                               
+                                                ok = false;
+                                                MessageBox.Show("Please enter a valid start or end Time");
+                                                count = 0;
+                                                no = 0;
+                                                break;
                                             }
 
 
-                                        
-                                        
-                                    }
-
-
-                                }
-                                no++;
-                            }
-
-
-                            if (ok)
-                            {
-                                drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
-
-                                drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
-
-
-                                dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                                daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                MessageBox.Show("Timesheet Added");
-                                no = 0;
-                                foreach (Control c in panel1.Controls)
-                                {
-                                    if (c is Panel && ok)
-                                    {
-                                        if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
-                                        {
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-
-
-                                            DateTime dt = Convert.ToDateTime(start[no].Text);
-                                            TimeSpan ts = dt.TimeOfDay;
-
-                                            DateTime dte = Convert.ToDateTime(end[no].Text);
-                                            TimeSpan tse = dte.TimeOfDay;
-
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-                                            drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                            drTimeDets["WorkedDay"] = date[no].Text.Trim();
-                                            drTimeDets["StartTime"] = ts;
-                                            drTimeDets["EndTime"] = tse;
-                                            drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                            drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                            drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
-
-                                            dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
-                                            daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                                         }
+                                        no++;
                                     }
-                                    no++;
                                 }
+                                            
+                                            
+                                           
 
-                                if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+
+                                if (ok)
                                 {
-                                    clear();
-                                }
-                                else
-                                {
-                                    this.Dispose();
+                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+
+                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
+                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+
+
+                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                                    MessageBox.Show("Timesheet Added");
+                                    no = 0;
+                                    foreach (Control c in panel1.Controls)
+                                    {
+                                        if (c is Panel && ok)
+                                        {
+                                            if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
+                                            {
+                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+
+
+                                                DateTime dt = Convert.ToDateTime(start[no].Text);
+                                                TimeSpan ts = dt.TimeOfDay;
+
+                                                DateTime dte = Convert.ToDateTime(end[no].Text);
+                                                TimeSpan tse = dte.TimeOfDay;
+
+                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                                drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                drTimeDets["WorkedDay"] = date[no].Text.Trim();
+                                                drTimeDets["StartTime"] = ts;
+                                                drTimeDets["EndTime"] = tse;
+                                                drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
+                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+
+                                                dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
+                                                daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                            }
+                                        }
+                                        no++;
+                                    }
+
+                                    if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        clear();
+                                    }
+                                    else
+                                    {
+                                        this.Dispose();
+                                    }
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("A claim already exists for these number, please edit an existing claim.");
+                                ok = false;
+                                clear();
+                            }
+                           
                             break;
                         case 3:
-                            foreach (Control c in panel1.Controls)
+                            if (checkOT() == true)
                             {
-                                if (c is Panel && ok)
-                                {
-                                    if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
-                                    {
-                                        TimeSpan ts = TimeSpan.Parse(start[no].Text);
-                                        TimeSpan te = TimeSpan.Parse(end[no].Text);
-                                        DateTime timeStart = DateTime.Parse("07:59 AM");
-                                        DateTime timeEnd = DateTime.Parse("05:59 PM");
-
-                                        TimeSpan ds = timeStart.TimeOfDay;
-                                        TimeSpan de = timeEnd.TimeOfDay;
-
-
-                                        if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1)
-                                        {
-                                            MessageBox.Show("OnCall hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
-                                            ok = false;
-                                            break;
-
-                                        }
-                                        else
-                                        {
-
-                                            try
-                                            {
-                                                timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
-                                                //passed to employee Class to check
-
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(lblTimsheetId, MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-                                                timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
-
-                                                MessageBox.Show(cmbClaimType.SelectedValue.ToString());
-                                                //passed to employee Class to check
-
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(cmbCostCentID, MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-                                                DateTime datee = DateTime.Parse(date[no].Text.Trim());
-                                                timeDets.WorkedDay = datee;
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(cmbDates, MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-
-
-                                                string str = start[no].Text;
-                                                MessageBox.Show(str);
-                                                timeDets.StartTime = str.ToString();
-
-
-                                            }
-
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(start[no], MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-
-                                                timeDets.EndTime = end[no].Text;
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(end[no], MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-
-                                                timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(project[no], MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-                                            try
-                                            {
-
-                                                timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
-                                            }
-                                            catch (MyException MyEx)
-                                            {
-                                                ok = false;
-                                                errP.SetError(task[no], MyEx.toString());
-                                                count = 0;
-                                                no = 0;
-                                                break;
-                                            }
-
-
-
-                                        }
-
-
-
-
-                                    }
-
-
-                                }
-                                no++;
-                            }
-
-
-                            if (ok)
-                            {
-                                drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
-
-                                drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
-
-
-                                dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                                daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                MessageBox.Show("Timesheet Added");
-                                no = 0;
                                 foreach (Control c in panel1.Controls)
                                 {
                                     if (c is Panel && ok)
                                     {
                                         if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                         {
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                            if (MyValidation.validTimespan1(start[no].Text) == true && MyValidation.validTimespan1(end[no].Text))
+                                            {
+
+                                                TimeSpan ts = TimeSpan.Parse(start[no].Text);
+                                                TimeSpan te = TimeSpan.Parse(end[no].Text);
+                                                DateTime timeStart = DateTime.Parse("07:59 AM");
+                                                DateTime timeEnd = DateTime.Parse("05:59 PM");
+
+                                                TimeSpan ds = timeStart.TimeOfDay;
+                                                TimeSpan de = timeEnd.TimeOfDay;
 
 
-                                            DateTime dt = Convert.ToDateTime(start[no].Text);
-                                            TimeSpan ts = dt.TimeOfDay;
+                                                if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1 && no < 5)
+                                                {
+                                                    MessageBox.Show("OnCall hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
+                                                    ok = false;
+                                                    break;
 
-                                            DateTime dte = Convert.ToDateTime(end[no].Text);
-                                            TimeSpan tse = dte.TimeOfDay;
+                                                }
+                                                else
+                                                {
 
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-                                            drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                            drTimeDets["WorkedDay"] = date[no].Text.Trim();
-                                            drTimeDets["StartTime"] = ts;
-                                            drTimeDets["EndTime"] = tse;
-                                            drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                            drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                            drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+                                                    try
+                                                    {
+                                                        timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
+                                                        //passed to employee Class to check
 
-                                            dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
-                                            daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(lblTimsheetId, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
+
+                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
+                                                        //passed to employee Class to check
+
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbCostCentID, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+                                                        DateTime datee = DateTime.Parse(date[no].Text.Trim());
+                                                        timeDets.WorkedDay = datee;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(cmbDates, MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+
+                                                        string str = start[no].Text;
+                                                        MessageBox.Show(str);
+                                                        timeDets.StartTime = str.ToString();
+
+
+                                                    }
+
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(start[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.EndTime = end[no].Text;
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(end[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    try
+                                                    {
+
+                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                    }
+                                                    catch (MyException MyEx)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+
+
+
+                                                }
+
+
+
+
+                                            }
+
+
                                         }
+                                        no++;
+
                                     }
-                                    no++;
                                 }
 
-                                if (MessageBox.Show("Do you wish to add basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+
+                                if (ok)
                                 {
-                                    clear();
+                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+
+                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
+                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+
+
+                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                                    MessageBox.Show("Timesheet Added");
+                                    no = 0;
+                                    foreach (Control c in panel1.Controls)
+                                    {
+                                        if (c is Panel && ok)
+                                        {
+                                            if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
+                                            {
+                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+
+
+                                                DateTime dt = Convert.ToDateTime(start[no].Text);
+                                                TimeSpan ts = dt.TimeOfDay;
+
+                                                DateTime dte = Convert.ToDateTime(end[no].Text);
+                                                TimeSpan tse = dte.TimeOfDay;
+
+                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                                drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                drTimeDets["WorkedDay"] = date[no].Text.Trim();
+                                                drTimeDets["StartTime"] = ts;
+                                                drTimeDets["EndTime"] = tse;
+                                                drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
+                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+
+                                                dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
+                                                daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                            }
+                                        }
+                                        no++;
+                                    }
+
+                                    if (MessageBox.Show("Do you wish to add basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        clear();
+                                    }
+                                    else
+                                    {
+                                        this.Dispose();
+                                    }
                                 }
-                                else
-                                {
-                                    this.Dispose();
-                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("A claim already exists for these number, please edit an existing claim.");
+                                ok = false;
+                                clear();
                             }
                             break;
                         default: MessageBox.Show("Please enter a claim type");
@@ -822,7 +864,7 @@ namespace FujitsuPayments.Forms
             for(int i = 0; i< 7; i++)
             {
                 start[i].Clear();
-               end[i].Clear
+                end[i].Clear();
             }
         }
        
@@ -990,15 +1032,11 @@ namespace FujitsuPayments.Forms
             lblDateSun.Text = sun.ToShortDateString();
         }
 
-        private int checkOT()
+        private Boolean checkOT()
         {
             Boolean ok = true;
 
-           
-
-           
-
-            sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet";
+            sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet AND (ClaimTypeID = 2 or ClaimTypeID = 3)";
             conn = new SqlConnection(connStr);
             cmdProj = new SqlCommand(sqlProject, conn);
             cmdProj.Parameters.Add("@Timesheet", SqlDbType.Int);
@@ -1017,36 +1055,91 @@ namespace FujitsuPayments.Forms
             DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
             int numb = 0, count = 0 , x = 0;
 
-            string startime, endtime;
+            string startime, endtime, starttimeNew, endtimeNew;
 
 
 
             foreach (DataRow row in dt.Rows)
-                { 
+             { 
                     
                     numb++;
     
-                }
+             }
                
-                
-            DateTime[] startTime = new DateTime[numb];
-            DateTime[] endTime = new DateTime[numb];
-
-            foreach (DataRow row in dt.Rows)
+            if(numb != 0)
             {
-                drProject = row;
-                startime = Convert.ToString(drProject["StartTime"].ToString());
+                DateTime[] startTime = new DateTime[numb];
+                DateTime[] endTime = new DateTime[numb];
+                TimeSpan[] startTimes = new TimeSpan[numb];
+                TimeSpan[] endTimes = new TimeSpan[numb];
 
-                endtime = Convert.ToString(drProject["EndTime"].ToString());
-            
-                startTime[x] = Convert.ToDateTime(startime);
-                endTime[x] = Convert.ToDateTime(endtime);
-                x++;
+
+
+                DateTime[] startTimeNew = new DateTime[numb];
+                DateTime[] endTimeNew = new DateTime[numb];
+                TimeSpan[] startTimesNew = new TimeSpan[numb];
+                TimeSpan[] endTimesNew = new TimeSpan[numb];
+
+                MessageBox.Show(start[6].Text);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    drProject = row;
+                    startime = Convert.ToString(drProject["StartTime"].ToString());
+
+                    endtime = Convert.ToString(drProject["EndTime"].ToString());
+
+                    startTime[x] = Convert.ToDateTime(startime);
+                    endTime[x] = Convert.ToDateTime(endtime);
+                    startTimes[x] = startTime[x].TimeOfDay;
+                    endTimes[x] = endTime[x].TimeOfDay;
+
+
+                    x++;
+
+                }
+                int size = 0;
+
+                for (int c = 0; c < 7; c++)
+                {
+                    if (start[c].Text != "")
+                    {
+                        DateTime ndt = Convert.ToDateTime(start[c].Text);
+                        DateTime edt = Convert.ToDateTime(end[c].Text);
+                        startTimeNew[size] = ndt;
+                        endTimeNew[size] = edt;
+                        startTimesNew[size] = startTimeNew[size].TimeOfDay;
+                        endTimesNew[size] = endTimeNew[size].TimeOfDay;
+
+                        size++;
+                    }
+                }
+
+
+
+                for (int i = 0; i < numb; i++)
+                {
+                    if ((startTimesNew[i] >= startTimes[i]) && (startTimesNew[i] <= endTimes[i]) || (endTimesNew[i] >= startTimes[i]) && (endTimesNew[i] <= endTimes[i]))
+                    {
+                        count++;
+                    }
+                }
+
+
+                if (count > 0)
+                {
+                    ok = false;
+                }
 
             }
+            else
+            {
+                ok = true;
+            }
+                
+           
 
-
-            return count;
+            return ok;
         }
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
