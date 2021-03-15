@@ -27,6 +27,16 @@ namespace FujitsuPayments.UserControls
         public static bool shiftSelected = false;
         public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0;
 
+        // string array for tooltips
+        String[] monString = new String[3];
+        String[] tueString = new String[3];
+        String[] wedString = new String[3];
+        String[] thuString = new String[3];
+        String[] friString = new String[3];
+        String[] satString = new String[3];
+        String[] sunString = new String[3];
+
+
 
 
         public UC_Schedule()
@@ -131,6 +141,10 @@ namespace FujitsuPayments.UserControls
             cmbTaskId.DisplayMember = "TaskDesc";
 
             hidePanels();
+
+
+
+           
         }
 
 
@@ -190,6 +204,8 @@ namespace FujitsuPayments.UserControls
             }
 
         }
+
+
 
         private void calShift_DateChanged(object sender, DateRangeEventArgs e)
         {
@@ -358,6 +374,8 @@ namespace FujitsuPayments.UserControls
             }
         }
 
+
+
         private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbProjectId.Focused == true)
@@ -477,11 +495,12 @@ namespace FujitsuPayments.UserControls
 
             //MessageBox.Show("new min: " + newMin);
 
-            int yAxis = (hr*80);
+            int yAxis = (hr*80) + newMin;
             //MessageBox.Show("YAxis Value = : " + yAxis);
 
             return yAxis; // returns y axis value to position panel
         }
+
 
 
         public static int calSizeHeight(string startTime, string endTime)
@@ -512,12 +531,24 @@ namespace FujitsuPayments.UserControls
 
         private void btnSearchShifts_Click(object sender, EventArgs e)
         {
+            hidePanels();
 
 
-            hidePanels();  
+            // declare array of panels to convert on form in order to increment for each record
+            Panel[] monArray = new Panel[] { pnlMonShift1, pnlMonShift2, pnlMonShift3, pnlMonShift4 };
+            Panel[] tueArray = new Panel[] { pnlTueShift1, pnlTueShift2, pnlTueShift3, pnlTueShift4 };
+            Panel[] wedArray = new Panel[] { pnlWedShift1, pnlWedShift2, pnlWedShift3, pnlWedShift4 };
+            Panel[] thuArray = new Panel[] { pnlThuShift1, pnlThuShift2, pnlThuShift3, pnlThuShift4 };
+            Panel[] friArray = new Panel[] { pnlFriShift1, pnlFriShift2, pnlFriShift3, pnlFriShift4 };
+            Panel[] satArray = new Panel[] { pnlSatShift1, pnlSatShift2, pnlSatShift3, pnlSatShift4 };
+            Panel[] sunArray = new Panel[] { pnlSunShift1, pnlSunShift2, pnlSunShift3, pnlSunShift4 };
+
+
+
+
 
             dsFujitsuPayments.Tables["EmployeeShift"].Clear();
-            dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
+            
 
             if(calShift.SelectionRange == null || cmbAccountId.SelectedIndex < 0 || cmbProjectId.SelectedIndex < 0 || cmbTaskId.SelectedIndex < 0)
             {
@@ -530,7 +561,6 @@ namespace FujitsuPayments.UserControls
                 cmbEmpShift.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
                 cmbEmpShift.Parameters["@TaskID"].Value = cmbTaskId.SelectedValue;
                 cmbEmpShift.Parameters["@StartDate"].Value = calShift.SelectionRange.Start.ToString();
-
                 daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift");
 
                 dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
@@ -539,6 +569,11 @@ namespace FujitsuPayments.UserControls
 
                 foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift"].Rows)
                 {
+                    // variables used to increment array of panels
+                    int mon = 0, tue = 0, wed = 0, thu = 0, fri = 0, sat = 0, sun = 0;
+                    // clear out data for new query
+                    dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
+
                     // get date time from data row, extract day of week and set it to a string variable, used for switch
                     DateTime dateValue = Convert.ToDateTime(dr["StartDate"].ToString());
                     String dayOfWeek = dateValue.DayOfWeek.ToString();
@@ -549,59 +584,88 @@ namespace FujitsuPayments.UserControls
                     //MessageBox.Show("Day of week: " + dayOfWeek);
                     foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
                     {
-                     
+                        
+
                         switch (dayOfWeek)
                         {
                             case "Monday":
-                                //String st = dr["StartTime"].ToString();
-                                //int yAxis = calLocYAxis(dr["StartTime"].ToString());
-                                //int height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                pnlMonShift1.Visible = true;
-                                pnlMonShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlMonShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                monArray[mon].Visible = true;
+                                monArray[mon].Top = calLocYAxis(dr["StartTime"].ToString());
+                                monArray[mon].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                monString[mon] = "monday";
+                                mon = mon + 1;
+                                //pnlMonShift1.Visible = true;
+                               // pnlMonShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlMonShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
 
                                 break;
                             case "Tuesday":
                                 //yAxis = calLocYAxis(dr["StartTime"].ToString());
                                 //height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                pnlTueShift1.Visible = true;
-                                pnlTueShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlTueShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                tueArray[tue].Visible = true;
+                                tueArray[tue].Top = calLocYAxis(dr["StartTime"].ToString());
+                                tueArray[tue].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                tueString[tue] = "tuesday";
+                                tue = tue + 1;
+                                //pnlTueShift1.Visible = true;
+                                //pnlTueShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlTueShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Wednesday":
-                                pnlWedShift1.Visible = true;
-                                pnlWedShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlWedShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                wedArray[wed].Visible = true;
+                                wedArray[wed].Top = calLocYAxis(dr["StartTime"].ToString());
+                                wedArray[wed].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                wedString[wed] = "Wednesday";
+                                wed = wed + 1;
+
+                                //pnlWedShift1.Visible = true;
+                                //pnlWedShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlWedShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Thursday":
-                                pnlThuShift1.Visible = true;
-                                pnlThuShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlThuShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                thuArray[thu].Visible = true;
+                                thuArray[thu].Top = calLocYAxis(dr["StartTime"].ToString());
+                                thuArray[thu].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                thuString[thu] = "Thursday";
+                                thu = thu + 1;
+                                //pnlThuShift1.Visible = true;
+                                //pnlThuShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlThuShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Friday":
-                                pnlFriShift1.Visible = true;
-                                pnlFriShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlFriShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                friArray[fri].Visible = true;
+                                friArray[fri].Top = calLocYAxis(dr["StartTime"].ToString());
+                                friArray[fri].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                friString[fri] = "Friday";
+                                fri = fri + 1;
+                                //pnlFriShift1.Visible = true;
+                                //pnlFriShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlFriShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Saturday":
-                                pnlSatShift1.Visible = true;
-                                pnlSatShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlSatShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                satArray[sat].Visible = true;
+                                satArray[sat].Top = calLocYAxis(dr["StartTime"].ToString());
+                                satArray[sat].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                satString[sat] = "Saturday";
+                                sat = sat + 1;
+                                //pnlSatShift1.Visible = true;
+                                //pnlSatShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlSatShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Sunday":
-                                pnlSunShift1.Visible = true;
-                                pnlSunShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                pnlSunShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                break;
+                                sunArray[sun].Visible = true;
+                                sunArray[sun].Top = calLocYAxis(dr["StartTime"].ToString());
+                                sunArray[sun].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                sunString[sun] = "Sunday";
+                                sun = sun + 1;
+                                //pnlSunShift1.Visible = true;
+                                //pnlSunShift1.Top = calLocYAxis(dr["StartTime"].ToString());
+                                //pnlSunShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
+                                break;                               
                         }
                     }
-
-
                 }
-
             }
-
-
         }
 
 
@@ -617,7 +681,7 @@ namespace FujitsuPayments.UserControls
                 string pnlEndTime = drEmpShift["EndTime"].ToString();
 
 
-                MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
+                //MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
             }
 
         }
@@ -639,9 +703,168 @@ namespace FujitsuPayments.UserControls
         }
 
 
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             hidePanels();
+        }
+
+        // methods for tooltip
+
+        private void pnlMonShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(monString[0].ToString(), pnlMonShift1);
+        }
+
+        private void pnlMonShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(monString[1].ToString(), pnlMonShift2);
+        }
+
+        private void pnlMonShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(monString[2].ToString(), pnlMonShift3);
+        }
+
+        private void pnlMonShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(monString[3].ToString(), pnlMonShift4);
+        }
+
+        private void pnlTueShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(tueString[0].ToString(), pnlTueShift1);
+        }
+
+        private void pnlTueShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(tueString[1].ToString(), pnlTueShift2);
+        }
+
+        private void pnlTueShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(tueString[2].ToString(), pnlTueShift3);
+        }
+
+        private void pnlTueShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(tueString[3].ToString(), pnlTueShift4);
+        }
+
+        private void pnlWedShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(wedString[0].ToString(), pnlWedShift1);
+        }
+
+        private void pnlWedShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(wedString[1].ToString(), pnlWedShift2);
+        }
+
+        private void pnlWedShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(wedString[2].ToString(), pnlWedShift3);
+        }
+
+        private void pnlWedShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(wedString[3].ToString(), pnlWedShift4);
+        }
+
+        private void pnlThuShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(thuString[0].ToString(), pnlThuShift1);
+        }
+
+        private void pnlThuShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(thuString[1].ToString(), pnlThuShift2);
+        }
+
+        private void pnlThuShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(thuString[2].ToString(), pnlThuShift3);
+        }
+
+        private void pnlThuShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(thuString[3].ToString(), pnlThuShift4);
+        }
+
+        private void pnlFriShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(friString[0].ToString(), pnlFriShift1);
+        }
+
+        private void pnlFriShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(friString[1].ToString(), pnlFriShift2);
+        }
+
+        private void pnlFriShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(friString[2].ToString(), pnlFriShift3);
+        }
+
+        private void pnlFriShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(friString[3].ToString(), pnlFriShift4);
+        }
+
+        private void pnlSatShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(satString[0].ToString(), pnlSatShift1);
+        }
+
+        private void pnlSatShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(satString[1].ToString(), pnlSatShift2);
+        }
+
+        private void pnlSatShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(satString[2].ToString(), pnlSatShift3);
+        }
+
+        private void pnlSatShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(satString[3].ToString(), pnlSatShift4);
+        }
+
+        private void pnlSunShift1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(sunString[0].ToString(), pnlSunShift1);
+        }
+
+        private void pnlSunShift2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(sunString[1].ToString(), pnlSunShift2);
+        }
+
+        private void pnlSunShift3_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(sunString[2].ToString(), pnlSunShift3);
+        }
+
+        private void pnlSunShift4_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show(sunString[3].ToString(), pnlSunShift4);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        private void pnlSunShift3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

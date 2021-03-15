@@ -265,6 +265,7 @@ namespace FujitsuPayments.Forms
                         {
                             if (ok)
                             {
+                                // check for full has been selected
                                 if (rbFullWeek.Checked == true)
                                 {
                                     // add 5 shifts
@@ -288,9 +289,11 @@ namespace FujitsuPayments.Forms
 
                                         dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
                                         daShift.Update(dsFujitsuPayments, "EmployeeShift");
-                                        st.AddDays(1);
+                                        //increments both the day or week and shiftID
+                                        st = st.AddDays(1);
                                         shiftId = shiftId + 1;
-                                        MessageBox.Show("Shift Added");
+
+                                        //MessageBox.Show("Shift Added");
                                     }
 
 
@@ -326,13 +329,13 @@ namespace FujitsuPayments.Forms
                     }
                     else
                     {
-                        MessageBox.Show("Start date cannot be a past date, please enter correct date");
+                        MessageBox.Show("Start date cannot be a date in the past, please enter correct date");
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("End time cannot be before start time, please try again!");
+                    MessageBox.Show("End time cannot be before start time, please enter correct time!");
                 }
             }
         }
@@ -362,6 +365,7 @@ namespace FujitsuPayments.Forms
                 {
                     MessageBox.Show("Error message " + ex);
                 }
+                // populate combo box
                 cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
                 cmbProjectId.ValueMember = "ProjectID";
                 cmbProjectId.DisplayMember = "ProjDesc";
@@ -399,7 +403,6 @@ namespace FujitsuPayments.Forms
             {
                 dsFujitsuPayments.Tables["ProjectTask"].Clear();
                 cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
-
                 try
                 {
                     daTask.Fill(dsFujitsuPayments, "ProjectTask");
@@ -408,7 +411,6 @@ namespace FujitsuPayments.Forms
                 {
                     MessageBox.Show("Error message " + ex);
                 }
-
                 cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
                 cmbTaskId.ValueMember = "TaskID";
                 cmbTaskId.DisplayMember = "TaskDesc";
@@ -438,6 +440,7 @@ namespace FujitsuPayments.Forms
 
         public static DateTime getFirstDayOfWeek(DateTime dateToCheck, string firstDay)
         {
+            // monday is passed in as first day of week
             DateTime dt = new DateTime();
             for (int i = 0; i < 7; i++)
             {

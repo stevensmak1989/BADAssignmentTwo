@@ -57,6 +57,7 @@ namespace FujitsuPayments.UserControls
             this.panel40 = new System.Windows.Forms.Panel();
             this.dgvShift = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnSearchShifts = new System.Windows.Forms.Button();
             this.cmbAccountId = new System.Windows.Forms.ComboBox();
             this.lblAccountId = new System.Windows.Forms.Label();
@@ -124,7 +125,6 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift3 = new System.Windows.Forms.Panel();
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -459,6 +459,21 @@ namespace FujitsuPayments.UserControls
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1090, 483);
             this.panel3.TabIndex = 2;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReset.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnReset.Location = new System.Drawing.Point(755, 216);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(82, 25);
+            this.btnReset.TabIndex = 16;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSearchShifts
             // 
@@ -833,6 +848,7 @@ namespace FujitsuPayments.UserControls
             this.pnlMonShift4.Name = "pnlMonShift4";
             this.pnlMonShift4.Size = new System.Drawing.Size(20, 160);
             this.pnlMonShift4.TabIndex = 3;
+            this.pnlMonShift4.MouseHover += new System.EventHandler(this.pnlMonShift4_MouseHover);
             // 
             // pnlMonShift3
             // 
@@ -841,6 +857,7 @@ namespace FujitsuPayments.UserControls
             this.pnlMonShift3.Name = "pnlMonShift3";
             this.pnlMonShift3.Size = new System.Drawing.Size(20, 80);
             this.pnlMonShift3.TabIndex = 2;
+            this.pnlMonShift3.MouseHover += new System.EventHandler(this.pnlMonShift3_MouseHover);
             // 
             // pnlMonShift2
             // 
@@ -849,6 +866,7 @@ namespace FujitsuPayments.UserControls
             this.pnlMonShift2.Name = "pnlMonShift2";
             this.pnlMonShift2.Size = new System.Drawing.Size(20, 80);
             this.pnlMonShift2.TabIndex = 1;
+            this.pnlMonShift2.MouseHover += new System.EventHandler(this.pnlMonShift2_MouseHover);
             // 
             // pnlMonShift1
             // 
@@ -857,6 +875,7 @@ namespace FujitsuPayments.UserControls
             this.pnlMonShift1.Name = "pnlMonShift1";
             this.pnlMonShift1.Size = new System.Drawing.Size(20, 400);
             this.pnlMonShift1.TabIndex = 0;
+            this.pnlMonShift1.MouseHover += new System.EventHandler(this.pnlMonShift1_MouseHover);
             // 
             // pnlTue
             // 
@@ -877,6 +896,7 @@ namespace FujitsuPayments.UserControls
             this.pnlTueShift4.Name = "pnlTueShift4";
             this.pnlTueShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlTueShift4.TabIndex = 4;
+            this.pnlTueShift4.MouseHover += new System.EventHandler(this.pnlTueShift4_MouseHover);
             // 
             // pnlTueShift3
             // 
@@ -885,6 +905,7 @@ namespace FujitsuPayments.UserControls
             this.pnlTueShift3.Name = "pnlTueShift3";
             this.pnlTueShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlTueShift3.TabIndex = 3;
+            this.pnlTueShift3.MouseHover += new System.EventHandler(this.pnlTueShift3_MouseHover);
             // 
             // pnlTueShift2
             // 
@@ -893,6 +914,7 @@ namespace FujitsuPayments.UserControls
             this.pnlTueShift2.Name = "pnlTueShift2";
             this.pnlTueShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlTueShift2.TabIndex = 2;
+            this.pnlTueShift2.MouseHover += new System.EventHandler(this.pnlTueShift2_MouseHover);
             // 
             // pnlTueShift1
             // 
@@ -901,6 +923,7 @@ namespace FujitsuPayments.UserControls
             this.pnlTueShift1.Name = "pnlTueShift1";
             this.pnlTueShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlTueShift1.TabIndex = 1;
+            this.pnlTueShift1.MouseHover += new System.EventHandler(this.pnlTueShift1_MouseHover);
             // 
             // pnlWed
             // 
@@ -921,6 +944,7 @@ namespace FujitsuPayments.UserControls
             this.pnlWedShift4.Name = "pnlWedShift4";
             this.pnlWedShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlWedShift4.TabIndex = 5;
+            this.pnlWedShift4.MouseHover += new System.EventHandler(this.pnlWedShift4_MouseHover);
             // 
             // pnlWedShift3
             // 
@@ -929,6 +953,7 @@ namespace FujitsuPayments.UserControls
             this.pnlWedShift3.Name = "pnlWedShift3";
             this.pnlWedShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlWedShift3.TabIndex = 4;
+            this.pnlWedShift3.MouseHover += new System.EventHandler(this.pnlWedShift3_MouseHover);
             // 
             // pnlWedShift2
             // 
@@ -937,6 +962,7 @@ namespace FujitsuPayments.UserControls
             this.pnlWedShift2.Name = "pnlWedShift2";
             this.pnlWedShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlWedShift2.TabIndex = 3;
+            this.pnlWedShift2.MouseHover += new System.EventHandler(this.pnlWedShift2_MouseHover);
             // 
             // pnlWedShift1
             // 
@@ -945,6 +971,7 @@ namespace FujitsuPayments.UserControls
             this.pnlWedShift1.Name = "pnlWedShift1";
             this.pnlWedShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlWedShift1.TabIndex = 2;
+            this.pnlWedShift1.MouseHover += new System.EventHandler(this.pnlWedShift1_MouseHover);
             // 
             // pnlThu
             // 
@@ -965,6 +992,7 @@ namespace FujitsuPayments.UserControls
             this.pnlThuShift4.Name = "pnlThuShift4";
             this.pnlThuShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlThuShift4.TabIndex = 6;
+            this.pnlThuShift4.MouseHover += new System.EventHandler(this.pnlThuShift4_MouseHover);
             // 
             // pnlThuShift3
             // 
@@ -973,6 +1001,7 @@ namespace FujitsuPayments.UserControls
             this.pnlThuShift3.Name = "pnlThuShift3";
             this.pnlThuShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlThuShift3.TabIndex = 5;
+            this.pnlThuShift3.MouseHover += new System.EventHandler(this.pnlThuShift3_MouseHover);
             // 
             // pnlThuShift2
             // 
@@ -981,6 +1010,7 @@ namespace FujitsuPayments.UserControls
             this.pnlThuShift2.Name = "pnlThuShift2";
             this.pnlThuShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlThuShift2.TabIndex = 4;
+            this.pnlThuShift2.MouseHover += new System.EventHandler(this.pnlThuShift2_MouseHover);
             // 
             // pnlThuShift1
             // 
@@ -989,6 +1019,7 @@ namespace FujitsuPayments.UserControls
             this.pnlThuShift1.Name = "pnlThuShift1";
             this.pnlThuShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlThuShift1.TabIndex = 3;
+            this.pnlThuShift1.MouseHover += new System.EventHandler(this.pnlThuShift1_MouseHover);
             // 
             // pnlFri
             // 
@@ -1009,6 +1040,7 @@ namespace FujitsuPayments.UserControls
             this.pnlFriShift4.Name = "pnlFriShift4";
             this.pnlFriShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlFriShift4.TabIndex = 9;
+            this.pnlFriShift4.MouseHover += new System.EventHandler(this.pnlFriShift4_MouseHover);
             // 
             // pnlFriShift3
             // 
@@ -1017,6 +1049,7 @@ namespace FujitsuPayments.UserControls
             this.pnlFriShift3.Name = "pnlFriShift3";
             this.pnlFriShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlFriShift3.TabIndex = 8;
+            this.pnlFriShift3.MouseHover += new System.EventHandler(this.pnlFriShift3_MouseHover);
             // 
             // pnlFriShift2
             // 
@@ -1025,6 +1058,7 @@ namespace FujitsuPayments.UserControls
             this.pnlFriShift2.Name = "pnlFriShift2";
             this.pnlFriShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlFriShift2.TabIndex = 7;
+            this.pnlFriShift2.MouseHover += new System.EventHandler(this.pnlFriShift2_MouseHover);
             // 
             // pnlFriShift1
             // 
@@ -1033,6 +1067,7 @@ namespace FujitsuPayments.UserControls
             this.pnlFriShift1.Name = "pnlFriShift1";
             this.pnlFriShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlFriShift1.TabIndex = 6;
+            this.pnlFriShift1.MouseHover += new System.EventHandler(this.pnlFriShift1_MouseHover);
             // 
             // pnlSat
             // 
@@ -1053,6 +1088,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSatShift4.Name = "pnlSatShift4";
             this.pnlSatShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlSatShift4.TabIndex = 13;
+            this.pnlSatShift4.MouseHover += new System.EventHandler(this.pnlSatShift4_MouseHover);
             // 
             // pnlSatShift3
             // 
@@ -1061,6 +1097,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSatShift3.Name = "pnlSatShift3";
             this.pnlSatShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlSatShift3.TabIndex = 12;
+            this.pnlSatShift3.MouseHover += new System.EventHandler(this.pnlSatShift3_MouseHover);
             // 
             // pnlSatShift2
             // 
@@ -1069,6 +1106,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSatShift2.Name = "pnlSatShift2";
             this.pnlSatShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlSatShift2.TabIndex = 11;
+            this.pnlSatShift2.MouseHover += new System.EventHandler(this.pnlSatShift2_MouseHover);
             // 
             // pnlSatShift1
             // 
@@ -1077,6 +1115,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSatShift1.Name = "pnlSatShift1";
             this.pnlSatShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlSatShift1.TabIndex = 10;
+            this.pnlSatShift1.MouseHover += new System.EventHandler(this.pnlSatShift1_MouseHover);
             // 
             // pnlSun
             // 
@@ -1097,6 +1136,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift4.Name = "pnlSunShift4";
             this.pnlSunShift4.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift4.TabIndex = 17;
+            this.pnlSunShift4.MouseHover += new System.EventHandler(this.pnlSunShift4_MouseHover);
             // 
             // pnlSunShift3
             // 
@@ -1105,6 +1145,8 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift3.Name = "pnlSunShift3";
             this.pnlSunShift3.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift3.TabIndex = 16;
+            this.pnlSunShift3.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSunShift3_Paint);
+            this.pnlSunShift3.MouseHover += new System.EventHandler(this.pnlSunShift3_MouseHover);
             // 
             // pnlSunShift2
             // 
@@ -1113,6 +1155,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift2.Name = "pnlSunShift2";
             this.pnlSunShift2.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift2.TabIndex = 15;
+            this.pnlSunShift2.MouseHover += new System.EventHandler(this.pnlSunShift2_MouseHover);
             // 
             // pnlSunShift1
             // 
@@ -1121,21 +1164,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift1.Name = "pnlSunShift1";
             this.pnlSunShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift1.TabIndex = 14;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.FlatAppearance.BorderSize = 2;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReset.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnReset.Location = new System.Drawing.Point(755, 216);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(82, 25);
-            this.btnReset.TabIndex = 16;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.pnlSunShift1.MouseHover += new System.EventHandler(this.pnlSunShift1_MouseHover);
             // 
             // UC_Schedule
             // 
