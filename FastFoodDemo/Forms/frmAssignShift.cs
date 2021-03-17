@@ -16,25 +16,22 @@ namespace FujitsuPayments.Forms
     {
 
 
-        SqlDataAdapter daEmployeeShift, daEmployee, daAccount, daProject, daTask;
+        SqlDataAdapter daEmployeeShift, daEmployee, daAccount, daProject, daTask, daEmployeeShift2;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
-        SqlCommandBuilder cmbBEmployeeShift, cmbBAccount, cmbBProject, cmbBTask, cmbBEmployee;
-        SqlCommand cmbShift, cmbEmployee;
-        DataRow drEmployeeShift, drEmployee, drAccount, drProject, drTask;
-        String connStr, sqlEmployeeShift, sqlAccount, sqlProject, sqlTask, sqlEmployee;
+        SqlCommandBuilder cmbBEmployeeShift, cmbBAccount, cmbBProject, cmbBTask, cmbBEmployee, cmbBEmployeeShift2;
+        SqlCommand cmbShift, cmbEmployee, cmbEmployeeShift2;
+        DataRow drEmployeeShift, drEmployee, drAccount, drProject, drTask, drEmployeeShift2;
+        String connStr, sqlEmployeeShift, sqlAccount, sqlProject, sqlTask, sqlEmployee, sqlEmployeeShift2;
 
         public frmAssignShift()
         {
             InitializeComponent();
         }
 
-
-
         private void frmAssignShift_Load(object sender, EventArgs e)
         {
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-
 
             sqlAccount = @"select * from Account";
             daAccount = new SqlDataAdapter(sqlAccount, connStr);
@@ -42,21 +39,17 @@ namespace FujitsuPayments.Forms
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
 
-
             sqlProject = @"select * from Project";
             daProject = new SqlDataAdapter(sqlProject, connStr);
             cmbBProject = new SqlCommandBuilder(daProject);
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
             daProject.Fill(dsFujitsuPayments, "Project");
 
-
-
             sqlTask = @"select * from ProjectTask";
             daTask = new SqlDataAdapter(sqlTask, connStr);
             cmbBTask = new SqlCommandBuilder(daTask);
             daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
             daTask.Fill(dsFujitsuPayments, "ProjectTask");
-
 
             // -- setup datat adapter for employee dropdown
             sqlEmployee = @"select e.EmployeeID, e.Forename, e.Surname from Employee e
@@ -99,6 +92,12 @@ namespace FujitsuPayments.Forms
             daEmployeeShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
             daEmployeeShift.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
 
+            sqlEmployeeShift2 = @" select * from EmployeeShiftDetails where ShiftID = @ShiftID";
+            conn = new SqlConnection(connStr);
+            cmbEmployeeShift2 = new SqlCommand(sqlEmployeeShift2, conn);
+            cmbEmployeeShift2.Parameters.Add("@ShiftID", SqlDbType.Int);
+            daEmployeeShift2 = new SqlDataAdapter(cmbEmployeeShift2);
+            daEmployeeShift2.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails2");
         }
 
 
@@ -106,11 +105,8 @@ namespace FujitsuPayments.Forms
         private void btnAssignSave_Click(object sender, EventArgs e)
         {
             EmployeeShiftDetails myEmployeeShift = new EmployeeShiftDetails();
-
             bool ok = true;
             errP.Clear();
-
-
             // pass data to class for validation
             try
             {
@@ -121,7 +117,6 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(txtAssignShiftID, MyEx.toString());
             }
-
             // pass data to class for validation
             try
             {
@@ -132,32 +127,40 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(cmbEmployeeID, MyEx.toString());
             }
-
             try
             {
-                if (ok)
+                // get a list of all records in employee shift for specificed shiftID
+                cmbEmployeeShift2.Parameters["@ShiftID"].Value = myEmployeeShift.ShiftId;
+                daEmployeeShift2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
+                int count = 0;
+                // set variable equal to number of rows
+                foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Rows)
                 {
-                    drEmployeeShift = dsFujitsuPayments.Tables["EmployeeShiftDetails"].NewRow();
-
-                    drEmployeeShift["ShiftID"] = myEmployeeShift.ShiftId;
-                    drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
-                    dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
-                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
-
-                    MessageBox.Show("Employee Shift Added");
-                    this.Dispose();
+                    count = count + 1;
                 }
-
-
+                    // if rows equal 4 do not add record
+                    if (count == 4)
+                    {
+                        MessageBox.Show("Only 4 Employess can be assigned to a Shift");
+                    }
+                    else
+                    {
+                        if (ok)
+                        {
+                            drEmployeeShift = dsFujitsuPayments.Tables["EmployeeShiftDetails"].NewRow();
+                            drEmployeeShift["ShiftID"] = myEmployeeShift.ShiftId;
+                            drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
+                            dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
+                            daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
+                            MessageBox.Show("Employee Shift Added");
+                            this.Dispose();
+                        }
+                    }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
-
-
-
-
         }
 
 

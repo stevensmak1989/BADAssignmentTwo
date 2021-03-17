@@ -14,13 +14,13 @@ namespace FujitsuPayments.UserControls
 {
     public partial class UC_Schedule : UserControl
     {
-        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift, daEmpShiftDet;
+        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift, daEmpShiftDet, daEmp;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
-        SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift, cmbBEmpShiftDet;
-        SqlCommand cmbProject, cmbTask, cmbEmpShift, cmbEmpShiftDet;
-        DataRow drShift, drEmpShift, drEmpShiftDet;
-        String connStr, sqlShift;
+        SqlCommandBuilder cmbBShift, cmbBAccount, cmbBEmpShift, cmbBEmpShiftDet, cmbBEmp;
+        SqlCommand cmbProject, cmbTask, cmbEmpShift, cmbEmpShiftDet, cmbEmp;
+        DataRow drShift, drEmpShift, drEmpShiftDet, drEmp;
+        String connStr, sqlShift, sqlEmp;
         String sqlAccount, sqlProject, sqlTask, sqlEmpShift, sqlEmpShiftDet;
 
         // Static varibales to pass to form's
@@ -36,9 +36,6 @@ namespace FujitsuPayments.UserControls
         String[] satString = new String[3];
         String[] sunString = new String[3];
 
-
-
-
         public UC_Schedule()
         {
             InitializeComponent();
@@ -51,20 +48,15 @@ namespace FujitsuPayments.UserControls
         }
 
 
-
-
-
         private void UC_Schedule_Load(object sender, EventArgs e)
         {
-            // style fornt of data grid cell and header
+            // ------------------style fornt of data grid cell and header ----------------------- //
             this.dgvShift.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
             this.calShift.MaxSelectionCount = 1;
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-
-
-            // ------------ set up adapter for shift data grid view --------------- //////
+            // ---------------- set up adapter for shift data grid view ------------------------ //
             sqlEmpShift = @"SET DATEFIRST 1 -- Define beginning of week as Monday
                         SELECT ShiftID,AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime 
                         FROM EmployeeShift
@@ -72,6 +64,7 @@ namespace FujitsuPayments.UserControls
                         And ProjectID like @ProjectID and TaskID like @TaskID
                         And StartDate >= DATEADD(day, 1 - DATEPART(dw, @StartDate), CONVERT(DATE, @StartDate)) 
                         AND StartDate <  DATEADD(day, 8 - DATEPART(dw, @StartDate), CONVERT(DATE, @StartDate))";
+
             // --- only return shifts were account/project/task match and only records for a week range from the start date
             conn = new SqlConnection(connStr);
             cmbEmpShift = new SqlCommand(sqlEmpShift, conn);
@@ -83,6 +76,13 @@ namespace FujitsuPayments.UserControls
             daEmpShift = new SqlDataAdapter(cmbEmpShift);
             daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift");
 
+            // -------------setup data adapter for employee details tooltip ------------------------- //
+            sqlEmp = @"select * from Employee where EmployeeID = @EmployeeID";
+            conn = new SqlConnection(connStr);
+            cmbEmp = new SqlCommand(sqlEmp, conn);
+            cmbEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            daEmp = new SqlDataAdapter(cmbEmp);
+            daEmp.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
 
             // -------- set up data adpater for employee shift details, to populate panels--------------- //
             sqlEmpShiftDet = @"select * from EmployeeShiftDetails where ShiftID like @ShiftID";
@@ -91,7 +91,6 @@ namespace FujitsuPayments.UserControls
             cmbEmpShiftDet.Parameters.Add("@ShiftID", SqlDbType.Int);
             daEmpShiftDet = new SqlDataAdapter(cmbEmpShiftDet);
             daEmpShiftDet.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
-
 
             // -------- set up data adapter for project ID drop down
             sqlProject = @"Select ProjectID, ProjDesc, AccountID from Project where AccountID like @AccountID";
@@ -115,7 +114,6 @@ namespace FujitsuPayments.UserControls
             daShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift2");
             daShift.Fill(dsFujitsuPayments, "EmployeeShift2");
 
-
             // -- basic adapater for account
             sqlAccount = @"select * from Account";
             daAccount = new SqlDataAdapter(sqlAccount, connStr);
@@ -126,7 +124,6 @@ namespace FujitsuPayments.UserControls
            // dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
             // resize the datagridview columns to fit the newly loaded content
             
-
             // ------- populate account ID combo box
             cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
             cmbAccountId.ValueMember = "AccountID";
@@ -140,11 +137,7 @@ namespace FujitsuPayments.UserControls
             cmbTaskId.ValueMember = "TaskID";
             cmbTaskId.DisplayMember = "TaskDesc";
 
-            hidePanels();
-
-
-
-           
+            hidePanels();        
         }
 
 
@@ -184,7 +177,6 @@ namespace FujitsuPayments.UserControls
                 shiftSelected = false;
                 shiftIdSelected = 0;
                 MessageBox.Show("Please select a single record, cannot assign multiple shifts", "Select Shift");
-
             }
             else if (dgvShift.SelectedRows.Count == 1)
             {
@@ -202,7 +194,6 @@ namespace FujitsuPayments.UserControls
                 this.Controls.Add(frm);
                 frm.BringToFront();
             }
-
         }
 
 
@@ -277,8 +268,7 @@ namespace FujitsuPayments.UserControls
                     lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
                     lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
                     break;
-            }
-           
+            }     
         }
 
 
@@ -317,7 +307,6 @@ namespace FujitsuPayments.UserControls
 
         private void btnViewShifts_Click(object sender, EventArgs e)
         {
-
             frmViewShifts frm = new frmViewShifts();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
@@ -450,7 +439,6 @@ namespace FujitsuPayments.UserControls
                 {
                     drShift.Delete();
                     daShift.Update(dsFujitsuPayments, "EmployeeShift");
-
                 }
             }
         }
@@ -459,13 +447,6 @@ namespace FujitsuPayments.UserControls
 
         public static int calLocYAxis(String startTime)
         {
-            // var charsToRemove = new string[] { "@", ",", ".", ";", "'", ":" };
-            // foreach (var c in charsToRemove)
-            // {
-            //     startTime = startTime.Replace(c, string.Empty);
-            // }
-            // start time as a whole integer
-
             //MessageBox.Show("start time: " + startTime);
 
             string[] splitTime = startTime.Split(':');
@@ -473,11 +454,9 @@ namespace FujitsuPayments.UserControls
             String stMin = Convert.ToString(startTime[0]);
             int hr = Convert.ToInt32(stHr);
             int min = Convert.ToInt32(stMin);
-           
-
+            
             //MessageBox.Show("hr: " + hr + "min: " + min);
             int newMin = 0; ;
-
             
             if(min == 15)
             {
@@ -490,9 +469,7 @@ namespace FujitsuPayments.UserControls
             else if(min == 45)
             {
                 newMin = 60;
-            }
-            
-
+            }        
             //MessageBox.Show("new min: " + newMin);
 
             int yAxis = (hr*80) + newMin;
@@ -502,10 +479,8 @@ namespace FujitsuPayments.UserControls
         }
 
 
-
         public static int calSizeHeight(string startTime, string endTime)
         {
-  
             var charsToRemove = new string[] { "@", ",", ".", ";", "'", ":" };
             foreach (var c in charsToRemove)
             {
@@ -520,21 +495,16 @@ namespace FujitsuPayments.UserControls
             int st = Convert.ToInt32(startTime) / 100;
             int et = Convert.ToInt32(endTime) / 100;
             //MessageBox.Show("Starttime: " + st + "endtime: " + et);
-
             int height = ((et - st)/20)*4*4 ;
 
             return height;
         }
 
 
-
-
         private void btnSearchShifts_Click(object sender, EventArgs e)
         {
             hidePanels();
-
-
-            // declare array of panels to convert on form in order to increment for each record
+            // declare array of panels to convert panels on form for for each loop
             Panel[] monArray = new Panel[] { pnlMonShift1, pnlMonShift2, pnlMonShift3, pnlMonShift4 };
             Panel[] tueArray = new Panel[] { pnlTueShift1, pnlTueShift2, pnlTueShift3, pnlTueShift4 };
             Panel[] wedArray = new Panel[] { pnlWedShift1, pnlWedShift2, pnlWedShift3, pnlWedShift4 };
@@ -543,12 +513,7 @@ namespace FujitsuPayments.UserControls
             Panel[] satArray = new Panel[] { pnlSatShift1, pnlSatShift2, pnlSatShift3, pnlSatShift4 };
             Panel[] sunArray = new Panel[] { pnlSunShift1, pnlSunShift2, pnlSunShift3, pnlSunShift4 };
 
-
-
-
-
-            dsFujitsuPayments.Tables["EmployeeShift"].Clear();
-            
+            dsFujitsuPayments.Tables["EmployeeShift"].Clear();         
 
             if(calShift.SelectionRange == null || cmbAccountId.SelectedIndex < 0 || cmbProjectId.SelectedIndex < 0 || cmbTaskId.SelectedIndex < 0)
             {
@@ -566,7 +531,6 @@ namespace FujitsuPayments.UserControls
                 dgvShift.DataSource = dsFujitsuPayments.Tables["EmployeeShift"];
                 dgvShift.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-
                 foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift"].Rows)
                 {
                     // variables used to increment array of panels
@@ -583,16 +547,17 @@ namespace FujitsuPayments.UserControls
                     daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
                     //MessageBox.Show("Day of week: " + dayOfWeek);
                     foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows)
-                    {
-                        
-
+                    {                  
                         switch (dayOfWeek)
                         {
                             case "Monday":
                                 monArray[mon].Visible = true;
                                 monArray[mon].Top = calLocYAxis(dr["StartTime"].ToString());
                                 monArray[mon].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                monString[mon] = "monday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                monString[mon] = drEmp["Forename"].ToString() + " " +  drEmp["Surname"].ToString();
                                 mon = mon + 1;
                                 //pnlMonShift1.Visible = true;
                                // pnlMonShift1.Top = calLocYAxis(dr["StartTime"].ToString());
@@ -605,62 +570,61 @@ namespace FujitsuPayments.UserControls
                                 tueArray[tue].Visible = true;
                                 tueArray[tue].Top = calLocYAxis(dr["StartTime"].ToString());
                                 tueArray[tue].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                tueString[tue] = "tuesday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                tueString[tue] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();                               
                                 tue = tue + 1;
-                                //pnlTueShift1.Visible = true;
-                                //pnlTueShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlTueShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Wednesday":
                                 wedArray[wed].Visible = true;
                                 wedArray[wed].Top = calLocYAxis(dr["StartTime"].ToString());
                                 wedArray[wed].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                wedString[wed] = "Wednesday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                wedString[wed] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
                                 wed = wed + 1;
-
-                                //pnlWedShift1.Visible = true;
-                                //pnlWedShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlWedShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Thursday":
                                 thuArray[thu].Visible = true;
                                 thuArray[thu].Top = calLocYAxis(dr["StartTime"].ToString());
                                 thuArray[thu].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                thuString[thu] = "Thursday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                thuString[thu] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
                                 thu = thu + 1;
-                                //pnlThuShift1.Visible = true;
-                                //pnlThuShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlThuShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Friday":
                                 friArray[fri].Visible = true;
                                 friArray[fri].Top = calLocYAxis(dr["StartTime"].ToString());
                                 friArray[fri].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                friString[fri] = "Friday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                friString[fri] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
                                 fri = fri + 1;
-                                //pnlFriShift1.Visible = true;
-                                //pnlFriShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlFriShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Saturday":
                                 satArray[sat].Visible = true;
                                 satArray[sat].Top = calLocYAxis(dr["StartTime"].ToString());
                                 satArray[sat].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                satString[sat] = "Saturday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                satString[sat] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();  
                                 sat = sat + 1;
-                                //pnlSatShift1.Visible = true;
-                                //pnlSatShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlSatShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;
                             case "Sunday":
                                 sunArray[sun].Visible = true;
                                 sunArray[sun].Top = calLocYAxis(dr["StartTime"].ToString());
                                 sunArray[sun].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-                                sunString[sun] = "Sunday";
+                                cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
+                                daEmp.Fill(dsFujitsuPayments, "Employee");
+                                drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
+                                sunString[sun] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
                                 sun = sun + 1;
-                                //pnlSunShift1.Visible = true;
-                                //pnlSunShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlSunShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 break;                               
                         }
                     }
@@ -679,11 +643,8 @@ namespace FujitsuPayments.UserControls
                 string pnlStartDate = startDate.ToShortDateString();
                 string pnlStartTime = drEmpShift["StartTime"].ToString();
                 string pnlEndTime = drEmpShift["EndTime"].ToString();
-
-
                 //MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
             }
-
         }
 
 
@@ -850,17 +811,6 @@ namespace FujitsuPayments.UserControls
         {
             toolTip1.Show(sunString[3].ToString(), pnlSunShift4);
         }
-
-
-
-
-
-
-
-
-
-
-
 
         private void pnlSunShift3_Paint(object sender, PaintEventArgs e)
         {

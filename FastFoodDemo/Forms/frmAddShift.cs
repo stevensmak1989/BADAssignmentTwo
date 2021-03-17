@@ -98,9 +98,6 @@ namespace FujitsuPayments.Forms
             cmbTaskId.ValueMember = "TaskID";
             cmbTaskId.DisplayMember = "TaskDesc";
 
-           
-
-
             int noRows = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Count;
 
             if (noRows == 0)
@@ -185,7 +182,6 @@ namespace FujitsuPayments.Forms
                 errP.Clear();
                 if (compareTime == -1)
                 {
-
                     if (compareDate != -1)
                     {
                         // pass data to class for validation
