@@ -246,3 +246,75 @@ CREATE TABLE TimesheetDetails
   insert into ClaimType([ClaimTypeID]
       ,[ClaimTypeDesc])
 	  values(1,'Basic Hours'),(2,'Overtime Hours'),(3,'OnCall Hours')
+	  
+	 
+
+
+--Records 
+--populating account
+  INSERT INTO Account(AccountID,ClientName,Street,Town,County,PostCode,TelNo,Email) VALUES
+(10000,'CITB','Nutts Corner Training Centre','17 Dundrod','Crumlin','BT48 0RU', '02871261548','info@citb.co.uk'),
+(10001,'Post Office','3 Custom House','Derry','Derry','BT48 6AA', '02871261548','info@postoffice.com'),
+(10002,'HS2','The Podium','1 Eversholt','London','NW11 2DN', '02871261548','info@hs2.co.uk'),
+(10003,'Aviva Plc','139 W','Regent Street','Glasgow','GG21 2SG', '02871261548','info@avivaplc.co.uk'),
+(10004,'Barclays','61 Bow St','Lisburn','Antrim','BT28 1DR', '02871261548','info@barclays.co.uk'),
+(10005,'Diageo','3 Marshalls Rd','Castlereagh','Belfast','BT50 6SL', '02871261548','info@diageo.co.uk'),
+(10006,'EasyJet','Airport Approach Rd','Luton','London','LU21 9PF', '02871261548','info@easyjet.co.uk'), 
+(10007,'Royal Mail','6 Laurence Poutney','Hill','London','EC41 0EH', '02871261548','info@royalmail.co.uk'),
+(10008,'Tesco','Cresent Link','Retail Park','Derry','BT47 5FX', '02871261548','info@tesco.co.uk'),
+(10009,'Vivo Energy','5 the Peak','Pimlico','London','SW11 1AN', '02871261548','info@vivoenergy.co.uk'),
+(10010,'Unilever','PO Box 69','Port Sunlight','Wirral','CH62 4ZD', '02871261548','info@unilever.co.uk'),
+(10011,'Tate & Lyle','Knights Rd','Royal Docks','London','EE16 2AT', '02871261548','info@tate&lyle.co.uk'),
+(10012,'Next','Crescent Road','Lisnagelvin Retail Park','Derry','BT47 2NQ', '02871261548','info@next.co.uk'),
+(10013,'Sainsbury','200 Strand Road','Derry','Derry','BT48 7PU', '02871261548','info@sainsburys.co.uk'),
+(10014,'GlaxoSmithKline','980 Great West Rd','London','London','TW81 9GS', '02871261548','info@glaxosmithkline.co.uk'),
+(10015,'Dixons Carphone','Riverside Retail Park','Unit 8','Coleraine','BT51 3QC', '02871261548','info@dixonscarphone.co.uk'),
+(10016,'FirstGroup','300 Stirling Rd','Camelon','Larbert','FK51 3NJ', '02871261548','info@firstgroup.co.uk'),
+(10017,'Computacenter','Haston House','South Gyle','Edinburgh','EH12 9DQ', '02871261548','info@computacenter.co.uk'),
+(10018,'Direct Line Insurance Group','14-18 Cadogan St','Glasgow','Glasgow','BT33 0RG', '02871261548','info@directlinegroup.co.uk'),
+(10019,'Taylor Wimpey','1 Masterton Park','Fife','Dunfermline','KY11 8NX', '02871261548','info@taylorwimpey.co.uk'),
+(10020,'Vertu Motors','390 Calder Rd','Edinburgh','Edinburgh','EH11 4AS', '02871261548','info@vertumotors.co.uk'),
+(10021, 'Fujitsu Services','Strand Rd', 'Derry', 'Derry','BT48 4DF', '02872328547','info@fujitsu.com' )
+
+
+--populating location
+INSERT INTO OfficeLocation (LocationID, LocationName, Street, Town, County, PostCode, TelNo) VALUES
+(1000, 'IRE24', 'Strand Rd', 'Derry', 'Derry','BT48 4DF', '02872328547'),
+(1001, 'IRE11', 'Icl House', 'Hollywood Rd', 'Belfast','BT14 1NU', '02872328547'),
+(1002, 'IRE09', 'Cunningham House', '429 Hollywood Rd', 'Belfast','BT41 1NU', '02872328547'),
+(1003, 'IRE05', 'Central Library', 'Royal Avenue', 'Belfast','BT11 1EA', '02872328547'),
+(1004, 'SOL20', 'Birmingham Business Park', '6000 Solihull', 'Birmingham','BB37 7YU', '02872328547'),
+(1005, 'STE04', '14 Cavendish Rd', 'Stevenage', 'Stevenage','SG12 2DY', '02872328547'),
+(1006, 'LON01', '22 Baker St', 'Marylebone', 'London','WU11 3BW', '02872328547'),
+(1007, 'BAS03', '55 Jays Cl', 'Basingstoke', 'Basingstoke','RG22 4BY', '02872328547'),
+(1008, 'BRA06', '22 Arrow Rd', 'Bracknell', 'Bracknell','RG12 8FB', '02872328547'),
+(1009, 'MAL12', 'Infinity House', 'Mallard Way', 'Crewe','CW10 6ZQ', '02872328547'),
+(1010, 'MAN10', 'One Central Park', 'Northampton', 'Manchester','MM40 5BP', '02872328547'),
+(1011, 'EDN15', 'Wallace House', '1 Lochside Ave', 'Edinburgh','EH12 9DJ', '02872328547'),
+(1012, 'INV20', '50 Seafield Rd', 'Inverness', 'Inverness','IV12 1SG', '02872328547')
+
+
+--Populating CostCentre 
+  INSERT INTO CostCentre (CostCentreID, CostCentreDesc, LocationID) VALUES
+(3000, 'Derry Office', 1000),
+(3001, 'Belfast Office', 1001),
+(3002, 'Solihull Office', 1004),
+(3003, 'Stevenage Office', 1005),
+(3004, 'London Main Office', 1006),
+(3005, 'Basignstoke Office', 1007),
+(3006, 'Bracknell Office', 1008),
+(3007, 'Manchester Office', 1010),
+(3008, 'Edinburgh Office', 1011),
+(3009, 'Inverness Office', 1012)
+
+
+--Populating Grade
+INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
+('DEV01', 'Apprentice', 17500, 18500),
+('DEV02', 'Junior Developer', 19000, 22500),
+('DEV03', 'Graduate Developer', 23000, 25000),
+('DEV04', 'Applications Developer', 25500, 28500),
+('DEV05', 'Senior Applications Developer', 29000, 33500),
+('DEV06', 'Software Architect', 34000, 44000),
+('MAN01', 'Services Manager',29000, 35000),
+('MAN02', 'Head of Applications', 35500, 55000)
