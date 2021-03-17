@@ -16,13 +16,13 @@ namespace FujitsuPayments.Forms
     {
 
 
-        SqlDataAdapter daEmployeeShift, daEmployee, daAccount, daProject, daTask, daEmployeeShift2;
+        SqlDataAdapter daEmployeeShift, daEmployee, daAccount, daProject, daTask, daEmployeeShift2, daEmployeeShift3;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
         SqlCommandBuilder cmbBEmployeeShift, cmbBAccount, cmbBProject, cmbBTask, cmbBEmployee, cmbBEmployeeShift2;
-        SqlCommand cmbShift, cmbEmployee, cmbEmployeeShift2;
-        DataRow drEmployeeShift, drEmployee, drAccount, drProject, drTask, drEmployeeShift2;
-        String connStr, sqlEmployeeShift, sqlAccount, sqlProject, sqlTask, sqlEmployee, sqlEmployeeShift2;
+        SqlCommand cmbShift, cmbEmployee, cmbEmployeeShift2, cmbEmployeeShift3;
+        DataRow drEmployeeShift, drEmployee, drAccount, drProject, drTask, drEmployeeShift2, drEmployeeShift3;
+        String connStr, sqlEmployeeShift, sqlAccount, sqlProject, sqlTask, sqlEmployee, sqlEmployeeShift2, sqlEmployeeShift3;
 
         public frmAssignShift()
         {
@@ -92,12 +92,22 @@ namespace FujitsuPayments.Forms
             daEmployeeShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails");
             daEmployeeShift.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
 
+
             sqlEmployeeShift2 = @" select * from EmployeeShiftDetails where ShiftID = @ShiftID";
             conn = new SqlConnection(connStr);
             cmbEmployeeShift2 = new SqlCommand(sqlEmployeeShift2, conn);
             cmbEmployeeShift2.Parameters.Add("@ShiftID", SqlDbType.Int);
             daEmployeeShift2 = new SqlDataAdapter(cmbEmployeeShift2);
             daEmployeeShift2.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails2");
+
+
+            sqlEmployeeShift3 = @" select * from EmployeeShiftDetails where ShiftID = @ShiftID and EmployeeID = @EmployeeID";
+            conn = new SqlConnection(connStr);
+            cmbEmployeeShift3 = new SqlCommand(sqlEmployeeShift3, conn);
+            cmbEmployeeShift3.Parameters.Add("@ShiftID", SqlDbType.Int);
+            cmbEmployeeShift3.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            daEmployeeShift3 = new SqlDataAdapter(cmbEmployeeShift3);
+            daEmployeeShift3.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShiftDetails3");
         }
 
 
@@ -145,15 +155,31 @@ namespace FujitsuPayments.Forms
                     }
                     else
                     {
-                        if (ok)
+                        // get a list of all records in employee shift for specificed shiftID
+                        cmbEmployeeShift3.Parameters["@ShiftID"].Value = myEmployeeShift.ShiftId;
+                        cmbEmployeeShift3.Parameters["@EmployeeID"].Value = myEmployeeShift.EmployeeId;
+                        daEmployeeShift3.Fill(dsFujitsuPayments, "EmployeeShiftDetails3");
+                        int count1 = 0;
+                        foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails3"].Rows)
                         {
-                            drEmployeeShift = dsFujitsuPayments.Tables["EmployeeShiftDetails"].NewRow();
-                            drEmployeeShift["ShiftID"] = myEmployeeShift.ShiftId;
-                            drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
-                            dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
-                            daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
-                            MessageBox.Show("Employee Shift Added");
-                            this.Dispose();
+                            count1 = count1 + 1;
+                        }
+                        if (count1 > 0)
+                        {
+                            MessageBox.Show("Employee has already been assigned to shift");
+                        }
+                        else
+                        {
+                            if (ok)
+                            {
+                                drEmployeeShift = dsFujitsuPayments.Tables["EmployeeShiftDetails"].NewRow();
+                                drEmployeeShift["ShiftID"] = myEmployeeShift.ShiftId;
+                                drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
+                                dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
+                                daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
+                                MessageBox.Show("Employee Shift Added");
+                                this.Dispose();
+                            }
                         }
                     }
             }

@@ -16,13 +16,13 @@ namespace FujitsuPayments.Forms
     {
 
 
-        SqlDataAdapter daShift, daAccount, daProject, daTask;
+        SqlDataAdapter daShift, daAccount, daProject, daTask, daEmpShift;
         DataSet dsFujitsuPayments = new DataSet();
         SqlConnection conn;
         SqlCommandBuilder cmbBShift, cmbBAccount, cmbBProject, cmbBTask;
-        SqlCommand cmbProject, cmbTask;
-        DataRow drShift, drAccount, drProject, drTask;
-        String connStr, sqlShift, sqlAccount, sqlProject, sqlTask;
+        SqlCommand cmbProject, cmbTask, cmbEmpShift;
+        DataRow drShift, drAccount, drProject, drTask, drEmpShift;
+        String connStr, sqlShift, sqlAccount, sqlProject, sqlTask, sqlEmpShift;
         static String startTime, endTime;
 
 
@@ -83,6 +83,18 @@ namespace FujitsuPayments.Forms
            cmbBAccount = new SqlCommandBuilder(daAccount);
            daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
            daAccount.Fill(dsFujitsuPayments, "Account");
+
+
+            // -------- set up data adapter for Employee SHift Validation
+            sqlEmpShift = @"  select * from EmployeeShift where AccountID = @AccountID and TaskID = @TaskID and StartDate = @StartDate";
+            conn = new SqlConnection(connStr);
+            cmbEmpShift = new SqlCommand(sqlEmpShift, conn);
+            cmbEmpShift.Parameters.Add("@AccountID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@ProjectID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@TaskID", SqlDbType.Int);
+            cmbEmpShift.Parameters.Add("@StartDate", SqlDbType.Date);
+            daEmpShift = new SqlDataAdapter(cmbEmpShift);
+            daEmpShift.FillSchema(dsFujitsuPayments, SchemaType.Source, "EmployeeShift2");
 
 
             // ------- populate account ID combo box
@@ -272,49 +284,91 @@ namespace FujitsuPayments.Forms
 
                                     for (int i = 0; i < 5; i++)
                                     {
+                                        dsFujitsuPayments.Tables["EmployeeShift2"].Clear();
 
+                                        cmbEmpShift.Parameters["@AccountID"].Value = myShift.AccountId;
+                                        cmbEmpShift.Parameters["@ProjectID"].Value = myShift.ProjectId;
+                                        cmbEmpShift.Parameters["@TaskID"].Value = myShift.TaskId;
+                                        cmbEmpShift.Parameters["@StartDate"].Value = st;
+                                        daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift2");
+                                        int count = 0;
+
+                                        foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShift2"].Rows)
+                                        {
+                                            count = count + 1;
+                                        }
+
+                                        if (count > 0)
+                                        {
+                                            MessageBox.Show("Shift already exists for selected date: " + st.ToString() + ", please select a new date");
+                                            st = st.AddDays(1);
+                                        }
+                                        else
+                                        {                                                                                     
+                                                drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
+
+                                                drShift["ShiftID"] = shiftId;
+                                                drShift["AccountID"] = myShift.AccountId;
+                                                drShift["ProjectID"] = myShift.ProjectId;
+                                                drShift["TaskID"] = myShift.TaskId;
+                                                drShift["StartDate"] = st;
+                                                drShift["StartTime"] = myShift.StartTime;
+                                                drShift["EndTime"] = myShift.EndTime;
+
+                                                dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
+                                                daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                                                //increments both the day or week and shiftID
+                                                st = st.AddDays(1);
+                                                shiftId = shiftId + 1;
+
+                                            //MessageBox.Show("Shift Added");  
+
+                                        }
+                                    }
+
+                                    MessageBox.Show("Shift Added");
+                                    this.Dispose();
+
+                                }
+                                else
+                                {
+                                    cmbEmpShift.Parameters["@AccountID"].Value = myShift.AccountId;
+                                    cmbEmpShift.Parameters["@ProjectID"].Value = myShift.ProjectId;
+                                    cmbEmpShift.Parameters["@TaskID"].Value = myShift.TaskId;
+                                    cmbEmpShift.Parameters["@StartDate"].Value = myShift.StartDate;
+                                    daEmpShift.Fill(dsFujitsuPayments, "EmployeeShift2");
+                                    int count2 = 0;
+
+                                    foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShift2"].Rows)
+                                    {
+                                        count2 = count2 + 1;
+                                    }
+
+                                    if (count2 > 0)
+                                    {
+                                        MessageBox.Show("Shift already exists for selected date: " + myShift.StartDate.ToString() + ", please select a new date");
+                                    }
+                                    else
+                                    {
+
+
+                                        // add single shift
                                         drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
 
-                                        drShift["ShiftID"] = shiftId;
+                                        drShift["ShiftID"] = myShift.ShiftId;
                                         drShift["AccountID"] = myShift.AccountId;
                                         drShift["ProjectID"] = myShift.ProjectId;
                                         drShift["TaskID"] = myShift.TaskId;
-                                        drShift["StartDate"] = st;
+                                        drShift["StartDate"] = myShift.StartDate;
                                         drShift["StartTime"] = myShift.StartTime;
                                         drShift["EndTime"] = myShift.EndTime;
 
                                         dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
                                         daShift.Update(dsFujitsuPayments, "EmployeeShift");
-                                        //increments both the day or week and shiftID
-                                        st = st.AddDays(1);
-                                        shiftId = shiftId + 1;
 
-                                        //MessageBox.Show("Shift Added");
+                                        MessageBox.Show("Shift Added");
+                                        this.Dispose();
                                     }
-
-
-                                    MessageBox.Show("Shift Added");
-                                    
-                                    this.Dispose();
-                                }
-                                else
-                                { 
-                                    // add single shift
-                                    drShift = dsFujitsuPayments.Tables["EmployeeShift"].NewRow();
-
-                                    drShift["ShiftID"] = myShift.ShiftId;
-                                    drShift["AccountID"] = myShift.AccountId;
-                                    drShift["ProjectID"] = myShift.ProjectId;
-                                    drShift["TaskID"] = myShift.TaskId;
-                                    drShift["StartDate"] = myShift.StartDate;
-                                    drShift["StartTime"] = myShift.StartTime;
-                                    drShift["EndTime"] = myShift.EndTime;
-
-                                    dsFujitsuPayments.Tables["EmployeeShift"].Rows.Add(drShift);
-                                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
-
-                                    MessageBox.Show("Shift Added");
-                                    this.Dispose();
                                 }
                             }
                         }
