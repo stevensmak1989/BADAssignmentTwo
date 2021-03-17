@@ -40,8 +40,9 @@ namespace FujitsuPayments.UserControls
             cmbBTask = new SqlCommandBuilder(daTask);
             daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
             daTask.Fill(dsFujitsuPayments, "ProjectTask");
-
             dvgTask.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+
+
             // resize the datagridview columns to fit the newly loaded content
             //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
@@ -78,6 +79,7 @@ namespace FujitsuPayments.UserControls
                 MessageBox.Show("Please select a single record, cannot edit multiple records", "Select ProjectTask");
 
             }
+
             else if (dvgTask.SelectedRows.Count == 1)
             {
                 tskSelected = true;

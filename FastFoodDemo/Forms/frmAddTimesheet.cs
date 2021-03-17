@@ -216,7 +216,7 @@ namespace FujitsuPayments.Forms
                                                     {
                                                         timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
 
-                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
+                                                        
                                                         //passed to employee Class to check
 
                                                     }
@@ -246,7 +246,7 @@ namespace FujitsuPayments.Forms
 
 
                                                         string str = start[no].Text;
-                                                        MessageBox.Show(str);
+                                                       
                                                         timeDets.StartTime = str.ToString();
 
 
@@ -305,7 +305,7 @@ namespace FujitsuPayments.Forms
                                                     {
                                                         TimeSpan timediff = DateTime.Parse(end[no].Text).Subtract(DateTime.Parse(start[no].Text));
                                                         count += (double)timediff.TotalMinutes;
-                                                        MessageBox.Show(Convert.ToString(count));
+                                                        
                                                         no++;
 
 
@@ -421,7 +421,7 @@ namespace FujitsuPayments.Forms
 
                                                 if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1 && no < 5)
                                                 {
-                                                    MessageBox.Show("Overtime hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
+                                                    MessageBox.Show("Overtime hours must be between 6PM and 8AM Mon - Friday or All day Sat and Sun");
                                                     ok = false;
                                                     break;
 
@@ -447,7 +447,7 @@ namespace FujitsuPayments.Forms
                                                     {
                                                         timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
 
-                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
+                                                        
                                                         //passed to employee Class to check
 
                                                     }
@@ -477,7 +477,7 @@ namespace FujitsuPayments.Forms
 
 
                                                         string str = start[no].Text;
-                                                        MessageBox.Show(str);
+                                                        
                                                         timeDets.StartTime = str.ToString();
 
 
@@ -645,7 +645,7 @@ namespace FujitsuPayments.Forms
 
                                                 if (no < 5 && te.CompareTo(de) != 1 || ts.CompareTo(ds) != 1 && no < 5)
                                                 {
-                                                    MessageBox.Show("OnCall hours must be between 6PM and 8PM Mon - Friday or All day Sat and Sun");
+                                                    MessageBox.Show("OnCall hours must be between 6PM and 8AM Mon - Friday or All day Sat and Sun");
                                                     ok = false;
                                                     break;
 
@@ -671,8 +671,7 @@ namespace FujitsuPayments.Forms
                                                     {
                                                         timeDets.ClaimTypeId = Convert.ToInt32(cmbClaimType.SelectedValue.ToString());
 
-                                                        MessageBox.Show(cmbClaimType.SelectedValue.ToString());
-                                                        //passed to employee Class to check
+                                                        
 
                                                     }
                                                     catch (MyException MyEx)
@@ -701,7 +700,7 @@ namespace FujitsuPayments.Forms
 
 
                                                         string str = start[no].Text;
-                                                        MessageBox.Show(str);
+                                                       
                                                         timeDets.StartTime = str.ToString();
 
 
@@ -1080,7 +1079,7 @@ namespace FujitsuPayments.Forms
                 TimeSpan[] startTimesNew = new TimeSpan[numb];
                 TimeSpan[] endTimesNew = new TimeSpan[numb];
 
-                MessageBox.Show(start[6].Text);
+               
 
                 foreach (DataRow row in dt.Rows)
                 {

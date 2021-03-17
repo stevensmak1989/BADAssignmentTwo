@@ -34,6 +34,8 @@ namespace FujitsuPayments.UserControls
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dvgTimesheetDets = new System.Windows.Forms.DataGridView();
+            this.btnTaskDel = new System.Windows.Forms.Button();
+            this.btnTimesheetEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgTimesheetDets)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +60,8 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel1.Controls.Add(this.btnTaskDel);
+            this.panel1.Controls.Add(this.btnTimesheetEdit);
             this.panel1.Controls.Add(this.btnAddTimesheet);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -83,6 +87,39 @@ namespace FujitsuPayments.UserControls
             this.dvgTimesheetDets.Size = new System.Drawing.Size(820, 269);
             this.dvgTimesheetDets.TabIndex = 5;
             // 
+            // btnTaskDel
+            // 
+            this.btnTaskDel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTaskDel.FlatAppearance.BorderSize = 0;
+            this.btnTaskDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTaskDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaskDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnTaskDel.Image = ((System.Drawing.Image)(resources.GetObject("btnTaskDel.Image")));
+            this.btnTaskDel.Location = new System.Drawing.Point(321, 0);
+            this.btnTaskDel.Name = "btnTaskDel";
+            this.btnTaskDel.Size = new System.Drawing.Size(167, 42);
+            this.btnTaskDel.TabIndex = 4;
+            this.btnTaskDel.Text = "Delete Timesheet";
+            this.btnTaskDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTaskDel.UseVisualStyleBackColor = true;
+            // 
+            // btnTimesheetEdit
+            // 
+            this.btnTimesheetEdit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTimesheetEdit.FlatAppearance.BorderSize = 0;
+            this.btnTimesheetEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimesheetEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimesheetEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnTimesheetEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnTimesheetEdit.Image")));
+            this.btnTimesheetEdit.Location = new System.Drawing.Point(158, 0);
+            this.btnTimesheetEdit.Name = "btnTimesheetEdit";
+            this.btnTimesheetEdit.Size = new System.Drawing.Size(163, 42);
+            this.btnTimesheetEdit.TabIndex = 3;
+            this.btnTimesheetEdit.Text = "Edit Timsheet";
+            this.btnTimesheetEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTimesheetEdit.UseVisualStyleBackColor = true;
+            this.btnTimesheetEdit.Click += new System.EventHandler(this.btnTimesheetEdit_Click);
+            // 
             // UC_Timesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,5 +141,7 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgTimesheetDets;
+        private System.Windows.Forms.Button btnTaskDel;
+        private System.Windows.Forms.Button btnTimesheetEdit;
     }
 }
