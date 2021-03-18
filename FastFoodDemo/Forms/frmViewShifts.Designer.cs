@@ -30,11 +30,12 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblViewShift = new System.Windows.Forms.Label();
             this.btnDeleteShift = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.dgvEmpShiftDetails = new System.Windows.Forms.DataGridView();
             this.dgvEmpShift = new System.Windows.Forms.DataGridView();
-            this.lblViewShift = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShiftDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShift)).BeginInit();
@@ -43,6 +44,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblViewShift);
             this.panel1.Controls.Add(this.btnDeleteShift);
             this.panel1.Controls.Add(this.btnClose);
@@ -53,6 +55,17 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(830, 475);
             this.panel1.TabIndex = 0;
+            // 
+            // lblViewShift
+            // 
+            this.lblViewShift.AutoSize = true;
+            this.lblViewShift.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblViewShift.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblViewShift.Location = new System.Drawing.Point(354, 10);
+            this.lblViewShift.Name = "lblViewShift";
+            this.lblViewShift.Size = new System.Drawing.Size(84, 18);
+            this.lblViewShift.TabIndex = 16;
+            this.lblViewShift.Text = "View Shifts";
             // 
             // btnDeleteShift
             // 
@@ -89,6 +102,8 @@ namespace FujitsuPayments.Forms
             this.dgvEmpShiftDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpShiftDetails.Location = new System.Drawing.Point(18, 238);
             this.dgvEmpShiftDetails.Name = "dgvEmpShiftDetails";
+            this.dgvEmpShiftDetails.ReadOnly = true;
+            this.dgvEmpShiftDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpShiftDetails.Size = new System.Drawing.Size(789, 162);
             this.dgvEmpShiftDetails.TabIndex = 1;
             // 
@@ -97,20 +112,22 @@ namespace FujitsuPayments.Forms
             this.dgvEmpShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpShift.Location = new System.Drawing.Point(18, 39);
             this.dgvEmpShift.Name = "dgvEmpShift";
+            this.dgvEmpShift.ReadOnly = true;
+            this.dgvEmpShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpShift.Size = new System.Drawing.Size(789, 162);
             this.dgvEmpShift.TabIndex = 0;
             this.dgvEmpShift.SelectionChanged += new System.EventHandler(this.selectionChanged);
             // 
-            // lblViewShift
+            // label1
             // 
-            this.lblViewShift.AutoSize = true;
-            this.lblViewShift.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblViewShift.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblViewShift.Location = new System.Drawing.Point(354, 10);
-            this.lblViewShift.Name = "lblViewShift";
-            this.lblViewShift.Size = new System.Drawing.Size(84, 18);
-            this.lblViewShift.TabIndex = 16;
-            this.lblViewShift.Text = "View Shifts";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
+            this.label1.Location = new System.Drawing.Point(287, 204);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(257, 18);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Employees Assigned to those shifts";
             // 
             // frmViewShifts
             // 
@@ -142,5 +159,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDeleteShift;
         private System.Windows.Forms.Label lblViewShift;
+        private System.Windows.Forms.Label label1;
     }
 }

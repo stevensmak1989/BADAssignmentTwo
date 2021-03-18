@@ -433,6 +433,8 @@ namespace FujitsuPayments.UserControls
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShift.Location = new System.Drawing.Point(686, 255);
             this.dgvShift.Name = "dgvShift";
+            this.dgvShift.ReadOnly = true;
+            this.dgvShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShift.Size = new System.Drawing.Size(399, 214);
             this.dgvShift.TabIndex = 6;
             this.dgvShift.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellContentClick);

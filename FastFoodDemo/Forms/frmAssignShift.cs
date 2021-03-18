@@ -139,15 +139,69 @@ namespace FujitsuPayments.Forms
             }
             try
             {
-                // get a list of all records in employee shift for specificed shiftID
-                cmbEmployeeShift2.Parameters["@ShiftID"].Value = myEmployeeShift.ShiftId;
-                daEmployeeShift2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
-                int count = 0;
-                // set variable equal to number of rows
-                foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Rows)
+                // ----- if more than one row selected ------- // 
+                if (UC_Schedule.moreThanOneRow == true)
                 {
-                    count = count + 1;
+                    for(int i = 0; i < UC_Schedule.selectedRow; i++)
+                    {
+                        // get a list of all records in employee shift for specificed shiftID
+                        cmbEmployeeShift2.Parameters["@ShiftID"].Value = UC_Schedule.selectedShiftIDs[i];
+                        daEmployeeShift2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
+                        int count = 0;
+                        // set variable equal to number of rows
+                        foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Rows)
+                        {
+                            count = count + 1;
+                        }
+                        // if rows equal 4 do not add record
+                        if (count == 4)
+                        {
+                            MessageBox.Show("Only 4 Employess can be assigned to a Shift");
+                        }
+                        else
+                        {
+                            // get a list of all records in employee shift for specificed shiftID
+                            cmbEmployeeShift3.Parameters["@ShiftID"].Value = UC_Schedule.selectedShiftIDs[i];
+                            cmbEmployeeShift3.Parameters["@EmployeeID"].Value = myEmployeeShift.EmployeeId;
+                            daEmployeeShift3.Fill(dsFujitsuPayments, "EmployeeShiftDetails3");
+                            int count1 = 0;
+                            foreach (DataRow dr1 in dsFujitsuPayments.Tables["EmployeeShiftDetails3"].Rows)
+                            {
+                                count1 = count1 + 1;
+                            }
+                            if (count1 > 0)
+                            {
+                                MessageBox.Show("Employee has already been assigned to shift :" + UC_Schedule.selectedShiftIDs[i].ToString());
+                            }
+                            else
+                            {
+                                if (ok)
+                                {
+                                    drEmployeeShift = dsFujitsuPayments.Tables["EmployeeShiftDetails"].NewRow();
+                                    drEmployeeShift["ShiftID"] = UC_Schedule.selectedShiftIDs[i];
+                                    drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
+                                    dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
+                                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
+                                   
+                                }
+                            }
+                        }
+                    }
+                    MessageBox.Show("Employee Shift Added");
+                    this.Dispose();
+
                 }
+                else // -------------------- only one record selected ----------------------- //
+                {
+                    // get a list of all records in employee shift for specificed shiftID
+                    cmbEmployeeShift2.Parameters["@ShiftID"].Value = myEmployeeShift.ShiftId;
+                    daEmployeeShift2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
+                    int count = 0;
+                    // set variable equal to number of rows
+                    foreach (DataRow dr in dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Rows)
+                    {
+                        count = count + 1;
+                    }
                     // if rows equal 4 do not add record
                     if (count == 4)
                     {
@@ -182,6 +236,7 @@ namespace FujitsuPayments.Forms
                             }
                         }
                     }
+                }
             }
             catch (Exception ex)
             {
