@@ -336,6 +336,7 @@ namespace FujitsuPayments.Forms
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(114, 21);
             this.cmbEmployee.TabIndex = 71;
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // cmbCostCentID
             // 
@@ -743,6 +744,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmEditTimesheet
             // 
