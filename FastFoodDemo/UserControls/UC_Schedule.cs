@@ -26,6 +26,9 @@ namespace FujitsuPayments.UserControls
         // Static varibales to pass to form's
         public static bool shiftSelected = false;
         public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0;
+        public static int[] selectedShiftIDs = new int[7];
+        public static int selectedRow = 0;
+        public static bool moreThanOneRow = false;
 
         // string array for tooltips
         String[] monString = new String[4];
@@ -173,13 +176,38 @@ namespace FujitsuPayments.UserControls
             }
             else if (dgvShift.SelectedRows.Count > 1)
             {
-                shiftSelected = false;
-                shiftIdSelected = 0;
-                MessageBox.Show("Please select a single record, cannot assign multiple shifts", "Select Shift");
+               // shiftSelected = false;
+               // shiftIdSelected = 0;
+               // MessageBox.Show("Please select a single record, cannot assign multiple shifts", "Select Shift");
+
+                shiftSelected = true;
+                moreThanOneRow = true;
+                selectedRow = 0;
+
+                foreach (DataGridViewRow row in dgvShift.SelectedRows)
+                {
+                    selectedShiftIDs[selectedRow] = Convert.ToInt32(dgvShift.SelectedRows[selectedRow].Cells[0].Value);
+                    MessageBox.Show("ShiftID: " + selectedShiftIDs[selectedRow].ToString() + "Selected Row: " + selectedRow);
+                    selectedRow = selectedRow + 1;
+                }
+                //shiftIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[0].Value);
+                accIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[1].Value);
+                projIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[2].Value);
+                taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
+
+                frmAssignShift frm = new frmAssignShift();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(180, 100);
+                this.Controls.Add(frm);
+                frm.BringToFront();
             }
             else if (dgvShift.SelectedRows.Count == 1)
             {
                 shiftSelected = true;
+                moreThanOneRow = false;
+
                 shiftIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[0].Value);
                 accIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[1].Value);
                 projIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[2].Value);
