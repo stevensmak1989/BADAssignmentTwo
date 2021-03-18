@@ -143,6 +143,7 @@ namespace FujitsuPayments.UserControls
             this.dgvAccounts.Location = new System.Drawing.Point(0, 0);
             this.dgvAccounts.Name = "dgvAccounts";
             this.dgvAccounts.ReadOnly = true;
+            this.dgvAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAccounts.Size = new System.Drawing.Size(1090, 483);
             this.dgvAccounts.TabIndex = 0;
             this.dgvAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccounts_CellContentClick);

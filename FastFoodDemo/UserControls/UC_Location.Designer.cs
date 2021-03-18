@@ -132,6 +132,7 @@ namespace FujitsuPayments.UserControls
             this.dgvLocation.Location = new System.Drawing.Point(0, 0);
             this.dgvLocation.Name = "dgvLocation";
             this.dgvLocation.ReadOnly = true;
+            this.dgvLocation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLocation.Size = new System.Drawing.Size(1090, 483);
             this.dgvLocation.TabIndex = 0;
             // 

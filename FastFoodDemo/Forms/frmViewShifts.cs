@@ -136,13 +136,20 @@ namespace FujitsuPayments.Forms
         {
             dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
 
-            cmbEmpShiftDet.Parameters["@ShiftID"].Value = Convert.ToInt32(dgvEmpShift.SelectedRows[0].Cells[0].Value);
-            daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
-            dgvEmpShiftDetails.DefaultCellStyle.Font = new Font("Century Gothic", 9);
+            if (dgvEmpShift.SelectedRows[0].Cells[0].Value == null || String.IsNullOrEmpty(dgvEmpShift.SelectedRows[0].Cells[0].Value.ToString()))
+            {
+                MessageBox.Show("Please select a row that contains valid data");
+            }
+            else
+            {
+                cmbEmpShiftDet.Parameters["@ShiftID"].Value = Convert.ToInt32(dgvEmpShift.SelectedRows[0].Cells[0].Value);
+                daEmpShiftDet.Fill(dsFujitsuPayments, "EmployeeShiftDetails");
+                dgvEmpShiftDetails.DefaultCellStyle.Font = new Font("Century Gothic", 9);
 
-            dgvEmpShiftDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-            dgvEmpShiftDetails.DataSource = dsFujitsuPayments.Tables["EmployeeShiftDetails"];
-            dgvEmpShiftDetails.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgvEmpShiftDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
+                dgvEmpShiftDetails.DataSource = dsFujitsuPayments.Tables["EmployeeShiftDetails"];
+                dgvEmpShiftDetails.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
         }
     }
 }

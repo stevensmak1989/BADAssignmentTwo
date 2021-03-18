@@ -71,111 +71,123 @@ namespace FujitsuPayments.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Account myAccount = new Account();
-            bool ok = true;
 
-            errP.Clear();
+            // prevent nulls being entered or empty strings
+            if (String.IsNullOrEmpty(txtClientName.Text) || String.IsNullOrEmpty(txtStreet.Text) || String.IsNullOrEmpty(txtTown.Text) ||
+                String.IsNullOrEmpty(txtCounty.Text) || String.IsNullOrEmpty(txtTelNo.Text) || String.IsNullOrEmpty(txtPostCode.Text)
+                || String.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("Please fill in all required fields!");
 
-            // -----------  TRY CATCH INPUT VALIDATION -------------------- //
-            try
-            {
-                myAccount.AccountId = Convert.ToInt32(txtAccountID.Text.Trim()); // passed to account class to check
             }
-            catch(MyException MyEx)
+            else
             {
-                ok = false;
-                errP.SetError(lblAccountId, MyEx.toString());
-            }
-            try
-            {
-                myAccount.ClientName = txtClientName.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblClientName, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Street = txtStreet.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblStreet, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Town = txtTown.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblTown, MyEx.toString());
-            }
-            try
-            {
-                myAccount.County = txtCounty.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblCounty, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Postcode = txtPostCode.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblPostCode, MyEx.toString());
-            }
-            try
-            {
-                myAccount.TelNo = txtTelNo.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblTelNo, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Email = txtEmail.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEmail, MyEx.toString());
-            }
-            // ----------- END TRY CATCH INPUT VALIDATION -------------------- //
-            try
-            {
-                if(ok)
+                Account myAccount = new Account();
+                bool ok = true;
+
+                errP.Clear();
+
+                // -----------  TRY CATCH INPUT VALIDATION -------------------- //
+                try
                 {
-                    drAccount = dsFujitsuPayments.Tables["Account"].NewRow();
-
-                    drAccount["AccountID"] = myAccount.AccountId;
-                    drAccount["ClientName"] = myAccount.ClientName;
-                    drAccount["Street"] = myAccount.Street;
-                    drAccount["Town"] = myAccount.Town;
-                    drAccount["County"] = myAccount.County;
-                    drAccount["Postcode"] = myAccount.Postcode;
-                    drAccount["TelNo"] = myAccount.TelNo;
-                    drAccount["Email"] = myAccount.Email;
-
-                    dsFujitsuPayments.Tables["Account"].Rows.Add(drAccount);
-                    daAccount.Update(dsFujitsuPayments, "Account");
-
-                    MessageBox.Show("Account Added");
-                    this.Dispose();
+                    myAccount.AccountId = Convert.ToInt32(txtAccountID.Text.Trim()); // passed to account class to check
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
-                MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblAccountId, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.ClientName = txtClientName.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblClientName, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Street = txtStreet.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblStreet, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Town = txtTown.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblTown, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.County = txtCounty.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblCounty, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Postcode = txtPostCode.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblPostCode, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.TelNo = txtTelNo.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblTelNo, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Email = txtEmail.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEmail, MyEx.toString());
+                }
+                // ----------- END TRY CATCH INPUT VALIDATION -------------------- //
+                try
+                {
+                    if (ok)
+                    {
+                        drAccount = dsFujitsuPayments.Tables["Account"].NewRow();
+
+                        drAccount["AccountID"] = myAccount.AccountId;
+                        drAccount["ClientName"] = myAccount.ClientName;
+                        drAccount["Street"] = myAccount.Street;
+                        drAccount["Town"] = myAccount.Town;
+                        drAccount["County"] = myAccount.County;
+                        drAccount["Postcode"] = myAccount.Postcode;
+                        drAccount["TelNo"] = myAccount.TelNo;
+                        drAccount["Email"] = myAccount.Email;
+
+                        dsFujitsuPayments.Tables["Account"].Rows.Add(drAccount);
+                        daAccount.Update(dsFujitsuPayments, "Account");
+
+                        MessageBox.Show("Account Added");
+                        this.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                }
             }
         }
 

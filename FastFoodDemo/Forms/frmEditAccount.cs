@@ -62,121 +62,127 @@ namespace FujitsuPayments.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Account myAccount = new Account();
-            bool ok = true;
 
-            errP.Clear();
 
-            // -----------  TRY CATCH INPUT VALIDATION -------------------- //
-            try
+            // prevent nulls being entered or empty strings
+            if (String.IsNullOrEmpty(txtEditClientName.Text) || String.IsNullOrEmpty(txtEditStreet.Text) || String.IsNullOrEmpty(txtEditTown.Text) ||
+                String.IsNullOrEmpty(txtEditCounty.Text) || String.IsNullOrEmpty(txtEditTelNo.Text) || String.IsNullOrEmpty(txtEditPostCode.Text)
+                || String.IsNullOrEmpty(txtEditEmail.Text))
             {
-                myAccount.AccountId = Convert.ToInt32(txtEditAccountID.Text.Trim()); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditAccountId, MyEx.toString());
-            }
-            try
-            {
-                myAccount.ClientName = txtEditClientName.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditClientName, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Street = txtEditStreet.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditStreet, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Town = txtEditTown.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditEditTown, MyEx.toString());
-            }
-            try
-            {
-                myAccount.County = txtEditCounty.Text.Trim(); // passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditCounty, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Postcode = txtEditPostCode.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditPostCode, MyEx.toString());
-            }
-            try
-            {
-                myAccount.TelNo = txtEditTelNo.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditTelNo, MyEx.toString());
-            }
-            try
-            {
-                myAccount.Email = txtEditEmail.Text.Trim();// passed to account class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblEditEmail, MyEx.toString());
-            }
+                MessageBox.Show("Please fill in all required fields!");
 
-            try
+            }
+            else
             {
-                if (ok)
+                Account myAccount = new Account();
+                bool ok = true;
+
+                errP.Clear();
+
+                // -----------  TRY CATCH INPUT VALIDATION -------------------- //
+                try
                 {
-                    drAccount.BeginEdit();
+                    myAccount.AccountId = Convert.ToInt32(txtEditAccountID.Text.Trim()); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditAccountId, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.ClientName = txtEditClientName.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditClientName, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Street = txtEditStreet.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditStreet, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Town = txtEditTown.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditEditTown, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.County = txtEditCounty.Text.Trim(); // passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditCounty, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Postcode = txtEditPostCode.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditPostCode, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.TelNo = txtEditTelNo.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditTelNo, MyEx.toString());
+                }
+                try
+                {
+                    myAccount.Email = txtEditEmail.Text.Trim();// passed to account class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblEditEmail, MyEx.toString());
+                }
 
-                    drAccount["AccountID"] = myAccount.AccountId;
-                    drAccount["ClientName"] = myAccount.ClientName;
-                    drAccount["Street"] = myAccount.Street;
-                    drAccount["Town"] = myAccount.Town;
-                    drAccount["County"] = myAccount.County;
-                    drAccount["Postcode"] = myAccount.Postcode;
-                    drAccount["TelNo"] = myAccount.TelNo;
-                    drAccount["Email"] = myAccount.Email; ;
+                try
+                {
+                    if (ok)
+                    {
+                        drAccount.BeginEdit();
 
-                    drAccount.EndEdit();
-                    daAccount.Update(dsFujitsuPayments, "Account");
+                        drAccount["AccountID"] = myAccount.AccountId;
+                        drAccount["ClientName"] = myAccount.ClientName;
+                        drAccount["Street"] = myAccount.Street;
+                        drAccount["Town"] = myAccount.Town;
+                        drAccount["County"] = myAccount.County;
+                        drAccount["Postcode"] = myAccount.Postcode;
+                        drAccount["TelNo"] = myAccount.TelNo;
+                        drAccount["Email"] = myAccount.Email; ;
 
-                    MessageBox.Show("Account Details Updated", "Account");
+                        drAccount.EndEdit();
+                        daAccount.Update(dsFujitsuPayments, "Account");
 
-                    this.Dispose();
+                        MessageBox.Show("Account Details Updated", "Account");
 
+                        this.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
 
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
-                MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
-
-            }
-
-
-
-
-
         }
 
         private void pnlEditAccount_Paint(object sender, PaintEventArgs e)

@@ -59,103 +59,113 @@ namespace FujitsuPayments.Forms
         private void btnAddLocationSave_Click(object sender, EventArgs e)
         {
             //Location myLocation = new Location();
-            OfficeLocation myLocation = new OfficeLocation();
-            bool ok = true;
 
-            errP.Clear();
+            // prevent nulls being entered or empty strings
+            if (String.IsNullOrEmpty(txtLocationName.Text) || String.IsNullOrEmpty(txtStreet.Text) || String.IsNullOrEmpty(txtTown.Text) ||
+                String.IsNullOrEmpty(txtCounty.Text) || String.IsNullOrEmpty(txtTelNo.Text) || String.IsNullOrEmpty(txtPostCode.Text))
+            {
+                MessageBox.Show("Please fill in all required fields!");
+            }
+            else
+            {
+                OfficeLocation myLocation = new OfficeLocation();
+                bool ok = true;
 
-            // -----------  TRY CATCH INPUT VALIDATION -------------------- //
-            try
-            {
-                myLocation.LocationId = Convert.ToInt32(txtLocationID.Text.Trim()); // passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblLocationId, MyEx.toString());
-            }
-            try
-            {
-                myLocation.LocationName= txtLocationName.Text.Trim(); // passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblLocationName, MyEx.toString());
-            }
-            try
-            {
-                myLocation.Street = txtStreet.Text.Trim(); // passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblStreet, MyEx.toString());
-            }
-            try
-            {
-                myLocation.Town = txtTown.Text.Trim(); // passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblTown, MyEx.toString());
-            }
-            try
-            {
-                myLocation.County = txtCounty.Text.Trim(); // passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblCounty, MyEx.toString());
-            }
-            try
-            {
-                myLocation.Postcode = txtPostCode.Text.Trim();// passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblPostCode, MyEx.toString());
-            }
-            try
-            {
-                myLocation.TelNo = txtTelNo.Text.Trim();// passed to Location class to check
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(lblTelNo, MyEx.toString());
-            }
+                errP.Clear();
 
-            // ----------- END TRY CATCH INPUT VALIDATION -------------------- //
-            try
-            {
-                if (ok)
+                // -----------  TRY CATCH INPUT VALIDATION -------------------- //
+                try
                 {
-                    drLocation = dsFujitsuPayments.Tables["Location"].NewRow();
-
-                    drLocation["LocationID"] = myLocation.LocationId;
-                    drLocation["ClientName"] = myLocation.LocationName;
-                    drLocation["Street"] = myLocation.Street;
-                    drLocation["Town"] = myLocation.Town;
-                    drLocation["County"] = myLocation.County;
-                    drLocation["Postcode"] = myLocation.Postcode;
-                    drLocation["TelNo"] = myLocation.TelNo;
-
-
-                    dsFujitsuPayments.Tables["Location"].Rows.Add(drLocation);
-                    daLocation.Update(dsFujitsuPayments, "Location");
-
-                    MessageBox.Show("Location Added");
-                    this.Dispose();
+                    myLocation.LocationId = Convert.ToInt32(txtLocationID.Text.Trim()); // passed to Location class to check
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
-                MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblLocationId, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.LocationName = txtLocationName.Text.Trim(); // passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblLocationName, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.Street = txtStreet.Text.Trim(); // passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblStreet, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.Town = txtTown.Text.Trim(); // passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblTown, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.County = txtCounty.Text.Trim(); // passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblCounty, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.Postcode = txtPostCode.Text.Trim();// passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblPostCode, MyEx.toString());
+                }
+                try
+                {
+                    myLocation.TelNo = txtTelNo.Text.Trim();// passed to Location class to check
+                }
+                catch (MyException MyEx)
+                {
+                    ok = false;
+                    errP.SetError(lblTelNo, MyEx.toString());
+                }
+
+                // ----------- END TRY CATCH INPUT VALIDATION -------------------- //
+                try
+                {
+                    if (ok)
+                    {
+                        drLocation = dsFujitsuPayments.Tables["Location"].NewRow();
+
+                        drLocation["LocationID"] = myLocation.LocationId;
+                        drLocation["ClientName"] = myLocation.LocationName;
+                        drLocation["Street"] = myLocation.Street;
+                        drLocation["Town"] = myLocation.Town;
+                        drLocation["County"] = myLocation.County;
+                        drLocation["Postcode"] = myLocation.Postcode;
+                        drLocation["TelNo"] = myLocation.TelNo;
+
+
+                        dsFujitsuPayments.Tables["Location"].Rows.Add(drLocation);
+                        daLocation.Update(dsFujitsuPayments, "Location");
+
+                        MessageBox.Show("Location Added");
+                        this.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                }
             }
         }
 

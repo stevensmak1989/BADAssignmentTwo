@@ -28,13 +28,13 @@ namespace FujitsuPayments.UserControls
         public static int shiftIdSelected = 0, accIdSelected = 0, projIdSelected = 0, taskIdSelected = 0;
 
         // string array for tooltips
-        String[] monString = new String[3];
-        String[] tueString = new String[3];
-        String[] wedString = new String[3];
-        String[] thuString = new String[3];
-        String[] friString = new String[3];
-        String[] satString = new String[3];
-        String[] sunString = new String[3];
+        String[] monString = new String[4];
+        String[] tueString = new String[4];
+        String[] wedString = new String[4];
+        String[] thuString = new String[4];
+        String[] friString = new String[4];
+        String[] satString = new String[4];
+        String[] sunString = new String[4];
 
         public UC_Schedule()
         {
@@ -50,6 +50,8 @@ namespace FujitsuPayments.UserControls
 
         private void UC_Schedule_Load(object sender, EventArgs e)
         {
+
+            hidePanels(); 
             // ------------------style fornt of data grid cell and header ----------------------- //
             this.dgvShift.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
@@ -135,11 +137,8 @@ namespace FujitsuPayments.UserControls
 
             cmbTaskId.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
             cmbTaskId.ValueMember = "TaskID";
-            cmbTaskId.DisplayMember = "TaskDesc";
-
-            hidePanels();        
+            cmbTaskId.DisplayMember = "TaskDesc";            
         }
-
 
 
         private void label2_Click(object sender, EventArgs e)
@@ -199,10 +198,8 @@ namespace FujitsuPayments.UserControls
 
 
         private void calShift_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            
+        {           
             String dayOfWeek = calShift.SelectionRange.Start.DayOfWeek.ToString();
-
             switch(dayOfWeek)
             {
                 case "Monday":
@@ -371,7 +368,6 @@ namespace FujitsuPayments.UserControls
             {
                 dsFujitsuPayments.Tables["ProjectTask"].Clear();
                 cmbTask.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue;
-
                 try
                 {
                     daTask.Fill(dsFujitsuPayments, "ProjectTask");
@@ -403,7 +399,6 @@ namespace FujitsuPayments.UserControls
                 shiftSelected = false;
                 shiftIdSelected = 0;
                 MessageBox.Show("Please select a single record, cannot edit multiple records", "Select Account");
-
             }
             else if (dgvShift.SelectedRows.Count == 1)
             {
@@ -432,9 +427,7 @@ namespace FujitsuPayments.UserControls
             else
             {
                 drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
-
                 string tempName = drShift["ShiftID"].ToString() + "\'s";
-
                 if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     drShift.Delete();
@@ -453,8 +446,7 @@ namespace FujitsuPayments.UserControls
             String stHr = Convert.ToString(startTime[1]);
             String stMin = Convert.ToString(startTime[0]);
             int hr = Convert.ToInt32(stHr);
-            int min = Convert.ToInt32(stMin);
-            
+            int min = Convert.ToInt32(stMin);           
             //MessageBox.Show("hr: " + hr + "min: " + min);
             int newMin = 0; ;
             
@@ -559,10 +551,6 @@ namespace FujitsuPayments.UserControls
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
                                 monString[mon] = drEmp["Forename"].ToString() + " " +  drEmp["Surname"].ToString();
                                 mon = mon + 1;
-                                //pnlMonShift1.Visible = true;
-                               // pnlMonShift1.Top = calLocYAxis(dr["StartTime"].ToString());
-                                //pnlMonShift1.Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
-
                                 break;
                             case "Tuesday":
                                 //yAxis = calLocYAxis(dr["StartTime"].ToString());
@@ -604,7 +592,7 @@ namespace FujitsuPayments.UserControls
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
                                 friString[fri] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
-                                fri = fri + 1;
+                                fri = fri + 1; 
                                 break;
                             case "Saturday":
                                 satArray[sat].Visible = true;
@@ -637,13 +625,27 @@ namespace FujitsuPayments.UserControls
         {
             if (dgvShift.Focused == true)
             {
-                drEmpShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
+                if (dgvShift.SelectedRows[0].Cells[0].Value == null)
+                {
+                    MessageBox.Show("Please select a row that contains data.");
+                }
+                else
+                {
+                    drEmpShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
 
-                DateTime startDate = Convert.ToDateTime(drEmpShift["StartDate"].ToString());
-                string pnlStartDate = startDate.ToShortDateString();
-                string pnlStartTime = drEmpShift["StartTime"].ToString();
-                string pnlEndTime = drEmpShift["EndTime"].ToString();
-                //MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
+                    if (drEmpShift == null)
+                    {
+                        MessageBox.Show("Please select a row that contains data.");
+                    }
+                    else
+                    {
+                        DateTime startDate = Convert.ToDateTime(drEmpShift["StartDate"].ToString());
+                        string pnlStartDate = startDate.ToShortDateString();
+                        string pnlStartTime = drEmpShift["StartTime"].ToString();
+                        string pnlEndTime = drEmpShift["EndTime"].ToString();
+                        //MessageBox.Show("Startdate: " + pnlStartDate + "Starttime: " + pnlStartTime.Remove(5,3) + "Endtime: " + pnlEndTime.Remove(5,3));
+                    }
+                }
             }
         }
 
