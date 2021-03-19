@@ -15,18 +15,17 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmEditTimesheet : Form
     {
-        SqlDataAdapter daProject, daTask, daEmployee, daEmpTask, daClaim, daTime, daMan, daTimesheet, daTimeDets, daCost;
+        SqlDataAdapter daProject, daCount, daEmployee, daEmpTask, daClaim,  daMan, daTimesheet, daTimeDets, daCost;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBProject, cmbBClaim, cmbBMan, cmbBTask, cmbBEmp, cmbBEmpTask, cmbBTime, cmbBTimesheet, cmbBTimeDets, cmbBCost;
+        SqlCommandBuilder  cmbBClaim,  cmbBEmp,  cmbBTimesheet, cmbBTimeDets, cmbBCost;
 
        
 
-        SqlCommand cmdEmp, cmdMan, cmdProj;
+        SqlCommand cmdEmp,  cmdProj, cmdCount;
 
-        DataRow drProject, drMan, drTask, drClaim, drEmp, drEmpTask, drTimesheet, drTimeDets, drCost;
-        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask, sqlClaim, sqlMan, sqlTime, sqlTimesheet, sqlTimeDets, sqlCost;
+        DataRow drProject, drCount,  drClaim,  drTimeDets;
+        String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan,  sqlTimesheet, sqlTimeDets, sqlCost;
         SqlConnection conn;
-        string projectId, taskID;
         private double count;
         private int numb,no, timesheetValue;
 
@@ -286,18 +285,18 @@ namespace FujitsuPayments.Forms
 
                             if (ok)
                             {
-                                drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                                drClaim.BeginEdit();
 
-                                drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                                drClaim["TimesheetID"] = myTime.TimesheetId;
+                                drClaim["EmployeeID"] = myTime.EmployeeId;
+                                drClaim["CostCentreID"] = myTime.CostCentreId;
+                                drClaim["WKBeginning"] = myTime.WkEnding;
+                                drClaim["ApprovedBy"] = myTime.ApprovedBy;
 
-
-                                dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                drClaim.EndEdit();
                                 daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                MessageBox.Show("Timesheet Added");
+
+                                MessageBox.Show("Timesheet Updated");
                                 no = 0;
                                 foreach (Control c in panel1.Controls)
                                 {
@@ -305,31 +304,121 @@ namespace FujitsuPayments.Forms
                                     {
                                         if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                         {
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                            DataTable dtable = dsFujitsuPayments.Tables["Timesheets"];
+                                            int x = 0, total = 0, iterator = 0;
+                                            Boolean exists = false;
+
+                                            foreach (DataRow row in dtable.Rows)
+                                            {
+                                                x++;
+                                            }
+
+                                            DateTime[] datesEx = new DateTime[x];
+
+                                            foreach (DataRow row in dtable.Rows)
+                                            {
+                                                for (int w = 0; w < 7; w++)
+                                                {
+                                                    DateTime newDT = Convert.ToDateTime(date[w].Text);
+                                                    DateTime dbDT = Convert.ToDateTime(row.Field<DateTime>("WorkedDay"));
+
+                                                    if (newDT == dbDT)
+                                                    {
+                                                        datesEx[iterator] = row.Field<DateTime>("WorkedDay");
+                                                        exists = true;
+                                                        total = w;
+                                                        iterator++;
+
+                                                    }
+
+                                                }
+                                                if (exists)
+                                                {
+                                                    object[] primaryKey = new object[3];
+
+                                                    primaryKey[0] = row.Field<int>("TimesheetID");
+                                                    primaryKey[1] = row.Field<DateTime>("WorkedDay");
+                                                    primaryKey[2] = row.Field<TimeSpan>("StartTime");
 
 
-                                            DateTime dt = Convert.ToDateTime(start[no].Text);
-                                            TimeSpan ts = dt.TimeOfDay;
 
-                                            DateTime dte = Convert.ToDateTime(end[no].Text);
-                                            TimeSpan tse = dt.TimeOfDay;
+                                                    drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
+                                                    drTimeDets.BeginEdit();
 
-                                            drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-                                            drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                            drTimeDets["WorkedDay"] = date[no].Text.Trim();
-                                            drTimeDets["StartTime"] = ts;
-                                            drTimeDets["EndTime"] = tse;
-                                            drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                            drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                            drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
 
-                                            dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
-                                            daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                    DateTime dt = Convert.ToDateTime(start[total].Text);
+                                                    TimeSpan ts = dt.TimeOfDay;
+
+                                                    DateTime dte = Convert.ToDateTime(end[total].Text);
+                                                    TimeSpan tse = dte.TimeOfDay;
+
+
+                                                    drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                    drTimeDets["WorkedDay"] = date[total].Text.Trim();
+                                                    drTimeDets["StartTime"] = ts;
+                                                    drTimeDets["EndTime"] = tse;
+                                                    drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+
+                                                    drTimeDets.EndEdit();
+                                                    daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                }
+
+                                            }
+                                            exists = true;
+                                            DateTime compDT = Convert.ToDateTime(end[no].Text);
+                                            for (int z = 0; z < iterator; z++)
+                                            {
+
+                                                if (compDT == datesEx[z])
+                                                {
+                                                    exists = false;
+
+                                                }
+
+                                            }
+                                            if (exists)
+                                            {
+                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+
+
+                                                DateTime dt = Convert.ToDateTime(start[no].Text);
+                                                TimeSpan ts = dt.TimeOfDay;
+
+                                                DateTime dte = Convert.ToDateTime(end[no].Text);
+                                                TimeSpan tse = dte.TimeOfDay;
+
+
+                                                drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                drTimeDets["WorkedDay"] = date[total].Text.Trim();
+                                                drTimeDets["StartTime"] = ts;
+                                                drTimeDets["EndTime"] = tse;
+                                                drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
+                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+
+                                                dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
+                                                daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                            }
+
+
+
+
+                                            x++;
+                                            break;
                                         }
+
+
+
+
+
+
+
                                     }
                                     no++;
                                 }
-                                if (MessageBox.Show("Do you wish to add On Call or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                                if (MessageBox.Show("Do you wish to update On Call or Overtime claims?", "Update Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     clear();
                                 }
@@ -341,7 +430,8 @@ namespace FujitsuPayments.Forms
                             }
                             break;
                         case 2:
-                            if (checkOT() == true)
+                            int claimType = (int)cmbClaimType.SelectedValue + 1;
+                            if (checkOT(claimType) == true)
                             {
 
 
@@ -505,18 +595,18 @@ namespace FujitsuPayments.Forms
 
                                 if (ok)
                                 {
-                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                                    drClaim.BeginEdit();
 
-                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                                    drClaim["TimesheetID"] = myTime.TimesheetId;
+                                    drClaim["EmployeeID"] = myTime.EmployeeId;
+                                    drClaim["CostCentreID"] = myTime.CostCentreId;
+                                    drClaim["WKBeginning"] = myTime.WkEnding;
+                                    drClaim["ApprovedBy"] = myTime.ApprovedBy;
 
-
-                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                    drClaim.EndEdit();
                                     daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                    MessageBox.Show("Timesheet Added");
+
+                                    MessageBox.Show("Timesheet Updated");
                                     no = 0;
                                     foreach (Control c in panel1.Controls)
                                     {
@@ -524,27 +614,117 @@ namespace FujitsuPayments.Forms
                                         {
                                             if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                             {
-                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+                                                DataTable dtable = dsFujitsuPayments.Tables["Timesheets"];
+                                                int x = 0, total = 0, iterator = 0;
+                                                Boolean exists = false;
+
+                                                foreach (DataRow row in dtable.Rows)
+                                                {
+                                                    x++;
+                                                }
+
+                                                DateTime[] datesEx = new DateTime[x];
+
+                                                foreach (DataRow row in dtable.Rows)
+                                                {
+                                                    for (int w = 0; w < 7; w++)
+                                                    {
+                                                        DateTime newDT = Convert.ToDateTime(date[w].Text);
+                                                        DateTime dbDT = Convert.ToDateTime(row.Field<DateTime>("WorkedDay"));
+
+                                                        if (newDT == dbDT)
+                                                        {
+                                                            datesEx[iterator] = row.Field<DateTime>("WorkedDay");
+                                                            exists = true;
+                                                            total = w;
+                                                            iterator++;
+
+                                                        }
+
+                                                    }
+                                                    if (exists)
+                                                    {
+                                                        object[] primaryKey = new object[3];
+
+                                                        primaryKey[0] = row.Field<int>("TimesheetID");
+                                                        primaryKey[1] = row.Field<DateTime>("WorkedDay");
+                                                        primaryKey[2] = row.Field<TimeSpan>("StartTime");
 
 
-                                                DateTime dt = Convert.ToDateTime(start[no].Text);
-                                                TimeSpan ts = dt.TimeOfDay;
 
-                                                DateTime dte = Convert.ToDateTime(end[no].Text);
-                                                TimeSpan tse = dte.TimeOfDay;
+                                                        drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
+                                                        drTimeDets.BeginEdit();
 
-                                                drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
-                                                drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                                drTimeDets["WorkedDay"] = date[no].Text.Trim();
-                                                drTimeDets["StartTime"] = ts;
-                                                drTimeDets["EndTime"] = tse;
-                                                drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
 
-                                                dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
-                                                daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                        DateTime dt = Convert.ToDateTime(start[total].Text);
+                                                        TimeSpan ts = dt.TimeOfDay;
+
+                                                        DateTime dte = Convert.ToDateTime(end[total].Text);
+                                                        TimeSpan tse = dte.TimeOfDay;
+
+
+                                                        drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                        drTimeDets["WorkedDay"] = date[total].Text.Trim();
+                                                        drTimeDets["StartTime"] = ts;
+                                                        drTimeDets["EndTime"] = tse;
+                                                        drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
+                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+
+                                                        drTimeDets.EndEdit();
+                                                        daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                    }
+
+                                                }
+                                                exists = true;
+                                                DateTime compDT = Convert.ToDateTime(end[no].Text);
+                                                for (int z = 0; z < iterator; z++)
+                                                {
+
+                                                    if (compDT == datesEx[z])
+                                                    {
+                                                        exists = false;
+
+                                                    }
+
+                                                }
+                                                if (exists)
+                                                {
+                                                    drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
+
+
+                                                    DateTime dt = Convert.ToDateTime(start[no].Text);
+                                                    TimeSpan ts = dt.TimeOfDay;
+
+                                                    DateTime dte = Convert.ToDateTime(end[no].Text);
+                                                    TimeSpan tse = dte.TimeOfDay;
+
+
+                                                    drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                    drTimeDets["WorkedDay"] = date[total].Text.Trim();
+                                                    drTimeDets["StartTime"] = ts;
+                                                    drTimeDets["EndTime"] = tse;
+                                                    drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+
+                                                    dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
+                                                    daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                }
+
+
+
+
+                                                x++;
+                                                break;
                                             }
+
+
+
+
+
+
+
                                         }
                                         no++;
                                     }
@@ -561,20 +741,26 @@ namespace FujitsuPayments.Forms
                             }
                             else
                             {
-                                MessageBox.Show("A claim already exists for these number, please edit an existing claim.");
+                                MessageBox.Show("An on call claim already exists for these number, please edit an existing claim.");
                                 ok = false;
                                 clear();
                             }
 
                             break;
                         case 3:
-                           
+                            int claimType1 = (int)cmbClaimType.SelectedValue - 1;
+                            if (checkOT(claimType1))
+                            {
                                 foreach (Control c in panel1.Controls)
                                 {
+
+
+
                                     if (c is Panel && ok)
                                     {
                                         if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                         {
+
                                             if (MyValidation.validTimespan1(start[no].Text) == true && MyValidation.validTimespan1(end[no].Text))
                                             {
 
@@ -708,6 +894,8 @@ namespace FujitsuPayments.Forms
                                             }
 
 
+
+
                                         }
                                         no++;
 
@@ -719,15 +907,15 @@ namespace FujitsuPayments.Forms
                                 {
                                     drClaim.BeginEdit();
 
-                                drClaim["TimesheetID"] = myTime.TimesheetId;
-                                drClaim["EmployeeID"] = myTime.EmployeeId;
-                                drClaim["CostCentreID"] = myTime.CostCentreId;
-                                drClaim["WKBeginning"] = myTime.WkEnding;
-                                drClaim["ApprovedBy"] = myTime.ApprovedBy;
+                                    drClaim["TimesheetID"] = myTime.TimesheetId;
+                                    drClaim["EmployeeID"] = myTime.EmployeeId;
+                                    drClaim["CostCentreID"] = myTime.CostCentreId;
+                                    drClaim["WKBeginning"] = myTime.WkEnding;
+                                    drClaim["ApprovedBy"] = myTime.ApprovedBy;
 
-                                drClaim.EndEdit();
+                                    drClaim.EndEdit();
                                     daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                    
+
                                     MessageBox.Show("Timesheet Updated");
                                     no = 0;
                                     foreach (Control c in panel1.Controls)
@@ -737,106 +925,121 @@ namespace FujitsuPayments.Forms
                                             if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                             {
                                                 DataTable dtable = dsFujitsuPayments.Tables["Timesheets"];
-                                                int x = 0,  total = 0;
-                                            Boolean exists = false;
+                                                int x = 0, total = 0, iterator = 0;
+                                                Boolean exists = false;
 
-
-                                            foreach (DataRow row in dtable.Rows)
-                                            {
-                                                for (int w = 0; w < 7; w++)
+                                                foreach (DataRow row in dtable.Rows)
                                                 {
-                                                    DateTime newDT = Convert.ToDateTime(date[w].Text);
-                                                    DateTime dbDT = Convert.ToDateTime(row.Field<DateTime>("WorkedDay"));
+                                                    x++;
+                                                }
 
-                                                    if (newDT == dbDT)
+                                                DateTime[] datesEx = new DateTime[x];
+
+                                                foreach (DataRow row in dtable.Rows)
+                                                {
+                                                    for (int w = 0; w < 7; w++)
                                                     {
-                                                        exists = true;
-                                                        total = w;
+                                                        DateTime newDT = Convert.ToDateTime(date[w].Text);
+                                                        DateTime dbDT = Convert.ToDateTime(row.Field<DateTime>("WorkedDay"));
+
+                                                        if (newDT == dbDT)
+                                                        {
+                                                            datesEx[iterator] = row.Field<DateTime>("WorkedDay");
+                                                            exists = true;
+                                                            total = w;
+                                                            iterator++;
+
+                                                        }
+
+                                                    }
+                                                    if (exists)
+                                                    {
+                                                        object[] primaryKey = new object[3];
+
+                                                        primaryKey[0] = row.Field<int>("TimesheetID");
+                                                        primaryKey[1] = row.Field<DateTime>("WorkedDay");
+                                                        primaryKey[2] = row.Field<TimeSpan>("StartTime");
+
+
+
+                                                        drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
+                                                        drTimeDets.BeginEdit();
+
+
+                                                        DateTime dt = Convert.ToDateTime(start[total].Text);
+                                                        TimeSpan ts = dt.TimeOfDay;
+
+                                                        DateTime dte = Convert.ToDateTime(end[total].Text);
+                                                        TimeSpan tse = dte.TimeOfDay;
+
+
+                                                        drTimeDets["TimesheetID"] = timeDets.TimesheetId;
+                                                        drTimeDets["WorkedDay"] = date[total].Text.Trim();
+                                                        drTimeDets["StartTime"] = ts;
+                                                        drTimeDets["EndTime"] = tse;
+                                                        drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
+                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
+                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+
+                                                        drTimeDets.EndEdit();
+                                                        daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                                                    }
+
+                                                }
+                                                exists = true;
+                                                DateTime compDT = Convert.ToDateTime(end[no].Text);
+                                                for (int z = 0; z < iterator; z++)
+                                                {
+
+                                                    if (compDT == datesEx[z])
+                                                    {
+                                                        exists = false;
+
                                                     }
 
                                                 }
                                                 if (exists)
                                                 {
-                                                    object[] primaryKey = new object[3];
-
-                                                    primaryKey[0] = row.Field<int>("TimesheetID");
-                                                    primaryKey[1] = row.Field<DateTime>("WorkedDay");
-                                                    primaryKey[2] = row.Field<TimeSpan>("StartTime");
-
-
-
-                                                    drTimeDets  = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
-                                                    drTimeDets.BeginEdit();
-
-
-                                                    DateTime dt = Convert.ToDateTime(start[total].Text);
-                                                    TimeSpan ts = dt.TimeOfDay;
-
-                                                    DateTime dte = Convert.ToDateTime(end[total].Text);
-                                                    TimeSpan tse = dte.TimeOfDay;
-
-                                                   
-                                                    drTimeDets["TimesheetID"] = timeDets.TimesheetId;
-                                                    drTimeDets["WorkedDay"] = date[total].Text.Trim();
-                                                    drTimeDets["StartTime"] = ts;
-                                                    drTimeDets["EndTime"] = tse;
-                                                    drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
-                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
-
-                                                    drTimeDets.EndEdit();
-                                                    daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
-                                                }
-                                                else
-                                                {
                                                     drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
 
 
-                                                    DateTime dt = Convert.ToDateTime(start[total].Text);
+                                                    DateTime dt = Convert.ToDateTime(start[no].Text);
                                                     TimeSpan ts = dt.TimeOfDay;
 
-                                                    DateTime dte = Convert.ToDateTime(end[total].Text);
+                                                    DateTime dte = Convert.ToDateTime(end[no].Text);
                                                     TimeSpan tse = dte.TimeOfDay;
 
-                                                    
+
                                                     drTimeDets["TimesheetID"] = timeDets.TimesheetId;
                                                     drTimeDets["WorkedDay"] = date[total].Text.Trim();
                                                     drTimeDets["StartTime"] = ts;
                                                     drTimeDets["EndTime"] = tse;
                                                     drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
-                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
 
                                                     dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                     daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                                                 }
 
-                                            }
 
 
 
-                                                        //rowArray[x] = row.Field<DateTime>("WorkedDay");
-                                                        //startTime[x] = row.Field<TimeSpan>("StartTime");
-                                                        //endTime[x] = row.Field<TimeSpan>("EndTime");
-                                                        //proj[x] = row.Field<int>("ProjectID");
-                                                        //tasks[x] = row.Field<int>("TaskID");
-                                                        //claimType[x] = row.Field<int>("ClaimTypeID");
-
-                                            x++;
+                                                x++;
                                                 break;
                                             }
-                                            
-                                                
-                                                
-                                                  
-                                                
-                                                
-                                            
+
+
+
+
+
+
+
                                         }
                                         no++;
                                     }
 
-                                    if (MessageBox.Show("Do you wish to add basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                                    if (MessageBox.Show("Do you wish to update basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                     {
                                         clear();
                                     }
@@ -845,8 +1048,16 @@ namespace FujitsuPayments.Forms
                                         this.Dispose();
                                     }
                                 }
-                           
-                            
+                            }
+                            else
+                            {
+                                ok = false;
+                                MessageBox.Show("An overtime claim already exists for these hours");
+                                count = 0;
+                                no = 0;
+                                break;
+                            }
+
                             break;
                         default:
                             MessageBox.Show("Please enter a claim type");
@@ -881,18 +1092,21 @@ namespace FujitsuPayments.Forms
                 end[i].Clear();
             }
         }
-        private Boolean checkOT()
+        private Boolean checkOT(int claimType)
         {
             Boolean ok = true;
 
-            sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet AND (ClaimTypeID = 2 or ClaimTypeID = 3)";
+            sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet AND ClaimTypeID = @ClaimType";
             conn = new SqlConnection(connStr);
             cmdProj = new SqlCommand(sqlProject, conn);
             cmdProj.Parameters.Add("@Timesheet", SqlDbType.Int);
+            cmdProj.Parameters.Add("@ClaimType", SqlDbType.Int);
             daProject = new SqlDataAdapter(cmdProj);
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheets");
 
             cmdProj.Parameters["@Timesheet"].Value = Convert.ToInt32(lblTimsheetId.Text);
+            cmdProj.Parameters["@ClaimType"].Value = claimType;
+
 
             daProject.Fill(dsFujitsuPayments, "Timesheets");
 
@@ -1068,7 +1282,10 @@ namespace FujitsuPayments.Forms
             cmbClaimType.ValueMember = "ClaimTypeID";
             cmbClaimType.DisplayMember = "ClaimTypeDesc";
 
-
+            txtStart6.Enabled = false;
+            txtStart7.Enabled = false;
+            txtEnd7.Enabled = false;
+            txtEnd6.Enabled = false;
 
             sqlEmpTask = @"select ProjectID , TaskID , EmployeeID from ProjectTaskEmployee where EmployeeID like @EmployeeID";
             conn = new SqlConnection(connStr);
@@ -1101,7 +1318,7 @@ namespace FujitsuPayments.Forms
             daProject = new SqlDataAdapter(cmdProj);
             daProject.Dispose();
             daProject = new SqlDataAdapter(cmdProj);
-
+            listBoxValues();
             findMondays(cmbDates.Text);
             setDates(0, cmbDates.Text);
             //int claim = Convert.ToInt32(drClaim["ClaimTypeID"].ToString());
@@ -1308,8 +1525,185 @@ namespace FujitsuPayments.Forms
 
                 int claim = (int)cmbClaimType.SelectedValue;
                 setData(claim, timesheetValue);
+
+                
+                    if (claim == 1)
+                    {
+                        txtStart6.Enabled = false;
+                        txtStart7.Enabled = false;
+                        txtEnd7.Enabled = false;
+                        txtEnd6.Enabled = false;
+                    }
+                    else
+                    {
+                        txtStart6.Enabled = true;
+                        txtStart7.Enabled = true;
+                        txtEnd7.Enabled = true;
+                        txtEnd6.Enabled = true;
+                    }
+                
             }
         }
+        private void listBoxValues()
+        {
+            lvPastHours.View = View.Details;
+            lvPastHours.GridLines = true;
+            lvPastHours.FullRowSelect = true;
 
+
+            lvPastHours.Columns.Add("TimesheetID", 80);
+            lvPastHours.Columns.Add("Basic", 70);
+            lvPastHours.Columns.Add("OnCall", 60);
+            lvPastHours.Columns.Add("Overtime", 60);
+
+
+           
+
+
+
+
+
+            sqlCount = @" select TimesheetID, DATEDIFF ( MINUTE, StartTime, EndTime )/ 60 as Hours, ClaimTypeID from TimesheetDetails
+            where (TimesheetID = @Timesheet1 or TimesheetID = @Timesheet2 or TimesheetID = @Timesheet3 or TimesheetID = @Timesheet4)";
+            conn = new SqlConnection(connStr);
+            cmdCount = new SqlCommand(sqlCount, conn);
+            cmdCount.Parameters.Add("@Timesheet1", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet2", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet3", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet4", SqlDbType.Int);
+            daCount = new SqlDataAdapter(cmdCount);
+            daCount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Count");
+
+            int timesheet = Convert.ToInt32(lblTimsheetId.Text);
+
+            cmdCount.Parameters["@Timesheet1"].Value = timesheet - 1;
+            cmdCount.Parameters["@Timesheet2"].Value = timesheet - 2;
+            cmdCount.Parameters["@Timesheet3"].Value = timesheet - 3;
+            cmdCount.Parameters["@Timesheet4"].Value = timesheet - 4;
+            daCount.Fill(dsFujitsuPayments, "Count");
+
+
+            int ts1 = timesheet - 1;
+            int ts2 = timesheet - 2;
+            int ts3 = timesheet - 3;
+            int ts4 = timesheet - 4;
+
+            DataTable dt = dsFujitsuPayments.Tables["Count"];
+            int numb = 0, count = 0, x = 0;
+
+            string startime, endtime, starttimeNew, endtimeNew;
+
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+
+                numb++;
+
+            }
+
+            double basic1 = 0, basic2 = 0, basic3 = 0, basic4 = 0;
+            double oncall1 = 0, oncall2 = 0, oncall3 = 0, oncall4 = 0;
+            double ot1 = 0, ot2 = 0, ot3 = 0, ot4 = 0;
+
+
+
+            if (numb != 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    drCount = row;
+                    int newTS = Convert.ToInt32(drCount["TimesheetID"].ToString());
+                    int cType = Convert.ToInt32(drCount["ClaimTypeID"].ToString());
+                    drCount = row;
+
+                    if (ts1 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                    else if (ts2 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                    else if (ts3 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                    else if (ts4 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                }
+                string[] row1 = { Convert.ToString(ts1), Convert.ToString(basic1), Convert.ToString(oncall1), Convert.ToString(ot1) };  //new object[3]; //{ basic1, basic2, basic3, basic4 };
+                string[] row2 = { Convert.ToString(ts2), Convert.ToString(basic2), Convert.ToString(oncall2), Convert.ToString(ot2) };
+                string[] row3 = { Convert.ToString(ts3), Convert.ToString(basic3), Convert.ToString(oncall3), Convert.ToString(ot3) };
+                string[] row4 = { Convert.ToString(ts4), Convert.ToString(basic4), Convert.ToString(oncall4), Convert.ToString(ot4) };
+
+                ListViewItem item1, item2, item3, item4;
+                item1 = new ListViewItem(row1);
+                item2 = new ListViewItem(row2);
+                item3 = new ListViewItem(row3);
+                item4 = new ListViewItem(row4);
+                lvPastHours.Items.Add(item1);
+                lvPastHours.Items.Add(item2);
+                lvPastHours.Items.Add(item3);
+                lvPastHours.Items.Add(item4);
+
+            }
+            else
+            {
+
+            }
+     
+        }
+      
     }
 }

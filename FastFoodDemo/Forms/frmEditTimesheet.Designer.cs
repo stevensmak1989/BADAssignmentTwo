@@ -100,6 +100,7 @@ namespace FujitsuPayments.Forms
             this.lblDateThur = new System.Windows.Forms.Label();
             this.lblThur = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lvPastHours = new System.Windows.Forms.ListView();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
@@ -746,11 +747,20 @@ namespace FujitsuPayments.Forms
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lvPastHours
+            // 
+            this.lvPastHours.Location = new System.Drawing.Point(597, 155);
+            this.lvPastHours.Name = "lvPastHours";
+            this.lvPastHours.Size = new System.Drawing.Size(241, 169);
+            this.lvPastHours.TabIndex = 76;
+            this.lvPastHours.UseCompatibleStateImageBehavior = false;
+            // 
             // frmEditTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(850, 482);
+            this.Controls.Add(this.lvPastHours);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
@@ -860,5 +870,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblThur;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ListView lvPastHours;
     }
 }

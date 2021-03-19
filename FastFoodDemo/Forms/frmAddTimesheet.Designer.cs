@@ -101,6 +101,7 @@ namespace FujitsuPayments.Forms
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lvPastHours = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -364,6 +365,7 @@ namespace FujitsuPayments.Forms
             this.txtStart1.Name = "txtStart1";
             this.txtStart1.Size = new System.Drawing.Size(76, 20);
             this.txtStart1.TabIndex = 121;
+            this.txtStart1.TextChanged += new System.EventHandler(this.txtStart1_TextChanged);
             // 
             // cmbProject
             // 
@@ -763,11 +765,20 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
+            // lvPastHours
+            // 
+            this.lvPastHours.Location = new System.Drawing.Point(596, 140);
+            this.lvPastHours.Name = "lvPastHours";
+            this.lvPastHours.Size = new System.Drawing.Size(241, 169);
+            this.lvPastHours.TabIndex = 70;
+            this.lvPastHours.UseCompatibleStateImageBehavior = false;
+            // 
             // frmAddTimesheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(849, 479);
+            this.Controls.Add(this.lvPastHours);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel4);
@@ -877,5 +888,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ComboBox cmbProject4;
         private System.Windows.Forms.ComboBox cmbProject3;
         private System.Windows.Forms.ComboBox cmbProject2;
+        private System.Windows.Forms.ListView lvPastHours;
     }
 }

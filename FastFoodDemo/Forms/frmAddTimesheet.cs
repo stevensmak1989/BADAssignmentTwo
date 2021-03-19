@@ -15,11 +15,19 @@ namespace FujitsuPayments.Forms
     public partial class frmAddTimesheet : Form
     {
 
-        SqlDataAdapter daProject, daTask, daEmployee, daEmpTask,daClaim, daTime, daMan, daTimesheet, daTimeDets, daCost;
+        SqlDataAdapter daProject, daEmployee, daEmpTask,daClaim, daMan, daTimesheet, daTimeDets, daCost,daCount;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder cmbBProject,cmbBClaim, cmbBMan,cmbBTask, cmbBEmp, cmbBEmpTask,cmbBTime, cmbBTimesheet, cmbBTimeDets, cmbBCost;
-        SqlCommand cmdEmp, cmdMan, cmdProj;
-       
+        SqlCommandBuilder cmbBClaim, cmbBEmp, cmbBTimesheet, cmbBTimeDets, cmbBCost, cnbBCount;
+        SqlCommand cmdEmp, cmdProj, cmdCount;
+
+        DataRow drProject,  drTimesheet, drTimeDets,drCount;
+        String connStr, sqlProject,  sqlEmp, sqlEmpTask, sqlClaim, sqlMan, sqlTimesheet, sqlTimeDets, sqlCost, sqlCount;
+        SqlConnection conn;
+        private double count;
+
+        private Boolean replay = false;
+        private int no;
+
 
         private void cmbEmpTask6_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -61,14 +69,12 @@ namespace FujitsuPayments.Forms
             this.Dispose();
         }
 
-        DataRow drProject, drMan, drTask,drClaim, drEmp, drEmpTask, drTimesheet, drTimeDets, drCost;
-        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask, sqlClaim, sqlMan,sqlTime, sqlTimesheet, sqlTimeDets, sqlCost;
-        SqlConnection conn;
-        string projectId, taskID;
-       private double count;
+        private void txtStart1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
-        private int no;
+       
 
 
 
@@ -84,7 +90,175 @@ namespace FujitsuPayments.Forms
         {
 
         }
-       // public static int Compare(TimeSpan t1, TimeSpan t2);
+
+        private void listBoxValues()
+        {
+            lvPastHours.View = View.Details;
+            lvPastHours.GridLines = true;
+            lvPastHours.FullRowSelect = true;
+
+
+            lvPastHours.Columns.Add("TimesheetID", 80);
+            lvPastHours.Columns.Add("Basic", 70);
+            lvPastHours.Columns.Add("OnCall", 60);
+            lvPastHours.Columns.Add("Overtime", 60);
+
+
+            int noRows = dsFujitsuPayments.Tables["Timesheet"].Rows.Count;
+
+            if (noRows == 0)
+                lblTimsheetId.Text = "1000";
+            else
+            {
+                getNumber(noRows);
+            }
+
+
+          
+
+
+            sqlCount = @" select TimesheetID, DATEDIFF ( MINUTE, StartTime, EndTime )/ 60 as Hours, ClaimTypeID from TimesheetDetails
+            where (TimesheetID = @Timesheet1 or TimesheetID = @Timesheet2 or TimesheetID = @Timesheet3 or TimesheetID = @Timesheet4)";
+            conn = new SqlConnection(connStr);
+            cmdCount = new SqlCommand(sqlCount, conn);
+            cmdCount.Parameters.Add("@Timesheet1", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet2", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet3", SqlDbType.Int);
+            cmdCount.Parameters.Add("@Timesheet4", SqlDbType.Int);
+            daCount = new SqlDataAdapter(cmdCount);
+            daCount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Count");
+
+            int timesheet = Convert.ToInt32(lblTimsheetId.Text);
+
+            cmdCount.Parameters["@Timesheet1"].Value = timesheet - 1;
+            cmdCount.Parameters["@Timesheet2"].Value = timesheet - 2;
+            cmdCount.Parameters["@Timesheet3"].Value = timesheet - 3;
+            cmdCount.Parameters["@Timesheet4"].Value = timesheet - 4;
+            daCount.Fill(dsFujitsuPayments, "Count");
+
+
+            int ts1 = timesheet - 1;
+            int ts2 = timesheet - 2;
+            int ts3 = timesheet - 3;
+            int ts4 = timesheet - 4;
+
+            DataTable dt = dsFujitsuPayments.Tables["Count"];
+            int numb = 0, count = 0, x = 0;
+
+            string startime, endtime, starttimeNew, endtimeNew;
+
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+
+                numb++;
+
+            }
+
+            double basic1 =0, basic2 = 0, basic3 = 0, basic4 = 0;
+            double oncall1 = 0, oncall2 = 0, oncall3 = 0, oncall4 = 0;
+            double ot1 = 0, ot2 = 0, ot3 = 0, ot4 = 0;
+
+            
+
+            if (numb != 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    drCount = row;
+                    int newTS = Convert.ToInt32(drCount["TimesheetID"].ToString());
+                    int cType = Convert.ToInt32(drCount["ClaimTypeID"].ToString());
+                    drCount = row;
+
+                    if (ts1 == newTS )
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall1 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                   else if (ts2 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall2 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                    else if (ts3 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall3 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                    else if (ts4 == newTS)
+                    {
+                        switch (cType)
+                        {
+                            case 1:
+                                basic4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 2:
+                                ot4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                            case 3:
+                                oncall4 += Convert.ToDouble(drCount["Hours"].ToString());
+                                break;
+                        }
+
+                    }
+                }
+                string[] row1 = {Convert.ToString(ts1), Convert.ToString(basic1), Convert.ToString(oncall1), Convert.ToString(ot1)};  //new object[3]; //{ basic1, basic2, basic3, basic4 };
+                string[] row2 = { Convert.ToString(ts2), Convert.ToString(basic2), Convert.ToString(oncall2), Convert.ToString(ot2) };
+                string[] row3 = { Convert.ToString(ts3), Convert.ToString(basic3), Convert.ToString(oncall3), Convert.ToString(ot3) };
+                string[] row4  = { Convert.ToString(ts4), Convert.ToString(basic4), Convert.ToString(oncall4), Convert.ToString(ot4) };
+
+                ListViewItem item1, item2, item3, item4;
+                item1 = new ListViewItem(row1);
+                item2 = new ListViewItem(row2);
+                item3 = new ListViewItem(row3);
+                item4 = new ListViewItem(row4);
+                lvPastHours.Items.Add(item1);
+                lvPastHours.Items.Add(item2);
+                lvPastHours.Items.Add(item3);
+                lvPastHours.Items.Add(item4);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        // public static int Compare(TimeSpan t1, TimeSpan t2);
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -341,18 +515,21 @@ namespace FujitsuPayments.Forms
 
                             if (ok)
                             {
-                                drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                                if (!replay)
+                                {
+                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
 
-                                drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
+                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
 
 
-                                dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                                daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                MessageBox.Show("Timesheet Added");
+                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                                    MessageBox.Show("Timesheet Added");
+                                }
                                 no = 0;
                                 foreach (Control c in panel1.Controls)
                                 {
@@ -367,7 +544,7 @@ namespace FujitsuPayments.Forms
                                             TimeSpan ts = dt.TimeOfDay;
 
                                             DateTime dte = Convert.ToDateTime(end[no].Text);
-                                            TimeSpan tse = dt.TimeOfDay;
+                                            TimeSpan tse = dte.TimeOfDay;
 
                                             drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].NewRow();
                                             drTimeDets["TimesheetID"] = timeDets.TimesheetId;
@@ -387,6 +564,8 @@ namespace FujitsuPayments.Forms
                                 if (MessageBox.Show("Do you wish to add On Call or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     clear();
+                                    no = 0;
+                                    replay = true;
                                 }
                                 else
                                 {
@@ -396,9 +575,10 @@ namespace FujitsuPayments.Forms
                             }
                             break;
                         case 2:
-                            if(checkOT() == true)
+                            int track = 0;
+                            if (checkOT() == true)
                             {
-                               
+                                
 
                                 foreach (Control c in panel1.Controls)
                                 {
@@ -550,28 +730,44 @@ namespace FujitsuPayments.Forms
 
 
                                         }
+                                        else
+                                        {
+                                            track++;
+                                        }
                                         no++;
                                     }
                                 }
-                                            
-                                            
+                                      
+                                if(track == 7)
+                                {
+                                   
+                                    ok = false;
+                                    count = 0;
+                                    no = 0;
+                                    MessageBox.Show("You must enter valid hours for an On Call claim");
+                                }
+                                        
                                            
 
 
                                 if (ok)
                                 {
-                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                                    if(!replay)
+                                    {
+                                        drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
 
-                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                                        drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                                        drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                                        drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                                        drTimesheet["WKBeginning"] = myTime.WkEnding;
+                                        drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
 
 
-                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                    MessageBox.Show("Timesheet Added");
+                                        dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                        daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                                        MessageBox.Show("Timesheet Added");
+                                    }
+                                    
                                     no = 0;
                                     foreach (Control c in panel1.Controls)
                                     {
@@ -607,6 +803,8 @@ namespace FujitsuPayments.Forms
                                     if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                     {
                                         clear();
+                                        no = 0;
+                                        replay = true;
                                     }
                                     else
                                     {
@@ -623,6 +821,7 @@ namespace FujitsuPayments.Forms
                            
                             break;
                         case 3:
+                            int track1 = 0;
                             if (checkOT() == true)
                             {
                                 foreach (Control c in panel1.Controls)
@@ -765,26 +964,40 @@ namespace FujitsuPayments.Forms
 
 
                                         }
+                                        else
+                                        {
+                                            track1++;
+                                        }
                                         no++;
 
                                     }
                                 }
+                                if(track1 == 7)
+                                {
+                                    ok = false;
+                                    count = 0;
+                                    no = 0;
+                                    MessageBox.Show("You must enter valid hours for an On Call claim");
 
+                                }
 
                                 if (ok)
                                 {
-                                    drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
+                                    if (!replay)
+                                    {
+                                        drTimesheet = dsFujitsuPayments.Tables["Timesheet"].NewRow();
 
-                                    drTimesheet["TimesheetID"] = myTime.TimesheetId;
-                                    drTimesheet["EmployeeID"] = myTime.EmployeeId;
-                                    drTimesheet["CostCentreID"] = myTime.CostCentreId;
-                                    drTimesheet["WKBeginning"] = myTime.WkEnding;
-                                    drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
+                                        drTimesheet["TimesheetID"] = myTime.TimesheetId;
+                                        drTimesheet["EmployeeID"] = myTime.EmployeeId;
+                                        drTimesheet["CostCentreID"] = myTime.CostCentreId;
+                                        drTimesheet["WKBeginning"] = myTime.WkEnding;
+                                        drTimesheet["ApprovedBy"] = myTime.ApprovedBy;
 
 
-                                    dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
-                                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-                                    MessageBox.Show("Timesheet Added");
+                                        dsFujitsuPayments.Tables["Timesheet"].Rows.Add(drTimesheet);
+                                        daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                                        MessageBox.Show("Timesheet Added");
+                                    }
                                     no = 0;
                                     foreach (Control c in panel1.Controls)
                                     {
@@ -820,6 +1033,7 @@ namespace FujitsuPayments.Forms
                                     if (MessageBox.Show("Do you wish to add basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                     {
                                         clear();
+                                        no = 0;
                                     }
                                     else
                                     {
@@ -867,10 +1081,7 @@ namespace FujitsuPayments.Forms
             }
         }
        
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         
 
@@ -973,9 +1184,12 @@ namespace FujitsuPayments.Forms
             daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
 
-            
+            listBoxValues();
 
-
+            txtStart6.Enabled = false;
+            txtStart7.Enabled = false;
+            txtEnd7.Enabled = false;
+            txtEnd6.Enabled = false;
 
             int noRows = dsFujitsuPayments.Tables["Timesheet"].Rows.Count;
 
@@ -984,6 +1198,29 @@ namespace FujitsuPayments.Forms
             else
             {
                 getNumber(noRows);
+            }
+
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            if (cmbClaimType.Focused == true)
+            {
+                if ((int)cmbClaimType.SelectedValue == 1)
+                {
+                    txtStart6.Enabled = false;
+                    txtStart7.Enabled = false;
+                    txtEnd7.Enabled = false;
+                    txtEnd6.Enabled = false;
+                }
+                else
+                {
+                    txtStart6.Enabled = true;
+                    txtStart7.Enabled = true;
+                    txtEnd7.Enabled = true;
+                    txtEnd6.Enabled = true;
+                }
             }
 
         }

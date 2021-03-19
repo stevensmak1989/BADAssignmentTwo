@@ -32,10 +32,10 @@ namespace FujitsuPayments.UserControls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Timesheet));
             this.btnAddTimesheet = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dvgTimesheetDets = new System.Windows.Forms.DataGridView();
             this.btnTaskDel = new System.Windows.Forms.Button();
             this.btnTimesheetEdit = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dvgTimesheetDets = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgTimesheetDets)).BeginInit();
             this.SuspendLayout();
@@ -70,23 +70,6 @@ namespace FujitsuPayments.UserControls
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 315);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(821, 91);
-            this.panel2.TabIndex = 4;
-            // 
-            // dvgTimesheetDets
-            // 
-            this.dvgTimesheetDets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgTimesheetDets.Location = new System.Drawing.Point(0, 46);
-            this.dvgTimesheetDets.Name = "dvgTimesheetDets";
-            this.dvgTimesheetDets.Size = new System.Drawing.Size(820, 269);
-            this.dvgTimesheetDets.TabIndex = 5;
-            // 
             // btnTaskDel
             // 
             this.btnTaskDel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -102,6 +85,7 @@ namespace FujitsuPayments.UserControls
             this.btnTaskDel.Text = "Delete Timesheet";
             this.btnTaskDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTaskDel.UseVisualStyleBackColor = true;
+            this.btnTaskDel.Click += new System.EventHandler(this.btnTaskDel_Click);
             // 
             // btnTimesheetEdit
             // 
@@ -119,6 +103,23 @@ namespace FujitsuPayments.UserControls
             this.btnTimesheetEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimesheetEdit.UseVisualStyleBackColor = true;
             this.btnTimesheetEdit.Click += new System.EventHandler(this.btnTimesheetEdit_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 315);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(821, 91);
+            this.panel2.TabIndex = 4;
+            // 
+            // dvgTimesheetDets
+            // 
+            this.dvgTimesheetDets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgTimesheetDets.Location = new System.Drawing.Point(0, 46);
+            this.dvgTimesheetDets.Name = "dvgTimesheetDets";
+            this.dvgTimesheetDets.Size = new System.Drawing.Size(820, 269);
+            this.dvgTimesheetDets.TabIndex = 5;
             // 
             // UC_Timesheet
             // 
