@@ -1183,13 +1183,17 @@ namespace FujitsuPayments.Forms
             daEmpTask = new SqlDataAdapter(cmdEmp);
             daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
-
+            project();
             listBoxValues();
 
             txtStart6.Enabled = false;
             txtStart7.Enabled = false;
             txtEnd7.Enabled = false;
             txtEnd6.Enabled = false;
+            cmbProject6.Enabled = false;
+            cmbProject7.Enabled = false;
+            cmbEmpTask7.Enabled = false;
+            cmbEmpTask6.Enabled = false;
 
             int noRows = dsFujitsuPayments.Tables["Timesheet"].Rows.Count;
 
@@ -1213,6 +1217,12 @@ namespace FujitsuPayments.Forms
                     txtStart7.Enabled = false;
                     txtEnd7.Enabled = false;
                     txtEnd6.Enabled = false;
+                    cmbProject6.Enabled = false;
+                    cmbProject7.Enabled = false;
+                    cmbEmpTask7.Enabled = false;
+                    cmbEmpTask6.Enabled = false;
+
+
                 }
                 else
                 {
@@ -1220,6 +1230,10 @@ namespace FujitsuPayments.Forms
                     txtStart7.Enabled = true;
                     txtEnd7.Enabled = true;
                     txtEnd6.Enabled = true;
+                    cmbProject6.Enabled = true; ;
+                    cmbProject7.Enabled = true; ;
+                    cmbEmpTask7.Enabled = true; ;
+                    cmbEmpTask6.Enabled = true; ;
                 }
             }
 
@@ -1308,13 +1322,14 @@ namespace FujitsuPayments.Forms
                 DateTime[] endTime = new DateTime[numb];
                 TimeSpan[] startTimes = new TimeSpan[numb];
                 TimeSpan[] endTimes = new TimeSpan[numb];
-
+                DateTime[] dbDate = new DateTime[numb];
 
 
                 DateTime[] startTimeNew = new DateTime[numb];
                 DateTime[] endTimeNew = new DateTime[numb];
                 TimeSpan[] startTimesNew = new TimeSpan[numb];
                 TimeSpan[] endTimesNew = new TimeSpan[numb];
+                DateTime[] labelDay = new DateTime[numb];
 
                
 
@@ -1329,6 +1344,7 @@ namespace FujitsuPayments.Forms
                     endTime[x] = Convert.ToDateTime(endtime);
                     startTimes[x] = startTime[x].TimeOfDay;
                     endTimes[x] = endTime[x].TimeOfDay;
+                    dbDate[x] = Convert.ToDateTime(drProject["WorkedDay"].ToString());
 
 
                     x++;
@@ -1342,10 +1358,12 @@ namespace FujitsuPayments.Forms
                     {
                         DateTime ndt = Convert.ToDateTime(start[c].Text);
                         DateTime edt = Convert.ToDateTime(end[c].Text);
+                       
                         startTimeNew[size] = ndt;
                         endTimeNew[size] = edt;
                         startTimesNew[size] = startTimeNew[size].TimeOfDay;
                         endTimesNew[size] = endTimeNew[size].TimeOfDay;
+                        labelDay[size] = Convert.ToDateTime(date[c].Text);
 
                         size++;
                     }
@@ -1355,9 +1373,12 @@ namespace FujitsuPayments.Forms
 
                 for (int i = 0; i < numb; i++)
                 {
-                    if ((startTimesNew[i] >= startTimes[i]) && (startTimesNew[i] <= endTimes[i]) || (endTimesNew[i] >= startTimes[i]) && (endTimesNew[i] <= endTimes[i]))
+                    if (labelDay[i].CompareTo(dbDate[i]) == 0)
                     {
-                        count++;
+                        if ((startTimesNew[i] >= startTimes[i]) && (startTimesNew[i] <= endTimes[i]) || (endTimesNew[i] >= startTimes[i]) && (endTimesNew[i] <= endTimes[i]))
+                        {
+                            count++;
+                        }
                     }
                 }
 
@@ -1384,27 +1405,35 @@ namespace FujitsuPayments.Forms
 
             if (cmbEmployee.Focused == true)
             {
-                ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
-                ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
-                dsFujitsuPayments.Tables["ProjectTaskEmployee"].Clear();
-                cmdEmp.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
-
-                daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
-                for(int i = 0; i<7; i++)
-                {
+                project();
 
 
+            }
+        }
 
-                    project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                    project[i].ValueMember = "ProjectID";
-                    project[i].DisplayMember = "ProjectID";
+        private void project()
+        {
+            int numb = 0;
+            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+            ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
+            dsFujitsuPayments.Tables["ProjectTaskEmployee"].Clear();
+            cmdEmp.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
 
-                    task[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                    task[i].ValueMember = "TaskID";
-                    task[i].DisplayMember = "TaskID";
+            daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
+            for (int i = 0; i < 7; i++)
+            {
 
-                    numb++;
-                }
+
+
+                project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+                project[i].ValueMember = "ProjectID";
+                project[i].DisplayMember = "ProjectID";
+
+                task[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+                task[i].ValueMember = "TaskID";
+                task[i].DisplayMember = "TaskID";
+
+                numb++;
             }
         }
 
