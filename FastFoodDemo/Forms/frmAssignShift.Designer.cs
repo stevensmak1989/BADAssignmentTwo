@@ -136,6 +136,7 @@ namespace FujitsuPayments.Forms
             this.txtTaskID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaskID.Location = new System.Drawing.Point(497, 106);
             this.txtTaskID.Name = "txtTaskID";
+            this.txtTaskID.ReadOnly = true;
             this.txtTaskID.Size = new System.Drawing.Size(222, 26);
             this.txtTaskID.TabIndex = 51;
             // 
@@ -144,6 +145,7 @@ namespace FujitsuPayments.Forms
             this.txtAccountID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccountID.Location = new System.Drawing.Point(497, 66);
             this.txtAccountID.Name = "txtAccountID";
+            this.txtAccountID.ReadOnly = true;
             this.txtAccountID.Size = new System.Drawing.Size(222, 26);
             this.txtAccountID.TabIndex = 50;
             // 
@@ -152,6 +154,7 @@ namespace FujitsuPayments.Forms
             this.txtProjectID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProjectID.Location = new System.Drawing.Point(153, 105);
             this.txtProjectID.Name = "txtProjectID";
+            this.txtProjectID.ReadOnly = true;
             this.txtProjectID.Size = new System.Drawing.Size(222, 26);
             this.txtProjectID.TabIndex = 49;
             // 
@@ -182,6 +185,7 @@ namespace FujitsuPayments.Forms
             this.txtAssignShiftID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAssignShiftID.Location = new System.Drawing.Point(153, 66);
             this.txtAssignShiftID.Name = "txtAssignShiftID";
+            this.txtAssignShiftID.ReadOnly = true;
             this.txtAssignShiftID.Size = new System.Drawing.Size(222, 26);
             this.txtAssignShiftID.TabIndex = 44;
             // 

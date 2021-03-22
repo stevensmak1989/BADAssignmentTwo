@@ -132,6 +132,7 @@ namespace FujitsuPayments.Forms
             this.txtAccountID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccountID.Location = new System.Drawing.Point(125, 67);
             this.txtAccountID.Name = "txtAccountID";
+            this.txtAccountID.ReadOnly = true;
             this.txtAccountID.Size = new System.Drawing.Size(222, 24);
             this.txtAccountID.TabIndex = 15;
             this.txtAccountID.TextChanged += new System.EventHandler(this.txtAccountID_TextChanged);

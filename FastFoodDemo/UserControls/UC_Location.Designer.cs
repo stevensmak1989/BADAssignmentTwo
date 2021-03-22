@@ -30,6 +30,7 @@ namespace FujitsuPayments.UserControls
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Location));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDeleteLocation = new System.Windows.Forms.Button();
             this.btnEditLocation = new System.Windows.Forms.Button();
@@ -127,7 +128,16 @@ namespace FujitsuPayments.UserControls
             // 
             this.dgvLocation.AllowUserToAddRows = false;
             this.dgvLocation.AllowUserToDeleteRows = false;
+            this.dgvLocation.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvLocation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLocation.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocation.Location = new System.Drawing.Point(0, 0);
             this.dgvLocation.Name = "dgvLocation";

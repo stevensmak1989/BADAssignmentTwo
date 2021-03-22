@@ -33,6 +33,7 @@ namespace FujitsuPayments.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddShift));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.rbFullWeek = new System.Windows.Forms.RadioButton();
             this.pnlEndTime = new System.Windows.Forms.Panel();
             this.rbEtPM = new System.Windows.Forms.RadioButton();
             this.rbEtAM = new System.Windows.Forms.RadioButton();
@@ -61,7 +62,6 @@ namespace FujitsuPayments.Forms
             this.lblAccountId = new System.Windows.Forms.Label();
             this.lblAddShift = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rbFullWeek = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlEndTime.SuspendLayout();
@@ -112,6 +112,17 @@ namespace FujitsuPayments.Forms
             this.panel2.Size = new System.Drawing.Size(775, 316);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // rbFullWeek
+            // 
+            this.rbFullWeek.AutoSize = true;
+            this.rbFullWeek.Location = new System.Drawing.Point(133, 159);
+            this.rbFullWeek.Name = "rbFullWeek";
+            this.rbFullWeek.Size = new System.Drawing.Size(146, 25);
+            this.rbFullWeek.TabIndex = 38;
+            this.rbFullWeek.TabStop = true;
+            this.rbFullWeek.Text = "Select for week";
+            this.rbFullWeek.UseVisualStyleBackColor = true;
             // 
             // pnlEndTime
             // 
@@ -365,6 +376,7 @@ namespace FujitsuPayments.Forms
             this.txtShiftID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtShiftID.Location = new System.Drawing.Point(133, 60);
             this.txtShiftID.Name = "txtShiftID";
+            this.txtShiftID.ReadOnly = true;
             this.txtShiftID.Size = new System.Drawing.Size(222, 26);
             this.txtShiftID.TabIndex = 15;
             // 
@@ -434,17 +446,6 @@ namespace FujitsuPayments.Forms
             // errP
             // 
             this.errP.ContainerControl = this;
-            // 
-            // rbFullWeek
-            // 
-            this.rbFullWeek.AutoSize = true;
-            this.rbFullWeek.Location = new System.Drawing.Point(133, 159);
-            this.rbFullWeek.Name = "rbFullWeek";
-            this.rbFullWeek.Size = new System.Drawing.Size(146, 25);
-            this.rbFullWeek.TabIndex = 38;
-            this.rbFullWeek.TabStop = true;
-            this.rbFullWeek.Text = "Select for week";
-            this.rbFullWeek.UseVisualStyleBackColor = true;
             // 
             // frmAddShift
             // 

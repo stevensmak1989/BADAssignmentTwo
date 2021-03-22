@@ -31,6 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Schedule));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewShifts = new System.Windows.Forms.Button();
             this.btnEditShift = new System.Windows.Forms.Button();
@@ -171,6 +172,7 @@ namespace FujitsuPayments.UserControls
             this.btnViewShifts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnViewShifts.UseVisualStyleBackColor = true;
             this.btnViewShifts.Click += new System.EventHandler(this.btnViewShifts_Click);
+            this.btnViewShifts.MouseHover += new System.EventHandler(this.btnViewShifts_MouseHover);
             // 
             // btnEditShift
             // 
@@ -188,6 +190,7 @@ namespace FujitsuPayments.UserControls
             this.btnEditShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditShift.UseVisualStyleBackColor = true;
             this.btnEditShift.Click += new System.EventHandler(this.btnEditShift_Click);
+            this.btnEditShift.MouseHover += new System.EventHandler(this.btnEditShift_MouseHover);
             // 
             // btnDeleteShift
             // 
@@ -205,6 +208,7 @@ namespace FujitsuPayments.UserControls
             this.btnDeleteShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeleteShift.UseVisualStyleBackColor = true;
             this.btnDeleteShift.Click += new System.EventHandler(this.btnDeleteShift_Click);
+            this.btnDeleteShift.MouseHover += new System.EventHandler(this.btnDeleteShift_MouseHover);
             // 
             // btnAssignShift
             // 
@@ -222,6 +226,7 @@ namespace FujitsuPayments.UserControls
             this.btnAssignShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAssignShift.UseVisualStyleBackColor = true;
             this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click);
+            this.btnAssignShift.MouseHover += new System.EventHandler(this.btnAssignShift_MouseHover);
             // 
             // btnAddShift
             // 
@@ -239,6 +244,7 @@ namespace FujitsuPayments.UserControls
             this.btnAddShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddShift.UseVisualStyleBackColor = true;
             this.btnAddShift.Click += new System.EventHandler(this.btnAddShift_Click);
+            this.btnAddShift.MouseHover += new System.EventHandler(this.btnAddShift_MouseHover);
             // 
             // panel2
             // 
@@ -431,6 +437,14 @@ namespace FujitsuPayments.UserControls
             // 
             this.dgvShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvShift.Location = new System.Drawing.Point(686, 255);
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.ReadOnly = true;

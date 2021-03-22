@@ -104,6 +104,7 @@ namespace FujitsuPayments.Forms
             this.txtLocationID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocationID.Location = new System.Drawing.Point(124, 70);
             this.txtLocationID.Name = "txtLocationID";
+            this.txtLocationID.ReadOnly = true;
             this.txtLocationID.Size = new System.Drawing.Size(123, 26);
             this.txtLocationID.TabIndex = 34;
             // 
