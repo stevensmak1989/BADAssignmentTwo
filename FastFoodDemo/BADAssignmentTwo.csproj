@@ -253,6 +253,9 @@
     <Compile Include="UserControls\UC_Timesheet.Designer.cs">
       <DependentUpon>UC_Timesheet.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmAddLocation.resx">
+      <DependentUpon>frmAddLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddProject.resx">
       <DependentUpon>frmAddProject.cs</DependentUpon>
     </EmbeddedResource>

@@ -139,7 +139,7 @@ namespace FujitsuPayments.Forms
             }
             try
             {
-                // ----- if more than one row selected ------- // 
+                // -------------------- if more than one row is selected from Schedule---------------------- // 
                 if (UC_Schedule.moreThanOneRow == true)
                 {
                     for(int i = 0; i < UC_Schedule.selectedRow; i++)

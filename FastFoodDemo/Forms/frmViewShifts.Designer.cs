@@ -29,13 +29,15 @@ namespace FujitsuPayments.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblViewShift = new System.Windows.Forms.Label();
             this.btnDeleteShift = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.dgvEmpShiftDetails = new System.Windows.Forms.DataGridView();
             this.dgvEmpShift = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShiftDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShift)).BeginInit();
@@ -53,15 +55,26 @@ namespace FujitsuPayments.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(830, 475);
+            this.panel1.Size = new System.Drawing.Size(931, 475);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
+            this.label1.Location = new System.Drawing.Point(337, 204);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(257, 18);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Employees Assigned to those shifts";
             // 
             // lblViewShift
             // 
             this.lblViewShift.AutoSize = true;
             this.lblViewShift.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblViewShift.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblViewShift.Location = new System.Drawing.Point(354, 10);
+            this.lblViewShift.Location = new System.Drawing.Point(423, 10);
             this.lblViewShift.Name = "lblViewShift";
             this.lblViewShift.Size = new System.Drawing.Size(84, 18);
             this.lblViewShift.TabIndex = 16;
@@ -74,7 +87,7 @@ namespace FujitsuPayments.Forms
             this.btnDeleteShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteShift.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteShift.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnDeleteShift.Location = new System.Drawing.Point(591, 428);
+            this.btnDeleteShift.Location = new System.Drawing.Point(699, 427);
             this.btnDeleteShift.Name = "btnDeleteShift";
             this.btnDeleteShift.Size = new System.Drawing.Size(97, 27);
             this.btnDeleteShift.TabIndex = 15;
@@ -89,7 +102,7 @@ namespace FujitsuPayments.Forms
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnClose.Location = new System.Drawing.Point(710, 428);
+            this.btnClose.Location = new System.Drawing.Point(818, 427);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(97, 27);
             this.btnClose.TabIndex = 14;
@@ -100,40 +113,45 @@ namespace FujitsuPayments.Forms
             // dgvEmpShiftDetails
             // 
             this.dgvEmpShiftDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmpShiftDetails.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmpShiftDetails.Location = new System.Drawing.Point(18, 238);
             this.dgvEmpShiftDetails.Name = "dgvEmpShiftDetails";
             this.dgvEmpShiftDetails.ReadOnly = true;
             this.dgvEmpShiftDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpShiftDetails.Size = new System.Drawing.Size(789, 162);
+            this.dgvEmpShiftDetails.Size = new System.Drawing.Size(899, 162);
             this.dgvEmpShiftDetails.TabIndex = 1;
             // 
             // dgvEmpShift
             // 
             this.dgvEmpShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmpShift.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmpShift.Location = new System.Drawing.Point(18, 39);
             this.dgvEmpShift.Name = "dgvEmpShift";
             this.dgvEmpShift.ReadOnly = true;
             this.dgvEmpShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpShift.Size = new System.Drawing.Size(789, 162);
+            this.dgvEmpShift.Size = new System.Drawing.Size(899, 162);
             this.dgvEmpShift.TabIndex = 0;
             this.dgvEmpShift.SelectionChanged += new System.EventHandler(this.selectionChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(287, 204);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 18);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Employees Assigned to those shifts";
             // 
             // frmViewShifts
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.ClientSize = new System.Drawing.Size(840, 485);
+            this.ClientSize = new System.Drawing.Size(941, 485);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

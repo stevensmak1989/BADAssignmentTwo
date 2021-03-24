@@ -293,7 +293,11 @@ namespace FujitsuPayments.UserControls
                     lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
                     lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
                     break;
-            }     
+
+                   
+            }
+
+            btnSearchShifts_Click(sender, e);
         }
 
 
@@ -715,6 +719,31 @@ namespace FujitsuPayments.UserControls
         private void pnlMonShift3_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show(monString[2].ToString(), pnlMonShift3);
+        }
+
+        private void btnAssignShift_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select shift from table to assign to an Employee", btnAssignShift);
+        }
+
+        private void btnViewShifts_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select to view shifts and employees assigned to those shifts", btnViewShifts);
+        }
+
+        private void btnEditShift_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Edit selected shift", btnEditShift);
+        }
+
+        private void btnAddShift_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select to create a new shift", btnAddShift);
+        }
+
+        private void btnDeleteShift_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Delete selected shift", btnDeleteShift);
         }
 
         private void pnlMonShift4_MouseHover(object sender, EventArgs e)
