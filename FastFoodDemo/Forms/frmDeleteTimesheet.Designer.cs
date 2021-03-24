@@ -36,15 +36,15 @@ namespace FujitsuPayments.Forms
             this.button2 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbProjectId = new System.Windows.Forms.ComboBox();
-            this.lblTimeID = new System.Windows.Forms.Label();
-            this.lblTimesheet = new System.Windows.Forms.Label();
-            this.lblBasic = new System.Windows.Forms.Label();
-            this.lblOC = new System.Windows.Forms.Label();
-            this.lblBasicHours = new System.Windows.Forms.Label();
-            this.lblOCHours = new System.Windows.Forms.Label();
             this.lblOTHours = new System.Windows.Forms.Label();
             this.lblOT = new System.Windows.Forms.Label();
+            this.lblOCHours = new System.Windows.Forms.Label();
+            this.lblBasicHours = new System.Windows.Forms.Label();
+            this.lblOC = new System.Windows.Forms.Label();
+            this.lblBasic = new System.Windows.Forms.Label();
+            this.lblTimesheet = new System.Windows.Forms.Label();
+            this.lblTimeID = new System.Windows.Forms.Label();
+            this.cmbProjectId = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,7 @@ namespace FujitsuPayments.Forms
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panel1
             // 
@@ -124,86 +125,6 @@ namespace FujitsuPayments.Forms
             this.panel1.Size = new System.Drawing.Size(685, 359);
             this.panel1.TabIndex = 3;
             // 
-            // cmbProjectId
-            // 
-            this.cmbProjectId.FormattingEnabled = true;
-            this.cmbProjectId.Items.AddRange(new object[] {
-            "Delete All",
-            "Delete Basic Hours",
-            "Delete OnCall Hours",
-            "Delete Overtime Hours"});
-            this.cmbProjectId.Location = new System.Drawing.Point(352, 68);
-            this.cmbProjectId.Name = "cmbProjectId";
-            this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
-            this.cmbProjectId.TabIndex = 20;
-            this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
-            // 
-            // lblTimeID
-            // 
-            this.lblTimeID.AutoSize = true;
-            this.lblTimeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblTimeID.Location = new System.Drawing.Point(250, 133);
-            this.lblTimeID.Name = "lblTimeID";
-            this.lblTimeID.Size = new System.Drawing.Size(88, 16);
-            this.lblTimeID.TabIndex = 21;
-            this.lblTimeID.Text = "Timesheet ID";
-            // 
-            // lblTimesheet
-            // 
-            this.lblTimesheet.AutoSize = true;
-            this.lblTimesheet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimesheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblTimesheet.Location = new System.Drawing.Point(425, 133);
-            this.lblTimesheet.Name = "lblTimesheet";
-            this.lblTimesheet.Size = new System.Drawing.Size(12, 16);
-            this.lblTimesheet.TabIndex = 22;
-            this.lblTimesheet.Text = "-";
-            // 
-            // lblBasic
-            // 
-            this.lblBasic.AutoSize = true;
-            this.lblBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBasic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblBasic.Location = new System.Drawing.Point(250, 168);
-            this.lblBasic.Name = "lblBasic";
-            this.lblBasic.Size = new System.Drawing.Size(76, 16);
-            this.lblBasic.TabIndex = 23;
-            this.lblBasic.Text = "Total Basic";
-            // 
-            // lblOC
-            // 
-            this.lblOC.AutoSize = true;
-            this.lblOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblOC.Location = new System.Drawing.Point(250, 204);
-            this.lblOC.Name = "lblOC";
-            this.lblOC.Size = new System.Drawing.Size(82, 16);
-            this.lblOC.TabIndex = 24;
-            this.lblOC.Text = "Total OnCall";
-            // 
-            // lblBasicHours
-            // 
-            this.lblBasicHours.AutoSize = true;
-            this.lblBasicHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBasicHours.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblBasicHours.Location = new System.Drawing.Point(425, 168);
-            this.lblBasicHours.Name = "lblBasicHours";
-            this.lblBasicHours.Size = new System.Drawing.Size(12, 16);
-            this.lblBasicHours.TabIndex = 25;
-            this.lblBasicHours.Text = "-";
-            // 
-            // lblOCHours
-            // 
-            this.lblOCHours.AutoSize = true;
-            this.lblOCHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOCHours.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.lblOCHours.Location = new System.Drawing.Point(425, 204);
-            this.lblOCHours.Name = "lblOCHours";
-            this.lblOCHours.Size = new System.Drawing.Size(12, 16);
-            this.lblOCHours.TabIndex = 26;
-            this.lblOCHours.Text = "-";
-            // 
             // lblOTHours
             // 
             this.lblOTHours.AutoSize = true;
@@ -225,6 +146,86 @@ namespace FujitsuPayments.Forms
             this.lblOT.Size = new System.Drawing.Size(102, 16);
             this.lblOT.TabIndex = 27;
             this.lblOT.Text = "Total OverTime";
+            // 
+            // lblOCHours
+            // 
+            this.lblOCHours.AutoSize = true;
+            this.lblOCHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOCHours.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblOCHours.Location = new System.Drawing.Point(425, 204);
+            this.lblOCHours.Name = "lblOCHours";
+            this.lblOCHours.Size = new System.Drawing.Size(12, 16);
+            this.lblOCHours.TabIndex = 26;
+            this.lblOCHours.Text = "-";
+            // 
+            // lblBasicHours
+            // 
+            this.lblBasicHours.AutoSize = true;
+            this.lblBasicHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBasicHours.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblBasicHours.Location = new System.Drawing.Point(425, 168);
+            this.lblBasicHours.Name = "lblBasicHours";
+            this.lblBasicHours.Size = new System.Drawing.Size(12, 16);
+            this.lblBasicHours.TabIndex = 25;
+            this.lblBasicHours.Text = "-";
+            // 
+            // lblOC
+            // 
+            this.lblOC.AutoSize = true;
+            this.lblOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblOC.Location = new System.Drawing.Point(250, 204);
+            this.lblOC.Name = "lblOC";
+            this.lblOC.Size = new System.Drawing.Size(82, 16);
+            this.lblOC.TabIndex = 24;
+            this.lblOC.Text = "Total OnCall";
+            // 
+            // lblBasic
+            // 
+            this.lblBasic.AutoSize = true;
+            this.lblBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBasic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblBasic.Location = new System.Drawing.Point(250, 168);
+            this.lblBasic.Name = "lblBasic";
+            this.lblBasic.Size = new System.Drawing.Size(76, 16);
+            this.lblBasic.TabIndex = 23;
+            this.lblBasic.Text = "Total Basic";
+            // 
+            // lblTimesheet
+            // 
+            this.lblTimesheet.AutoSize = true;
+            this.lblTimesheet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimesheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblTimesheet.Location = new System.Drawing.Point(425, 133);
+            this.lblTimesheet.Name = "lblTimesheet";
+            this.lblTimesheet.Size = new System.Drawing.Size(12, 16);
+            this.lblTimesheet.TabIndex = 22;
+            this.lblTimesheet.Text = "-";
+            // 
+            // lblTimeID
+            // 
+            this.lblTimeID.AutoSize = true;
+            this.lblTimeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.lblTimeID.Location = new System.Drawing.Point(250, 133);
+            this.lblTimeID.Name = "lblTimeID";
+            this.lblTimeID.Size = new System.Drawing.Size(88, 16);
+            this.lblTimeID.TabIndex = 21;
+            this.lblTimeID.Text = "Timesheet ID";
+            // 
+            // cmbProjectId
+            // 
+            this.cmbProjectId.FormattingEnabled = true;
+            this.cmbProjectId.Items.AddRange(new object[] {
+            "Delete All",
+            "Delete Basic Hours",
+            "Delete OnCall Hours",
+            "Delete Overtime Hours"});
+            this.cmbProjectId.Location = new System.Drawing.Point(352, 68);
+            this.cmbProjectId.Name = "cmbProjectId";
+            this.cmbProjectId.Size = new System.Drawing.Size(138, 21);
+            this.cmbProjectId.TabIndex = 20;
+            this.cmbProjectId.SelectedIndexChanged += new System.EventHandler(this.cmbProjectId_SelectedIndexChanged);
             // 
             // frmDeleteTimesheet
             // 
