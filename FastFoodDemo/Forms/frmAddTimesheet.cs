@@ -582,8 +582,6 @@ namespace FujitsuPayments.Forms
 
                                 foreach (Control c in panel1.Controls)
                                 {
-
-
                                     if (c is Panel && ok)
                                     {
                                         if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
@@ -608,7 +606,6 @@ namespace FujitsuPayments.Forms
                                                 }
                                                 else
                                                 {
-
                                                     try
                                                     {
                                                         timeDets.TimesheetId = Convert.ToInt32(lblTimsheetId.Text.Trim());
@@ -654,13 +651,8 @@ namespace FujitsuPayments.Forms
                                                     }
                                                     try
                                                     {
-
-
                                                         string str = start[no].Text;
-                                                        
                                                         timeDets.StartTime = str.ToString();
-
-
                                                     }
 
                                                     catch (MyException MyEx)

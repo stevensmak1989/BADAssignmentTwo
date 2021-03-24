@@ -92,6 +92,12 @@
     <Compile Include="Forms\frmAssignShift.Designer.cs">
       <DependentUpon>frmAssignShift.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDeleteTimesheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeleteTimesheet.Designer.cs">
+      <DependentUpon>frmDeleteTimesheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAssignShift.resx">
       <DependentUpon>frmAssignShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeleteTimesheet.resx">
+      <DependentUpon>frmDeleteTimesheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>

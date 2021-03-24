@@ -95,7 +95,34 @@ namespace FujitsuPayments.UserControls
 
         private void btnTaskDel_Click(object sender, EventArgs e)
         {
+            // condition to check if a row has been selected to pass to edit form
+            if (dvgTimesheetDets.SelectedRows.Count == 0)
+            {
+                timeSelected = false;
+                timeNoSelected = 0;
+                MessageBox.Show("Please select a record.", "Select Timesheet");
+            }
+            else if (dvgTimesheetDets.SelectedRows.Count > 1)
+            {
+                timeSelected = false;
+                timeNoSelected = 0;
+                MessageBox.Show("Please select a single record, cannot edit multiple records", "Select Timesheet");
 
+            }
+
+            else if (dvgTimesheetDets.SelectedRows.Count == 1)
+            {
+                timeSelected = true;
+                timeNoSelected = Convert.ToInt32(dvgTimesheetDets.SelectedRows[0].Cells[0].Value);
+
+                frmDeleteTimesheet frm = new frmDeleteTimesheet();
+                frm.TopLevel = false;
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.Visible = true;
+                frm.Location = new Point(2, 25);
+                this.Controls.Add(frm);
+                frm.BringToFront();
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
