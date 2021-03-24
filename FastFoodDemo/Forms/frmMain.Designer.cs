@@ -32,13 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTimeSheet = new System.Windows.Forms.Button();
             this.btnOvertime = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.btnOnCall = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnProject = new System.Windows.Forms.Button();
@@ -66,7 +64,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
             this.panel2.Controls.Add(this.btnClose);
-            this.panel2.Controls.Add(this.button12);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(85, 0);
             this.panel2.Name = "panel2";
@@ -89,22 +86,6 @@
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // button12
-            // 
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(1012, 0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(40, 25);
-            this.button12.TabIndex = 4;
-            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // pnlForm
             // 
@@ -172,22 +153,6 @@
             this.btnOvertime.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOvertime.UseVisualStyleBackColor = true;
             this.btnOvertime.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button14
-            // 
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 127);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(46, 46);
-            this.button14.TabIndex = 4;
-            this.button14.Text = "?";
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // btnOnCall
             // 
@@ -302,7 +267,6 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.pnlDropDown);
             this.flowLayoutPanel1.Controls.Add(this.btnLocation);
-            this.flowLayoutPanel1.Controls.Add(this.button14);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 341);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 641);
@@ -420,13 +384,11 @@
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnTimeSheet;
         private System.Windows.Forms.Button btnOvertime;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnOnCall;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnProject;

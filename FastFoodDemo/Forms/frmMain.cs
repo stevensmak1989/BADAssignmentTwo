@@ -128,11 +128,6 @@ namespace FujitsuPayments
             addControls(uc);
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button14_Click(object sender, EventArgs e)
         {
             UC_Main um = new UC_Main();
