@@ -18,48 +18,7 @@ namespace FujitsuPayments.Forms
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBClaim, cmbBEmp, cmbBTimesheet, cmbBTimeDets, cmbBCost;
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
-            int numb = 0;
-            foreach (DataRow row in dt.Rows)
-            {
-                numb++;
-            }
-
-            if (numb != 0)
-            {
-
-
-
-                string tempName = drClaim["TimesheetID"].ToString() + "\'s";
-                if (MessageBox.Show("Are you sure you want to delete all claims for " + tempName + "?", "Delete timesheet", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    drClaim.Delete();
-                    daTimesheet.Update(dsFujitsuPayments, "Timesheet");
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        object[] primaryKey = new object[3];
-
-                        primaryKey[0] = row.Field<int>("TimesheetID");
-                        primaryKey[1] = row.Field<DateTime>("WorkedDay");
-                        primaryKey[2] = row.Field<TimeSpan>("StartTime");
-
-
-
-                        drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
-                        drTimeDets.Delete();
-                        daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("There are no remaining hours for this claim");
-            }
-
-        }
+        private Boolean repeat = false; 
 
         SqlCommand cmdEmp, cmdProj, cmdCount;
         DataRow drProject, drCount, drClaim, drTimeDets;
@@ -102,6 +61,10 @@ namespace FujitsuPayments.Forms
         {
             if (cmbProjectId.Focused == true)
             {
+                if(repeat == true)
+                {
+                    daProject.Dispose();
+                }
 
                 int index = (int)cmbProjectId.SelectedIndex;
                 int timeID = (int)UC_Timesheet.timeNoSelected;
@@ -143,7 +106,7 @@ namespace FujitsuPayments.Forms
 
                         break;
                     case 2:
-                        sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet and ClaimTypeID = 2";
+                        sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet and ClaimTypeID = 3";
                         conn = new SqlConnection(connStr);
                         cmdProj = new SqlCommand(sqlProject, conn);
                         cmdProj.Parameters.Add("@Timesheet", SqlDbType.Int);
@@ -159,7 +122,7 @@ namespace FujitsuPayments.Forms
 
                         break;
                     case 3:
-                        sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet and ClaimTypeID = 3";
+                        sqlProject = @"Select  * from TimesheetDetails where TimesheetID = @Timesheet and ClaimTypeID = 2";
                         conn = new SqlConnection(connStr);
                         cmdProj = new SqlCommand(sqlProject, conn);
                         cmdProj.Parameters.Add("@Timesheet", SqlDbType.Int);
@@ -179,6 +142,61 @@ namespace FujitsuPayments.Forms
 
 
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
+            int numb = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                numb++;
+            }
+
+            if (numb != 0)
+            {
+
+
+
+                string tempName = drClaim["TimesheetID"].ToString() + "\'s";
+                if (MessageBox.Show("Are you sure you want to delete claims for " + tempName + "?", "Delete timesheet", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if ((int)cmbProjectId.SelectedIndex == 0)
+                    {
+                        drClaim.Delete();
+                        daTimesheet.Update(dsFujitsuPayments, "Timesheet");
+                    }
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        object[] primaryKey = new object[3];
+
+                        primaryKey[0] = row.Field<int>("TimesheetID");
+                        primaryKey[1] = row.Field<DateTime>("WorkedDay");
+                        primaryKey[2] = row.Field<TimeSpan>("StartTime");
+
+
+
+                        drTimeDets = dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Find(primaryKey);
+                        drTimeDets.Delete();
+                        daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
+                    }
+
+                    repeat = true;
+                    timesheetHours();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("There are no remaining hours for this claim, would you like to exit?", "Exit Timesheet", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+
+                {
+                    this.Dispose();
+                }
+                    
+                
+            }
+
         }
 
         private void timesheetHours()
