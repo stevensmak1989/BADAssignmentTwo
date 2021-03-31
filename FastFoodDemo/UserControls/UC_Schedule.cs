@@ -63,7 +63,7 @@ namespace FujitsuPayments.UserControls
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
             // ---------------- set up adapter for shift data grid view ------------------------ //
             sqlEmpShift = @"SET DATEFIRST 1 -- Define beginning of week as Monday
-                        SELECT ShiftID,AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime 
+                        SELECT ShiftID, AccountID, ProjectID, TaskID, StartDate, StartTime, EndTime 
                         FROM EmployeeShift
                         WHERE AccountID like @AccountID
                         And ProjectID like @ProjectID and TaskID like @TaskID

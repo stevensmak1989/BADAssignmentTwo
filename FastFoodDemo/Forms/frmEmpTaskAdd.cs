@@ -19,6 +19,11 @@ namespace FujitsuPayments.Forms
         SqlCommand cmdTask;
         DataRow drProject, drTask, drEmp, drEmpTask;
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void cmbEmp_SelectedIndexChanged(object sender, EventArgs e)
         {
 
