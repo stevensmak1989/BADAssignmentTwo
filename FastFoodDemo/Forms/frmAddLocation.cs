@@ -143,10 +143,10 @@ namespace FujitsuPayments.Forms
                 {
                     if (ok)
                     {
-                        drLocation = dsFujitsuPayments.Tables["Location"].NewRow();
+                        drLocation = dsFujitsuPayments.Tables["OfficeLocation"].NewRow();
 
                         drLocation["LocationID"] = myLocation.LocationId;
-                        drLocation["ClientName"] = myLocation.LocationName;
+                        drLocation["LocationName"] = myLocation.LocationName;
                         drLocation["Street"] = myLocation.Street;
                         drLocation["Town"] = myLocation.Town;
                         drLocation["County"] = myLocation.County;
@@ -154,8 +154,8 @@ namespace FujitsuPayments.Forms
                         drLocation["TelNo"] = myLocation.TelNo;
 
 
-                        dsFujitsuPayments.Tables["Location"].Rows.Add(drLocation);
-                        daLocation.Update(dsFujitsuPayments, "Location");
+                        dsFujitsuPayments.Tables["OfficeLocation"].Rows.Add(drLocation);
+                        daLocation.Update(dsFujitsuPayments, "OfficeLocation");
 
                         MessageBox.Show("Location Added");
                         this.Dispose();

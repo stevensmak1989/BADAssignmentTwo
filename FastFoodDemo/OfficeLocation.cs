@@ -36,12 +36,12 @@ namespace FujitsuPayments
             get { return locationName; }
             set
             {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validForename(value))
+                if (MyValidation.validLength(value, 2, 5))
                 {
-                    locationName = MyValidation.firstLetterEachWordToUpper(value);
+                    locationName = MyValidation.EachLetterToUpper(value);
                 }
                 else
-                    throw new MyException("Location Name must be 2-20 letters.");
+                    throw new MyException("Location Name must be 5 characters.");
             }
         }
 
