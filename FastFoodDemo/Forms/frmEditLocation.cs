@@ -143,7 +143,7 @@ namespace FujitsuPayments.Forms
                         drLocation.BeginEdit();
 
                         drLocation["LocationID"] = myLocation.LocationId;
-                        drLocation["ClientName"] = myLocation.LocationName;
+                        drLocation["LocationName"] = myLocation.LocationName;
                         drLocation["Street"] = myLocation.Street;
                         drLocation["Town"] = myLocation.Town;
                         drLocation["County"] = myLocation.County;

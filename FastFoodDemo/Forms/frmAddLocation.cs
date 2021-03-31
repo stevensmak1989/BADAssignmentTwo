@@ -157,7 +157,7 @@ namespace FujitsuPayments.Forms
                         dsFujitsuPayments.Tables["OfficeLocation"].Rows.Add(drLocation);
                         daLocation.Update(dsFujitsuPayments, "OfficeLocation");
 
-                        MessageBox.Show("Location Added");
+                        MessageBox.Show("Location Added");                       
                         this.Dispose();
                     }
                 }

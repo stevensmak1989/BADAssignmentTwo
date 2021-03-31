@@ -36,7 +36,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTimeSheet = new System.Windows.Forms.Button();
-            this.btnOvertime = new System.Windows.Forms.Button();
             this.btnOnCall = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnProject = new System.Windows.Forms.Button();
@@ -137,23 +136,6 @@
             this.btnTimeSheet.UseVisualStyleBackColor = true;
             this.btnTimeSheet.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnOvertime
-            // 
-            this.btnOvertime.FlatAppearance.BorderSize = 0;
-            this.btnOvertime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOvertime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOvertime.ForeColor = System.Drawing.Color.White;
-            this.btnOvertime.Image = ((System.Drawing.Image)(resources.GetObject("btnOvertime.Image")));
-            this.btnOvertime.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOvertime.Location = new System.Drawing.Point(7, 93);
-            this.btnOvertime.Name = "btnOvertime";
-            this.btnOvertime.Size = new System.Drawing.Size(72, 56);
-            this.btnOvertime.TabIndex = 4;
-            this.btnOvertime.Text = " Claims";
-            this.btnOvertime.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOvertime.UseVisualStyleBackColor = true;
-            this.btnOvertime.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnOnCall
             // 
             this.btnOnCall.FlatAppearance.BorderSize = 0;
@@ -162,7 +144,7 @@
             this.btnOnCall.ForeColor = System.Drawing.Color.White;
             this.btnOnCall.Image = ((System.Drawing.Image)(resources.GetObject("btnOnCall.Image")));
             this.btnOnCall.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOnCall.Location = new System.Drawing.Point(7, 155);
+            this.btnOnCall.Location = new System.Drawing.Point(7, 93);
             this.btnOnCall.Name = "btnOnCall";
             this.btnOnCall.Size = new System.Drawing.Size(72, 56);
             this.btnOnCall.TabIndex = 4;
@@ -179,7 +161,7 @@
             this.btnEmployee.ForeColor = System.Drawing.Color.White;
             this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEmployee.Location = new System.Drawing.Point(7, 217);
+            this.btnEmployee.Location = new System.Drawing.Point(7, 155);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(72, 56);
             this.btnEmployee.TabIndex = 4;
@@ -222,7 +204,7 @@
             this.btnCustomer.ForeColor = System.Drawing.Color.White;
             this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
             this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCustomer.Location = new System.Drawing.Point(7, 279);
+            this.btnCustomer.Location = new System.Drawing.Point(7, 217);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(72, 56);
             this.btnCustomer.TabIndex = 5;
@@ -249,13 +231,13 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            this.pnlMenu.Controls.Add(this.btnLocation);
             this.pnlMenu.Controls.Add(this.flowLayoutPanel1);
             this.pnlMenu.Controls.Add(this.pictureBox1);
             this.pnlMenu.Controls.Add(this.btnCustomer);
             this.pnlMenu.Controls.Add(this.SidePanel);
             this.pnlMenu.Controls.Add(this.btnEmployee);
             this.pnlMenu.Controls.Add(this.btnOnCall);
-            this.pnlMenu.Controls.Add(this.btnOvertime);
             this.pnlMenu.Controls.Add(this.btnTimeSheet);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
@@ -266,7 +248,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.pnlDropDown);
-            this.flowLayoutPanel1.Controls.Add(this.btnLocation);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 341);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 641);
@@ -283,7 +264,7 @@
             this.pnlDropDown.MaximumSize = new System.Drawing.Size(89, 140);
             this.pnlDropDown.MinimumSize = new System.Drawing.Size(89, 56);
             this.pnlDropDown.Name = "pnlDropDown";
-            this.pnlDropDown.Size = new System.Drawing.Size(89, 56);
+            this.pnlDropDown.Size = new System.Drawing.Size(89, 57);
             this.pnlDropDown.TabIndex = 6;
             this.pnlDropDown.Click += new System.EventHandler(this.btnProject_Click);
             // 
@@ -346,7 +327,7 @@
             this.btnLocation.ForeColor = System.Drawing.Color.White;
             this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
             this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLocation.Location = new System.Drawing.Point(3, 65);
+            this.btnLocation.Location = new System.Drawing.Point(7, 279);
             this.btnLocation.Name = "btnLocation";
             this.btnLocation.Size = new System.Drawing.Size(72, 56);
             this.btnLocation.TabIndex = 8;
@@ -388,7 +369,6 @@
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnTimeSheet;
-        private System.Windows.Forms.Button btnOvertime;
         private System.Windows.Forms.Button btnOnCall;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnProject;
