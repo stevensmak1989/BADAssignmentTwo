@@ -51,7 +51,7 @@ private Boolean replay = false, Start = false;
            UC_Timesheet.buttons = false;
 
             //UC_Timesheet frm1 = new UC_Timesheet();
-            UC_Timesheet.button();
+           // UC_Timesheet.button();
             this.Dispose();
 
         }

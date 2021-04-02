@@ -47,7 +47,7 @@ namespace FujitsuPayments.UserControls
             // resize the datagridview columns to fit the newly loaded content
             //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
-        public static  void button()
+        public   void button()
         {
             if (buttons == true)
             {
