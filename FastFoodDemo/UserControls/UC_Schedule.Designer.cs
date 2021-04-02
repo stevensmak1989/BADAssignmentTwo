@@ -31,7 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Schedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewShifts = new System.Windows.Forms.Button();
             this.btnEditShift = new System.Windows.Forms.Button();
@@ -437,19 +437,19 @@ namespace FujitsuPayments.UserControls
             // 
             this.dgvShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvShift.Location = new System.Drawing.Point(686, 255);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvShift.Location = new System.Drawing.Point(686, 247);
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.ReadOnly = true;
             this.dgvShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShift.Size = new System.Drawing.Size(399, 214);
+            this.dgvShift.Size = new System.Drawing.Size(390, 230);
             this.dgvShift.TabIndex = 6;
             this.dgvShift.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellContentClick);
             this.dgvShift.SelectionChanged += new System.EventHandler(this.DataGridSelectionChanged);
@@ -457,6 +457,7 @@ namespace FujitsuPayments.UserControls
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.dgvShift);
             this.panel3.Controls.Add(this.btnReset);
             this.panel3.Controls.Add(this.btnSearchShifts);
             this.panel3.Controls.Add(this.cmbAccountId);
@@ -466,7 +467,6 @@ namespace FujitsuPayments.UserControls
             this.panel3.Controls.Add(this.cmbProjectId);
             this.panel3.Controls.Add(this.lblProjectId);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.dgvShift);
             this.panel3.Controls.Add(this.panel40);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.calShift);
@@ -859,7 +859,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlMonShift4
             // 
-            this.pnlMonShift4.BackColor = System.Drawing.Color.Chartreuse;
+            this.pnlMonShift4.BackColor = System.Drawing.Color.LightCoral;
             this.pnlMonShift4.Location = new System.Drawing.Point(60, 1760);
             this.pnlMonShift4.Name = "pnlMonShift4";
             this.pnlMonShift4.Size = new System.Drawing.Size(20, 160);
@@ -868,7 +868,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlMonShift3
             // 
-            this.pnlMonShift3.BackColor = System.Drawing.Color.Orange;
+            this.pnlMonShift3.BackColor = System.Drawing.Color.IndianRed;
             this.pnlMonShift3.Location = new System.Drawing.Point(40, 1680);
             this.pnlMonShift3.Name = "pnlMonShift3";
             this.pnlMonShift3.Size = new System.Drawing.Size(20, 80);
@@ -877,7 +877,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlMonShift2
             // 
-            this.pnlMonShift2.BackColor = System.Drawing.Color.LightCoral;
+            this.pnlMonShift2.BackColor = System.Drawing.Color.Red;
             this.pnlMonShift2.Location = new System.Drawing.Point(20, 1760);
             this.pnlMonShift2.Name = "pnlMonShift2";
             this.pnlMonShift2.Size = new System.Drawing.Size(20, 80);
@@ -907,7 +907,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlTueShift4
             // 
-            this.pnlTueShift4.BackColor = System.Drawing.Color.Lime;
+            this.pnlTueShift4.BackColor = System.Drawing.Color.Brown;
             this.pnlTueShift4.Location = new System.Drawing.Point(60, 520);
             this.pnlTueShift4.Name = "pnlTueShift4";
             this.pnlTueShift4.Size = new System.Drawing.Size(20, 320);
@@ -916,7 +916,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlTueShift3
             // 
-            this.pnlTueShift3.BackColor = System.Drawing.Color.Goldenrod;
+            this.pnlTueShift3.BackColor = System.Drawing.Color.RosyBrown;
             this.pnlTueShift3.Location = new System.Drawing.Point(40, 560);
             this.pnlTueShift3.Name = "pnlTueShift3";
             this.pnlTueShift3.Size = new System.Drawing.Size(20, 320);
@@ -925,7 +925,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlTueShift2
             // 
-            this.pnlTueShift2.BackColor = System.Drawing.Color.Salmon;
+            this.pnlTueShift2.BackColor = System.Drawing.Color.IndianRed;
             this.pnlTueShift2.Location = new System.Drawing.Point(20, 400);
             this.pnlTueShift2.Name = "pnlTueShift2";
             this.pnlTueShift2.Size = new System.Drawing.Size(20, 320);
@@ -934,7 +934,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlTueShift1
             // 
-            this.pnlTueShift1.BackColor = System.Drawing.Color.Maroon;
+            this.pnlTueShift1.BackColor = System.Drawing.Color.LightCoral;
             this.pnlTueShift1.Location = new System.Drawing.Point(0, 320);
             this.pnlTueShift1.Name = "pnlTueShift1";
             this.pnlTueShift1.Size = new System.Drawing.Size(20, 320);
@@ -964,7 +964,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlWedShift3
             // 
-            this.pnlWedShift3.BackColor = System.Drawing.Color.Gold;
+            this.pnlWedShift3.BackColor = System.Drawing.Color.DarkRed;
             this.pnlWedShift3.Location = new System.Drawing.Point(40, 400);
             this.pnlWedShift3.Name = "pnlWedShift3";
             this.pnlWedShift3.Size = new System.Drawing.Size(20, 320);
@@ -973,7 +973,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlWedShift2
             // 
-            this.pnlWedShift2.BackColor = System.Drawing.Color.Lime;
+            this.pnlWedShift2.BackColor = System.Drawing.Color.Gray;
             this.pnlWedShift2.Location = new System.Drawing.Point(20, 560);
             this.pnlWedShift2.Name = "pnlWedShift2";
             this.pnlWedShift2.Size = new System.Drawing.Size(20, 320);
@@ -982,7 +982,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlWedShift1
             // 
-            this.pnlWedShift1.BackColor = System.Drawing.Color.Maroon;
+            this.pnlWedShift1.BackColor = System.Drawing.Color.IndianRed;
             this.pnlWedShift1.Location = new System.Drawing.Point(0, 400);
             this.pnlWedShift1.Name = "pnlWedShift1";
             this.pnlWedShift1.Size = new System.Drawing.Size(20, 320);
@@ -1003,7 +1003,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlThuShift4
             // 
-            this.pnlThuShift4.BackColor = System.Drawing.Color.Aqua;
+            this.pnlThuShift4.BackColor = System.Drawing.Color.Gray;
             this.pnlThuShift4.Location = new System.Drawing.Point(60, 560);
             this.pnlThuShift4.Name = "pnlThuShift4";
             this.pnlThuShift4.Size = new System.Drawing.Size(20, 320);
@@ -1012,7 +1012,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlThuShift3
             // 
-            this.pnlThuShift3.BackColor = System.Drawing.Color.Pink;
+            this.pnlThuShift3.BackColor = System.Drawing.Color.IndianRed;
             this.pnlThuShift3.Location = new System.Drawing.Point(40, 480);
             this.pnlThuShift3.Name = "pnlThuShift3";
             this.pnlThuShift3.Size = new System.Drawing.Size(20, 320);
@@ -1021,7 +1021,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlThuShift2
             // 
-            this.pnlThuShift2.BackColor = System.Drawing.Color.Violet;
+            this.pnlThuShift2.BackColor = System.Drawing.Color.LightCoral;
             this.pnlThuShift2.Location = new System.Drawing.Point(20, 320);
             this.pnlThuShift2.Name = "pnlThuShift2";
             this.pnlThuShift2.Size = new System.Drawing.Size(20, 320);
@@ -1051,7 +1051,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlFriShift4
             // 
-            this.pnlFriShift4.BackColor = System.Drawing.Color.Violet;
+            this.pnlFriShift4.BackColor = System.Drawing.Color.Red;
             this.pnlFriShift4.Location = new System.Drawing.Point(60, 640);
             this.pnlFriShift4.Name = "pnlFriShift4";
             this.pnlFriShift4.Size = new System.Drawing.Size(20, 320);
@@ -1060,7 +1060,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlFriShift3
             // 
-            this.pnlFriShift3.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnlFriShift3.BackColor = System.Drawing.Color.IndianRed;
             this.pnlFriShift3.Location = new System.Drawing.Point(40, 560);
             this.pnlFriShift3.Name = "pnlFriShift3";
             this.pnlFriShift3.Size = new System.Drawing.Size(20, 320);
@@ -1069,7 +1069,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlFriShift2
             // 
-            this.pnlFriShift2.BackColor = System.Drawing.Color.Yellow;
+            this.pnlFriShift2.BackColor = System.Drawing.Color.RosyBrown;
             this.pnlFriShift2.Location = new System.Drawing.Point(20, 480);
             this.pnlFriShift2.Name = "pnlFriShift2";
             this.pnlFriShift2.Size = new System.Drawing.Size(20, 320);
@@ -1078,7 +1078,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlFriShift1
             // 
-            this.pnlFriShift1.BackColor = System.Drawing.Color.Red;
+            this.pnlFriShift1.BackColor = System.Drawing.Color.LightCoral;
             this.pnlFriShift1.Location = new System.Drawing.Point(0, 560);
             this.pnlFriShift1.Name = "pnlFriShift1";
             this.pnlFriShift1.Size = new System.Drawing.Size(20, 320);
@@ -1099,7 +1099,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSatShift4
             // 
-            this.pnlSatShift4.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlSatShift4.BackColor = System.Drawing.Color.Gray;
             this.pnlSatShift4.Location = new System.Drawing.Point(60, 560);
             this.pnlSatShift4.Name = "pnlSatShift4";
             this.pnlSatShift4.Size = new System.Drawing.Size(20, 320);
@@ -1108,7 +1108,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSatShift3
             // 
-            this.pnlSatShift3.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlSatShift3.BackColor = System.Drawing.Color.RosyBrown;
             this.pnlSatShift3.Location = new System.Drawing.Point(40, 480);
             this.pnlSatShift3.Name = "pnlSatShift3";
             this.pnlSatShift3.Size = new System.Drawing.Size(20, 320);
@@ -1117,7 +1117,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSatShift2
             // 
-            this.pnlSatShift2.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlSatShift2.BackColor = System.Drawing.Color.LightCoral;
             this.pnlSatShift2.Location = new System.Drawing.Point(20, 400);
             this.pnlSatShift2.Name = "pnlSatShift2";
             this.pnlSatShift2.Size = new System.Drawing.Size(20, 320);
@@ -1126,7 +1126,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSatShift1
             // 
-            this.pnlSatShift1.BackColor = System.Drawing.Color.Plum;
+            this.pnlSatShift1.BackColor = System.Drawing.Color.Maroon;
             this.pnlSatShift1.Location = new System.Drawing.Point(0, 400);
             this.pnlSatShift1.Name = "pnlSatShift1";
             this.pnlSatShift1.Size = new System.Drawing.Size(20, 320);
@@ -1147,7 +1147,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSunShift4
             // 
-            this.pnlSunShift4.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.pnlSunShift4.BackColor = System.Drawing.Color.Firebrick;
             this.pnlSunShift4.Location = new System.Drawing.Point(60, 560);
             this.pnlSunShift4.Name = "pnlSunShift4";
             this.pnlSunShift4.Size = new System.Drawing.Size(20, 320);
@@ -1156,7 +1156,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSunShift3
             // 
-            this.pnlSunShift3.BackColor = System.Drawing.Color.GreenYellow;
+            this.pnlSunShift3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.pnlSunShift3.Location = new System.Drawing.Point(40, 720);
             this.pnlSunShift3.Name = "pnlSunShift3";
             this.pnlSunShift3.Size = new System.Drawing.Size(20, 320);
@@ -1166,7 +1166,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSunShift2
             // 
-            this.pnlSunShift2.BackColor = System.Drawing.Color.Orange;
+            this.pnlSunShift2.BackColor = System.Drawing.Color.LightCoral;
             this.pnlSunShift2.Location = new System.Drawing.Point(20, 800);
             this.pnlSunShift2.Name = "pnlSunShift2";
             this.pnlSunShift2.Size = new System.Drawing.Size(20, 320);
@@ -1175,7 +1175,7 @@ namespace FujitsuPayments.UserControls
             // 
             // pnlSunShift1
             // 
-            this.pnlSunShift1.BackColor = System.Drawing.Color.Orange;
+            this.pnlSunShift1.BackColor = System.Drawing.Color.IndianRed;
             this.pnlSunShift1.Location = new System.Drawing.Point(0, 560);
             this.pnlSunShift1.Name = "pnlSunShift1";
             this.pnlSunShift1.Size = new System.Drawing.Size(20, 320);

@@ -36,8 +36,8 @@ namespace FujitsuPayments
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btnOvertime.Height;
-            SidePanel.Top = btnOvertime.Top;
+           // SidePanel.Height = btnOvertime.Height;
+           // SidePanel.Top = btnOvertime.Top;
 
         }
        
@@ -94,7 +94,7 @@ namespace FujitsuPayments
         {
 
             SidePanel.Height = btnProject.Height;
-            SidePanel.Top = btnProject.Top;
+            SidePanel.Top = btnProject.Top; 
             timer1.Start();
             timer1_Tick(sender,e);
 
@@ -120,7 +120,7 @@ namespace FujitsuPayments
             addControls(uc);
         }
 
-        private void btnMore_Click(object sender, EventArgs e) // location button
+        private void  btnMore_Click(object sender, EventArgs e) // location button
         {
             SidePanel.Height = btnLocation.Height;
             SidePanel.Top = btnLocation.Top;
@@ -181,6 +181,7 @@ namespace FujitsuPayments
         private void btnTask_Click(object sender, EventArgs e)
         {
             SidePanel.Height = btnTask.Height;
+            //SidePanel.Height = pnlDropDown.Height;
             SidePanel.Top = btnTask.Top;
             UC_Task uc = new UC_Task();
             addControls(uc);

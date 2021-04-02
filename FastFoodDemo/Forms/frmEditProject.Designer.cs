@@ -275,6 +275,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose.TabIndex = 13;
             this.btnEmpClose.Text = "Close";
             this.btnEmpClose.UseVisualStyleBackColor = true;
+            this.btnEmpClose.Click += new System.EventHandler(this.btnEmpClose_Click);
             // 
             // btnPrjSave
             // 

@@ -21,6 +21,11 @@ namespace FujitsuPayments.Forms
         DataRow drProject, drTask;
         String connStr, sqlProject, sqlTask;
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             ProjectTask myProject = new ProjectTask();
