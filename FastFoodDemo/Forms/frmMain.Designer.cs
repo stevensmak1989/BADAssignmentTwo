@@ -213,6 +213,7 @@
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Size = new System.Drawing.Size(7, 54);
             this.SidePanel.TabIndex = 4;
+            this.SidePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SidePanel_Paint);
             // 
             // btnCustomer
             // 
@@ -278,7 +279,7 @@
             this.pnlDropDown.Controls.Add(this.btnTask);
             this.pnlDropDown.Controls.Add(this.button1);
             this.pnlDropDown.Controls.Add(this.btnProject);
-            this.pnlDropDown.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlDropDown.Location = new System.Drawing.Point(3, 3);
             this.pnlDropDown.MaximumSize = new System.Drawing.Size(89, 140);
             this.pnlDropDown.MinimumSize = new System.Drawing.Size(89, 56);

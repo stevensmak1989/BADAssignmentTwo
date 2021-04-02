@@ -137,12 +137,11 @@ namespace FujitsuPayments.UserControls
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAddTimesheet;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgTimesheetDets;
         private System.Windows.Forms.Button btnTaskDel;
         private System.Windows.Forms.Button btnTimesheetEdit;
+        public System.Windows.Forms.Button btnAddTimesheet;
     }
 }

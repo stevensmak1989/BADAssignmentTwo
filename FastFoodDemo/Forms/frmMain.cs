@@ -191,5 +191,10 @@ namespace FujitsuPayments
             UC_EmpProTask uc = new UC_EmpProTask();
             addControls(uc);
         }
+
+        private void SidePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

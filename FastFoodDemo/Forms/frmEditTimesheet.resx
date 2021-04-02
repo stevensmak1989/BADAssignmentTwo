@@ -117,7 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbSelected.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAORJREFUWEft1jEKg0AUhOHc00YU9TpWtt7JQgtFL6JOmLCBVObtvrcsiH+XbDFf
+        RMi+kLgHcB/AsiwYhsF9kmcC4HhVVcjzHNu2uW9lqQHjOKIoCmRZhr7vcZ6nO5GlAmjHWTDAYpwFAazG
+        mTfAcpx5AazHmRgQY5yJALHG2V/ANE3RxtklYF1X1HX9Ge+6DsdxuBO7LgH89WVZpgOw36fQti32fXcn
+        NoleQiKapomCEAEY/+ViIMQAFgPhBWDWCG8As0QEAZgVIhjALBAqANMi1AA2z3O6S+k3IpJdyzU9gMQA
+        4A0kDnoXF57qgQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>364, 17</value>
+  </metadata>
   <metadata name="errP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>451, 17</value>
+  </metadata>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>524, 17</value>
   </metadata>
 </root>

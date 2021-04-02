@@ -1,4 +1,5 @@
 ﻿using FujistuPayments;
+using FujitsuPayments.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,12 +25,380 @@ namespace FujitsuPayments.Forms
         String connStr, sqlProject,  sqlEmp, sqlEmpTask, sqlClaim, sqlMan, sqlTimesheet, sqlTimeDets, sqlCost, sqlCount;
         SqlConnection conn;
         private double count;
+private Boolean replay = false, Start = false;
+        int location = 0;
 
-        private Boolean replay = false;
+
         private int no;
 
 
-        private void cmbEmpTask6_SelectedIndexChanged(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Red, ButtonBorderStyle.Solid) ;
+            //ControlPaint.DrawBorder(e.Graphics, this.panel2.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
+            //ControlPaint.DrawBorder(e.Graphics, this.panel3.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
+            //ControlPaint.DrawBorder(e.Graphics, this.panel4.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
+
+            
+         
+           
+           
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+           UC_Timesheet.buttons = false;
+
+            //UC_Timesheet frm1 = new UC_Timesheet();
+            UC_Timesheet.button();
+            this.Dispose();
+
+        }
+
+        private void cmbDates_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWeekNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblClaimType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbClaimType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbCostCentID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCostCentreID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbApprovedBy_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblApprovedBy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTimsheetId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTimesheetId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmployee_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmpID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel12_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lvPastHours_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel11_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateSun_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask7_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSun_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateSat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask6_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateFri_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask5_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFri_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblDateMon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask4_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateThur_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblThur_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateWed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask3_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbProject2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEmpTask2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateTue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbSelected_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel16_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtStart_TextChanged(object sender, EventArgs e)
+        {
+
+            TextBox[] start = { txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6, txtStart7 };
+            TextBox[] end = { txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6, txtEnd7 };
+            Panel[] pnl = { panel5, panel6, panel7, panel8, panel9, panel10, panel11 };
+            //gets the name from the sender to compare;
+            string name = ((TextBox)sender).Name;
+            String loc = "";
+           
+            for (int i = 0; i <7; i ++)
+            {
+                if(name.CompareTo(start[i].Name) ==0 || name.CompareTo(end[i].Name) ==0)
+                {
+                    location = i;
+                    Start = true;
+                }
+            }
+            Panel pNew = pnl[location];
+            //MessageBox.Show(Convert.ToString(pnl[location].Height));
+            pbSelected.Height = pNew.Height;
+            int Y = pNew.Location.Y;
+            pbSelected.Location = new Point(568, Y);
+            pbSelected.Height = pNew.Location.Y;
+        }
+       
+        private void panel_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+
+            private void cmbEmpTask6_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -258,6 +627,8 @@ namespace FujitsuPayments.Forms
             }
         }
 
+
+      
         // public static int Compare(TimeSpan t1, TimeSpan t2);
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -1091,7 +1462,7 @@ namespace FujitsuPayments.Forms
 
         private void frmAddTimesheet_Load(object sender, EventArgs e)
         {
-
+            
             setDates(0);
             findMondays();
 
