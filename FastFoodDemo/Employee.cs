@@ -9,9 +9,9 @@ namespace FujitsuPayments
     class Employee
     {
         private int employeeId, managerId, manager;
-        private String title, surname, forename, street, town, county, country, postcode, telNo, grade;
+        private String title, surname, forename, street, town, county, country, postcode, telNo, grade, salary;
         private DateTime DOB;
-        private Decimal salary;
+       
 
 
         public Employee()
@@ -19,11 +19,11 @@ namespace FujitsuPayments
             employeeId = 0; managerId = 0; manager = 0;
             title = ""; surname = ""; forename = ""; street = ""; town = ""; county = ""; country = ""; postcode = ""; telNo = ""; grade = "";
             DOB = new DateTime(1999, 01, 01);
-            salary = 0;
+            salary = "";
         }
 
         public Employee(int employeeId, int managerId,int manager, String title, String surname, String forename, String street, String town, String county,
-            String country, String postcode, String telNo, String grade, DateTime DOB, Decimal salary)
+            String country, String postcode, String telNo, String grade, DateTime DOB, String salary)
         {
             this.employeeId = employeeId; this.managerId = managerId; this.manager = manager; ;
             this.title = title; this.surname = surname; this.forename = forename; this.street = street; this.town = town; this.county = county; this.country = country; this.postcode = postcode; this.telNo = telNo; this.grade = grade;
@@ -65,12 +65,12 @@ namespace FujitsuPayments
             get { return surname; }
             set
             {
-                if (MyValidation.validLength(value, 2, 15) && MyValidation.validSurname(value))
+                if (MyValidation.validLength(value, 2, 20) && MyValidation.validSurname(value))
                 {
                     surname = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("Surname must be 2-15 letters.");
+                    throw new MyException("Surname must be 2-20 letters.");
             }
         }
 
@@ -79,12 +79,12 @@ namespace FujitsuPayments
             get { return forename; }
             set
             {
-                if (MyValidation.validLength(value, 2, 15) && MyValidation.validForename(value))
+                if (MyValidation.validLength(value, 2, 20) && MyValidation.validForename(value))
                 {
                     forename = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("Forename must be 2-15 letters.");
+                    throw new MyException("Forename must be 2-20 letters.");
             }
         }
 
@@ -93,12 +93,12 @@ namespace FujitsuPayments
             get { return street; }
             set
             {
-                if (MyValidation.validLength(value, 5, 40) && MyValidation.validLetterNumberWhiteSpace(value))
+                if (MyValidation.validLength(value, 5, 30) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
                     street = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("Street must be 5-40 letters.");
+                    throw new MyException("Street must be 5-30 letters.");
             }
         }
 
@@ -107,12 +107,12 @@ namespace FujitsuPayments
             get { return town; }
             set
             {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validLetterWhiteSpace(value))
+                if (MyValidation.validLength(value, 2, 30) && MyValidation.validLetterWhiteSpace(value))
                 {
                     town = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("Town must be 2-20 letters.");
+                    throw new MyException("Town must be 2-30 letters.");
             }
         }
 
@@ -121,12 +121,12 @@ namespace FujitsuPayments
             get { return county; }
             set
             {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validLetter(value))
+                if (MyValidation.validLength(value, 2, 30) && MyValidation.validLetter(value))
                 {
                     county = MyValidation.firstLetterEachWordToUpper(value);
                 }
                 else
-                    throw new MyException("County must be 2-20 letters.");
+                    throw new MyException("County must be 2-30 letters.");
             }
         }
 
@@ -163,12 +163,12 @@ namespace FujitsuPayments
             get { return telNo; }
             set
             {
-                if (MyValidation.validLength(value, 11, 15) && MyValidation.validNumber(value))
+                if (MyValidation.validLength(value, 11, 11) && MyValidation.validNumber(value))
                 {
                     telNo = value;
                 }
                 else
-                    throw new MyException("Telephone number must be 11-15 digits.");
+                    throw new MyException("Telephone number must be 11 digits.");
             }
         }
 
@@ -191,27 +191,28 @@ namespace FujitsuPayments
             get { return grade; }
             set
             {
-                if (MyValidation.validLength(value, 1, 5))
-                {
-                    grade = value;
-                }
-                else
-                    throw new MyException("Grade must be a combination of 5 characters and numbers.");
+                grade = value;
             }
         }
 
-        public Decimal Salary
+        public string Salary
         {
             get { return salary; }
             set
             {
-                if (value > 0)
+                if (MyValidation.validDigit(value))
                 {
+                    //if (Convert.ToDecimal(value) > 0)
+                    //{
                     salary = value;
-
                 }
+                //}
+                //else
+                //    throw new MyException("Salary must be greater than 0.0");
+
+                
                 else
-                    throw new MyException("Salary muust be greater than £0."); 
+                    throw new MyException("Salary muust be greater than 0.0"); 
             }
         }
 

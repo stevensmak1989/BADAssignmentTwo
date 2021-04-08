@@ -52,16 +52,19 @@ namespace FujitsuPayments
         public static bool validDigit(string txt)
         {
             bool ok = true;
-
-            for (int x = 0; x < txt.Length; x++)
+            int size = txt.Length;
+            string pattern = " ^ *[0-9/.]+$";
+            
+            if ( Regex.IsMatch(txt, @"^[0-9\.]+$"))
             {
-                if (!(char.IsDigit(txt[x])) || char.IsPunctuation('.') == true)
-                {
-                    ok = false;
-                }
-
-
+                ok = true;
             }
+            else
+            {
+                ok = false;
+            }
+
+            
             return ok;
         }
 
@@ -136,7 +139,7 @@ namespace FujitsuPayments
             {
                 for (int x = 0; x < txt.Length; x++)
                 {
-                    if (!(char.IsLetter(txt[x])) && !(char.IsWhiteSpace(txt[x])) && !(txt[x].Equals('-')))
+                    if (!(char.IsLetter(txt[x])) && !(char.IsWhiteSpace(txt[x])) && !(txt[x].Equals('-') && char.IsPunctuation(txt[x])))
                     {
                         ok = false;
                     }
@@ -157,7 +160,7 @@ namespace FujitsuPayments
             {
                 for (int x = 0; x < txt.Length; x++)
                 {
-                    if (!(char.IsLetter(txt[x])) && !(char.IsWhiteSpace(txt[x])) && !(txt[x].Equals('-')))
+                    if (!(char.IsLetter(txt[x])) && !(char.IsWhiteSpace(txt[x])) && !(txt[x].Equals('-') && char.IsPunctuation(txt[x])))
                     {
                         ok = false;
                     }
@@ -305,7 +308,7 @@ namespace FujitsuPayments
             //TimeSpan t = temp.TimeOfDay;
             //string tempTime = t.ToString();
             ////double noOfDays = t.TotalDays;
-
+            
             bool ok = true;
             if (Regex.IsMatch(str, pattern, RegexOptions.CultureInvariant))
             {

@@ -39,7 +39,6 @@ namespace FujitsuPayments.Forms
             this.lblDOBEdit = new System.Windows.Forms.Label();
             this.txtEditSalary = new System.Windows.Forms.TextBox();
             this.lblAddAnnualSal = new System.Windows.Forms.Label();
-            this.txtEditManagerID = new System.Windows.Forms.TextBox();
             this.lblEditManagerId = new System.Windows.Forms.Label();
             this.lblPersonnelNoEdit = new System.Windows.Forms.Label();
             this.cmbGradeEdit = new System.Windows.Forms.ComboBox();
@@ -47,6 +46,7 @@ namespace FujitsuPayments.Forms
             this.txtPostcodeEdit = new System.Windows.Forms.TextBox();
             this.lblPostcodeEdit = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbManager = new System.Windows.Forms.CheckBox();
             this.txtCountyEdit = new System.Windows.Forms.TextBox();
             this.lblCountyEdit = new System.Windows.Forms.Label();
             this.txtTownEdit = new System.Windows.Forms.TextBox();
@@ -62,7 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose = new System.Windows.Forms.Button();
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitleEdit = new System.Windows.Forms.Label();
-            this.cbManager = new System.Windows.Forms.CheckBox();
+            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -143,15 +143,6 @@ namespace FujitsuPayments.Forms
             this.lblAddAnnualSal.TabIndex = 42;
             this.lblAddAnnualSal.Text = "Salary";
             // 
-            // txtEditManagerID
-            // 
-            this.txtEditManagerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditManagerID.Location = new System.Drawing.Point(164, 277);
-            this.txtEditManagerID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEditManagerID.Name = "txtEditManagerID";
-            this.txtEditManagerID.Size = new System.Drawing.Size(106, 26);
-            this.txtEditManagerID.TabIndex = 41;
-            // 
             // lblEditManagerId
             // 
             this.lblEditManagerId.AutoSize = true;
@@ -178,14 +169,12 @@ namespace FujitsuPayments.Forms
             // 
             this.cmbGradeEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGradeEdit.FormattingEnabled = true;
-            this.cmbGradeEdit.Items.AddRange(new object[] {
-            "Dev1",
-            "Dev2"});
             this.cmbGradeEdit.Location = new System.Drawing.Point(533, 199);
             this.cmbGradeEdit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGradeEdit.Name = "cmbGradeEdit";
             this.cmbGradeEdit.Size = new System.Drawing.Size(115, 28);
             this.cmbGradeEdit.TabIndex = 37;
+            this.cmbGradeEdit.SelectedIndexChanged += new System.EventHandler(this.cmbGradeEdit_SelectedIndexChanged);
             // 
             // lblGradeEdit
             // 
@@ -221,6 +210,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbApprovedBy);
             this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoEdit);
             this.panel1.Controls.Add(this.txtTitleEdit);
@@ -229,7 +219,6 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.lblDOBEdit);
             this.panel1.Controls.Add(this.txtEditSalary);
             this.panel1.Controls.Add(this.lblAddAnnualSal);
-            this.panel1.Controls.Add(this.txtEditManagerID);
             this.panel1.Controls.Add(this.lblEditManagerId);
             this.panel1.Controls.Add(this.lblPersonnelNoEdit);
             this.panel1.Controls.Add(this.cmbGradeEdit);
@@ -256,6 +245,16 @@ namespace FujitsuPayments.Forms
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // cbManager
+            // 
+            this.cbManager.AutoSize = true;
+            this.cbManager.Location = new System.Drawing.Point(533, 284);
+            this.cbManager.Name = "cbManager";
+            this.cbManager.Size = new System.Drawing.Size(68, 17);
+            this.cbManager.TabIndex = 50;
+            this.cbManager.Text = "Manager";
+            this.cbManager.UseVisualStyleBackColor = true;
             // 
             // txtCountyEdit
             // 
@@ -416,15 +415,13 @@ namespace FujitsuPayments.Forms
             this.lbltitleEdit.TabIndex = 1;
             this.lbltitleEdit.Text = "Edit Employee";
             // 
-            // cbManager
+            // cmbApprovedBy
             // 
-            this.cbManager.AutoSize = true;
-            this.cbManager.Location = new System.Drawing.Point(533, 284);
-            this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(68, 17);
-            this.cbManager.TabIndex = 50;
-            this.cbManager.Text = "Manager";
-            this.cbManager.UseVisualStyleBackColor = true;
+            this.cmbApprovedBy.FormattingEnabled = true;
+            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 273);
+            this.cmbApprovedBy.Name = "cmbApprovedBy";
+            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
+            this.cmbApprovedBy.TabIndex = 51;
             // 
             // frmEditEmployee
             // 
@@ -457,7 +454,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblDOBEdit;
         private System.Windows.Forms.TextBox txtEditSalary;
         private System.Windows.Forms.Label lblAddAnnualSal;
-        private System.Windows.Forms.TextBox txtEditManagerID;
         private System.Windows.Forms.Label lblEditManagerId;
         private System.Windows.Forms.Label lblPersonnelNoEdit;
         private System.Windows.Forms.ComboBox cmbGradeEdit;
@@ -480,5 +476,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnEmpSave;
         private System.Windows.Forms.Label lbltitleEdit;
         private System.Windows.Forms.CheckBox cbManager;
+        private System.Windows.Forms.ComboBox cmbApprovedBy;
     }
 }

@@ -32,6 +32,7 @@ namespace FujitsuPayments.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEmployee));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbManager = new System.Windows.Forms.CheckBox();
             this.lblEmpNoAdd = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lblTitlee = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@ namespace FujitsuPayments.Forms
             this.lblDOB = new System.Windows.Forms.Label();
             this.txtAddSalary = new System.Windows.Forms.TextBox();
             this.lblAddAnnualSal = new System.Windows.Forms.Label();
-            this.txtAddManagerID = new System.Windows.Forms.TextBox();
             this.lblAddManagerId = new System.Windows.Forms.Label();
             this.lblPersonnelNo = new System.Windows.Forms.Label();
             this.cmbGrade = new System.Windows.Forms.ComboBox();
@@ -62,7 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitle = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbManager = new System.Windows.Forms.CheckBox();
+            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +70,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbApprovedBy);
             this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoAdd);
             this.panel1.Controls.Add(this.txtTitle);
@@ -78,7 +79,6 @@ namespace FujitsuPayments.Forms
             this.panel1.Controls.Add(this.lblDOB);
             this.panel1.Controls.Add(this.txtAddSalary);
             this.panel1.Controls.Add(this.lblAddAnnualSal);
-            this.panel1.Controls.Add(this.txtAddManagerID);
             this.panel1.Controls.Add(this.lblAddManagerId);
             this.panel1.Controls.Add(this.lblPersonnelNo);
             this.panel1.Controls.Add(this.cmbGrade);
@@ -105,6 +105,17 @@ namespace FujitsuPayments.Forms
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // cbManager
+            // 
+            this.cbManager.AutoSize = true;
+            this.cbManager.Location = new System.Drawing.Point(533, 284);
+            this.cbManager.Name = "cbManager";
+            this.cbManager.Size = new System.Drawing.Size(68, 17);
+            this.cbManager.TabIndex = 49;
+            this.cbManager.Text = "Manager";
+            this.cbManager.UseVisualStyleBackColor = true;
+            this.cbManager.CheckedChanged += new System.EventHandler(this.cbManager_CheckedChanged);
             // 
             // lblEmpNoAdd
             // 
@@ -180,15 +191,6 @@ namespace FujitsuPayments.Forms
             this.lblAddAnnualSal.TabIndex = 42;
             this.lblAddAnnualSal.Text = "Salary";
             // 
-            // txtAddManagerID
-            // 
-            this.txtAddManagerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddManagerID.Location = new System.Drawing.Point(164, 277);
-            this.txtAddManagerID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAddManagerID.Name = "txtAddManagerID";
-            this.txtAddManagerID.Size = new System.Drawing.Size(106, 26);
-            this.txtAddManagerID.TabIndex = 41;
-            // 
             // lblAddManagerId
             // 
             this.lblAddManagerId.AutoSize = true;
@@ -215,14 +217,12 @@ namespace FujitsuPayments.Forms
             // 
             this.cmbGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGrade.FormattingEnabled = true;
-            this.cmbGrade.Items.AddRange(new object[] {
-            "Dev1",
-            "Dev2"});
             this.cmbGrade.Location = new System.Drawing.Point(533, 199);
             this.cmbGrade.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGrade.Name = "cmbGrade";
             this.cmbGrade.Size = new System.Drawing.Size(115, 28);
             this.cmbGrade.TabIndex = 37;
+            this.cmbGrade.SelectedIndexChanged += new System.EventHandler(this.cmbGrade_SelectedIndexChanged);
             // 
             // lblGrade
             // 
@@ -418,16 +418,13 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
-            // cbManager
+            // cmbApprovedBy
             // 
-            this.cbManager.AutoSize = true;
-            this.cbManager.Location = new System.Drawing.Point(533, 284);
-            this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(68, 17);
-            this.cbManager.TabIndex = 49;
-            this.cbManager.Text = "Manager";
-            this.cbManager.UseVisualStyleBackColor = true;
-            this.cbManager.CheckedChanged += new System.EventHandler(this.cbManager_CheckedChanged);
+            this.cmbApprovedBy.FormattingEnabled = true;
+            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 272);
+            this.cmbApprovedBy.Name = "cmbApprovedBy";
+            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
+            this.cmbApprovedBy.TabIndex = 50;
             // 
             // frmAddEmployee
             // 
@@ -474,7 +471,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblFirstNameAdd;
         private System.Windows.Forms.TextBox txtAddSalary;
         private System.Windows.Forms.Label lblAddAnnualSal;
-        private System.Windows.Forms.TextBox txtAddManagerID;
         private System.Windows.Forms.Label lblAddManagerId;
         private System.Windows.Forms.ErrorProvider errP;
         private System.Windows.Forms.DateTimePicker dtpDOB;
@@ -483,5 +479,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lblTitlee;
         private System.Windows.Forms.Label lblEmpNoAdd;
         private System.Windows.Forms.CheckBox cbManager;
+        private System.Windows.Forms.ComboBox cmbApprovedBy;
     }
 }

@@ -24,6 +24,7 @@ namespace FujitsuPayments.Forms
         SqlCommand cmdEmp,  cmdProj, cmdCount;
 
         DataRow drProject, drCount,  drClaim,  drTimeDets;
+
         String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan,  sqlTimesheet, sqlTimeDets, sqlCost;
         SqlConnection conn;
         private double count;

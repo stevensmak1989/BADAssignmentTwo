@@ -14,11 +14,41 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmEditEmployee : Form
     {
-        SqlDataAdapter daEmployee;
+        SqlDataAdapter daEmployee, daMan, daGrade, daGrades;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBEmployee;
-        DataRow drEmployee;
-        String connStr, sqlEmployee;
+        DataRow drEmployee, drSalary;
+        String connStr, sqlEmployee, sqlMan, sqlGrade, sqlGrades;
+        decimal start, end;
+
+        private void cmbGradeEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbGradeEdit.Focused == true)
+            {
+                MessageBox.Show(cmbGradeEdit.SelectedValue.ToString());
+
+                dsFujitsuPayments.Tables["Grades"].Clear();
+                cmdGrades.Parameters["@Grade"].Value = cmbGradeEdit.SelectedValue.ToString();
+
+                daGrades.Fill(dsFujitsuPayments, "Grades");
+                DataTable dt = dsFujitsuPayments.Tables["Grades"];
+
+
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    drSalary = row;
+
+                }
+                start = Convert.ToDecimal(drSalary["StartSal"].ToString());
+                end = Convert.ToDecimal(drSalary["EndSal"].ToString());
+            }
+        }
+
+        SqlConnection conn;
+        Boolean sal = true;
+        SqlCommand cmdGrades;
+
 
         public frmEditEmployee()
         {
@@ -35,15 +65,52 @@ namespace FujitsuPayments.Forms
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
-            
+
+            sqlMan = @"Select  EmployeeID, Surname + ' ' + Forename as EmpName from Employee where Manager = 1";
+            daMan = new SqlDataAdapter(sqlMan, connStr);
+            daMan.Fill(dsFujitsuPayments, "Manager");
+
+
+            foreach (DataRow dr in dsFujitsuPayments.Tables["Manager"].Rows)
+            {
+                // Console.WriteLine(dr["Manager"].ToString());
+
+
+                cmbApprovedBy.DataSource = dsFujitsuPayments.Tables["Manager"];
+                cmbApprovedBy.ValueMember = "EmployeeID";
+                cmbApprovedBy.DisplayMember = "EmpName";
+
+            }
+
+            sqlGrade = @"Select  Grade, GradeDesc from Grade ";
+            daGrade = new SqlDataAdapter(sqlGrade, connStr);
+            daGrade.Fill(dsFujitsuPayments, "Grade");
+
+            foreach (DataRow dr in dsFujitsuPayments.Tables["Grade"].Rows)
+            {
+                // Console.WriteLine(dr["Manager"].ToString());
+
+
+                cmbGradeEdit.DataSource = dsFujitsuPayments.Tables["Grade"];
+                cmbGradeEdit.ValueMember = "Grade";
+                cmbGradeEdit.DisplayMember = "GradeDesc";
+
+            }
+
+
             lblEmpNoEdit.Text = UC_Employee.empNoSelected.ToString();
 
             drEmployee = dsFujitsuPayments.Tables["Employee"].Rows.Find(lblEmpNoEdit.Text);
 
-            
+            sqlGrades = @"select * from Grade where Grade =  @Grade";
+            conn = new SqlConnection(connStr);
+            cmdGrades = new SqlCommand(sqlGrades, conn);
+            cmdGrades.Parameters.Add("@Grade", SqlDbType.VarChar);
+            daGrades = new SqlDataAdapter(cmdGrades);
+            daGrades.FillSchema(dsFujitsuPayments, SchemaType.Source, "Grades");
 
-                 
-                   txtTitleEdit.Text= drEmployee["Title"].ToString();
+
+            txtTitleEdit.Text= drEmployee["Title"].ToString();
                   txtSurnameEdit.Text = drEmployee["Surname"].ToString();
                   txtFirstNameEdit.Text = drEmployee["Forename"].ToString();
                    txtStreetEdit.Text = drEmployee["Street"].ToString();
@@ -52,11 +119,13 @@ namespace FujitsuPayments.Forms
                    txtPostcodeEdit.Text = drEmployee["Postcode"].ToString();
                    txtPhoneNumberEdit.Text = drEmployee["TelNo"].ToString();
                    dtpDOBEdit.Text =  drEmployee["DOB"].ToString();
-                   txtEditManagerID.Text = drEmployee["ManagerID"].ToString();
+            cmbApprovedBy.Text = drEmployee["ManagerID"].ToString();
                     cmbGradeEdit.Text = drEmployee["Grade"].ToString();
                    txtEditSalary.Text =  drEmployee["Salary"].ToString();
 
-            if (drEmployee["Manager"].ToString().Equals("1"))
+     
+
+            if (drEmployee["Manager"].ToString().Equals("True"))
                 cbManager.Checked = true;
             else
                 cbManager.Checked = false;
@@ -191,7 +260,7 @@ namespace FujitsuPayments.Forms
             //employee Grade
             try
             {
-                myEmployee.Grade = cmbGradeEdit.SelectedItem.ToString();
+                myEmployee.Grade = cmbGradeEdit.SelectedValue.ToString();
             }
             catch (MyException MyEx)
             {
@@ -201,21 +270,20 @@ namespace FujitsuPayments.Forms
             //employee Manager number
             try
             {
-                myEmployee.ManagerId = Convert.ToInt32(txtEditManagerID.Text.Trim());
+                myEmployee.ManagerId = Convert.ToInt32(cmbApprovedBy.SelectedValue.ToString());
                 //passed to employee Class to check
 
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtEditManagerID, MyEx.toString());
+                errP.SetError(cmbApprovedBy, MyEx.toString());
             }
             try
             {
-                String temp = txtEditSalary.Text;
-                Decimal tempD = Decimal.Parse(temp);
+                
 
-                myEmployee.Salary = tempD;
+                myEmployee.Salary = txtEditSalary.Text;
                 //passed to employee Class to check
 
             }
@@ -226,33 +294,44 @@ namespace FujitsuPayments.Forms
             }
             try
             {
-                if (ok)
+                if (sal == true)
                 {
 
-                    drEmployee.BeginEdit();
+                    if (Convert.ToDecimal(txtEditSalary.Text) < start || Convert.ToDecimal(txtEditSalary.Text) > end)
+                    {
+                        MessageBox.Show("Salary must be between £" + Convert.ToString(start) + " and £" + Convert.ToString(end));
+                    }
+                    else
+                    {
+                        if (ok)
+                        {
 
-                    drEmployee["EmployeeID"] = myEmployee.EmployeeId;
-                    drEmployee["Title"] = myEmployee.Title;
-                    drEmployee["Surname"] = myEmployee.Surname;
-                    drEmployee["Forename"] = myEmployee.Forename;
-                    drEmployee["Street"] = myEmployee.Street;
-                    drEmployee["Town"] = myEmployee.Town;
-                    drEmployee["County"] = myEmployee.County;
-                    drEmployee["Postcode"] = myEmployee.Postcode;
-                    drEmployee["TelNo"] = myEmployee.TelNo;
-                    drEmployee["DOB"] = myEmployee.Dob;
-                    drEmployee["ManagerID"] = myEmployee.ManagerId;
-                    drEmployee["Manager"] = myEmployee.Manager;
-                    drEmployee["Grade"] = myEmployee.Grade;
-                    drEmployee["Salary"] = myEmployee.Salary;
+                            drEmployee.BeginEdit();
 
-                    drEmployee.EndEdit();
-                    daEmployee.Update(dsFujitsuPayments, "Employee");
+                            drEmployee["EmployeeID"] = myEmployee.EmployeeId;
+                            drEmployee["Title"] = myEmployee.Title;
+                            drEmployee["Surname"] = myEmployee.Surname;
+                            drEmployee["Forename"] = myEmployee.Forename;
+                            drEmployee["Street"] = myEmployee.Street;
+                            drEmployee["Town"] = myEmployee.Town;
+                            drEmployee["County"] = myEmployee.County;
+                            drEmployee["Postcode"] = myEmployee.Postcode;
+                            drEmployee["TelNo"] = myEmployee.TelNo;
+                            drEmployee["DOB"] = myEmployee.Dob;
+                            drEmployee["ManagerID"] = myEmployee.ManagerId;
+                            drEmployee["Manager"] = myEmployee.Manager;
+                            drEmployee["Grade"] = myEmployee.Grade;
+                            drEmployee["Salary"] = Convert.ToDecimal(myEmployee.Salary);
 
-                    MessageBox.Show("Employee Updated");
-                    this.Dispose();
-                    UC_Employee.refresh = true;
+                            drEmployee.EndEdit();
+                            daEmployee.Update(dsFujitsuPayments, "Employee");
 
+                            MessageBox.Show("Employee Updated");
+                            this.Dispose();
+                            UC_Employee.refresh = true;
+
+                        }
+                    }
                 }
             }
             catch (Exception ex)
