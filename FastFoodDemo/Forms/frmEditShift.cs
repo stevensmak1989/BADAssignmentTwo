@@ -67,6 +67,7 @@ namespace FujitsuPayments.Forms
             daAccount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daAccount.Fill(dsFujitsuPayments, "Account");
 
+            // -------- populate fields on form ---------------- //
 
             // ------- populate account ID combo box
             cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
@@ -128,12 +129,63 @@ namespace FujitsuPayments.Forms
 
             dtpShiftStartDate.Text = drShift["StartDate"].ToString();
 
+
+            // ---- setup start time drop down -------- // 
             // format date time to only show time for combo box
             DateTime st = DateTime.Parse(drShift["StartTime"].ToString());
-            cmbStartTime.Text = st.ToString("HH:mm");
+            int startHour = Int32.Parse(st.ToString("HH"));
+
+            // ---- convert 24hr clock back to 12 to populate drop down
+            if(startHour > 12)
+            {
+                startHour = startHour - 12; // convert to 12 hr clock
+
+                string startTimeHr = "0" + startHour.ToString(); // append 0 to start hour
+                string startTimeMin = st.ToString("mm");
+                cmbStartTime.Text = startTimeHr;
+                cmbStartTimeMin.Text = startTimeMin;
+                rbStPM.Checked = true;
+                rbStAM.Checked = false;
+            }
+            else
+            {
+                string startTimeHr = st.ToString("HH");
+                string startTimeMin = st.ToString("mm");
+                cmbStartTime.Text = startTimeHr;
+                cmbStartTimeMin.Text = startTimeMin;
+                rbStPM.Checked = false;
+                rbStAM.Checked = true;
+            }
+
+
+
+            // ------ setup end time drop down ------- //
 
             DateTime et = DateTime.Parse(drShift["EndTime"].ToString());
-            cmbEndTime.Text = et.ToString("HH:mm");
+            int endHour = Int32.Parse(et.ToString("HH"));
+
+            if(endHour > 12)
+            {
+                endHour = endHour - 12;
+
+                string endTimeHr = "0" + endHour.ToString();
+                string endTimeMin = et.ToString("mm");
+                cmbEndTime.Text = endTimeHr;
+                cmbEndTimeMin.Text = endTimeMin;
+                rbEtPM.Checked = true;
+                rbEtAM.Checked = false;
+            }
+            else
+            {
+                string endTimeHr = et.ToString("HH");
+                string endTimeMin = et.ToString("mm");
+                cmbEndTime.Text = endTimeHr;
+                cmbEndTimeMin.Text = endTimeMin;
+                rbEtPM.Checked = false;
+                rbEtAM.Checked = true;
+            }
+
+
 
         }
 
@@ -147,7 +199,8 @@ namespace FujitsuPayments.Forms
         private void btnEditSave_Click(object sender, EventArgs e)
         {
 
-            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1)
+            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1
+            || rbStAM.Checked == false && rbStPM.Checked == false || rbEtAM.Checked == false && rbEtPM.Checked == false)
             {
                 MessageBox.Show("Please fill in all time fields");
             }
@@ -157,133 +210,159 @@ namespace FujitsuPayments.Forms
                 if (rbStAM.Checked == true)
                 {
                     startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
-                    MessageBox.Show("Starttime : " + startTime);
+                   // MessageBox.Show("Starttime : " + startTime);
                 }
                 else
                 {
                     int startHour = Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) + 12;
                     startTime = Convert.ToString(startHour) + ":" + cmbStartTimeMin.SelectedItem.ToString();
-                    MessageBox.Show("Starttime : " + startTime);
+                   // MessageBox.Show("Starttime : " + startTime);
                 }
 
                 if (rbEtAM.Checked == true)
                 {
                     endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
-                    MessageBox.Show("Endtime : " + endTime);
+                   // MessageBox.Show("Endtime : " + endTime);
                 }
                 else
                 {
                     int endHour = Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) + 12;
                     endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
-                    MessageBox.Show("Endtime : " + endTime);
+                   // MessageBox.Show("Endtime : " + endTime);
                 }
-            }
 
 
-            EmployeeShift myShift = new EmployeeShift();
+                int compareTime = TimeSpan.Compare(TimeSpan.Parse(startTime), TimeSpan.Parse(endTime));
+                // gets todays date
+                DateTime now = DateTime.Now;
+                // compares todays date to date selected
+                int compareDate = DateTime.Compare(DateTime.Parse(dtpShiftStartDate.Text), now);
+                //MessageBox.Show("Compare is" + compareDate);
 
-            bool ok = true;
-            errP.Clear();
-            // pass data to class for validation
-            try
-            {
-                myShift.ShiftId = Convert.ToInt32(txtShiftID.Text);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(txtShiftID, MyEx.toString());
-            }
 
-            try
-            {
-                myShift.AccountId = Convert.ToInt32(cmbAccountId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbAccountId, MyEx.toString());
-            }
+                EmployeeShift myShift = new EmployeeShift();
 
-            try
-            {
-                myShift.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbProjectId, MyEx.toString());
-            }
+                bool ok = true;
+                errP.Clear();
 
-            try
-            {
-                myShift.TaskId = Convert.ToInt32(cmbTaskId.SelectedValue);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbTaskId, MyEx.toString());
-            }
-
-            try
-            {
-                myShift.StartDate = DateTime.Parse(dtpShiftStartDate.Text.Trim());
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(dtpShiftStartDate, MyEx.toString());
-            }
-
-            try
-            {
-               // String time = cmbStartTime.SelectedItem.ToString();
-                myShift.StartTime = TimeSpan.Parse(startTime);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbStartTime, MyEx.toString());
-            }
-
-            try
-            {
-                //String time = cmbEndTime.SelectedItem.ToString();
-                myShift.EndTime = TimeSpan.Parse(endTime);
-            }
-            catch (MyException MyEx)
-            {
-                ok = false;
-                errP.SetError(cmbEndTime, MyEx.toString());
-            }
-
-            try
-            {
-                if (ok)
+                if (compareTime == -1)
                 {
+                    if (compareDate != -1)
+                    {
+                        // pass data to class for validation
+                        try
+                        {
+                            myShift.ShiftId = Convert.ToInt32(txtShiftID.Text);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(txtShiftID, MyEx.toString());
+                        }
 
-                    drShift.BeginEdit();
+                        try
+                        {
+                            myShift.AccountId = Convert.ToInt32(cmbAccountId.SelectedValue);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(cmbAccountId, MyEx.toString());
+                        }
 
-                    drShift["ShiftID"] = myShift.ShiftId;
-                    drShift["AccountID"] = myShift.AccountId;
-                    drShift["ProjectID"] = myShift.ProjectId;
-                    drShift["TaskID"] = myShift.TaskId;
-                    drShift["StartDate"] = myShift.StartDate;
-                    drShift["StartTime"] = myShift.StartTime;
-                    drShift["EndTime"] = myShift.EndTime;
+                        try
+                        {
+                            myShift.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(cmbProjectId, MyEx.toString());
+                        }
 
-                    drShift.EndEdit();
-                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                        try
+                        {
+                            myShift.TaskId = Convert.ToInt32(cmbTaskId.SelectedValue);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(cmbTaskId, MyEx.toString());
+                        }
 
-                    MessageBox.Show("Shift Updated");
-                    this.Dispose();
-      
+                        try
+                        {
+                            myShift.StartDate = DateTime.Parse(dtpShiftStartDate.Text.Trim());
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(dtpShiftStartDate, MyEx.toString());
+                        }
+
+                        try
+                        {
+                            // String time = cmbStartTime.SelectedItem.ToString();
+                            myShift.StartTime = TimeSpan.Parse(startTime);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(cmbStartTime, MyEx.toString());
+                        }
+
+                        try
+                        {
+                            //String time = cmbEndTime.SelectedItem.ToString();
+                            myShift.EndTime = TimeSpan.Parse(endTime);
+                        }
+                        catch (MyException MyEx)
+                        {
+                            ok = false;
+                            errP.SetError(cmbEndTime, MyEx.toString());
+                        }
+
+                        try
+                        {
+                            if (ok)
+                            {
+
+                                drShift.BeginEdit();
+
+                                drShift["ShiftID"] = myShift.ShiftId;
+                                drShift["AccountID"] = myShift.AccountId;
+                                drShift["ProjectID"] = myShift.ProjectId;
+                                drShift["TaskID"] = myShift.TaskId;
+                                drShift["StartDate"] = myShift.StartDate;
+                                drShift["StartTime"] = myShift.StartTime;
+                                drShift["EndTime"] = myShift.EndTime;
+
+                                drShift.EndEdit();
+                                daShift.Update(dsFujitsuPayments, "EmployeeShift");
+
+                                MessageBox.Show("Shift Updated");
+                                this.Dispose();
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Start date cannot be a date in the past, please enter correct date");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("End time cannot be before start time, please enter correct time!");
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
-            }
+
+
+
 
         }
 
