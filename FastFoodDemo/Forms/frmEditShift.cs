@@ -140,12 +140,26 @@ namespace FujitsuPayments.Forms
             {
                 startHour = startHour - 12; // convert to 12 hr clock
 
-                string startTimeHr = "0" + startHour.ToString(); // append 0 to start hour
-                string startTimeMin = st.ToString("mm");
-                cmbStartTime.Text = startTimeHr;
-                cmbStartTimeMin.Text = startTimeMin;
-                rbStPM.Checked = true;
-                rbStAM.Checked = false;
+                if(startHour > 9)
+                {
+                    string startTimeHr = startHour.ToString(); // append 0 to start hour
+                    string startTimeMin = st.ToString("mm");
+                    cmbStartTime.Text = startTimeHr;
+                    cmbStartTimeMin.Text = startTimeMin;
+                    rbStPM.Checked = true;
+                    rbStAM.Checked = false;
+                }
+                else
+                {
+                    string startTimeHr = "0" + startHour.ToString(); // append 0 to start hour
+                    string startTimeMin = st.ToString("mm");
+                    cmbStartTime.Text = startTimeHr;
+                    cmbStartTimeMin.Text = startTimeMin;
+                    rbStPM.Checked = true;
+                    rbStAM.Checked = false;
+                }
+
+                
             }
             else
             {
@@ -168,12 +182,26 @@ namespace FujitsuPayments.Forms
             {
                 endHour = endHour - 12;
 
-                string endTimeHr = "0" + endHour.ToString();
-                string endTimeMin = et.ToString("mm");
-                cmbEndTime.Text = endTimeHr;
-                cmbEndTimeMin.Text = endTimeMin;
-                rbEtPM.Checked = true;
-                rbEtAM.Checked = false;
+                if(endHour > 9)
+                {
+                    string endTimeHr = endHour.ToString();
+                    string endTimeMin = et.ToString("mm");
+                    cmbEndTime.Text = endTimeHr;
+                    cmbEndTimeMin.Text = endTimeMin;
+                    rbEtPM.Checked = true;
+                    rbEtAM.Checked = false;
+                }
+                else
+                {
+                    string endTimeHr = "0" + endHour.ToString();
+                    string endTimeMin = et.ToString("mm");
+                    cmbEndTime.Text = endTimeHr;
+                    cmbEndTimeMin.Text = endTimeMin;
+                    rbEtPM.Checked = true;
+                    rbEtAM.Checked = false;
+                }
+                
+                
             }
             else
             {
