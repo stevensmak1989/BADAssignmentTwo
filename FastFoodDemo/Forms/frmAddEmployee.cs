@@ -19,7 +19,7 @@ namespace FujitsuPayments.Forms
         DataRow drEmployee, drSalary;
         String connStr, sqlEmployee, sqlMan, sqlGrade, sqlGrades;
         decimal start, end;
-        SqlConnection conn;
+        SqlConnection conn; 
         Boolean sal = true;
         SqlCommand cmdGrades;
         

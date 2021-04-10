@@ -36,15 +36,15 @@ namespace FujitsuPayments
         public static bool validNumber(string txt)
         {
             bool ok = true;
+            //string pattern = " ^ *[0-9/.]+$";
 
-            for (int x = 0; x < txt.Length; x++)
+            if (Regex.IsMatch(txt, @"^[0-9]+$"))
             {
-                if (!(char.IsNumber(txt[x])))
-                {
-                    ok = false;
-                }
-
-
+                ok = true;
+            }
+            else
+            {
+                ok = false;
             }
             return ok;
         }

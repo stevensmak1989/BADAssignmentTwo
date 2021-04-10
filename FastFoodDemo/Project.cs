@@ -9,20 +9,20 @@ namespace FujitsuPayments
 {
     class Project
     {
-        private int projectId, accountID, duration;
-        private string projDesc;
+        private int projectId, accountID;
+        private string projDesc, duration, cappedHrs, b48Rate, a48Rate, bHRate;
         private DateTime startDate;
-        private decimal cappedHrs, b48Rate, a48Rate, bHRate;
+        
 
         public Project()
         {
-            projectId = 0; accountID = 0; duration = 0; projDesc = "";
-            startDate = new DateTime(); cappedHrs = 0; b48Rate = 0;
-            a48Rate = 0; bHRate = 0;
+            projectId = 0; accountID = 0; duration = ""; projDesc = "";
+            startDate = new DateTime(); cappedHrs = ""; b48Rate = "";
+            a48Rate = ""; bHRate = "";
         }
 
-        public Project(int projectId, int accountID, int duration, string projDesc, DateTime startDate,
-            decimal cappedHrs, decimal b48Rate, decimal a48Rate, decimal bHRate)
+        public Project(int projectId, int accountID, string duration, string projDesc, DateTime startDate,
+            string cappedHrs, string b48Rate, string a48Rate, string bHRate)
         {
             this.projectId = projectId; this.accountID = accountID; this.duration = duration; this.projDesc = projDesc;
             this.startDate = startDate; this.cappedHrs = cappedHrs; this.b48Rate = b48Rate;
@@ -41,17 +41,22 @@ namespace FujitsuPayments
             set { accountID = value; }
         }
 
-        public int Duration
+        public string Duration
         {
             get { return duration; }
             set
             {
-                if (value > 0 )
+                if (MyValidation.validNumber(value))
                 {
-                    duration = value;
+                    if (Convert.ToInt32(value) > 0 && Convert.ToInt32(value) < 600)
+                    {
+                        duration = value;
+                    }
+                    else
+                        throw new MyException("Duration must be greater than 0 days and less than 600 Days.");
                 }
                 else
-                    throw new MyException("Duration muust be greater than 0 days.");
+                    throw new MyException("Duration must be a valid number.");
             }
         }
 
@@ -60,12 +65,12 @@ namespace FujitsuPayments
             get { return projDesc; }
             set
             {
-                if (MyValidation.validLength(value, 2,15) && MyValidation.validLetterNumberWhiteSpace(value))
+                if (MyValidation.validLength(value, 2,16) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
                     projDesc = value;
                 }
                 else
-                    throw new MyException("Project Description must be 2-15 letters.");
+                    throw new MyException("Project Description must be 2-16 letters.");
             }
         }
 
@@ -83,59 +88,93 @@ namespace FujitsuPayments
             }
         }
 
-        public decimal CappedHrs
+        public string CappedHrs
         {
             get { return cappedHrs; }
             set
             {
-                if (value > 0)
+                if (MyValidation.validDigit(value))
                 {
-                    cappedHrs = value;
+                    if (Convert.ToDecimal(value) > 0 && Convert.ToDecimal(value) < 10000)
+                    {
+                        cappedHrs = value;
+                    }
+                    else
+                        throw new MyException("Capped Hours must be greater than 0 and less than 10000.");
                 }
                 else
-                    throw new MyException("Capped Hours must be greater than 0.");
+                {
+                    throw new MyException("Capped Hours must be a valid number.");
+                }
             }
         }
 
-        public decimal B48Rate
+        public string B48Rate
         {
             get { return b48Rate; }
             set
             {
-                if (value > 0)
+                if (MyValidation.validDigit(value))
                 {
-                    b48Rate = value;
+                    if (Convert.ToDecimal(value) == 1)
+                    {
+                        b48Rate = value;
+                    }
+                    else
+                        throw new MyException("Basic Hours must be greater than 0 and no greater than 1");
                 }
                 else
-                    throw new MyException("Basic Hours must be greater than 0.");
+                {
+                    throw new MyException("Basic Hours must be a valid number.");
+                }
             }
         }
 
-        public decimal A48Rate
+        public string A48Rate
         {
             get { return a48Rate; }
             set
             {
-                if (value > 0)
+                if (MyValidation.validDigit(value))
                 {
-                    a48Rate = value;
+                    
+                    decimal numb = Decimal.Multiply(Convert.ToDecimal(value),100) ;
+                    int comp = Convert.ToInt32(numb);
+                    if (Convert.ToDecimal(value) > 1 && comp < 201)
+                    {
+                        a48Rate = value;
+                    }
+                    else
+                        throw new MyException("Overtime Hours must be greater than 1 and less than 2");
                 }
                 else
-                    throw new MyException("Overtime Hours must be greater than 0.");
+                {
+                    throw new MyException("Overtime Hours must be a valid number.");
+                }
             }
         }
 
-        public decimal BHRate
+        public string BHRate
         {
             get { return bHRate; }
             set
             {
-                if (value > 0)
+                if (MyValidation.validDigit(value))
                 {
-                    bHRate = value;
+                    decimal numb = Decimal.Multiply(Convert.ToDecimal(value), 100);
+                    int comp = Convert.ToInt32(numb);
+
+                    if (comp > 199 && comp < 401)
+                    {
+                        bHRate = value;
+                    }
+                    else
+                        throw new MyException("Bank holiday Hours must be greater than 1.9 and less than 4.1.");
                 }
                 else
-                    throw new MyException("Bank holiday Hours must be greater than 0.");
+                {
+                    throw new MyException("Bank holiday Hours must be a valid number.");
+                }
             }
         }
     }

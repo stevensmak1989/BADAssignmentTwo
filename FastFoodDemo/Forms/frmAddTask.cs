@@ -13,15 +13,48 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmAddTask : Form
     {
-        SqlDataAdapter daProject, daTask;
+        SqlDataAdapter daProject, daTask, daTasks;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject, cmbBTask;
         DataRow drProject, drTask;
-        String connStr, sqlProject, sqlTask;
+        String connStr, sqlProject, sqlTask, sqlTasks;
+        SqlConnection conn; 
+        SqlCommand cmdTasks;
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbProjectId.Focused == true)
+            {
+                int noRows = dsFujitsuPayments.Tables["Tasks"].Rows.Count;
+
+                MessageBox.Show(cmbProjectId.SelectedValue.ToString());
+
+                dsFujitsuPayments.Tables["Tasks"].Clear();
+                cmdTasks.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue.ToString();
+
+                daTasks.Fill(dsFujitsuPayments, "Tasks");
+                DataTable dt = dsFujitsuPayments.Tables["Tasks"];
+
+                int count = 0;
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    count += 1;
+
+                }
+
+                if (count == 0)
+                    lblTaskId.Text = "1";
+                else
+                {
+                    lblTaskId.Text = Convert.ToString(count +1);
+                }
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -107,18 +140,20 @@ namespace FujitsuPayments.Forms
             cmbProjectId.ValueMember = "ProjectID";
             cmbProjectId.DisplayMember = "ProjDesc";
 
-            int noRows = dsFujitsuPayments.Tables["ProjectTask"].Rows.Count;
+            sqlTasks = @"select * from ProjectTask where ProjectID =  @ProjectID";
+            conn = new SqlConnection(connStr);
+            cmdTasks = new SqlCommand(sqlTasks, conn);
+            cmdTasks.Parameters.Add("@ProjectID", SqlDbType.VarChar);
+            daTasks = new SqlDataAdapter(cmdTasks);
+            daTasks.FillSchema(dsFujitsuPayments, SchemaType.Source, "Tasks");
 
-            if (noRows == 0)
-                lblTaskId.Text = "1";
-            else
-            {
-                getNumber(noRows);
-            }
+
+           
+
         }
         private void getNumber(int noRows)
         {
-            drProject = dsFujitsuPayments.Tables["ProjectTask"].Rows[noRows - 1];
+            drProject = dsFujitsuPayments.Tables["Tasks"].Rows[noRows - 1];
             lblTaskId.Text = (int.Parse(drProject["TaskID"].ToString()) + 1).ToString();
         }
 

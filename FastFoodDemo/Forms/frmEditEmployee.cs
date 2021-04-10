@@ -13,16 +13,18 @@ using System.Windows.Forms;
 namespace FujitsuPayments.Forms
 {
     public partial class frmEditEmployee : Form
-    {
+    {// variables for sql connections
         SqlDataAdapter daEmployee, daMan, daGrade, daGrades;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBEmployee;
         DataRow drEmployee, drSalary;
         String connStr, sqlEmployee, sqlMan, sqlGrade, sqlGrades;
+        //vars to compare grades against salary
         decimal start, end;
 
         private void cmbGradeEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //will only run the code if the grade is selected
             if (cmbGradeEdit.Focused == true)
             {
                 MessageBox.Show(cmbGradeEdit.SelectedValue.ToString());

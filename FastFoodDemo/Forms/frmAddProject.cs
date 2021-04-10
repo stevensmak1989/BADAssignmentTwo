@@ -116,7 +116,7 @@ namespace FujitsuPayments.Forms
             //employee Street
             try
             {
-                myProject.Duration = Convert.ToInt32(txtDuration.Text.Trim());
+                myProject.Duration = txtDuration.Text.Trim();
             }
             catch (MyException MyEx)
             {
@@ -126,7 +126,7 @@ namespace FujitsuPayments.Forms
             //employee Town
             try
             {
-                myProject.CappedHrs = decimal.Parse(txtCappedhoursAdd.Text.Trim());
+                myProject.CappedHrs = txtCappedhoursAdd.Text.Trim();
             }
             catch (MyException MyEx)
             {
@@ -136,7 +136,7 @@ namespace FujitsuPayments.Forms
             //employee County
             try
             {
-                myProject.B48Rate = decimal.Parse(txtBasicAdd.Text.Trim());
+                myProject.B48Rate = txtBasicAdd.Text.Trim();
             }
             catch (MyException MyEx)
             {
@@ -147,7 +147,7 @@ namespace FujitsuPayments.Forms
             //employee Postcode
             try
             {
-                myProject.A48Rate = decimal.Parse(txtlblBankHolAdd.Text.Trim());
+                myProject.A48Rate = txtlblBankHolAdd.Text.Trim();
             }
             catch (MyException MyEx)
             {
@@ -158,7 +158,7 @@ namespace FujitsuPayments.Forms
             //employee TelNo
             try
             {
-                myProject.BHRate = decimal.Parse(txtlblBankHolAdd.Text.Trim());
+                myProject.BHRate = txtlblBankHolAdd.Text.Trim();
             }
             catch (MyException MyEx)
             {
@@ -177,11 +177,11 @@ namespace FujitsuPayments.Forms
                     drProject["ProjDesc"] = myProject.ProjDesc;
                     drProject["AccountID"] = myProject.AccountID;
                     drProject["StartDate"] = myProject.StartDate;
-                    drProject["Duration"] = myProject.Duration;
-                    drProject["CappedHrs"] = myProject.CappedHrs;
-                    drProject["B48Rate"] = myProject.B48Rate;
-                    drProject["A48Rate"] = myProject.A48Rate;
-                    drProject["BHRate"] = myProject.BHRate;
+                    drProject["Duration"] = Convert.ToInt32(myProject.Duration);
+                    drProject["CappedHrs"] = decimal.Parse(myProject.CappedHrs);
+                    drProject["B48Rate"] = decimal.Parse(myProject.B48Rate);
+                    drProject["A48Rate"] = decimal.Parse(myProject.A48Rate);
+                    drProject["BHRate"] = decimal.Parse(myProject.BHRate);
 
 
                     dsFujitsuPayments.Tables["Project"].Rows.Add(drProject);
