@@ -5,7 +5,7 @@ GO
 CREATE TABLE Grade 
 (
 	Grade			varchar(5)		NOT NULL,
-	GradeDesc		varchar(15)		NOT NULL,
+	GradeDesc		varchar(30)		NOT NULL,
 	StartSal		DECIMAL(10,2)	Not NULL,
 	EndSal			DECIMAL(10,2)	Not NULL
 	--PK
