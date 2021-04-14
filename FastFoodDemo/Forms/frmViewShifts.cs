@@ -120,12 +120,12 @@ namespace FujitsuPayments.Forms
 
                 if (MessageBox.Show("Are you sure you want to delete " + tempName +  "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drEmpShiftDet2.Delete();
-                    daEmpShiftDet2.Update(dsFujitsuPayments, "EmployeeShiftDetails2");
-                    MessageBox.Show("Record Deleted");
-
-                    refreshEmpoyeeShiftDetGridView();
-
+                 
+                        drEmpShiftDet2.Delete();
+                        daEmpShiftDet2.Update(dsFujitsuPayments, "EmployeeShiftDetails2");
+                        MessageBox.Show("Record Deleted");
+                        refreshEmpoyeeShiftDetGridView();
+         
                 }
             }
             else if (dgvEmpShiftDetails.SelectedRows.Count > 1)
@@ -138,6 +138,7 @@ namespace FujitsuPayments.Forms
 
         private void refreshEmpoyeeShiftDetGridView()
         {
+            // clears employee shift data gridview and populates with correct date from selected shift
             dsFujitsuPayments.Tables["EmployeeShiftDetails"].Clear();
 
             if (dgvEmpShift.SelectedRows[0].Cells[0].Value == null || String.IsNullOrEmpty(dgvEmpShift.SelectedRows[0].Cells[0].Value.ToString()))
