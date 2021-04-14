@@ -90,6 +90,8 @@ namespace FujitsuPayments.UserControls
 
         private void btnDeleteLocation_Click(object sender, EventArgs e)
         {
+            StringBuilder errorMessages = new StringBuilder();
+
             if (dgvLocation.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an Office Location from the list.", "Select Office Location");
@@ -102,8 +104,26 @@ namespace FujitsuPayments.UserControls
 
                 if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drLocation.Delete();
-                    daLocation.Update(dsFujitsuPayments, "OfficeLocation");
+                    try
+                    {
+                        drLocation.Delete();
+                        daLocation.Update(dsFujitsuPayments, "OfficeLocation");
+                    }
+                    catch(SqlException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show("Cannot delete Office Location that has related records, please delete all related records first", "Delete Office Location");
+                    }
+                    // -- Refresh grid and clear erro messages -- //
+                    UC_Location_Load(sender, e);
+                    drLocation.ClearErrors();
                 }
             }
         }

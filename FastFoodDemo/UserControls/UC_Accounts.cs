@@ -104,6 +104,9 @@ namespace FujitsuPayments.UserControls
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
+            
+            StringBuilder errorMessages = new StringBuilder();
+
             if (dgvAccounts.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an Account from the list.", "Select Account");
@@ -116,8 +119,27 @@ namespace FujitsuPayments.UserControls
 
                 if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drAccount.Delete();
-                    daAccount.Update(dsFujitsuPayments, "Account");
+                    try
+                    {
+                        drAccount.Delete();
+                        daAccount.Update(dsFujitsuPayments, "Account");
+                    }
+                    catch (SqlException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }                    
+                        MessageBox.Show("Cannot delete account that has related records, please delete all related records first", "Delete Account");
+                    }
+                    // update grid and clear errors
+                    UC_Accounts_Load(sender, e);
+                    drAccount.ClearErrors();
+                   
                 }
             }
         }
