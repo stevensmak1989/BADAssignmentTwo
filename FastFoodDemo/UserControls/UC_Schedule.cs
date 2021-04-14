@@ -452,19 +452,40 @@ namespace FujitsuPayments.UserControls
 
         private void btnDeleteShift_Click(object sender, EventArgs e)
         {
+            StringBuilder errorMessages = new StringBuilder();
             if (dgvShift.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a Shift from the list.", "Select Shift");
             }
-            else
+            else if(dgvShift.SelectedRows.Count == 1)
             {
                 drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
                 string tempName = drShift["ShiftID"].ToString() + "\'s";
                 if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drShift.Delete();
-                    daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                    try
+                    {
+                        drShift.Delete();
+                        daShift.Update(dsFujitsuPayments, "EmployeeShift");
+                    }
+                    catch(SqlException sqlex)
+                    {
+                        for (int i = 0; i < sqlex.Errors.Count; i++)
+                        {                          
+                                errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + sqlex.Errors[i].Message + "\n" +
+                                "LineNumber: " + sqlex.Errors[i].LineNumber + "\n" +
+                                "Source: " + sqlex.Errors[i].Source + "\n" +
+                                "Procedure: " + sqlex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString());
+                    }
+                    
                 }
+            }
+            else if(dgvShift.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Please select a single shift.", "Select Shift");
             }
         }
 

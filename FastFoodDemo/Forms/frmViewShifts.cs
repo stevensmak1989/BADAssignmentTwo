@@ -108,7 +108,7 @@ namespace FujitsuPayments.Forms
             {
                 MessageBox.Show("Please select an Employee Shift from the list.", "Select Shift");
             }
-            else
+            else if(dgvEmpShiftDetails.SelectedRows.Count == 1)
             {
                 object[] primaryKey = new object[2];
                 primaryKey[0] = Convert.ToInt32(dgvEmpShiftDetails.SelectedRows[0].Cells[0].Value);
@@ -127,6 +127,10 @@ namespace FujitsuPayments.Forms
                     refreshEmpoyeeShiftDetGridView();
 
                 }
+            }
+            else if (dgvEmpShiftDetails.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Please select an a single record from the list", "Select Shift");
             }
         }
 
