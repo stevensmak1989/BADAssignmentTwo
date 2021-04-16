@@ -148,7 +148,7 @@ namespace FujitsuPayments.UserControls
 
                 string tempName = drAccount["ClientName"].ToString() + "\'s";
 
-                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Delete Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {

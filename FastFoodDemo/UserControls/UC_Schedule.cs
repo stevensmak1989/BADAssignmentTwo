@@ -471,7 +471,7 @@ namespace FujitsuPayments.UserControls
             {
                 drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
                 string tempName = drShift["ShiftID"].ToString() + "\'s";
-                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Delete Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
@@ -488,8 +488,11 @@ namespace FujitsuPayments.UserControls
                                 "Source: " + sqlex.Errors[i].Source + "\n" +
                                 "Procedure: " + sqlex.Errors[i].Procedure + "\n");
                         }
-                        MessageBox.Show(errorMessages.ToString());
+                        //MessageBox.Show(errorMessages.ToString());
+                        MessageBox.Show("Cannot delete shift that has employees assigned to, please remove employees first then delete record.", "Delete Shift");
                     }
+                    btnSearchShifts_Click(sender, e);
+                    drShift.ClearErrors();
                     
                 }
             }
