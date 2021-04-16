@@ -507,10 +507,15 @@ namespace FujitsuPayments.UserControls
         public static int calLocYAxis(String startTime)
         {
             //MessageBox.Show("start time: " + startTime);
+            // ------- BUG FIX -------- // 
+            /*String was not splitting correctly at the delimiter, had to use substring instead*/
+            //string[] splitTime = startTime.Split(':');          
+            //String stHr = Convert.ToString(startTime[1]);
+            //String stMin = Convert.ToString(startTime[0]);
+            String stHr = startTime.Substring(0,2);
+            String stMin = startTime.Substring(3,2);
 
-            string[] splitTime = startTime.Split(':');
-            String stHr = Convert.ToString(startTime[1]);
-            String stMin = Convert.ToString(startTime[0]);
+            //MessageBox.Show("Before convert: " + stHr + " : " + stMin);
             int hr = Convert.ToInt32(stHr);
             int min = Convert.ToInt32(stMin);           
             //MessageBox.Show("hr: " + hr + "min: " + min);
@@ -528,10 +533,10 @@ namespace FujitsuPayments.UserControls
             {
                 newMin = 60;
             }        
-            //MessageBox.Show("new min: " + newMin);
+           // MessageBox.Show("new min: " + newMin);
 
             int yAxis = (hr*80) + newMin;
-            //MessageBox.Show("YAxis Value = : " + yAxis);
+          //  MessageBox.Show("YAxis Value = : " + yAxis);
 
             return yAxis; // returns y axis value to position panel
         }
