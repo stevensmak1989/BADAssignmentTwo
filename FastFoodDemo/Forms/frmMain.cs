@@ -81,7 +81,7 @@ namespace FujitsuPayments
 
         }
 
-        private void btnCustomer_Click(object sender, EventArgs e) // accounts
+        public void btnCustomer_Click(object sender, EventArgs e) // accounts
         {
             SidePanel.Height = btnCustomer.Height;
             SidePanel.Top = btnCustomer.Top;
@@ -138,7 +138,7 @@ namespace FujitsuPayments
 
         private void pnlForm_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

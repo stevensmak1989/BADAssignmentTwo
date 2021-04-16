@@ -158,12 +158,15 @@ namespace FujitsuPayments.UserControls
         private void btnAddShift_Click(object sender, EventArgs e)
         {
             frmAddShift frm = new frmAddShift();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
             frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.ShowDialog();
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Visible = true;
+            //frm.Location = new Point(180, 100);
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
         }
 
         private void btnAssignShift_Click(object sender, EventArgs e)
@@ -196,12 +199,15 @@ namespace FujitsuPayments.UserControls
                 taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
 
                 frmAssignShift frm = new frmAssignShift();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
+                //frm.TopLevel = false;
+                //frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Visible = true;
+                //frm.Location = new Point(180, 100);
+                //this.Controls.Add(frm);
+                //frm.BringToFront();
             }
             else if (dgvShift.SelectedRows.Count == 1)
             {
@@ -337,12 +343,15 @@ namespace FujitsuPayments.UserControls
         private void btnViewShifts_Click(object sender, EventArgs e)
         {
             frmViewShifts frm = new frmViewShifts();
-            frm.TopLevel = false;
+            frm.Location = new Point(180, 100);
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
-            frm.Location = new Point(100, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.ShowDialog();
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Visible = true;
+            //frm.Location = new Point(100, 100);
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
         }
 
         private void cmbAccountId_SelectedIndexChanged(object sender, EventArgs e)
@@ -441,12 +450,15 @@ namespace FujitsuPayments.UserControls
                 taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
 
                 frmEditShift frm = new frmEditShift();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
+                //frm.TopLevel = false;
+                //frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Visible = true;
+                //frm.Location = new Point(180, 100);
+                //this.Controls.Add(frm);
+                //frm.BringToFront();
             }
         }
 

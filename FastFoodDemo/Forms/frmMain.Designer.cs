@@ -43,12 +43,12 @@
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnLocation = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlDropDown = new System.Windows.Forms.Panel();
             this.btnEmpTask = new System.Windows.Forms.Button();
             this.btnTask = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnLocation = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.pnlForm.SuspendLayout();
@@ -93,7 +93,6 @@
             this.pnlForm.Name = "pnlForm";
             this.pnlForm.Size = new System.Drawing.Size(1084, 616);
             this.pnlForm.TabIndex = 5;
-            this.pnlForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlForm_Paint);
             // 
             // pictureBox2
             // 
@@ -246,6 +245,23 @@
             this.pnlMenu.Size = new System.Drawing.Size(85, 637);
             this.pnlMenu.TabIndex = 0;
             // 
+            // btnLocation
+            // 
+            this.btnLocation.FlatAppearance.BorderSize = 0;
+            this.btnLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocation.ForeColor = System.Drawing.Color.White;
+            this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
+            this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLocation.Location = new System.Drawing.Point(7, 279);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Size = new System.Drawing.Size(72, 56);
+            this.btnLocation.TabIndex = 8;
+            this.btnLocation.Text = "Location";
+            this.btnLocation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLocation.UseVisualStyleBackColor = true;
+            this.btnLocation.Click += new System.EventHandler(this.btnMore_Click);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.pnlDropDown);
@@ -319,23 +335,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // btnLocation
-            // 
-            this.btnLocation.FlatAppearance.BorderSize = 0;
-            this.btnLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocation.ForeColor = System.Drawing.Color.White;
-            this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
-            this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLocation.Location = new System.Drawing.Point(7, 279);
-            this.btnLocation.Name = "btnLocation";
-            this.btnLocation.Size = new System.Drawing.Size(72, 56);
-            this.btnLocation.TabIndex = 8;
-            this.btnLocation.Text = "Location";
-            this.btnLocation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLocation.UseVisualStyleBackColor = true;
-            this.btnLocation.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // frmMain
             // 

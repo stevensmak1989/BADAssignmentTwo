@@ -30,6 +30,7 @@ namespace FujitsuPayments.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddLocation));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTelNo = new System.Windows.Forms.TextBox();
             this.lblTelNo = new System.Windows.Forms.Label();
@@ -267,8 +268,10 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddLocation";
             this.Padding = new System.Windows.Forms.Padding(8);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddLocation";
             this.Load += new System.EventHandler(this.frmAddLocation_Load);
             this.panel1.ResumeLayout(false);
