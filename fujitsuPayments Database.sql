@@ -1,11 +1,14 @@
-CREATE DATABASE fujitsuPayments    
-GO
+--CREATE DATABASE fujitsuPayments    
+--GO
+
+--specify the db
+using fujitsuPayments
 
 --Creates the Grade table
 CREATE TABLE Grade 
 (
 	Grade			varchar(5)		NOT NULL,
-	GradeDesc		varchar(15)		NOT NULL,
+	GradeDesc		varchar(30)		NOT NULL,
 	StartSal		DECIMAL(10,2)	Not NULL,
 	EndSal			DECIMAL(10,2)	Not NULL
 	--PK
@@ -92,19 +95,17 @@ CREATE TABLE Project
 	AccountID       int                 NOT NULL,
 	StartDate		date				NOT NULL,
 	Duration		int					NOT NULL,
-	CappedHrs		DECIMAL(5,2)		NOT NULL,
-	B48Rate			DECIMAL(2,2)		Not null,
-	A48Rate			DECIMAL(2,2)		Not null,
-	BHRate			DECIMAL(2,2)		Not null,
+	CappedHrs		DECIMAL(15,2)		NOT NULL,
+	B48Rate			DECIMAL(3,2)		Not null,
+	A48Rate			DECIMAL(3,2)		Not null,
+	BHRate			DECIMAL(3,2)		Not null,
 
 	--PK
 	CONSTRAINT pkProjId PRIMARY KEY (ProjectID),
 	--FK
 	CONSTRAINT fkAccId	FOREIGN KEY (AccountID ) REFERENCES Account(AccountID),
 
-	CONSTRAINT ckB48Rate CHECK (B48Rate > 0),
-	CONSTRAINT ckA48Rate CHECK (A48Rate > 0),
-	CONSTRAINT ckBHRate CHECK (BHRate > 0)
+	
 )
 
 
@@ -318,3 +319,12 @@ INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
 ('DEV06', 'Software Architect', 34000, 44000),
 ('MAN01', 'Services Manager',29000, 35000),
 ('MAN02', 'Head of Applications', 35500, 55000)
+
+--one project
+  insert into Project (ProjectID, ProjDesc, AccountID, StartDate, Duration, CappedHrs, B48Rate, A48Rate, BHRate)
+  values (1, 'Data Exchange', 10000, '04-22-2021', 100, 100.00, 1.00, 1.00,2.00)
+  
+  
+  --one employee
+  insert into Employee (EmployeeID, Title, Surname,Forename, Street, Town, County,PostCode, TelNo, DOB, ManagerID, Grade, Salary, Manager) 
+	  values (1000, 'Mr', 'Thompson', 'Glynn', '123 Fake Name', 'Derry', 'Derry', 'BT48 7YT', '07872311915', '07/07/1967' ,1000, 'MAN02', 54000.00, 1)
