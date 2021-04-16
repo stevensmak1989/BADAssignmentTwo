@@ -29,8 +29,8 @@ namespace FujitsuPayments.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Location));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Location));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDeleteLocation = new System.Windows.Forms.Button();
             this.btnEditLocation = new System.Windows.Forms.Button();
@@ -38,6 +38,7 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvLocation = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocation)).BeginInit();
@@ -46,6 +47,7 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnDeleteLocation);
             this.panel1.Controls.Add(this.btnEditLocation);
             this.panel1.Controls.Add(this.btnAddLocation);
@@ -146,6 +148,23 @@ namespace FujitsuPayments.UserControls
             this.dgvLocation.Size = new System.Drawing.Size(1090, 483);
             this.dgvLocation.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(484, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(163, 42);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UC_Location
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -172,5 +191,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Button btnAddLocation;
         private System.Windows.Forms.Button btnEditLocation;
         private System.Windows.Forms.Button btnDeleteLocation;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

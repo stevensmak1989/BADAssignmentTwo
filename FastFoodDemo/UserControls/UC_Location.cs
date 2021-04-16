@@ -132,6 +132,11 @@ namespace FujitsuPayments.UserControls
             }
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Location_Load(sender, e);
+        }
+
         private void btnAddLocation_Click(object sender, EventArgs e)
         {
 

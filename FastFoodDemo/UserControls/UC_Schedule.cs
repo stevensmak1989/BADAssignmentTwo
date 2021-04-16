@@ -41,8 +41,7 @@ namespace FujitsuPayments.UserControls
 
         public UC_Schedule()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
         }
 
         private void dgvShift_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -202,6 +201,7 @@ namespace FujitsuPayments.UserControls
                 frm.Location = new Point(180, 100);
                 frm.FormBorderStyle = FormBorderStyle.None;
                 frm.ShowDialog();
+                // -------------- old form load code ---------------- //
                 //frm.TopLevel = false;
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 //frm.Visible = true;
@@ -230,7 +230,7 @@ namespace FujitsuPayments.UserControls
         }
 
 
-
+        // ------ Method use to populate dates/days for panels
         private void calShift_DateChanged(object sender, DateRangeEventArgs e)
         {           
             String dayOfWeek = calShift.SelectionRange.Start.DayOfWeek.ToString();
@@ -298,9 +298,7 @@ namespace FujitsuPayments.UserControls
                     lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
                     lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
                     lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
-                    break;
-
-                   
+                    break;      
             }
 
             btnSearchShifts_Click(sender, e);
@@ -423,7 +421,7 @@ namespace FujitsuPayments.UserControls
             }
             else
             {
-
+                // tp prevent action event before data has loaded
             }
         }
 
@@ -714,8 +712,6 @@ namespace FujitsuPayments.UserControls
             }
         }
 
-
-
         private void refreshShiftGridView()
         {
             dsFujitsuPayments.Tables["EmployeeShift2"].Clear();
@@ -737,7 +733,7 @@ namespace FujitsuPayments.UserControls
             hidePanels();
         }
 
-        // methods for tooltip
+        //  ------------------  methods for tooltip ---------------- //
 
         private void pnlMonShift1_MouseHover(object sender, EventArgs e)
         {
@@ -777,6 +773,16 @@ namespace FujitsuPayments.UserControls
         private void btnDeleteShift_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("Delete selected shift", btnDeleteShift);
+        }
+
+        private void btnSearchShifts_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select to search for shifts", btnSearchShifts);
+        }
+
+        private void lblHelp_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select values in all drop down menus along with a date in order to search for Shifts", lblHelp);
         }
 
         private void pnlMonShift4_MouseHover(object sender, EventArgs e)

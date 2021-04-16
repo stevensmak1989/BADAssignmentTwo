@@ -31,7 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Schedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewShifts = new System.Windows.Forms.Button();
             this.btnEditShift = new System.Windows.Forms.Button();
@@ -127,6 +127,7 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblHelp = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -437,14 +438,14 @@ namespace FujitsuPayments.UserControls
             // 
             this.dgvShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShift.Location = new System.Drawing.Point(686, 247);
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.ReadOnly = true;
@@ -457,6 +458,7 @@ namespace FujitsuPayments.UserControls
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.lblHelp);
             this.panel3.Controls.Add(this.dgvShift);
             this.panel3.Controls.Add(this.btnReset);
             this.panel3.Controls.Add(this.btnSearchShifts);
@@ -505,6 +507,7 @@ namespace FujitsuPayments.UserControls
             this.btnSearchShifts.Text = "Search Shifts";
             this.btnSearchShifts.UseVisualStyleBackColor = true;
             this.btnSearchShifts.Click += new System.EventHandler(this.btnSearchShifts_Click);
+            this.btnSearchShifts.MouseHover += new System.EventHandler(this.btnSearchShifts_MouseHover);
             // 
             // cmbAccountId
             // 
@@ -1182,6 +1185,17 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift1.TabIndex = 14;
             this.pnlSunShift1.MouseHover += new System.EventHandler(this.pnlSunShift1_MouseHover);
             // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Image = ((System.Drawing.Image)(resources.GetObject("lblHelp.Image")));
+            this.lblHelp.Location = new System.Drawing.Point(895, 218);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(18, 21);
+            this.lblHelp.TabIndex = 17;
+            this.lblHelp.Text = "  ";
+            this.lblHelp.MouseHover += new System.EventHandler(this.lblHelp_MouseHover);
+            // 
             // UC_Schedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1312,5 +1326,6 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.Button btnSearchShifts;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblHelp;
     }
 }

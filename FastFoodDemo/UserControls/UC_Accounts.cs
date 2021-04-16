@@ -186,6 +186,11 @@ namespace FujitsuPayments.UserControls
             
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Accounts_Load(sender, e);
+        }
+
         private void btnViewAccount_Click(object sender, EventArgs e)
         {
 
