@@ -19,11 +19,10 @@ namespace FujitsuPayments.UserControls
         SqlCommandBuilder cmbBTime;
         DataRow drTime;
         String connStr, sqlTime;
-
         public static int selectedTab = 0;
         public static bool timeSelected = false, buttons = false;
         public static int timeNoSelected = 0;
-        
+       
 
         public UC_Timesheet()
         {
@@ -46,34 +45,16 @@ namespace FujitsuPayments.UserControls
             dvgTimesheetDets.DataSource = dsFujitsuPayments.Tables["Timesheet"];
             // resize the datagridview columns to fit the newly loaded content
             //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
         }
-        public   void button()
-        {
-            if (buttons == true)
-            {
-                btnAddTimesheet.Enabled = false;
-                btnTaskDel.Enabled = false;
-                btnTimesheetEdit.Enabled = false;
-            }
-            else
-            {
-                btnAddTimesheet.Enabled = true;
-                btnTaskDel.Enabled = true;
-                btnTimesheetEdit.Enabled = true;
-            }
-        }
+        
 
         private void btnAddTimesheet_Click(object sender, EventArgs e)
         {
             frmAddTimesheet frm = new frmAddTimesheet();
-            frm.TopLevel = false;
-            buttons = true;
-            button();
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
-            frm.Location = new Point(0, 45);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.Location = new Point(135, 109);
+            frm.ShowDialog();
            
         }
 
@@ -99,20 +80,20 @@ namespace FujitsuPayments.UserControls
                 timeSelected = true;
                 timeNoSelected = Convert.ToInt32(dvgTimesheetDets.SelectedRows[0].Cells[0].Value);
 
-                buttons = true;
-                button();
+                
 
                 frmEditTimesheet frm = new frmEditTimesheet();
-                frm.TopLevel = false;
                 frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
-                frm.Location = new Point(0, 45);
-                this.Controls.Add(frm);
-                frm.BringToFront();
-               
+
+                frm.Location = new Point(135, 109);
+
+                frm.ShowDialog();
+
             }
 
         }
+
+        
 
         private void btnTaskDel_Click(object sender, EventArgs e)
         {
@@ -135,22 +116,17 @@ namespace FujitsuPayments.UserControls
             {
                 timeSelected = true;
                 timeNoSelected = Convert.ToInt32(dvgTimesheetDets.SelectedRows[0].Cells[0].Value);
-                buttons = true;
-                button();
+             
+               
                 frmDeleteTimesheet frm = new frmDeleteTimesheet();
-                frm.TopLevel = false;
                 frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
-                frm.Location = new Point(2, 25);
-                this.Controls.Add(frm);
-                frm.BringToFront();
-                
+                frm.Location = new Point(135, 109);
+                frm.ShowDialog();
+
+
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
     }
 }

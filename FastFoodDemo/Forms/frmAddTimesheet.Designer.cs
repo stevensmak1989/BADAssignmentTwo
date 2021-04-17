@@ -52,6 +52,7 @@ namespace FujitsuPayments.Forms
             this.button2 = new System.Windows.Forms.Button();
             this.lvPastHours = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbSelected = new System.Windows.Forms.PictureBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.cmbProject7 = new System.Windows.Forms.ComboBox();
             this.lblDateSun = new System.Windows.Forms.Label();
@@ -104,18 +105,18 @@ namespace FujitsuPayments.Forms
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.pbSelected = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -124,11 +125,10 @@ namespace FujitsuPayments.Forms
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -287,6 +287,7 @@ namespace FujitsuPayments.Forms
             this.cmbEmployee.Size = new System.Drawing.Size(107, 21);
             this.cmbEmployee.TabIndex = 71;
             this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged_1);
+            this.cmbEmployee.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // lblEmpID
             // 
@@ -331,6 +332,7 @@ namespace FujitsuPayments.Forms
             // 
             // lvPastHours
             // 
+            this.lvPastHours.HideSelection = false;
             this.lvPastHours.Location = new System.Drawing.Point(665, 192);
             this.lvPastHours.Name = "lvPastHours";
             this.lvPastHours.Size = new System.Drawing.Size(241, 169);
@@ -357,6 +359,16 @@ namespace FujitsuPayments.Forms
             this.panel1.TabIndex = 78;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
+            // pbSelected
+            // 
+            this.pbSelected.Image = ((System.Drawing.Image)(resources.GetObject("pbSelected.Image")));
+            this.pbSelected.Location = new System.Drawing.Point(568, 49);
+            this.pbSelected.Name = "pbSelected";
+            this.pbSelected.Size = new System.Drawing.Size(31, 31);
+            this.pbSelected.TabIndex = 79;
+            this.pbSelected.TabStop = false;
+            this.pbSelected.Click += new System.EventHandler(this.pbSelected_Click);
+            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.cmbProject7);
@@ -379,6 +391,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject7.Size = new System.Drawing.Size(60, 21);
             this.cmbProject7.TabIndex = 125;
             this.cmbProject7.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
+            this.cmbProject7.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSun
             // 
@@ -449,6 +462,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject6.Size = new System.Drawing.Size(60, 21);
             this.cmbProject6.TabIndex = 124;
             this.cmbProject6.SelectedIndexChanged += new System.EventHandler(this.cmbProject6_SelectedIndexChanged);
+            this.cmbProject6.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSat
             // 
@@ -519,6 +533,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject5.Size = new System.Drawing.Size(60, 21);
             this.cmbProject5.TabIndex = 123;
             this.cmbProject5.SelectedIndexChanged += new System.EventHandler(this.cmbProject5_SelectedIndexChanged);
+            this.cmbProject5.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateFri
             // 
@@ -616,7 +631,8 @@ namespace FujitsuPayments.Forms
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(60, 21);
             this.cmbProject.TabIndex = 120;
-            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
+            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
+            this.cmbProject.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // cmbEmpTask
             // 
@@ -660,6 +676,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject4.Size = new System.Drawing.Size(60, 21);
             this.cmbProject4.TabIndex = 130;
             this.cmbProject4.SelectedIndexChanged += new System.EventHandler(this.cmbProject4_SelectedIndexChanged);
+            this.cmbProject4.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // txtEnd4
             // 
@@ -730,6 +747,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject3.Size = new System.Drawing.Size(60, 21);
             this.cmbProject3.TabIndex = 121;
             this.cmbProject3.SelectedIndexChanged += new System.EventHandler(this.cmbProject3_SelectedIndexChanged);
+            this.cmbProject3.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateWed
             // 
@@ -800,6 +818,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject2.Size = new System.Drawing.Size(60, 21);
             this.cmbProject2.TabIndex = 124;
             this.cmbProject2.SelectedIndexChanged += new System.EventHandler(this.cmbProject2_SelectedIndexChanged);
+            this.cmbProject2.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // cmbEmpTask2
             // 
@@ -886,39 +905,15 @@ namespace FujitsuPayments.Forms
             this.panel12.TabIndex = 79;
             this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
             // 
-            // pbSelected
+            // panel16
             // 
-            this.pbSelected.Image = ((System.Drawing.Image)(resources.GetObject("pbSelected.Image")));
-            this.pbSelected.Location = new System.Drawing.Point(568, 49);
-            this.pbSelected.Name = "pbSelected";
-            this.pbSelected.Size = new System.Drawing.Size(31, 31);
-            this.pbSelected.TabIndex = 79;
-            this.pbSelected.TabStop = false;
-            this.pbSelected.Click += new System.EventHandler(this.pbSelected_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.panel13.Controls.Add(this.panel3);
-            this.panel13.Location = new System.Drawing.Point(16, 18);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(246, 102);
-            this.panel13.TabIndex = 79;
-            this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.panel14.Controls.Add(this.panel4);
-            this.panel14.Location = new System.Drawing.Point(339, 18);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(246, 102);
-            this.panel14.TabIndex = 80;
-            this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.panel16.Controls.Add(this.panel1);
+            this.panel16.Location = new System.Drawing.Point(17, 149);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(632, 342);
+            this.panel16.TabIndex = 82;
+            this.panel16.Paint += new System.Windows.Forms.PaintEventHandler(this.panel16_Paint);
             // 
             // panel15
             // 
@@ -930,15 +925,29 @@ namespace FujitsuPayments.Forms
             this.panel15.TabIndex = 81;
             this.panel15.Paint += new System.Windows.Forms.PaintEventHandler(this.panel15_Paint);
             // 
-            // panel16
+            // panel14
             // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.panel16.Controls.Add(this.panel1);
-            this.panel16.Location = new System.Drawing.Point(17, 149);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(632, 342);
-            this.panel16.TabIndex = 82;
-            this.panel16.Paint += new System.Windows.Forms.PaintEventHandler(this.panel16_Paint);
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.panel14.Controls.Add(this.panel4);
+            this.panel14.Location = new System.Drawing.Point(339, 18);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(246, 102);
+            this.panel14.TabIndex = 80;
+            this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.panel13.Controls.Add(this.panel3);
+            this.panel13.Location = new System.Drawing.Point(16, 18);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(246, 102);
+            this.panel13.TabIndex = 79;
+            this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmAddTimesheet
             // 
@@ -963,6 +972,7 @@ namespace FujitsuPayments.Forms
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -978,11 +988,10 @@ namespace FujitsuPayments.Forms
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).EndInit();
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

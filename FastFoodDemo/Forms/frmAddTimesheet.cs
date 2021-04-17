@@ -16,13 +16,13 @@ namespace FujitsuPayments.Forms
     public partial class frmAddTimesheet : Form
     {
 
-        SqlDataAdapter daProject, daEmployee, daEmpTask,daClaim, daMan, daTimesheet, daTimeDets, daCost,daCount;
+        SqlDataAdapter daProject, daEmployee, daEmpTask,daClaim, daEmpTask1, daMan, daTimesheet, daTimeDets, daCost,daCount;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBClaim, cmbBEmp, cmbBTimesheet, cmbBTimeDets, cmbBCost, cnbBCount;
-        SqlCommand cmdEmp, cmdProj, cmdCount;
-
+        SqlCommand cmdEmp, cmdProj, cmdCount, cmdEmp1;
+       
         DataRow drProject,  drTimesheet, drTimeDets,drCount;
-        String connStr, sqlProject,  sqlEmp, sqlEmpTask, sqlClaim, sqlMan, sqlTimesheet, sqlTimeDets, sqlCost, sqlCount;
+        String connStr, sqlProject, sqlEmpTask1, sqlEmp, sqlEmpTask, sqlClaim, sqlMan, sqlTimesheet, sqlTimeDets, sqlCost, sqlCount;
         SqlConnection conn;
         private double count;
 private Boolean replay = false, Start = false;
@@ -35,24 +35,16 @@ private Boolean replay = false, Start = false;
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Red, ButtonBorderStyle.Solid) ;
-            //ControlPaint.DrawBorder(e.Graphics, this.panel2.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
-            //ControlPaint.DrawBorder(e.Graphics, this.panel3.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
-            //ControlPaint.DrawBorder(e.Graphics, this.panel4.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
-
-            
-         
-           
-           
-
+     
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-           UC_Timesheet.buttons = false;
+           
 
-            //UC_Timesheet frm1 = new UC_Timesheet();
-           // UC_Timesheet.button();
+          
             this.Dispose();
+            
 
         }
 
@@ -158,7 +150,28 @@ private Boolean replay = false, Start = false;
 
         private void cmbProject7_SelectedIndexChanged(object sender, EventArgs e)
         {
+             
+            
+            dsFujitsuPayments.Tables["ProjectTaskEmployee1"].Clear();
+            cmdEmp1.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
+            cmdEmp1.Parameters["@ProjectID"].Value = cmbProject.SelectedValue;
+            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+            daEmpTask1.Fill(dsFujitsuPayments, "ProjectTaskEmployee1");
 
+            int numb = 0;
+
+           
+            numb = 0;
+            for (int i = 0; i < 7; i++)
+            {
+
+
+                task[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee1"];
+                task[i].ValueMember = "TaskID";
+                task[i].DisplayMember = "TaskID";
+
+                numb++;
+            }
         }
 
         private void lblDateSun_Click(object sender, EventArgs e)
@@ -1532,19 +1545,20 @@ private Boolean replay = false, Start = false;
 
 
 
-            sqlEmpTask = @"select ProjectID , TaskID , EmployeeID from ProjectTaskEmployee where EmployeeID like @EmployeeID";
+            sqlEmpTask = @"select ProjectID , TaskID , EmployeeID from ProjectTaskEmployee where EmployeeID = @EmployeeID";
             conn = new SqlConnection(connStr);
             cmdEmp = new SqlCommand(sqlEmpTask, conn);
             cmdEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
             daEmpTask = new SqlDataAdapter(cmdEmp);
             daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
-            sqlEmpTask = @"select ProjectID, TaskID, EmployeeID from ProjectTaskEmployee where EmployeeID like @EmployeeID";
+            sqlEmpTask1 = @"select ProjectID, TaskID, EmployeeID from ProjectTaskEmployee where EmployeeID = @EmployeeID and ProjectID = @ProjectID";
             conn = new SqlConnection(connStr);
-            cmdEmp = new SqlCommand(sqlEmpTask, conn);
-            cmdEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
-            daEmpTask = new SqlDataAdapter(cmdEmp);
-            daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
+            cmdEmp1 = new SqlCommand(sqlEmpTask1, conn);
+            cmdEmp1.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            cmdEmp1.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daEmpTask1 = new SqlDataAdapter(cmdEmp1);
+            daEmpTask1.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee1");
 
             project();
             listBoxValues();
@@ -1777,26 +1791,41 @@ private Boolean replay = false, Start = false;
         private void project()
         {
             int numb = 0;
-            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+            
             ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
             dsFujitsuPayments.Tables["ProjectTaskEmployee"].Clear();
             cmdEmp.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
 
+            int count = 0;
             daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
-            for (int i = 0; i < 7; i++)
+            
+           // daEmpTask.
+
+
+            DataTable dt = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+            foreach (DataRow row in dt.Rows)
+            {
+                count++;
+                
+            }
+
+            if (count == 0)
+            {
+                MessageBox.Show("This employee has no Projects or Tasks, please assign.");
+            }
+            else
             {
 
 
 
-                project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                project[i].ValueMember = "ProjectID";
-                project[i].DisplayMember = "ProjectID";
+                for (int i = 0; i < 7; i++)
+                {
+                    project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+                    project[i].ValueMember = "ProjectID";
+                    project[i].DisplayMember = "ProjectID";
 
-                task[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                task[i].ValueMember = "TaskID";
-                task[i].DisplayMember = "TaskID";
-
-                numb++;
+                    numb++;
+                }
             }
         }
 

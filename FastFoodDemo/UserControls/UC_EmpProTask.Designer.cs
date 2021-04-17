@@ -120,6 +120,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmpTaskDel.Text = "Del Employee Task";
             this.btnEmpTaskDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmpTaskDel.UseVisualStyleBackColor = true;
+            this.btnEmpTaskDel.Click += new System.EventHandler(this.btnEmpTaskDel_Click);
             // 
             // btnEmpTaskEdit
             // 
@@ -136,6 +137,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmpTaskEdit.Text = "Edit Employee Task";
             this.btnEmpTaskEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmpTaskEdit.UseVisualStyleBackColor = true;
+            this.btnEmpTaskEdit.Click += new System.EventHandler(this.btnEmpTaskEdit_Click);
             // 
             // btnEmpTaskAdd
             // 

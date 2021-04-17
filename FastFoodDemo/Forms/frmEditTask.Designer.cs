@@ -162,6 +162,7 @@ namespace FujitsuPayments.Forms
             // 
             // cmbProjectId
             // 
+            this.cmbProjectId.Enabled = false;
             this.cmbProjectId.FormattingEnabled = true;
             this.cmbProjectId.Location = new System.Drawing.Point(274, 68);
             this.cmbProjectId.Name = "cmbProjectId";

@@ -255,7 +255,7 @@ namespace FujitsuPayments
 
         public static bool validDays(string txt, int Min)
         {
-            DateTime currentDate = DateTime.Now;
+            DateTime currentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             DateTime DOB = Convert.ToDateTime(txt);
 
             TimeSpan t = DOB -currentDate ;

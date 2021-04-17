@@ -104,12 +104,10 @@ namespace FujitsuPayments.UserControls
                 empNoSelected = Convert.ToInt32(dvgEmployee.SelectedRows[0].Cells[0].Value);
 
                 frmEditEmployee frm = new frmEditEmployee();
-                frm.TopLevel = false;
                 frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
-                frm.Location = new Point(2, 25);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.Location = new Point(135, 109);
+                frm.ShowDialog();
+
             }
         }
 
@@ -127,8 +125,19 @@ namespace FujitsuPayments.UserControls
 
                 if (MessageBox.Show("Are you sure you want to delete " + tempName + " details?", "Add Employee", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drEmployee.Delete();
-                    daEmployee.Update(dsFujitsuPayments, "Employee");
+                    try
+                    {
+                        drEmployee.Delete();
+                        daEmployee.Update(dsFujitsuPayments, "Employee");
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Cannot delete an Employee that has related records, please delete all related records first", "Delete Employee");
+                    }
+                    // update grid and clear errors
+                    UC_Employee__Load(sender, e);
+                    drEmployee.ClearErrors();
+
                 }
             }
         }
@@ -136,13 +145,10 @@ namespace FujitsuPayments.UserControls
         private void btnEmployeeAdd_Click(object sender, EventArgs e)
         {
             frmAddEmployee frmAdd = new frmAddEmployee();
-            frmAdd.TopLevel = false;
             frmAdd.FormBorderStyle = FormBorderStyle.None;
-            frmAdd.Visible = true;
-            frmAdd.Location = new Point(2, 25);
-            this.Controls.Add(frmAdd);
-            frmAdd.BringToFront();
-            //dvgEmployee.Visible = false;
+            frmAdd.Location = new Point(135, 109);
+            frmAdd.ShowDialog();
+
         }
     }
 }

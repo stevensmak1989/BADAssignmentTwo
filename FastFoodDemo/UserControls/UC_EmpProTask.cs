@@ -24,6 +24,42 @@ namespace FujitsuPayments.UserControls
         public static bool tskSelected = false;
         public static int tskNoSelected = 0, prjNoSelected = 0, empNoSelected =0;
 
+        private void btnEmpTaskDel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEmpTaskEdit_Click(object sender, EventArgs e)
+        {
+            // condition to check if a row has been selected to pass to edit form
+            if (dvgEmpTask.SelectedRows.Count == 0)
+            {
+                tskSelected = false;
+                tskNoSelected = 0;
+                MessageBox.Show("Please select a record.", "Select ProjectTask");
+            }
+            else if (dvgEmpTask.SelectedRows.Count > 1)
+            {
+                tskSelected = false;
+                tskNoSelected = 0;
+                MessageBox.Show("Please select a single record, cannot edit multiple records", "Select ProjectTask");
+
+            }
+
+            else if (dvgEmpTask.SelectedRows.Count == 1)
+            {
+                tskSelected = true;
+                tskNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[1].Value);
+                prjNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[0].Value);
+                empNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[2].Value);
+                frmEditEmpTask frm = new frmEditEmpTask();
+                frm.Location = new Point(180, 100);
+                frm.FormBorderStyle = FormBorderStyle.None;
+
+                frm.ShowDialog();
+            }
+        }
+
         private void dvgEmpTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

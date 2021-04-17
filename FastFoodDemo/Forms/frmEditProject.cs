@@ -84,6 +84,12 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(txtDuration, MyEx.toString());
             }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtDuration, "Duration must not be larger than 600 days");
+
+            }
             //employee Town
             try
             {
@@ -93,6 +99,12 @@ namespace FujitsuPayments.Forms
             {
                 ok = false;
                 errP.SetError(txtCappedhoursEdit, MyEx.toString());
+            }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtCappedhoursEdit, "Capped Hours must not be larger than 10000 hours");
+
             }
             //employee County
             try
@@ -104,16 +116,27 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(txtBasicEdit, MyEx.toString());
             }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtBasicEdit, "basic Hours must not be larger than 1");
 
+            }
             //employee Postcode
             try
             {
-                myProject.A48Rate = txtlblBankHolEdit.Text.Trim();
+                myProject.A48Rate = txtOvertimeEdit.Text.Trim();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtlblBankHolEdit, MyEx.toString());
+                errP.SetError(txtOvertimeEdit, MyEx.toString());
+            }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtOvertimeEdit, "Overtime Hours must not be greater than 1 and less than 2");
+
             }
 
             //employee TelNo
@@ -125,6 +148,12 @@ namespace FujitsuPayments.Forms
             {
                 ok = false;
                 errP.SetError(txtlblBankHolEdit, MyEx.toString());
+            }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtOvertimeEdit, "Overtime Hours must not be greater than 1 and less than 2");
+
             }
 
             try

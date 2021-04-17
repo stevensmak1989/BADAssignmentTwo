@@ -68,7 +68,6 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(821, 42);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnTaskDel
             // 
@@ -137,11 +136,12 @@ namespace FujitsuPayments.UserControls
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgTimesheetDets;
-        private System.Windows.Forms.Button btnTaskDel;
-        private System.Windows.Forms.Button btnTimesheetEdit;
         public System.Windows.Forms.Button btnAddTimesheet;
+        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Button btnTaskDel;
+        public System.Windows.Forms.Button btnTimesheetEdit;
+        public System.Windows.Forms.Panel panel1;
     }
 }

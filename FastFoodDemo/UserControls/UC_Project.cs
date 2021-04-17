@@ -60,13 +60,12 @@ namespace FujitsuPayments.UserControls
         private void btnProjectAdd_Click(object sender, EventArgs e)
         {
             frmAddProject frm = new frmAddProject();
-            frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
-            frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.Location = new Point(190, 110);
+            frm.ShowDialog();
         }
+
+       
 
         private void dvgProject_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -95,12 +94,10 @@ namespace FujitsuPayments.UserControls
                 prjNoSelected = Convert.ToInt32(dvgProject.SelectedRows[0].Cells[0].Value);
 
                 frmEditProject frm = new frmEditProject();
-                frm.TopLevel = false;
+                
                 frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
-                frm.Location = new Point(2, 25);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+frm.Location = new Point(180, 100);
+                frm.ShowDialog();
             }
         }
 
@@ -150,9 +147,20 @@ namespace FujitsuPayments.UserControls
 
                 if (MessageBox.Show("Are you sure you want to delete project " + tempName + "?", "Delete Project", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    drProject.Delete();
-                    daProject.Update(dsFujitsuPayments, "Project");
-                }
+                    try
+                    {
+                        drProject.Delete();
+                        daProject.Update(dsFujitsuPayments, "Project");
+                    }
+                    
+                    catch (SqlException ex)
+                    {
+                    MessageBox.Show("Cannot delete a Project that has related records, please delete all related records first", "Delete Project");
+                     }
+                // update grid and clear errors
+                       UC_Project_Load(sender, e);
+                         drProject.ClearErrors();
+            }
             }
         }
 

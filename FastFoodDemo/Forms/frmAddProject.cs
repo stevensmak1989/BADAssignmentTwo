@@ -113,6 +113,7 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(dtpStartDate, MyEx.toString());
             }
+            
             //employee Street
             try
             {
@@ -122,6 +123,12 @@ namespace FujitsuPayments.Forms
             {
                 ok = false;
                 errP.SetError(txtDuration, MyEx.toString());
+            }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtDuration, "Duration must not be larger than 600 days");
+
             }
             //employee Town
             try
@@ -133,39 +140,62 @@ namespace FujitsuPayments.Forms
                 ok = false;
                 errP.SetError(txtCappedhoursAdd, MyEx.toString());
             }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtCappedhoursAdd, "Capped Hours must not be larger than 10000 hours");
+
+            }
             //employee County
             try
             {
-                myProject.B48Rate = txtBasicAdd.Text.Trim();
+                myProject.B48Rate = txtBasicAdd.Text;
             }
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtBasicAdd, MyEx.toString());
             }
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtBasicAdd, "basic Hours must not be larger than 1");
+
+            }
 
             //employee Postcode
             try
             {
-                myProject.A48Rate = txtlblBankHolAdd.Text.Trim();
+                myProject.A48Rate = txtOvertimeAdd.Text;
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtlblBankHolAdd, MyEx.toString());
+                errP.SetError(txtOvertimeAdd, MyEx.toString());
             }
 
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtOvertimeAdd, "Overtime Hours must not be greater than 1 and less than 2");
+
+            }
             //employee TelNo
             try
             {
-                myProject.BHRate = txtlblBankHolAdd.Text.Trim();
+                myProject.BHRate = txtlblBankHolAdd.Text;
             }
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtlblBankHolAdd, MyEx.toString());
             }
-           
+            catch (System.OverflowException ex)
+            {
+                ok = false;
+                errP.SetError(txtlblBankHolAdd, "Bank Holiday Hours must not be greater than 1.9 and less than 4.1");
+
+            }
             try
             {
                 if (ok)
@@ -178,11 +208,11 @@ namespace FujitsuPayments.Forms
                     drProject["AccountID"] = myProject.AccountID;
                     drProject["StartDate"] = myProject.StartDate;
                     drProject["Duration"] = Convert.ToInt32(myProject.Duration);
-                    drProject["CappedHrs"] = decimal.Parse(myProject.CappedHrs);
-                    drProject["B48Rate"] = decimal.Parse(myProject.B48Rate);
-                    drProject["A48Rate"] = decimal.Parse(myProject.A48Rate);
-                    drProject["BHRate"] = decimal.Parse(myProject.BHRate);
-
+                    drProject["CappedHrs"] = Convert.ToDecimal(myProject.CappedHrs);
+                    
+                    drProject["A48Rate"] = Convert.ToDecimal(myProject.A48Rate);
+                    drProject["BHRate"] = Convert.ToDecimal(myProject.BHRate);
+                    drProject["B48Rate"] = Convert.ToDecimal(myProject.B48Rate);
 
                     dsFujitsuPayments.Tables["Project"].Rows.Add(drProject);
                     daProject.Update(dsFujitsuPayments, "Project");

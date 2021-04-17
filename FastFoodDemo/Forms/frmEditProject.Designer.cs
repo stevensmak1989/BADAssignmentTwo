@@ -89,7 +89,7 @@ namespace FujitsuPayments.Forms
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(106, 26);
             this.dtpStartDate.TabIndex = 45;
-            this.dtpStartDate.Value = new System.DateTime(2021, 2, 26, 0, 0, 0, 0);
+            this.dtpStartDate.Value = new System.DateTime(2021, 4, 15, 0, 0, 0, 0);
             // 
             // txtlblBankHolEdit
             // 
@@ -347,6 +347,7 @@ namespace FujitsuPayments.Forms
             this.ClientSize = new System.Drawing.Size(653, 351);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(190, 110);
             this.Name = "frmEditProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditProject";

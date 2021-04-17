@@ -94,7 +94,7 @@ namespace FujitsuPayments.Forms
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(106, 26);
             this.dtpStartDate.TabIndex = 45;
-            this.dtpStartDate.Value = new System.DateTime(2021, 2, 26, 0, 0, 0, 0);
+            this.dtpStartDate.Value = new System.DateTime(2021, 4, 15, 13, 26, 29, 0);
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // txtlblBankHolAdd
@@ -350,6 +350,7 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(190, 110);
             this.Name = "frmAddProject";
             this.Text = "frmAddProject";
             this.Load += new System.EventHandler(this.frmAddProject_Load);

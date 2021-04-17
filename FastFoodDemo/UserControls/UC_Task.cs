@@ -55,12 +55,12 @@ namespace FujitsuPayments.UserControls
         private void btnTaskAdd_Click(object sender, EventArgs e)
         {
             frmAddTask frm = new frmAddTask();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
+           
             frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.FormBorderStyle = FormBorderStyle.None;
+           
+            frm.ShowDialog();
+
         }
 
         private void btnTaskEdit_Click(object sender, EventArgs e)
@@ -87,13 +87,21 @@ namespace FujitsuPayments.UserControls
                 prjNoSelected = Convert.ToInt32(dvgTask.SelectedRows[0].Cells[0].Value);
 
                 frmEditTask frm = new frmEditTask();
-                frm.TopLevel = false;
+                frm.Location = new Point(180, 100);
                 frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
-                frm.Location = new Point(2, 25);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+
+                frm.ShowDialog();
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void btnTaskDel_Click(object sender, EventArgs e)
@@ -121,10 +129,25 @@ namespace FujitsuPayments.UserControls
 
                 if (MessageBox.Show("Are you sure you want to delete Task " + tempName + "?", "Delete Task", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
+                    try
+                    { 
                     drTask.Delete();
                     daTask.Update(dsFujitsuPayments, "ProjectTask");
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Cannot delete a Project Task that has related records, please delete all related records first", "Delete Project Task");
+                    }
+                    // update grid and clear errors
+                    UC_Task_Load(sender, e);
+                    drTask.ClearErrors();
                 }
             }
+        }
+        private void UC_Task_Load(object sender, EventArgs e)
+        {
+
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
