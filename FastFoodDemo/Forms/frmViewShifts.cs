@@ -118,7 +118,7 @@ namespace FujitsuPayments.Forms
                 string tempName = drEmpShiftDet2["ShiftID"].ToString() + " " + drEmpShiftDet2["EmployeeID"].ToString() + "\'s";
 
 
-                if (MessageBox.Show("Are you sure you want to delete " + tempName +  "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName +  "details?", "Delete Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                  
                         drEmpShiftDet2.Delete();

@@ -41,8 +41,7 @@ namespace FujitsuPayments.UserControls
 
         public UC_Schedule()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
         }
 
         private void dgvShift_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -158,12 +157,15 @@ namespace FujitsuPayments.UserControls
         private void btnAddShift_Click(object sender, EventArgs e)
         {
             frmAddShift frm = new frmAddShift();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
             frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.ShowDialog();
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Visible = true;
+            //frm.Location = new Point(180, 100);
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
         }
 
         private void btnAssignShift_Click(object sender, EventArgs e)
@@ -196,12 +198,16 @@ namespace FujitsuPayments.UserControls
                 taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
 
                 frmAssignShift frm = new frmAssignShift();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
+                // -------------- old form load code ---------------- //
+                //frm.TopLevel = false;
+                //frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Visible = true;
+                //frm.Location = new Point(180, 100);
+                //this.Controls.Add(frm);
+                //frm.BringToFront();
             }
             else if (dgvShift.SelectedRows.Count == 1)
             {
@@ -224,7 +230,7 @@ namespace FujitsuPayments.UserControls
         }
 
 
-
+        // ------ Method use to populate dates/days for panels
         private void calShift_DateChanged(object sender, DateRangeEventArgs e)
         {           
             String dayOfWeek = calShift.SelectionRange.Start.DayOfWeek.ToString();
@@ -292,9 +298,7 @@ namespace FujitsuPayments.UserControls
                     lblFriDate.Text = calShift.SelectionRange.Start.AddDays(-2).ToShortDateString();
                     lblSatDate.Text = calShift.SelectionRange.Start.AddDays(-1).ToShortDateString();
                     lblSunDate.Text = calShift.SelectionRange.Start.ToShortDateString();
-                    break;
-
-                   
+                    break;      
             }
 
             btnSearchShifts_Click(sender, e);
@@ -337,12 +341,15 @@ namespace FujitsuPayments.UserControls
         private void btnViewShifts_Click(object sender, EventArgs e)
         {
             frmViewShifts frm = new frmViewShifts();
-            frm.TopLevel = false;
+            frm.Location = new Point(180, 100);
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
-            frm.Location = new Point(100, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.ShowDialog();
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Visible = true;
+            //frm.Location = new Point(100, 100);
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
         }
 
         private void cmbAccountId_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,7 +421,7 @@ namespace FujitsuPayments.UserControls
             }
             else
             {
-
+                // tp prevent action event before data has loaded
             }
         }
 
@@ -441,12 +448,15 @@ namespace FujitsuPayments.UserControls
                 taskIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[3].Value);
 
                 frmEditShift frm = new frmEditShift();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
+                //frm.TopLevel = false;
+                //frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Visible = true;
+                //frm.Location = new Point(180, 100);
+                //this.Controls.Add(frm);
+                //frm.BringToFront();
             }
         }
 
@@ -461,7 +471,7 @@ namespace FujitsuPayments.UserControls
             {
                 drShift = dsFujitsuPayments.Tables["EmployeeShift"].Rows.Find(dgvShift.SelectedRows[0].Cells[0].Value);
                 string tempName = drShift["ShiftID"].ToString() + "\'s";
-                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Delete Shift", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
@@ -478,8 +488,11 @@ namespace FujitsuPayments.UserControls
                                 "Source: " + sqlex.Errors[i].Source + "\n" +
                                 "Procedure: " + sqlex.Errors[i].Procedure + "\n");
                         }
-                        MessageBox.Show(errorMessages.ToString());
+                        //MessageBox.Show(errorMessages.ToString());
+                        MessageBox.Show("Cannot delete shift that has employees assigned to, please remove employees first then delete record.", "Delete Shift");
                     }
+                    btnSearchShifts_Click(sender, e);
+                    drShift.ClearErrors();
                     
                 }
             }
@@ -494,10 +507,15 @@ namespace FujitsuPayments.UserControls
         public static int calLocYAxis(String startTime)
         {
             //MessageBox.Show("start time: " + startTime);
+            // ------- BUG FIX -------- // 
+            /*String was not splitting correctly at the delimiter, had to use substring instead*/
+            //string[] splitTime = startTime.Split(':');          
+            //String stHr = Convert.ToString(startTime[1]);
+            //String stMin = Convert.ToString(startTime[0]);
+            String stHr = startTime.Substring(0,2);
+            String stMin = startTime.Substring(3,2);
 
-            string[] splitTime = startTime.Split(':');
-            String stHr = Convert.ToString(startTime[1]);
-            String stMin = Convert.ToString(startTime[0]);
+            //MessageBox.Show("Before convert: " + stHr + " : " + stMin);
             int hr = Convert.ToInt32(stHr);
             int min = Convert.ToInt32(stMin);           
             //MessageBox.Show("hr: " + hr + "min: " + min);
@@ -515,10 +533,10 @@ namespace FujitsuPayments.UserControls
             {
                 newMin = 60;
             }        
-            //MessageBox.Show("new min: " + newMin);
+           // MessageBox.Show("new min: " + newMin);
 
             int yAxis = (hr*80) + newMin;
-            //MessageBox.Show("YAxis Value = : " + yAxis);
+          //  MessageBox.Show("YAxis Value = : " + yAxis);
 
             return yAxis; // returns y axis value to position panel
         }
@@ -702,8 +720,6 @@ namespace FujitsuPayments.UserControls
             }
         }
 
-
-
         private void refreshShiftGridView()
         {
             dsFujitsuPayments.Tables["EmployeeShift2"].Clear();
@@ -725,7 +741,7 @@ namespace FujitsuPayments.UserControls
             hidePanels();
         }
 
-        // methods for tooltip
+        //  ------------------  methods for tooltip ---------------- //
 
         private void pnlMonShift1_MouseHover(object sender, EventArgs e)
         {
@@ -765,6 +781,16 @@ namespace FujitsuPayments.UserControls
         private void btnDeleteShift_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("Delete selected shift", btnDeleteShift);
+        }
+
+        private void btnSearchShifts_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select to search for shifts", btnSearchShifts);
+        }
+
+        private void lblHelp_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Select values in all drop down menus along with a date in order to search for Shifts", lblHelp);
         }
 
         private void pnlMonShift4_MouseHover(object sender, EventArgs e)

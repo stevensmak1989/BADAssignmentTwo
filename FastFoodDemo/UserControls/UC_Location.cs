@@ -78,13 +78,17 @@ namespace FujitsuPayments.UserControls
                 locSelected = true;
                 locNoSelected = Convert.ToInt32(dgvLocation.SelectedRows[0].Cells[0].Value);
 
+                
+               // frm.TopLevel = false;
+               // frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Visible = true;
+               // frm.Location = new Point(180, 100);
+                //this.Controls.Add(frm);
+                //frm.BringToFront();
                 frmEditLocation frm = new frmEditLocation();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
             }
         }
 
@@ -128,15 +132,24 @@ namespace FujitsuPayments.UserControls
             }
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Location_Load(sender, e);
+        }
+
         private void btnAddLocation_Click(object sender, EventArgs e)
         {
+
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Visible = true;
+            //frm.Location = new Point(180, 100);
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
             frmAddLocation frm = new frmAddLocation();
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true;
             frm.Location = new Point(180, 100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.ShowDialog();
         }
     }
 }

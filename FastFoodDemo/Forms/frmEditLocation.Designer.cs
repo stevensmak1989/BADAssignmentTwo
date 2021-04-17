@@ -270,6 +270,7 @@ namespace FujitsuPayments.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditLocation";
             this.Padding = new System.Windows.Forms.Padding(8);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditLocation";
             this.Load += new System.EventHandler(this.frmEditLocation_Load);
             this.panel1.ResumeLayout(false);

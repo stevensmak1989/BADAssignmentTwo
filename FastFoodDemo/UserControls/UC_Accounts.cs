@@ -24,7 +24,7 @@ namespace FujitsuPayments.UserControls
 
         // Static varibales to pass to form's
         public static int selectedTab = 0;
-        public static bool accSelected = false;
+        public static bool accSelected = false, accountButtons = false;
         public static int accNoSelected = 0;
 
 
@@ -36,11 +36,10 @@ namespace FujitsuPayments.UserControls
 
         private void UC_Accounts_Load(object sender, EventArgs e)
         {
+
             // style fornt of data grid cell and header
             this.dgvAccounts.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dgvAccounts.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-
-
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
@@ -53,17 +52,44 @@ namespace FujitsuPayments.UserControls
             dgvAccounts.DataSource = dsFujitsuPayments.Tables["Account"];
             // resize the datagridview columns to fit the newly loaded content
             dgvAccounts.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
+        }
+
+
+
+        public void disableAccountbutton()
+        {
+            if (accountButtons == true)
+            {                
+                btnAddAccount.Enabled = false;
+                btnEditAccount.Enabled = false;
+                btnDeleteAccount.Enabled = false;
+            }
+            else if(accountButtons == false)
+            {
+                btnAddAccount.Enabled = true;
+                btnEditAccount.Enabled = true;
+                btnDeleteAccount.Enabled = true;
+            }
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
+
+            //accountButtons = true;
+            //disableAccountbutton();
+            //frm.TopLevel = false;
+            //frm.Visible = true; 
+            //this.Controls.Add(frm);
+            //frm.BringToFront();
+            // --- ignore code above, old way of loading form ---- //
             frmAddAccount frm = new frmAddAccount();
-            frm.TopLevel = false;
+            frm.Location = new Point(180, 100);
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Visible = true; 
-            frm.Location = new Point(180,100);
-            this.Controls.Add(frm);
-            frm.BringToFront();
+            frm.ShowDialog();
+            
+            
+
             
             
         }
@@ -88,14 +114,19 @@ namespace FujitsuPayments.UserControls
             {
                 accSelected = true;
                 accNoSelected = Convert.ToInt32(dgvAccounts.SelectedRows[0].Cells[0].Value);
-
+                // ---- disable buttons --- //
+                //accountButtons = true;
+                // disableAccountbutton();
+                // frm.TopLevel = false;
+                // frm.FormBorderStyle = FormBorderStyle.None;
+                // frm.Visible = true;
+                // frm.Location = new Point(180, 100);
+                // this.Controls.Add(frm);
+                //  frm.BringToFront();
                 frmEditAccount frm = new frmEditAccount();
-                frm.TopLevel = false;
-                frm.FormBorderStyle = FormBorderStyle.None;
-                frm.Visible = true;
                 frm.Location = new Point(180, 100);
-                this.Controls.Add(frm);
-                frm.BringToFront();
+                frm.FormBorderStyle = FormBorderStyle.None;
+                frm.ShowDialog();
             }
 
 
@@ -117,7 +148,7 @@ namespace FujitsuPayments.UserControls
 
                 string tempName = drAccount["ClientName"].ToString() + "\'s";
 
-                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Add Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + tempName + "details?", "Delete Account", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
@@ -147,6 +178,17 @@ namespace FujitsuPayments.UserControls
         private void dgvAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void UC_Accounts_Leave(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Accounts_Load(sender, e);
         }
 
         private void btnViewAccount_Click(object sender, EventArgs e)

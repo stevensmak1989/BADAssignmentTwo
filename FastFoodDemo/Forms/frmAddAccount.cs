@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using FujitsuPayments.UserControls;
 
 namespace FujitsuPayments.Forms
 {
@@ -180,6 +181,8 @@ namespace FujitsuPayments.Forms
                         daAccount.Update(dsFujitsuPayments, "Account");
 
                         MessageBox.Show("Account Added");
+                        UC_Accounts.accountButtons = false;
+                        
                         this.Dispose();
                     }
                 }
@@ -193,6 +196,7 @@ namespace FujitsuPayments.Forms
 
         private void button2_Click(object sender, EventArgs e) //cancel button
         {
+            UC_Accounts.accountButtons = false;   
             this.Dispose();
         }
 

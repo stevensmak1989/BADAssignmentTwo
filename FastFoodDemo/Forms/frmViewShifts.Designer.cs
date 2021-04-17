@@ -29,8 +29,8 @@ namespace FujitsuPayments.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblViewShift = new System.Windows.Forms.Label();
@@ -38,6 +38,7 @@ namespace FujitsuPayments.Forms
             this.btnClose = new System.Windows.Forms.Button();
             this.dgvEmpShiftDetails = new System.Windows.Forms.DataGridView();
             this.dgvEmpShift = new System.Windows.Forms.DataGridView();
+            this.txtHelp = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShiftDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpShift)).BeginInit();
@@ -46,6 +47,7 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.txtHelp);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblViewShift);
             this.panel1.Controls.Add(this.btnDeleteShift);
@@ -113,14 +115,14 @@ namespace FujitsuPayments.Forms
             // dgvEmpShiftDetails
             // 
             this.dgvEmpShiftDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmpShiftDetails.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmpShiftDetails.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmpShiftDetails.Location = new System.Drawing.Point(18, 238);
             this.dgvEmpShiftDetails.Name = "dgvEmpShiftDetails";
             this.dgvEmpShiftDetails.ReadOnly = true;
@@ -131,14 +133,14 @@ namespace FujitsuPayments.Forms
             // dgvEmpShift
             // 
             this.dgvEmpShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmpShift.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmpShift.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmpShift.Location = new System.Drawing.Point(18, 39);
             this.dgvEmpShift.Name = "dgvEmpShift";
             this.dgvEmpShift.ReadOnly = true;
@@ -146,6 +148,16 @@ namespace FujitsuPayments.Forms
             this.dgvEmpShift.Size = new System.Drawing.Size(899, 162);
             this.dgvEmpShift.TabIndex = 0;
             this.dgvEmpShift.SelectionChanged += new System.EventHandler(this.selectionChanged);
+            // 
+            // txtHelp
+            // 
+            this.txtHelp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHelp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHelp.Location = new System.Drawing.Point(18, 407);
+            this.txtHelp.Name = "txtHelp";
+            this.txtHelp.Size = new System.Drawing.Size(403, 16);
+            this.txtHelp.TabIndex = 18;
+            this.txtHelp.Text = "Select a shift to view employees working that shift";
             // 
             // frmViewShifts
             // 
@@ -178,5 +190,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Button btnDeleteShift;
         private System.Windows.Forms.Label lblViewShift;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtHelp;
     }
 }
