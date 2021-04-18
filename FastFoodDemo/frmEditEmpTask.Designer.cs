@@ -73,6 +73,7 @@ namespace FujitsuPayments
             this.button2.TabIndex = 13;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSave
             // 
@@ -87,6 +88,7 @@ namespace FujitsuPayments
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTaskCode
             // 
@@ -106,9 +108,9 @@ namespace FujitsuPayments
             this.lbTitle.ForeColor = System.Drawing.Color.DarkRed;
             this.lbTitle.Location = new System.Drawing.Point(219, 14);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(214, 18);
+            this.lbTitle.Size = new System.Drawing.Size(158, 18);
             this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "Add an Employee to a Task";
+            this.lbTitle.Text = "Edit Employee Task";
             // 
             // panel1
             // 
@@ -172,6 +174,7 @@ namespace FujitsuPayments
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditEmpTask";
             this.Text = "frmEditEmpTask";
+            this.Load += new System.EventHandler(this.frmEditEmpTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

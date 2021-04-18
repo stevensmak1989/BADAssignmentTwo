@@ -19,6 +19,9 @@ namespace FujitsuPayments.Forms
         SqlCommand cmdTask;
         DataRow drProject, drTask, drEmp, drEmpTask;
 
+        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
+        SqlConnection conn;
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -84,15 +87,16 @@ namespace FujitsuPayments.Forms
 
                 }
             }
+            catch(System.Data.ConstraintException ex)
+            {
+                MessageBox.Show("This user already has this task assigned, please select a new project");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
 
         }
-
-        String connStr, sqlProject, sqlTask, sqlEmp, sqlEmpTask;
-        SqlConnection conn;
 
         private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
         {

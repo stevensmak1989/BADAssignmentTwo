@@ -26,7 +26,6 @@ namespace FujitsuPayments.UserControls
         public UC_Task()
         {
             InitializeComponent();
-           
             // style fornt of data grid cell and header
             this.dvgTask.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dvgTask.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
@@ -104,6 +103,11 @@ namespace FujitsuPayments.UserControls
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void btnTaskDel_Click(object sender, EventArgs e)
         {
             if (dvgTask.SelectedRows.Count == 0)
@@ -147,12 +151,11 @@ namespace FujitsuPayments.UserControls
         private void UC_Task_Load(object sender, EventArgs e)
         {
 
-
+           
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
+
+        
+    
 }

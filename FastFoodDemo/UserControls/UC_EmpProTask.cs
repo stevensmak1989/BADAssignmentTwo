@@ -26,7 +26,49 @@ namespace FujitsuPayments.UserControls
 
         private void btnEmpTaskDel_Click(object sender, EventArgs e)
         {
+            if (dvgEmpTask.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an Project from the list.", "Select ProjectTask");
+            }
+            else
+            {
+                object[] primaryKey = new object[3];
 
+
+                tskNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[1].Value);
+                prjNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[0].Value);
+                empNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[2].Value);
+
+
+                primaryKey[0] = Convert.ToInt32(UC_EmpProTask.prjNoSelected);
+                primaryKey[1] = Convert.ToInt32(UC_EmpProTask.tskNoSelected);
+                primaryKey[2] = Convert.ToInt32(UC_EmpProTask.empNoSelected);
+
+                drEmpTask = dsFujitsuPayments.Tables["ProjectTaskEmployee"].Rows.Find(primaryKey);
+
+
+
+                string tempTask = drEmpTask["TaskID"].ToString();
+                string tempName = drEmpTask["EmployeeID"].ToString();
+                string tempProj = drEmpTask["ProjectID"].ToString();
+
+
+                if (MessageBox.Show("Are you sure you want to delete Project Task: " + tempProj +"/"+ tempTask + "for employee ID: "+ tempName+ "?", "Delete Task", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        drEmpTask.Delete();
+                        daEmpTask.Update(dsFujitsuPayments, "ProjectTaskEmployee");
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Cannot delete a Project Task that has related records, please delete all related records first", "Delete Project Task");
+                    }
+                    // update grid and clear errors
+                    UC_EmpProTask_Load (sender, e);
+                    //drTask.ClearErrors();
+                }
+            }
         }
 
         private void btnEmpTaskEdit_Click(object sender, EventArgs e)
@@ -60,11 +102,21 @@ namespace FujitsuPayments.UserControls
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void dvgEmpTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+
+        public void UC_EmpProTask_Load(object sender, EventArgs e)
+        {
+          
+        }
         public UC_EmpProTask()
         {
             InitializeComponent();
