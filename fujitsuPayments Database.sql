@@ -320,7 +320,7 @@ INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
 ('MAN01', 'Services Manager',29000, 35000),
 ('MAN02', 'Head of Applications', 35500, 55000)
 
---one project
+-- project
    insert into Project (ProjectID, ProjDesc, AccountID, StartDate, Duration, CappedHrs, B48Rate, A48Rate, BHRate)
   values (1, 'Data Exchange', 10000, '05-02-2021', 100, 100.00, 1.00, 1.00,2.00), 
   (2, 'Small App Migra ', 10001, '05-01-2021', 200, 400.00, 1.00, 1.50,2.00),
@@ -339,6 +339,24 @@ INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
   (15, 'Fleet Tracking', 10008, '06-04-2021', 300, 700.00, 1.00, 1.50,2.00),
   (16, 'Research Squad', 10021, '05-01-2021', 100, 300.00, 1.00, 1.50,2.00)
 
+--Project Task
+ insert into ProjectTask (ProjectID,TaskID,  TaskDesc)
+  values (1,1, 'Developer'), (1,2,'Senior Dev') , (1,3,'Architect'), (1,4, 'Tester'), (1,5,'Scrum Master'),
+  (2,1, 'Developer'), (2,2,'Senior Dev') , (2,3,'Architect'), (2,4, 'Tester'), (2,5,'Scrum Master'),
+  (3,1, 'Developer'), (3,2,'Senior Dev') , (3,3,'Architect'), (3,4, 'Tester'), (3,5,'Scrum Master'),
+  (4,1, 'Developer'), (4,2,'Senior Dev') , (4,3,'Architect'), (4,4, 'Tester'), (4,5,'Scrum Master'),
+  (5,1, 'Developer'), (5,2,'Senior Dev') , (5,3,'Architect'), (5,4, 'Tester'), (5,5,'Scrum Master'),
+  (6,1, 'Developer'), (6,2,'Senior Dev') , (6,3,'Architect'), (6,4, 'Tester'), (6,5,'Scrum Master'),
+  (7,1, 'Developer'), (7,2,'Senior Dev') , (7,3,'Architect'), (7,4, 'Tester'), (7,5,'Scrum Master'),
+  (8,1, 'Developer'), (8,2,'Senior Dev') , (8,3,'Architect'), (8,4, 'Tester'), (8,5,'Scrum Master'),
+  (9,1, 'Developer'), (9,2,'Senior Dev') , (9,3,'Architect'), (9,4, 'Tester'), (9,5,'Scrum Master'),
+  (10,1, 'Developer'), (10,2,'Senior Dev') , (10,3,'Architect'), (10,4, 'Tester'), (10,5,'Scrum Master'),
+  (11,1, 'Developer'), (11,2,'Senior Dev') , (11,3,'Architect'), (11,4, 'Tester'), (11,5,'Scrum Master'),
+  (12,1, 'Developer'), (12,2,'Senior Dev') , (12,3,'Architect'), (12,4, 'Tester'), (12,5,'Scrum Master'),
+  (13,1, 'Developer'), (13,2,'Senior Dev') , (13,3,'Architect'), (13,4, 'Tester'), (13,5,'Scrum Master'),
+  (14,1, 'Developer'), (14,2,'Senior Dev') , (14,3,'Architect'), (14,4, 'Tester'), (14,5,'Scrum Master'),
+  (15,1, 'Developer'), (15,2,'Senior Dev') , (15,3,'Architect'), (15,4, 'Tester'), (15,5,'Scrum Master'),
+  (16,1, 'Developer'), (16,2,'Senior Dev') , (16,3,'Architect'), (16,4, 'Tester'), (16,5,'Scrum Master')
   
   --one employee
   insert into Employee (EmployeeID, Title, Surname,Forename, Street, Town, County,PostCode, TelNo, DOB, ManagerID, Grade, Salary, Manager) 
