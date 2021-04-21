@@ -358,6 +358,26 @@ INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
   (15,1, 'Developer'), (15,2,'Senior Dev') , (15,3,'Architect'), (15,4, 'Tester'), (15,5,'Scrum Master'),
   (16,1, 'Developer'), (16,2,'Senior Dev') , (16,3,'Architect'), (16,4, 'Tester'), (16,5,'Scrum Master')
   
-  --one employee
+ --Employees
   insert into Employee (EmployeeID, Title, Surname,Forename, Street, Town, County,PostCode, TelNo, DOB, ManagerID, Grade, Salary, Manager) 
-	  values (1000, 'Mr', 'Thompson', 'Glynn', '123 Fake Name', 'Derry', 'Derry', 'BT48 7YT', '07872311915', '07/07/1967' ,1000, 'MAN02', 54000.00, 1)
+	  values (1000, 'Mr', 'Thompson', 'Glynn', '123 Fake Name', 'Derry', 'Derry', 'BT48 7YT', '07872311915', '07-07-1967' ,1000, 'MAN02', 54000.00, 1),
+	  (1001, 'Mr', 'Collins', 'Jack', '74 Main Street', 'Derry', 'Derry', 'BT48 8JT', '07872311916', '05-27-1996' ,1000, 'DEV01', 18500.00, 0),
+	  (1002, 'Mr', 'McCready', 'Steven', '41 Kilea', 'Derry', 'Derry', 'BT74 6PO', '07841214785', '01-05-1989' ,1000, 'DEV01', 18500.00, 0),
+	  (1003, 'Mr', 'McIlroy', 'Billy', '22 Belfast Av', 'Belfast', 'Belfast', 'BT14 1YY', '07841214714', '05-19-1942' ,1000, 'MAN01', 35000.00, 1),
+	  (1004, 'Miss', 'Martin', 'Gemma', '188 Eglinton', 'Derry', 'Derry', 'BT74 7KJ', '07741464717', '12-12-1992' ,1003, 'DEV04', 25500.00, 0),
+	  (1005, 'Ms', 'Maguire', 'Megan', '1 Dungiven', 'Derry', 'Derry', 'BT88 2SR', '07732487621', '11-18-1987' ,1003, 'DEV05', 33500.00, 0),
+	  (1006, 'Mr', 'Rodgers', 'Hamish', '74 Edingburgh', 'Scotland', 'Scotland', 'ED74 7GL', '07732484619', '05-11-1975' ,1000, 'MAN01', 34000.00, 1),
+	  (1007, 'Mrs', 'Nash', 'Joanne', '42 City Centre', 'Derry', 'Derry', 'BT48 8LQ', '07832684674', '02-19-1971' ,1000, 'DEV06', 44000.00, 0),
+	  (1008, 'Mr', 'Rocker', 'Gregg', '22 Leeds Town', 'Leeds', 'Leeds', 'LE35 7PT', '07964231784', '03-22-1976' ,1006, 'DEV06', 44000.00, 0),
+	  (1009, 'Miss', 'McMullan', 'Marisa', '8 Dungannon Street', 'Derry', 'Derry', 'BT49 1YY', '07457215478', '04-17-1986' ,1003, 'DEV04', 28500.00, 0),
+	  (1011, 'Mr', 'Wilson', 'Stephen', '59 Creggan', 'Derry', 'Derry', 'BT48 7OX', '07541214785', '11-05-1969' ,1003, 'DEV05', 32000.00, 0),
+	  (1012, 'Ms', 'Wood', 'Mikayla', '24 Maydown', 'Derry', 'Derry', 'BT47 5KA', '07871457893', '08-29-1973' ,1006, 'DEV01', 17500.00, 0),
+	  (1013, 'Mr', 'Biddle', 'Mark', '78 Limavady', 'Limavady', 'Derry', 'BT87 5II', '07612478942', '06-09-1998' ,1006, 'DEV01', 18500.00, 0),
+	  (1014, 'Mr', 'Anderson', 'Mark', '154 Waterside Av', 'Derry', 'Derry', 'BT48 7QW', '07896541231', '12-23-1985' ,1000, 'DEV03', 23000.00, 0),
+	  (1015, 'Ms', 'Deeney', 'Tereasa', '18 The Country', 'Derry', 'Derry', 'BT63 0IT', '07872311915', '05-05-1979' ,1000, 'MAN02', 55000.00, 0),
+	  (1016, 'Ms', 'Smith', 'Rachel', '187 Waterside St', 'Derry', 'Derry', 'BT74 4RQ', '07865421324', '01-01-1977' ,1015, 'DEV04', 28500.00, 0),
+	  (1017, 'Mr', 'McClintock', 'Adam', '77 Shantallow', 'Derry', 'Derry', 'BT48 9LK', '07872314787', '07-30-1989' ,1015, 'DEV01', 18000.00,0),
+	  (1018, 'Mrs', 'Ennis', 'Mary', '17 Claudy', 'Derry', 'Derry', 'BT88 9SD', '07875314784', '09-29-1969' ,1003, 'DEV06', 43000.00, 1),
+	  (1019, 'Ms', 'Porter', 'Lisa', '78 Waterside RD', 'Dublin', 'Dublin', 'DB47 7LP', '07872314879', '02-28-1985' ,1000, 'MAN01', 29000.00, 1),
+	  (1020, 'Mr', 'Mulholand', 'Ryan', '36 Maghera', 'Tyrone', 'Tyrone', 'BT12 3KI', '07875412148', '07-01-1999' ,1000, 'DEV01', 17500.00, 0)
+
