@@ -321,9 +321,24 @@ INSERT INTO Grade (Grade, GradeDesc, StartSal, EndSal) VALUES
 ('MAN02', 'Head of Applications', 35500, 55000)
 
 --one project
-  insert into Project (ProjectID, ProjDesc, AccountID, StartDate, Duration, CappedHrs, B48Rate, A48Rate, BHRate)
-  values (1, 'Data Exchange', 10000, '04-22-2021', 100, 100.00, 1.00, 1.00,2.00)
-  
+   insert into Project (ProjectID, ProjDesc, AccountID, StartDate, Duration, CappedHrs, B48Rate, A48Rate, BHRate)
+  values (1, 'Data Exchange', 10000, '05-02-2021', 100, 100.00, 1.00, 1.00,2.00), 
+  (2, 'Small App Migra ', 10001, '05-01-2021', 200, 400.00, 1.00, 1.50,2.00),
+  (3, 'Training Model', 10000, '05-12-2021', 500, 150.00, 1.00, 1.50,2.50),
+  (4, 'Claim Hub ', 10003, '06-22-2021', 400, 240.00, 1.00, 2.00,3.00),
+  (5, 'Cust Service', 10012, '05-24-2021', 320, 410.00, 1.00, 1.50,2.00),
+  (6, 'Flight Tracker', 10006, '08-15-2021', 700, 500.00, 1.00, 2.00,4.00),
+  (7, 'Click & Co', 10008, '05-03-2021', 420, 400.00, 1.00, 1.50,2.00),
+  (8, 'Health Checker', 10021, '05-22-2021', 200, 100.00, 1.00, 1.50,2.00),
+  (9, 'Cust Loyalty', 10009, '05-19-2021', 240, 130.00, 1.00, 1.50,2.00), 
+  (10, 'Nectar System', 10013, '05-07-2021', 240, 410.00, 1.00, 1.70,2.50),
+  (11, 'Mortgage Plat', 10004, '06-12-2021', 320, 200.00, 1.00, 1.50,2.50),
+  (12, 'Land Manage', 10002, '07-29-2021', 500, 400.00, 1.00, 2.00,3.50),
+  (13, 'Fleet Manage', 10002, '07-29-2021', 500, 410.00, 1.00, 2.00,3.50),
+  (14, 'Leasing system', 10020, '05-17-2021', 200, 100.00, 1.00, 1.50,2.00),
+  (15, 'Fleet Tracking', 10008, '06-04-2021', 300, 700.00, 1.00, 1.50,2.00),
+  (16, 'Research Squad', 10021, '05-01-2021', 100, 300.00, 1.00, 1.50,2.00)
+
   
   --one employee
   insert into Employee (EmployeeID, Title, Surname,Forename, Street, Town, County,PostCode, TelNo, DOB, ManagerID, Grade, Salary, Manager) 
