@@ -15,17 +15,52 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmEditTimesheet : Form
     {
-        SqlDataAdapter daProject, daCount, daEmployee, daEmpTask, daClaim,  daMan, daTimesheet, daTimeDets, daCost;
+        SqlDataAdapter daProject, daCount, daEmployee, daEmpTask, daEmpTask1, daClaim,  daMan, daTimesheet, daTimeDets, daCost;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder  cmbBClaim,  cmbBEmp,  cmbBTimesheet, cmbBTimeDets, cmbBCost;
 
        
 
-        SqlCommand cmdEmp,  cmdProj, cmdCount;
+        SqlCommand cmdEmp,  cmdProj, cmdCount, cmdEmp1 ;
 
         DataRow drProject, drCount,  drClaim,  drTimeDets;
 
-        String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan,  sqlTimesheet, sqlTimeDets, sqlCost;
+        private void cmbProject3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(2);
+        }
+
+        private void cmbProject4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(3);
+        }
+
+        private void cmbProject5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(4);
+        }
+
+        private void cmbProject6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(5);
+        }
+
+        private void cmbProject7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(6);
+        }
+
+        private void cmbProject2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(1);
+        }
+
+        private void cmbProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            task(0);
+        }
+
+        String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan,  sqlTimesheet, sqlTimeDets, sqlCost, sqlEmpTask1;
         SqlConnection conn;
         private double count;
         private int numb,no, timesheetValue;
@@ -221,7 +256,12 @@ namespace FujitsuPayments.Forms
                                                     try
                                                     {
 
-                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                        if (project[no] != null && project[no].SelectedIndex != -1)
+                                                        {
+                                                            timeDets.ProjectId = Convert.ToInt32(project[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Project");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
@@ -231,15 +271,37 @@ namespace FujitsuPayments.Forms
                                                         no = 0;
                                                         break;
                                                     }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], "please select a Project");
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
                                                     try
                                                     {
 
-                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                        if (task[no] != null && task[no].SelectedIndex != -1)
+                                                        {
+
+                                                            timeDets.TaskId = Convert.ToInt32(task[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Task");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
                                                         ok = false;
                                                         errP.SetError(task[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], "please select a Task");
                                                         count = 0;
                                                         no = 0;
                                                         break;
@@ -359,8 +421,8 @@ namespace FujitsuPayments.Forms
                                                     drTimeDets["StartTime"] = ts;
                                                     drTimeDets["EndTime"] = tse;
                                                     drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
-                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedItem);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedItem);
 
                                                     drTimeDets.EndEdit();
                                                     daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -396,8 +458,8 @@ namespace FujitsuPayments.Forms
                                                 drTimeDets["StartTime"] = ts;
                                                 drTimeDets["EndTime"] = tse;
                                                 drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+                                                drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedItem);
+                                                drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedItem);
 
                                                 dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                 daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -543,7 +605,12 @@ namespace FujitsuPayments.Forms
                                                     try
                                                     {
 
-                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                        if (project[no] != null && project[no].SelectedIndex != -1)
+                                                        {
+                                                            timeDets.ProjectId = Convert.ToInt32(project[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Project");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
@@ -553,10 +620,24 @@ namespace FujitsuPayments.Forms
                                                         no = 0;
                                                         break;
                                                     }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], "please select a Project");
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
                                                     try
                                                     {
 
-                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                        if (task[no] != null && task[no].SelectedIndex != -1)
+                                                        {
+
+                                                            timeDets.TaskId = Convert.ToInt32(task[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Task");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
@@ -566,6 +647,15 @@ namespace FujitsuPayments.Forms
                                                         no = 0;
                                                         break;
                                                     }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], "please select a Task");
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+
 
 
 
@@ -669,8 +759,8 @@ namespace FujitsuPayments.Forms
                                                         drTimeDets["StartTime"] = ts;
                                                         drTimeDets["EndTime"] = tse;
                                                         drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
-                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedItem);
+                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedItem);
 
                                                         drTimeDets.EndEdit();
                                                         daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -706,8 +796,8 @@ namespace FujitsuPayments.Forms
                                                     drTimeDets["StartTime"] = ts;
                                                     drTimeDets["EndTime"] = tse;
                                                     drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedItem);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedItem);
 
                                                     dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                     daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -861,7 +951,12 @@ namespace FujitsuPayments.Forms
                                                     try
                                                     {
 
-                                                        timeDets.ProjectId = Convert.ToInt32(project[no].SelectedValue.ToString());
+                                                        if (project[no] != null && project[no].SelectedIndex != -1)
+                                                        {
+                                                            timeDets.ProjectId = Convert.ToInt32(project[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Project");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
@@ -871,15 +966,37 @@ namespace FujitsuPayments.Forms
                                                         no = 0;
                                                         break;
                                                     }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(project[no], "please select a Project");
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
                                                     try
                                                     {
 
-                                                        timeDets.TaskId = Convert.ToInt32(task[no].SelectedValue.ToString());
+                                                        if (task[no] != null && task[no].SelectedIndex != -1)
+                                                        {
+
+                                                            timeDets.TaskId = Convert.ToInt32(task[no].SelectedItem.ToString());
+                                                        }
+                                                        else
+                                                            throw new MyException("Please enter a valid Task");
                                                     }
                                                     catch (MyException MyEx)
                                                     {
                                                         ok = false;
                                                         errP.SetError(task[no], MyEx.toString());
+                                                        count = 0;
+                                                        no = 0;
+                                                        break;
+                                                    }
+                                                    catch (System.NullReferenceException ex)
+                                                    {
+                                                        ok = false;
+                                                        errP.SetError(task[no], "please select a Task");
                                                         count = 0;
                                                         no = 0;
                                                         break;
@@ -979,8 +1096,8 @@ namespace FujitsuPayments.Forms
                                                         drTimeDets["StartTime"] = ts;
                                                         drTimeDets["EndTime"] = tse;
                                                         drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedValue);
-                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedValue);
+                                                        drTimeDets["ProjectID"] = Convert.ToInt32(project[total].SelectedItem);
+                                                        drTimeDets["TaskID"] = Convert.ToInt32(task[total].SelectedItem);
 
                                                         drTimeDets.EndEdit();
                                                         daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -1016,8 +1133,8 @@ namespace FujitsuPayments.Forms
                                                     drTimeDets["StartTime"] = ts;
                                                     drTimeDets["EndTime"] = tse;
                                                     drTimeDets["ClaimTypeID"] = timeDets.ClaimTypeId;
-                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedValue);
-                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedValue);
+                                                    drTimeDets["ProjectID"] = Convert.ToInt32(project[no].SelectedItem);
+                                                    drTimeDets["TaskID"] = Convert.ToInt32(task[no].SelectedItem);
 
                                                     dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                     daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
@@ -1225,7 +1342,6 @@ namespace FujitsuPayments.Forms
         private void frmEditTimesheet_Load(object sender, EventArgs e)
         {
             
-            
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
@@ -1300,19 +1416,20 @@ namespace FujitsuPayments.Forms
             cmbEmpTask7.Enabled = false;
             cmbEmpTask6.Enabled = false;
 
-            sqlEmpTask = @"select ProjectID , TaskID , EmployeeID from ProjectTaskEmployee where EmployeeID like @EmployeeID";
+            sqlEmpTask = @"select DISTINCT ProjectID from ProjectTaskEmployee where EmployeeID = @EmployeeID";
             conn = new SqlConnection(connStr);
             cmdEmp = new SqlCommand(sqlEmpTask, conn);
             cmdEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
             daEmpTask = new SqlDataAdapter(cmdEmp);
             daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
 
-            sqlEmpTask = @"select ProjectID, TaskID, EmployeeID from ProjectTaskEmployee where EmployeeID like @EmployeeID";
+            sqlEmpTask1 = @"select  TaskID from ProjectTaskEmployee where EmployeeID = @EmployeeID and ProjectID = @ProjectID";
             conn = new SqlConnection(connStr);
-            cmdEmp = new SqlCommand(sqlEmpTask, conn);
-            cmdEmp.Parameters.Add("@EmployeeID", SqlDbType.Int);
-            daEmpTask = new SqlDataAdapter(cmdEmp);
-            daEmpTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee");
+            cmdEmp1 = new SqlCommand(sqlEmpTask1, conn);
+            cmdEmp1.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            cmdEmp1.Parameters.Add("@ProjectID", SqlDbType.Int);
+            daEmpTask1 = new SqlDataAdapter(cmdEmp1);
+            daEmpTask1.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTaskEmployee1");
 
             string timeDets = UC_Timesheet.timeNoSelected.ToString();
             timesheetValue = Convert.ToInt32(timeDets);
@@ -1354,27 +1471,85 @@ namespace FujitsuPayments.Forms
         }
         private void projects()
         {
-            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+            int numb = 0;
+
             ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
+            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+
             dsFujitsuPayments.Tables["ProjectTaskEmployee"].Clear();
             cmdEmp.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
 
+            int count = 0;
             daEmpTask.Fill(dsFujitsuPayments, "ProjectTaskEmployee");
-            for (int i = 0; i < 7; i++)
+
+            // daEmpTask.
+
+
+            DataTable dt = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+            foreach (DataRow row in dt.Rows)
+            {
+                count++;
+
+            }
+
+            if (count == 0)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    task[i].Items.Clear();
+                    project[i].Items.Clear();
+                }
+                MessageBox.Show("This employee has no Projects or Tasks, please assign.");
+            }
+            else
             {
 
 
 
-                project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                project[i].ValueMember = "ProjectID";
-                project[i].DisplayMember = "ProjectID";
+                for (int i = 0; i < 7; i++)
+                {
+                    //project[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
+                    //project[i].ValueMember = "ProjectID";
+                    //project[i].DisplayMember = "ProjectID";
 
-                task[i].DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
-                task[i].ValueMember = "TaskID";
-                task[i].DisplayMember = "TaskID";
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        project[i].Items.Add(row.Field<int>("ProjectID"));
+                    }
 
-                numb++;
+                    numb++;
+                }
             }
+        }
+
+        private void task(int projectBox)
+        {
+            try
+            {
+                int pos = projectBox;
+
+                ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+                ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
+                dsFujitsuPayments.Tables["ProjectTaskEmployee1"].Clear();
+                cmdEmp1.Parameters["@EmployeeID"].Value = cmbEmployee.SelectedValue;
+                cmdEmp1.Parameters["@ProjectID"].Value = project[pos].SelectedItem;
+
+                daEmpTask1.Fill(dsFujitsuPayments, "ProjectTaskEmployee1");
+
+
+                DataTable dt = dsFujitsuPayments.Tables["ProjectTaskEmployee1"];
+
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    task[pos].Items.Add(row.Field<int>("TaskID"));
+                }
+
+            }
+            catch (System.InvalidCastException ex)
+            { }
+            catch (System.Data.SqlClient.SqlException ex)
+            { }
         }
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
@@ -1473,6 +1648,9 @@ namespace FujitsuPayments.Forms
                         start[day].Text = startTime[i].ToString();
                         end[day].Text = endTime[i].ToString();
                         date[day].Text = rowArray[i].ToShortDateString();
+                        project[day].Text = proj[i].ToString();
+                        task[day].Text =  tasks[i].ToString();
+
                     }
                    
                     else

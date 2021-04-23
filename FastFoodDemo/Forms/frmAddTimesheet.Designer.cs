@@ -190,7 +190,7 @@ namespace FujitsuPayments.Forms
             this.cmbClaimType.Name = "cmbClaimType";
             this.cmbClaimType.Size = new System.Drawing.Size(98, 21);
             this.cmbClaimType.TabIndex = 66;
-            this.cmbClaimType.SelectedIndexChanged += new System.EventHandler(this.cmbClaimType_SelectedIndexChanged);
+            this.cmbClaimType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChange);
             // 
             // panel4
             // 
@@ -286,8 +286,7 @@ namespace FujitsuPayments.Forms
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(107, 21);
             this.cmbEmployee.TabIndex = 71;
-            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged_1);
-            this.cmbEmployee.Click += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // lblEmpID
             // 
@@ -313,7 +312,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button2
             // 
@@ -391,7 +390,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject7.Size = new System.Drawing.Size(60, 21);
             this.cmbProject7.TabIndex = 125;
             this.cmbProject7.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
-            this.cmbProject7.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSun
             // 
@@ -462,7 +460,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject6.Size = new System.Drawing.Size(60, 21);
             this.cmbProject6.TabIndex = 124;
             this.cmbProject6.SelectedIndexChanged += new System.EventHandler(this.cmbProject6_SelectedIndexChanged);
-            this.cmbProject6.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSat
             // 
@@ -533,7 +530,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject5.Size = new System.Drawing.Size(60, 21);
             this.cmbProject5.TabIndex = 123;
             this.cmbProject5.SelectedIndexChanged += new System.EventHandler(this.cmbProject5_SelectedIndexChanged);
-            this.cmbProject5.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateFri
             // 
@@ -590,9 +586,9 @@ namespace FujitsuPayments.Forms
             this.panel5.Controls.Add(this.cmbProject);
             this.panel5.Controls.Add(this.cmbEmpTask);
             this.panel5.Controls.Add(this.lblMon);
-            this.panel5.Location = new System.Drawing.Point(1, 49);
+            this.panel5.Location = new System.Drawing.Point(3, 53);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(561, 26);
+            this.panel5.Size = new System.Drawing.Size(560, 26);
             this.panel5.TabIndex = 131;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -631,8 +627,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(60, 21);
             this.cmbProject.TabIndex = 120;
-            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
-            this.cmbProject.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
+            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
             // cmbEmpTask
             // 
@@ -676,7 +671,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject4.Size = new System.Drawing.Size(60, 21);
             this.cmbProject4.TabIndex = 130;
             this.cmbProject4.SelectedIndexChanged += new System.EventHandler(this.cmbProject4_SelectedIndexChanged);
-            this.cmbProject4.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // txtEnd4
             // 
@@ -747,7 +741,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject3.Size = new System.Drawing.Size(60, 21);
             this.cmbProject3.TabIndex = 121;
             this.cmbProject3.SelectedIndexChanged += new System.EventHandler(this.cmbProject3_SelectedIndexChanged);
-            this.cmbProject3.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateWed
             // 
@@ -818,7 +811,6 @@ namespace FujitsuPayments.Forms
             this.cmbProject2.Size = new System.Drawing.Size(60, 21);
             this.cmbProject2.TabIndex = 124;
             this.cmbProject2.SelectedIndexChanged += new System.EventHandler(this.cmbProject2_SelectedIndexChanged);
-            this.cmbProject2.Click += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // cmbEmpTask2
             // 

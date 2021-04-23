@@ -196,6 +196,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(60, 21);
             this.cmbProject.TabIndex = 120;
+            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
             // cmbEmpTask
             // 
@@ -222,6 +223,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject4.Name = "cmbProject4";
             this.cmbProject4.Size = new System.Drawing.Size(60, 21);
             this.cmbProject4.TabIndex = 130;
+            this.cmbProject4.SelectedIndexChanged += new System.EventHandler(this.cmbProject4_SelectedIndexChanged);
             // 
             // txtEnd4
             // 
@@ -262,6 +264,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject3.Name = "cmbProject3";
             this.cmbProject3.Size = new System.Drawing.Size(60, 21);
             this.cmbProject3.TabIndex = 121;
+            this.cmbProject3.SelectedIndexChanged += new System.EventHandler(this.cmbProject3_SelectedIndexChanged);
             // 
             // panel8
             // 
@@ -283,6 +286,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject5.Name = "cmbProject5";
             this.cmbProject5.Size = new System.Drawing.Size(60, 21);
             this.cmbProject5.TabIndex = 123;
+            this.cmbProject5.SelectedIndexChanged += new System.EventHandler(this.cmbProject5_SelectedIndexChanged);
             // 
             // panel7
             // 
@@ -402,6 +406,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject7.Name = "cmbProject7";
             this.cmbProject7.Size = new System.Drawing.Size(60, 21);
             this.cmbProject7.TabIndex = 125;
+            this.cmbProject7.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSun
             // 
@@ -465,6 +470,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject6.Name = "cmbProject6";
             this.cmbProject6.Size = new System.Drawing.Size(60, 21);
             this.cmbProject6.TabIndex = 124;
+            this.cmbProject6.SelectedIndexChanged += new System.EventHandler(this.cmbProject6_SelectedIndexChanged);
             // 
             // lblDateSat
             // 
@@ -566,6 +572,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject2.Name = "cmbProject2";
             this.cmbProject2.Size = new System.Drawing.Size(60, 21);
             this.cmbProject2.TabIndex = 124;
+            this.cmbProject2.SelectedIndexChanged += new System.EventHandler(this.cmbProject2_SelectedIndexChanged);
             // 
             // cmbEmpTask2
             // 
@@ -797,6 +804,7 @@ namespace FujitsuPayments.Forms
             this.cmbClaimType.Name = "cmbClaimType";
             this.cmbClaimType.Size = new System.Drawing.Size(98, 21);
             this.cmbClaimType.TabIndex = 66;
+            this.cmbClaimType.SelectedIndexChanged += new System.EventHandler(this.cmbClaimType_SelectedIndexChanged);
             // 
             // lblWeekNo
             // 
@@ -818,6 +826,7 @@ namespace FujitsuPayments.Forms
             // 
             // lvPastHours
             // 
+            this.lvPastHours.HideSelection = false;
             this.lvPastHours.Location = new System.Drawing.Point(665, 192);
             this.lvPastHours.Name = "lvPastHours";
             this.lvPastHours.Size = new System.Drawing.Size(241, 169);
