@@ -477,9 +477,9 @@ namespace FujitsuPayments.Forms
 
 
 
-
+                                        no++;
                                     }
-                                    no++;
+                                   
                                 }
                                 if (MessageBox.Show("Do you wish to update On Call or Overtime claims?", "Update Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                 {
@@ -814,10 +814,10 @@ namespace FujitsuPayments.Forms
 
 
 
-
+                                            no++;
 
                                         }
-                                        no++;
+                                       
                                     }
 
                                     if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -1150,11 +1150,11 @@ namespace FujitsuPayments.Forms
 
 
 
-
+                                            no++;
 
 
                                         }
-                                        no++;
+                                       
                                     }
 
                                     if (MessageBox.Show("Do you wish to update basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)

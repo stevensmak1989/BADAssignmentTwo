@@ -26,7 +26,9 @@ namespace FujitsuPayments.Forms
         SqlConnection conn;
         private double count;
         private int numb, no, timesheetValue;
-
+        private double basic1 = 0;
+        private double oncall1 = 0;
+        private double ot1 = 0;
         public frmDeleteTimesheet()
         {
             InitializeComponent();
@@ -146,7 +148,11 @@ namespace FujitsuPayments.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            
             DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
+           
+            
+
             int numb = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -163,9 +169,13 @@ namespace FujitsuPayments.Forms
                 {
                     if ((int)cmbProjectId.SelectedIndex == 0)
                     {
+                        string timeDets = UC_Timesheet.timeNoSelected.ToString();
+                        timesheetValue = Convert.ToInt32(timeDets);
+                        drClaim = dsFujitsuPayments.Tables["Timesheet"].Rows.Find(timeDets);
                         drClaim.Delete();
                         daTimesheet.Update(dsFujitsuPayments, "Timesheet");
                     }
+                   
 
                     foreach (DataRow row in dt.Rows)
                     {
@@ -181,28 +191,35 @@ namespace FujitsuPayments.Forms
                         drTimeDets.Delete();
                         daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                     }
+                    if ((int)cmbProjectId.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("The timesheet and timesheet details have now been deleted", "Exit Timesheet");
+                        this.Dispose();
+                    }
+                   
 
-                    repeat = true;
-                    timesheetHours();
+                    this.Dispose();
+                   
                 }
+                
             }
             else
             {
-                if (MessageBox.Show("There are no remaining hours for this claim, would you like to exit?", "Exit Timesheet", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-
-                {
+                MessageBox.Show("There are no remaining hours for this claim?", "Exit Timesheet");
                     this.Dispose();
-                }
+                
+             
                     
                 
             }
+            
 
         }
 
         private void timesheetHours()
         {
-           sqlCount = @" select TimesheetID, DATEDIFF ( MINUTE, StartTime, EndTime )/ 60 as Hours, ClaimTypeID from TimesheetDetails
-            where TimesheetID = @Timesheet1";
+           
+           sqlCount = @" select TimesheetID, DATEDIFF ( MINUTE, StartTime, EndTime )/ 60 as Hours, ClaimTypeID from TimesheetDetails where TimesheetID = @Timesheet1";
             conn = new SqlConnection(connStr);
             cmdCount = new SqlCommand(sqlCount, conn);
             cmdCount.Parameters.Add("@Timesheet1", SqlDbType.Int);
@@ -219,6 +236,12 @@ namespace FujitsuPayments.Forms
 
 
             DataTable dt = dsFujitsuPayments.Tables["Count"];
+            if (repeat == true)
+            {
+                dt.Reset(); 
+            }
+            
+             dt = dsFujitsuPayments.Tables["Count"];
             int numb = 0, count = 0, x = 0;
 
   
@@ -232,9 +255,9 @@ namespace FujitsuPayments.Forms
 
             }
 
-            double basic1 = 0;
-            double oncall1 = 0;
-            double ot1 =0;
+             basic1 = 0;
+             oncall1 = 0;
+             ot1 = 0;
 
 
 
@@ -268,7 +291,7 @@ namespace FujitsuPayments.Forms
                 lblOCHours.Text = Convert.ToString(oncall1);
 
 
-
+                
 
             }
             else

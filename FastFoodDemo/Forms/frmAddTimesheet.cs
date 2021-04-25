@@ -741,7 +741,7 @@ private Boolean replay = false, Start = false;
                         case 1:
                             foreach (Control c in panel1.Controls)
                             {
-                                if (c is Panel && ok)
+                                if (c is Panel )
                                 {
                                     if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                     {
@@ -979,8 +979,9 @@ private Boolean replay = false, Start = false;
                                             dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                             daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                                         }
+                                        no++;
                                     }
-                                    no++;
+                                  
                                 }
                                 if (MessageBox.Show("Do you wish to add On Call or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                 {
@@ -1233,8 +1234,9 @@ private Boolean replay = false, Start = false;
                                                 dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                 daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                                             }
+                                            no++;
                                         }
-                                        no++;
+                                        
                                     }
 
                                     if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -1463,7 +1465,7 @@ private Boolean replay = false, Start = false;
                                     no = 0;
                                     foreach (Control c in panel1.Controls)
                                     {
-                                        if (c is Panel && ok)
+                                        if (c is Panel )
                                         {
                                             if (start[no].Text.Length != 0 && end[no].Text.Length != 0)
                                             {
@@ -1488,8 +1490,9 @@ private Boolean replay = false, Start = false;
                                                 dsFujitsuPayments.Tables["TimesheetDetails"].Rows.Add(drTimeDets);
                                                 daTimeDets.Update(dsFujitsuPayments, "TimesheetDetails");
                                             }
+                                            no++;
                                         }
-                                        no++;
+                                        
                                     }
 
                                     if (MessageBox.Show("Do you wish to add basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
