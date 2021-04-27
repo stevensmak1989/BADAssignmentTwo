@@ -176,7 +176,7 @@ namespace FujitsuPayments.UserControls
                 shiftIdSelected = 0;
                 MessageBox.Show("Please select a record.", "Select Shift");
             }
-            else if (dgvShift.SelectedRows.Count > 1)
+            else if (dgvShift.SelectedRows.Count > 1) //---- To assign multiple records
             {
                // shiftSelected = false;
                // shiftIdSelected = 0;
@@ -189,7 +189,7 @@ namespace FujitsuPayments.UserControls
                 foreach (DataGridViewRow row in dgvShift.SelectedRows)
                 {
                     selectedShiftIDs[selectedRow] = Convert.ToInt32(dgvShift.SelectedRows[selectedRow].Cells[0].Value);
-                    MessageBox.Show("ShiftID: " + selectedShiftIDs[selectedRow].ToString() + "Selected Row: " + selectedRow);
+                    //MessageBox.Show("ShiftID: " + selectedShiftIDs[selectedRow].ToString() + "Selected Row: " + selectedRow);
                     selectedRow = selectedRow + 1;
                 }
                 //shiftIdSelected = Convert.ToInt32(dgvShift.SelectedRows[0].Cells[0].Value);
@@ -209,7 +209,7 @@ namespace FujitsuPayments.UserControls
                 //this.Controls.Add(frm);
                 //frm.BringToFront();
             }
-            else if (dgvShift.SelectedRows.Count == 1)
+            else if (dgvShift.SelectedRows.Count == 1) // --- to assign a single record
             {
                 shiftSelected = true;
                 moreThanOneRow = false;
@@ -558,7 +558,7 @@ namespace FujitsuPayments.UserControls
             int st = Convert.ToInt32(startTime) / 100;
             int et = Convert.ToInt32(endTime) / 100;
             //MessageBox.Show("Starttime: " + st + "endtime: " + et);
-            int height = ((et - st)/20)*4*4 ;
+            int height = ((et - st)/20)*4*4 ; // ---- calculation may be slighlty off, need to re-work
 
             return height;
         }
@@ -614,16 +614,18 @@ namespace FujitsuPayments.UserControls
                         switch (dayOfWeek)
                         {
                             case "Monday":
+
                                 monArray[mon].Visible = true;
                                 monArray[mon].Top = calLocYAxis(dr["StartTime"].ToString());
                                 monArray[mon].Height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                monString[mon] = drEmp["Forename"].ToString() + " " +  drEmp["Surname"].ToString();
+                                monString[mon] = drEmp["Forename"].ToString() + " " +  drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();
                                 mon = mon + 1;
                                 break;
                             case "Tuesday":
+ 
                                 //yAxis = calLocYAxis(dr["StartTime"].ToString());
                                 //height = calSizeHeight(dr["StartTime"].ToString(), dr["EndTime"].ToString());
                                 tueArray[tue].Visible = true;
@@ -632,7 +634,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                tueString[tue] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();                               
+                                tueString[tue] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();                               
                                 tue = tue + 1;
                                 break;
                             case "Wednesday":
@@ -642,7 +644,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                wedString[wed] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
+                                wedString[wed] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();
                                 wed = wed + 1;
                                 break;
                             case "Thursday":
@@ -652,7 +654,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                thuString[thu] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
+                                thuString[thu] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();
                                 thu = thu + 1;
                                 break;
                             case "Friday":
@@ -662,7 +664,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                friString[fri] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
+                                friString[fri] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();
                                 fri = fri + 1; 
                                 break;
                             case "Saturday":
@@ -672,7 +674,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                satString[sat] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();  
+                                satString[sat] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();  
                                 sat = sat + 1;
                                 break;
                             case "Sunday":
@@ -682,7 +684,7 @@ namespace FujitsuPayments.UserControls
                                 cmbEmp.Parameters["@EmployeeID"].Value = dr1["EmployeeID"].ToString();
                                 daEmp.Fill(dsFujitsuPayments, "Employee");
                                 drEmp = dsFujitsuPayments.Tables["Employee"].Rows.Find(dr1["EmployeeID"].ToString());
-                                sunString[sun] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString();
+                                sunString[sun] = drEmp["Forename"].ToString() + " " + drEmp["Surname"].ToString() + "  From: " + dr["StartTime"].ToString() + " to: " + dr["EndTime"].ToString();
                                 sun = sun + 1;
                                 break;                               
                         }
