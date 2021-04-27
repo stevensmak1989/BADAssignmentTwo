@@ -58,6 +58,11 @@ namespace FujitsuPayments.UserControls
            
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void btnTimesheetEdit_Click(object sender, EventArgs e)
         {
             // condition to check if a row has been selected to pass to edit form

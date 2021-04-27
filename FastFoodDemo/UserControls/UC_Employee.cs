@@ -29,11 +29,16 @@ namespace FujitsuPayments.UserControls
         public UC_Employee()
         {
             InitializeComponent();
+          
+
+        }
+        private void UC_Employee__Load(object sender, EventArgs e)
+        {
             // style fornt of data grid cell and header
             this.dvgEmployee.DefaultCellStyle.Font = new Font("Century Gothic", 8);
             this.dvgEmployee.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 8);
 
-           // dvgEmployee.Visible = false;
+            // dvgEmployee.Visible = false;
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
@@ -47,11 +52,6 @@ namespace FujitsuPayments.UserControls
             // resize the datagridview columns to fit the newly loaded content
             dvgEmployee.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             checkRefresh();
-
-        }
-        private void UC_Employee__Load(object sender, EventArgs e)
-        {
-           
 
         }
 
@@ -140,6 +140,11 @@ namespace FujitsuPayments.UserControls
 
                 }
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Employee__Load(sender, e);
         }
 
         private void btnEmployeeAdd_Click(object sender, EventArgs e)

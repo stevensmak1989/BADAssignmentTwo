@@ -178,6 +178,7 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditTask";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditTask";
             this.Load += new System.EventHandler(this.frmEditTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();

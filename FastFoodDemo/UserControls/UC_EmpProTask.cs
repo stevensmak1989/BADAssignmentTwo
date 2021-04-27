@@ -112,14 +112,13 @@ namespace FujitsuPayments.UserControls
 
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_EmpProTask_Load(sender, e);
+        }
 
         public void UC_EmpProTask_Load(object sender, EventArgs e)
         {
-          
-        }
-        public UC_EmpProTask()
-        {
-            InitializeComponent();
             this.dvgEmpTask.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dvgEmpTask.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
 
@@ -136,6 +135,11 @@ namespace FujitsuPayments.UserControls
             dvgEmpTask.DataSource = dsFujitsuPayments.Tables["ProjectTaskEmployee"];
             // resize the datagridview columns to fit the newly loaded content
             //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+        public UC_EmpProTask()
+        {
+            InitializeComponent();
+           
         }
 
         private void btnEmpTaskAdd_Click(object sender, EventArgs e)

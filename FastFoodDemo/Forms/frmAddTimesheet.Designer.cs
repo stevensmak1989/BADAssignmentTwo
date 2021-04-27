@@ -951,7 +951,7 @@ namespace FujitsuPayments.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddTimesheet";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddTimesheet";
             this.Load += new System.EventHandler(this.frmAddTimesheet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

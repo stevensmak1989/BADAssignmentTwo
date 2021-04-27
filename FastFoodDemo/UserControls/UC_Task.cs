@@ -27,23 +27,7 @@ namespace FujitsuPayments.UserControls
         {
             InitializeComponent();
             // style fornt of data grid cell and header
-            this.dvgTask.DefaultCellStyle.Font = new Font("Century Gothic", 9);
-            this.dvgTask.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
-
-
-
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
-
-            sqlTask = @"select * from ProjectTask";
-            daTask = new SqlDataAdapter(sqlTask, connStr);
-            cmbBTask = new SqlCommandBuilder(daTask);
-            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
-            daTask.Fill(dsFujitsuPayments, "ProjectTask");
-            dvgTask.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
-
-
-            // resize the datagridview columns to fit the newly loaded content
-            //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+          
         }
 
         private void dvgTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -108,6 +92,11 @@ namespace FujitsuPayments.UserControls
 
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UC_Task_Load(sender,e);
+        }
+
         private void btnTaskDel_Click(object sender, EventArgs e)
         {
             if (dvgTask.SelectedRows.Count == 0)
@@ -150,8 +139,24 @@ namespace FujitsuPayments.UserControls
         }
         private void UC_Task_Load(object sender, EventArgs e)
         {
+            this.dvgTask.DefaultCellStyle.Font = new Font("Century Gothic", 9);
+            this.dvgTask.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
 
-           
+
+
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
+
+            sqlTask = @"select * from ProjectTask";
+            daTask = new SqlDataAdapter(sqlTask, connStr);
+            cmbBTask = new SqlCommandBuilder(daTask);
+            daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
+            daTask.Fill(dsFujitsuPayments, "ProjectTask");
+            dvgTask.DataSource = dsFujitsuPayments.Tables["ProjectTask"];
+
+
+            // resize the datagridview columns to fit the newly loaded content
+            //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
         }
 
     }

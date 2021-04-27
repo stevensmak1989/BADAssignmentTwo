@@ -846,6 +846,7 @@ namespace FujitsuPayments.Forms
             this.button2.TabIndex = 76;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSave
             // 
@@ -879,6 +880,7 @@ namespace FujitsuPayments.Forms
             this.Controls.Add(this.panel12);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditTimesheet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditTimesheet";
             this.Load += new System.EventHandler(this.frmEditTimesheet_Load);
             this.panel5.ResumeLayout(false);

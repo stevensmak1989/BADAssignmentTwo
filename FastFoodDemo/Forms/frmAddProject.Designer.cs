@@ -352,6 +352,7 @@ namespace FujitsuPayments.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(190, 110);
             this.Name = "frmAddProject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddProject";
             this.Load += new System.EventHandler(this.frmAddProject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
