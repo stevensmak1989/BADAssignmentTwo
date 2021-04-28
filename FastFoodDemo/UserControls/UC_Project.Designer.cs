@@ -34,7 +34,7 @@ namespace FujitsuPayments.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnProjectView = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnProjectDel = new System.Windows.Forms.Button();
             this.btnProjectEdit = new System.Windows.Forms.Button();
             this.btnProjectAdd = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel1.Controls.Add(this.btnProjectView);
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnProjectDel);
             this.panel1.Controls.Add(this.btnProjectEdit);
             this.panel1.Controls.Add(this.btnProjectAdd);
@@ -70,29 +70,29 @@ namespace FujitsuPayments.UserControls
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnProjectView
+            // btnRefresh
             // 
-            this.btnProjectView.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnProjectView.FlatAppearance.BorderSize = 0;
-            this.btnProjectView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProjectView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnProjectView.Image = ((System.Drawing.Image)(resources.GetObject("btnProjectView.Image")));
-            this.btnProjectView.Location = new System.Drawing.Point(488, 0);
-            this.btnProjectView.Name = "btnProjectView";
-            this.btnProjectView.Size = new System.Drawing.Size(163, 42);
-            this.btnProjectView.TabIndex = 3;
-            this.btnProjectView.Text = "View Project";
-            this.btnProjectView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProjectView.UseVisualStyleBackColor = true;
-            this.btnProjectView.Click += new System.EventHandler(this.btnProjectView_Click);
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(488, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(163, 42);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnProjectDel
             // 
             this.btnProjectDel.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnProjectDel.FlatAppearance.BorderSize = 0;
             this.btnProjectDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProjectDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnProjectDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnProjectDel.Image = ((System.Drawing.Image)(resources.GetObject("btnProjectDel.Image")));
             this.btnProjectDel.Location = new System.Drawing.Point(321, 0);
@@ -109,7 +109,7 @@ namespace FujitsuPayments.UserControls
             this.btnProjectEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnProjectEdit.FlatAppearance.BorderSize = 0;
             this.btnProjectEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProjectEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnProjectEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnProjectEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnProjectEdit.Image")));
             this.btnProjectEdit.Location = new System.Drawing.Point(158, 0);
@@ -126,7 +126,7 @@ namespace FujitsuPayments.UserControls
             this.btnProjectAdd.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnProjectAdd.FlatAppearance.BorderSize = 0;
             this.btnProjectAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnProjectAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnProjectAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnProjectAdd.Image")));
             this.btnProjectAdd.Location = new System.Drawing.Point(0, 0);
@@ -182,6 +182,7 @@ namespace FujitsuPayments.UserControls
             this.Controls.Add(this.panel2);
             this.Name = "UC_Project";
             this.Size = new System.Drawing.Size(758, 451);
+            this.Load += new System.EventHandler(this.UC_Project_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgProject)).EndInit();
@@ -194,12 +195,12 @@ namespace FujitsuPayments.UserControls
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnProjectView;
         private System.Windows.Forms.Button btnProjectDel;
         private System.Windows.Forms.Button btnProjectEdit;
         private System.Windows.Forms.Button btnProjectAdd;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dvgProject;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

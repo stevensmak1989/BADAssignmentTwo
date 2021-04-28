@@ -48,7 +48,7 @@ namespace FujitsuPayments
             {
                 if (MyValidation.validNumber(value))
                 {
-                    if (Convert.ToInt32(value) > 0 && Convert.ToInt32(value) < 600)
+                    if (Convert.ToInt32(value) > 0 && Convert.ToInt32(value) < 601)
                     {
                         duration = value;
                     }
@@ -145,7 +145,7 @@ namespace FujitsuPayments
                         a48Rate = value;
                     }
                     else
-                        throw new MyException("Overtime Hours must be greater than 1 and less than 2");
+                        throw new MyException("Overtime Hours must be between 1.0 and  2.0");
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace FujitsuPayments
                         bHRate = value;
                     }
                     else
-                        throw new MyException("Bank holiday Hours must be greater than 1.9 and less than 4.1.");
+                        throw new MyException("Bank holiday Hours must be between 2.0 and 4.0.");
                 }
                 else
                 {

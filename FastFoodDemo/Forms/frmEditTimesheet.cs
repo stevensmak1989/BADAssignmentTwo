@@ -50,6 +50,11 @@ namespace FujitsuPayments.Forms
             task(6);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void cmbProject2_SelectedIndexChanged(object sender, EventArgs e)
         {
             task(1);
@@ -1588,11 +1593,11 @@ namespace FujitsuPayments.Forms
 
         private void setData(int claimtype, int timesheetID)
         {
-            TextBox[] start = { txtStart7, txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6  };
-            TextBox[] end = { txtEnd7,txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6 };
-            ComboBox[] task = { cmbEmpTask7, cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6 };
-            ComboBox[] project = { cmbProject7, cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6 };
-            Label[] date = { lblDateSun, lblDateMon, lblDateTue, lblDateWed, lblDateThur, lblDateFri, lblDateSat };
+            TextBox[] start = {   txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6 , txtStart7 };
+            TextBox[] end = {  txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6, txtEnd7 };
+            ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
+            ComboBox[] project = {  cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6 , cmbProject7 };
+            Label[] date = {  lblDateMon, lblDateTue, lblDateWed, lblDateThur, lblDateFri, lblDateSat, lblDateSun };
 
 
             
@@ -1601,7 +1606,7 @@ namespace FujitsuPayments.Forms
 
             cmdProj.Parameters["@Timesheet"].Value = timesheetID;
             cmdProj.Parameters["@ClaimType"].Value = cmbClaimType.SelectedValue;
-
+            
             daProject.Fill(dsFujitsuPayments, "Timesheets");
             
 
@@ -1643,13 +1648,14 @@ namespace FujitsuPayments.Forms
                     if (claimType[i] == cType)
                     {
 
+                        
                         int day = (int)rowArray[i].DayOfWeek;
-
-                        start[day].Text = startTime[i].ToString();
-                        end[day].Text = endTime[i].ToString();
-                        date[day].Text = rowArray[i].ToShortDateString();
-                        project[day].Text = proj[i].ToString();
-                        task[day].Text =  tasks[i].ToString();
+                        
+                        start[i].Text = startTime[i].ToString();
+                        end[i].Text = endTime[i].ToString();
+                        date[i].Text = rowArray[i].ToShortDateString();
+                        project[i].Text = proj[i].ToString();
+                        task[i].Text =  tasks[i].ToString();
 
                     }
                    
@@ -1657,27 +1663,18 @@ namespace FujitsuPayments.Forms
                     {
                         for (int y = 0; y < 7; y++)
                         {
-                            start[y].Text = "";
-                            end[y].Text = "";
-                            // date[day].Text = rowArray[i].ToShortDateString();
+                            if (claimType[y] != cType)
+                            {
+                                start[y].Text = "";
+                                end[y].Text = "";
+                                // date[day].Text = rowArray[i].ToShortDateString();
+                            }
                         }
                     }
 
 
                 }
-                for(int i = 0; i < 7; i ++)
-                {
-                    //if(start[i].Text == "")
-                    //{
-                    //    start[i].Enabled = false;
-                    //    end[i].Enabled = false;
-                    //}
-                    //else
-                    //{
-                    //    start[i].Enabled = true;
-                    //    end[i].Enabled = true;
-                    //}
-                }
+               
 
             }
             else
@@ -1719,8 +1716,12 @@ namespace FujitsuPayments.Forms
 
             if (cmbClaimType.Focused == true)
             {
-
+                
                 int claim = (int)cmbClaimType.SelectedValue;
+                daProject.Dispose();
+
+                daProject = new SqlDataAdapter(cmdProj);
+                daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheets");
                 setData(claim, timesheetValue);
 
                 

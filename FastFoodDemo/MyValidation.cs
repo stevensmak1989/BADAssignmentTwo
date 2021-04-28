@@ -53,9 +53,10 @@ namespace FujitsuPayments
         {
             bool ok = true;
             int size = txt.Length;
-            string pattern = " ^ *[0-9/.]+$";
-            
-            if ( Regex.IsMatch(txt, @"^[0-9\.]+$"))
+            string pattern = " ^ *[0-9/.]+$"; //^[0-9\.]+$ 
+
+
+            if ( Regex.IsMatch(txt, @"^\d+\.[0-9]\d*$"))
             {
                 ok = true;
             }

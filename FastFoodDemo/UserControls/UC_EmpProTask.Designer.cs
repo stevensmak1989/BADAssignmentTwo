@@ -35,12 +35,12 @@ namespace FujitsuPayments.UserControls
             this.dvgEmpTask = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEmpTaskView = new System.Windows.Forms.Button();
             this.btnEmpTaskDel = new System.Windows.Forms.Button();
             this.btnEmpTaskEdit = new System.Windows.Forms.Button();
             this.btnEmpTaskAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmpTask)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,7 +55,7 @@ namespace FujitsuPayments.UserControls
             this.dvgEmpTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -80,7 +80,7 @@ namespace FujitsuPayments.UserControls
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel1.Controls.Add(this.btnEmpTaskView);
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnEmpTaskDel);
             this.panel1.Controls.Add(this.btnEmpTaskEdit);
             this.panel1.Controls.Add(this.btnEmpTaskAdd);
@@ -90,28 +90,12 @@ namespace FujitsuPayments.UserControls
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnEmpTaskView
-            // 
-            this.btnEmpTaskView.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnEmpTaskView.FlatAppearance.BorderSize = 0;
-            this.btnEmpTaskView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpTaskView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpTaskView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.btnEmpTaskView.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpTaskView.Image")));
-            this.btnEmpTaskView.Location = new System.Drawing.Point(488, 0);
-            this.btnEmpTaskView.Name = "btnEmpTaskView";
-            this.btnEmpTaskView.Size = new System.Drawing.Size(163, 42);
-            this.btnEmpTaskView.TabIndex = 3;
-            this.btnEmpTaskView.Text = "View Employee Task";
-            this.btnEmpTaskView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEmpTaskView.UseVisualStyleBackColor = true;
-            // 
             // btnEmpTaskDel
             // 
             this.btnEmpTaskDel.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmpTaskDel.FlatAppearance.BorderSize = 0;
             this.btnEmpTaskDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpTaskDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpTaskDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnEmpTaskDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmpTaskDel.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpTaskDel.Image")));
             this.btnEmpTaskDel.Location = new System.Drawing.Point(321, 0);
@@ -128,7 +112,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmpTaskEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmpTaskEdit.FlatAppearance.BorderSize = 0;
             this.btnEmpTaskEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpTaskEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpTaskEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnEmpTaskEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmpTaskEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpTaskEdit.Image")));
             this.btnEmpTaskEdit.Location = new System.Drawing.Point(158, 0);
@@ -145,7 +129,7 @@ namespace FujitsuPayments.UserControls
             this.btnEmpTaskAdd.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEmpTaskAdd.FlatAppearance.BorderSize = 0;
             this.btnEmpTaskAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpTaskAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpTaskAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnEmpTaskAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.btnEmpTaskAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpTaskAdd.Image")));
             this.btnEmpTaskAdd.Location = new System.Drawing.Point(0, 0);
@@ -162,6 +146,7 @@ namespace FujitsuPayments.UserControls
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.dvgEmpTask);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1087, 477);
@@ -171,6 +156,23 @@ namespace FujitsuPayments.UserControls
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(488, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(163, 42);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UC_EmpProTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +181,7 @@ namespace FujitsuPayments.UserControls
             this.Controls.Add(this.panel2);
             this.Name = "UC_EmpProTask";
             this.Size = new System.Drawing.Size(1087, 477);
+            this.Load += new System.EventHandler(this.UC_EmpProTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgEmpTask)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -192,11 +195,11 @@ namespace FujitsuPayments.UserControls
         private System.Windows.Forms.DataGridView dvgEmpTask;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnEmpTaskView;
         private System.Windows.Forms.Button btnEmpTaskDel;
         private System.Windows.Forms.Button btnEmpTaskEdit;
         private System.Windows.Forms.Button btnEmpTaskAdd;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

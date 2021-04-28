@@ -23,16 +23,16 @@ namespace FujitsuPayments.UserControls
         public static int selectedTab = 0;
         public static bool prjSelected = false;
         public static int prjNoSelected = 0;
-        private void UC_Project_Load(object sender, EventArgs e)
-        {
-            
-        }
+       
 
 
         public UC_Project()
         {
-
             InitializeComponent();
+        }
+
+        private void UC_Project_Load(object sender, EventArgs e)
+        {
             // style fornt of data grid cell and header
             this.dvgProject.DefaultCellStyle.Font = new Font("Century Gothic", 9);
             this.dvgProject.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
@@ -162,6 +162,11 @@ frm.Location = new Point(180, 100);
                          drProject.ClearErrors();
             }
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
