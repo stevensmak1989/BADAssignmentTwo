@@ -1725,6 +1725,7 @@ private Boolean replay = false, Start = false;
                 cmbDates.Items.Add(startDate[i].ToString());
                 
             }
+            cmbDates.SelectedIndex = 0;
         }
 
         private void setDates(int count)

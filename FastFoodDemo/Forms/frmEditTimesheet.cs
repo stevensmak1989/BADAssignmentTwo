@@ -1589,6 +1589,7 @@ namespace FujitsuPayments.Forms
                 cmbDates.Items.Add(startDate[i].ToString());
 
             }
+            cmbDates.SelectedIndex = 1;
         }
 
         private void setData(int claimtype, int timesheetID)
