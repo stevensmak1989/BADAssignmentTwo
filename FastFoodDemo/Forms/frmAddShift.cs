@@ -86,7 +86,7 @@ namespace FujitsuPayments.Forms
 
 
             // -------- set up data adapter for Employee SHift Validation
-            sqlEmpShift = @"  select * from EmployeeShift where AccountID = @AccountID and TaskID = @TaskID and StartDate = @StartDate";
+            sqlEmpShift = @"  select * from EmployeeShift where AccountID = @AccountID and ProjectID = @ProjectID and TaskID = @TaskID and StartDate = @StartDate";
             conn = new SqlConnection(connStr);
             cmbEmpShift = new SqlCommand(sqlEmpShift, conn);
             cmbEmpShift.Parameters.Add("@AccountID", SqlDbType.Int);
@@ -305,6 +305,7 @@ namespace FujitsuPayments.Forms
                                             if (count > 0)
                                             {
                                                 MessageBox.Show("Shift already exists for selected date: " + st.ToString() + ", please select a new date");
+                                                MessageBox.Show("Error for multi record");
                                                 st = st.AddDays(1);
                                             }
                                             else
@@ -349,6 +350,7 @@ namespace FujitsuPayments.Forms
                                         if (count2 > 0)
                                         {
                                             MessageBox.Show("Shift already exists for selected date: " + myShift.StartDate.ToString() + ", please select a new date");
+                                            MessageBox.Show("Error for single record");
                                         }
                                         else
                                         {
