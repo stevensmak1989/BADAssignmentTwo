@@ -25,16 +25,17 @@ namespace FujitsuPayments.UserControls
         public static int tskNoSelected = 0, prjNoSelected = 0, empNoSelected =0;
 
         private void btnEmpTaskDel_Click(object sender, EventArgs e)
-        {
+        {//checks if a user slected a row
             if (dvgEmpTask.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an Project from the list.", "Select ProjectTask");
             }
             else
             {
+                //creates the object for the primary key values
                 object[] primaryKey = new object[3];
 
-
+                //adds project, task and employee from datagrid
                 tskNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[1].Value);
                 prjNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[0].Value);
                 empNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[2].Value);
@@ -44,6 +45,7 @@ namespace FujitsuPayments.UserControls
                 primaryKey[1] = Convert.ToInt32(UC_EmpProTask.tskNoSelected);
                 primaryKey[2] = Convert.ToInt32(UC_EmpProTask.empNoSelected);
 
+                //finds the record based on pk values
                 drEmpTask = dsFujitsuPayments.Tables["ProjectTaskEmployee"].Rows.Find(primaryKey);
 
 
@@ -52,15 +54,17 @@ namespace FujitsuPayments.UserControls
                 string tempName = drEmpTask["EmployeeID"].ToString();
                 string tempProj = drEmpTask["ProjectID"].ToString();
 
-
+                // asks the user if they would confirm the delete
                 if (MessageBox.Show("Are you sure you want to delete Project Task: " + tempProj +"/"+ tempTask + "for employee ID: "+ tempName+ "?", "Delete Task", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
+                    //tries to delete the record
                     try
                     {
                         drEmpTask.Delete();
                         daEmpTask.Update(dsFujitsuPayments, "ProjectTaskEmployee");
                     }
-                    catch (SqlException ex)
+                    //if the task has records assigned it will not update
+                    catch (SqlException )
                     {
                         MessageBox.Show("Cannot delete a Project Task that has related records, please delete all related records first", "Delete Project Task");
                     }
@@ -79,7 +83,7 @@ namespace FujitsuPayments.UserControls
                 tskSelected = false;
                 tskNoSelected = 0;
                 MessageBox.Show("Please select a record.", "Select ProjectTask");
-            }
+            } // checks if more than one row selected
             else if (dvgEmpTask.SelectedRows.Count > 1)
             {
                 tskSelected = false;
@@ -91,6 +95,7 @@ namespace FujitsuPayments.UserControls
             else if (dvgEmpTask.SelectedRows.Count == 1)
             {
                 tskSelected = true;
+                //sets the variables to the datagrid values
                 tskNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[1].Value);
                 prjNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[0].Value);
                 empNoSelected = Convert.ToInt32(dvgEmpTask.SelectedRows[0].Cells[2].Value);
@@ -102,15 +107,7 @@ namespace FujitsuPayments.UserControls
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dvgEmpTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -141,7 +138,7 @@ namespace FujitsuPayments.UserControls
             InitializeComponent();
            
         }
-
+        //called when the add is selected
         private void btnEmpTaskAdd_Click(object sender, EventArgs e)
         {
             frmEmpTaskAdd frm = new frmEmpTaskAdd();
