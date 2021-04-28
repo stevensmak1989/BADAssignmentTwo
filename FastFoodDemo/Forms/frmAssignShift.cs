@@ -145,6 +145,8 @@ namespace FujitsuPayments.Forms
                     for(int i = 0; i < UC_Schedule.selectedRow; i++)
                     {
                         // get a list of all records in employee shift for specificed shiftID
+                        // --- added in 28/04/2021 as random bug where some records would flag error even though record should be valid --//
+                        dsFujitsuPayments.Tables["EmployeeShiftDetails2"].Clear(); 
                         cmbEmployeeShift2.Parameters["@ShiftID"].Value = UC_Schedule.selectedShiftIDs[i];
                         daEmployeeShift2.Fill(dsFujitsuPayments, "EmployeeShiftDetails2");
                         int count = 0;
@@ -161,6 +163,7 @@ namespace FujitsuPayments.Forms
                         else
                         {
                             // get a list of all records in employee shift for specificed shiftID
+                            dsFujitsuPayments.Tables["EmployeeShiftDetails3"].Clear();
                             cmbEmployeeShift3.Parameters["@ShiftID"].Value = UC_Schedule.selectedShiftIDs[i];
                             cmbEmployeeShift3.Parameters["@EmployeeID"].Value = myEmployeeShift.EmployeeId;
                             daEmployeeShift3.Fill(dsFujitsuPayments, "EmployeeShiftDetails3");
