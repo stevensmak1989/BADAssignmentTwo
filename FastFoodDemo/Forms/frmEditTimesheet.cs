@@ -1661,15 +1661,14 @@ namespace FujitsuPayments.Forms
                    
                     else
                     {
-                        for (int y = 0; y < 7; y++)
-                        {
-                            if (claimType[y] != cType)
+                       
+                            if (claimType[i] != cType)
                             {
-                                start[y].Text = "";
-                                end[y].Text = "";
+                                start[i].Text = "";
+                                end[i].Text = "";
                                 // date[day].Text = rowArray[i].ToShortDateString();
                             }
-                        }
+                        
                     }
 
 

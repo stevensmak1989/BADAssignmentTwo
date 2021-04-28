@@ -818,6 +818,7 @@ namespace FujitsuPayments.Forms
             // 
             // cmbDates
             // 
+            this.cmbDates.Enabled = false;
             this.cmbDates.FormattingEnabled = true;
             this.cmbDates.Location = new System.Drawing.Point(115, 6);
             this.cmbDates.Name = "cmbDates";
