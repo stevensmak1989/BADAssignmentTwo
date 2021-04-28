@@ -55,7 +55,7 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(758, 91);
             this.flowLayoutPanel1.TabIndex = 6;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            
             // 
             // panel1
             // 
@@ -68,7 +68,7 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
             // 
             // btnRefresh
             // 
@@ -85,7 +85,7 @@ namespace FujitsuPayments.UserControls
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+           
             // 
             // btnProjectDel
             // 
@@ -147,7 +147,7 @@ namespace FujitsuPayments.UserControls
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(758, 451);
             this.panel2.TabIndex = 7;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+
             // 
             // dvgProject
             // 
@@ -168,7 +168,7 @@ namespace FujitsuPayments.UserControls
             this.dvgProject.ReadOnly = true;
             this.dvgProject.Size = new System.Drawing.Size(1087, 477);
             this.dvgProject.TabIndex = 0;
-            this.dvgProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProject_CellContentClick);
+       
             // 
             // errorProvider1
             // 

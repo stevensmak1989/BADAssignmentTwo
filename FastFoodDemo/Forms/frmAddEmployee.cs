@@ -13,6 +13,7 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmAddEmployee : Form
     {
+        //sql connections used for database controls
         SqlDataAdapter daEmployee, daMan, daGrade, daGrades;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBEmployee;
@@ -27,7 +28,7 @@ namespace FujitsuPayments.Forms
         {
             InitializeComponent();
         }
-
+        //sets the on load properties
         private void frmAddEmployee_Load(object sender, EventArgs e)
         {
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
@@ -38,8 +39,10 @@ namespace FujitsuPayments.Forms
             daEmployee.FillSchema(dsFujitsuPayments, SchemaType.Source, "Employee");
             daEmployee.Fill(dsFujitsuPayments, "Employee");
 
+            // gets the number of rows in the table
             int noRows = dsFujitsuPayments.Tables["Employee"].Rows.Count;
 
+            //query to bring back managers in the emp table
             sqlMan = @"Select  EmployeeID, Surname + ' ' + Forename as EmpName from Employee where Manager = 1";
             daMan = new SqlDataAdapter(sqlMan, connStr);
             daMan.Fill(dsFujitsuPayments, "Manager");
@@ -52,77 +55,71 @@ namespace FujitsuPayments.Forms
             daGrades = new SqlDataAdapter(cmdGrades);
             daGrades.FillSchema(dsFujitsuPayments, SchemaType.Source, "Grades");
 
-
+            //popultaes the approvedby combo box with the manager data
             foreach (DataRow dr in dsFujitsuPayments.Tables["Manager"].Rows)
             {
-                // Console.WriteLine(dr["Manager"].ToString());
-
-
                 cmbApprovedBy.DataSource = dsFujitsuPayments.Tables["Manager"];
                 cmbApprovedBy.ValueMember = "EmployeeID";
                 cmbApprovedBy.DisplayMember = "EmpName";
-
             }
 
             sqlGrade = @"Select  Grade, GradeDesc from Grade ";
             daGrade = new SqlDataAdapter(sqlGrade, connStr);
             daGrade.Fill(dsFujitsuPayments, "Grade");
 
+
+            //populates grade with the data from the grade table
             foreach(DataRow dr in dsFujitsuPayments.Tables["Grade"].Rows)
             {
-                // Console.WriteLine(dr["Manager"].ToString());
-
 
                 cmbGrade.DataSource = dsFujitsuPayments.Tables["Grade"];
                 cmbGrade.ValueMember = "Grade";
                 cmbGrade.DisplayMember = "GradeDesc";
 
             }
-
-           
-
-
-           
-
-
-
+            //checks if there are active rows in the emp db, if not sets the row to 1000
             if (noRows == 0)
                 lblEmpNoAdd.Text = "1000";
+            //if there is it calls the get numbs function to check the row number
             else
             {
                 getNumber(noRows);
             }
         }
-
+        //is called when the grade is selected
         private void cmbGrade_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //checks if the grade has focus otherwise it will not run
             if (cmbGrade.Focused == true)
             {
-                MessageBox.Show(cmbGrade.SelectedValue.ToString());
-
+              
+                //clears the grade table to prevent any old data being used
                 dsFujitsuPayments.Tables["Grades"].Clear();
+                //sets the parameter to the selected grade
                 cmdGrades.Parameters["@Grade"].Value = cmbGrade.SelectedValue.ToString();
 
                 daGrades.Fill(dsFujitsuPayments, "Grades");
                 DataTable dt = dsFujitsuPayments.Tables["Grades"];
 
-
+                //sets the datarow to the grade
                 foreach (DataRow row in dt.Rows)
                 {
-
                     drSalary = row;
-
                 }
+
+                //sets the start and end var to the salary max and min for validation
                 start = Convert.ToDecimal(drSalary["StartSal"].ToString());
                 end = Convert.ToDecimal(drSalary["EndSal"].ToString());
             }
         }
-
+        //called when the close button is pressed and will close the form
         private void btnEmpClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
+
+        // will run when the save button is pressed
         private void btnEmpSave_Click(object sender, EventArgs e)
         {
             Employee myEmployee = new Employee();
@@ -286,20 +283,22 @@ namespace FujitsuPayments.Forms
                 }
             try
             {
+                //checks if the employee salary is within the limits
                 if (sal == true)
                 {
-
+                    //validates the salary
                     if (Convert.ToDecimal(txtAddSalary.Text) < start || Convert.ToDecimal(txtAddSalary.Text) > end)
                     {
                         MessageBox.Show("Salary must be between £" + Convert.ToString(start) + " and £" + Convert.ToString(end));
                     }
                     else
                     {
+                        //checks it has passed validation
                         if (ok)
                         {
 
                             drEmployee = dsFujitsuPayments.Tables["Employee"].NewRow();
-
+                            //inserts the class values into the datarow
                             drEmployee["EmployeeID"] = myEmployee.EmployeeId;
                             drEmployee["Title"] = myEmployee.Title;
                             drEmployee["Surname"] = myEmployee.Surname;
@@ -315,9 +314,11 @@ namespace FujitsuPayments.Forms
                             drEmployee["Grade"] = myEmployee.Grade;
                             drEmployee["Salary"] = Convert.ToDecimal(myEmployee.Salary);
 
+                            //adds datarow to the database and updates source
                             dsFujitsuPayments.Tables["Employee"].Rows.Add(drEmployee);
                             daEmployee.Update(dsFujitsuPayments, "Employee");
 
+                            //closes the form
                             MessageBox.Show("Employee Added");
                             this.Dispose();
 
@@ -325,6 +326,7 @@ namespace FujitsuPayments.Forms
                     }
                 }
             }
+            //catches any unexpected exceptions
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
@@ -332,27 +334,6 @@ namespace FujitsuPayments.Forms
             
         }
 
-       
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblTitlee_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEmpNoAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbManager_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void getNumber(int noRows)
         {

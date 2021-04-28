@@ -95,7 +95,6 @@ namespace FujitsuPayments.Forms
             this.dtpStartDate.Size = new System.Drawing.Size(106, 26);
             this.dtpStartDate.TabIndex = 45;
             this.dtpStartDate.Value = new System.DateTime(2021, 4, 15, 13, 26, 29, 0);
-            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // txtlblBankHolAdd
             // 
@@ -237,7 +236,7 @@ namespace FujitsuPayments.Forms
             this.txtCappedhoursAdd.Name = "txtCappedhoursAdd";
             this.txtCappedhoursAdd.Size = new System.Drawing.Size(106, 26);
             this.txtCappedhoursAdd.TabIndex = 23;
-            this.txtCappedhoursAdd.TextChanged += new System.EventHandler(this.txtCappedhoursAdd_TextChanged);
+        
             // 
             // lblOvertimeAdd
             // 
@@ -325,7 +324,7 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 335);
             this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+     
             // 
             // btnEmpClose
             // 

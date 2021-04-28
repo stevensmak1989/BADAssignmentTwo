@@ -9,11 +9,12 @@ namespace FujitsuPayments
 {
     class Project
     {
+        //vars used for the project class
         private int projectId, accountID;
         private string projDesc, duration, cappedHrs, b48Rate, a48Rate, bHRate;
         private DateTime startDate;
         
-
+        //constructor for the project
         public Project()
         {
             projectId = 0; accountID = 0; duration = ""; projDesc = "";
@@ -21,6 +22,7 @@ namespace FujitsuPayments
             a48Rate = ""; bHRate = "";
         }
 
+        //constructor for project values
         public Project(int projectId, int accountID, string duration, string projDesc, DateTime startDate,
             string cappedHrs, string b48Rate, string a48Rate, string bHRate)
         {
@@ -28,19 +30,20 @@ namespace FujitsuPayments
             this.startDate = startDate; this.cappedHrs = cappedHrs; this.b48Rate = b48Rate;
             this.a48Rate = a48Rate; this.bHRate = bHRate;
         }
-
+        //sets the project id
         public int ProjectId
         {
             get { return projectId; }
             set { projectId = value; }
         }
-
+        //sets the account id
         public int AccountID
         {
             get { return accountID; }
             set { accountID = value; }
         }
 
+        //validates duration for a valid number and if it is greater than 0 and less than 601
         public string Duration
         {
             get { return duration; }
@@ -59,7 +62,7 @@ namespace FujitsuPayments
                     throw new MyException("Duration must be a valid number.");
             }
         }
-
+        //validates the description to be betwen 2 and 16 characters including numbers and whitespace
         public string ProjDesc
         {
             get { return projDesc; }
@@ -74,6 +77,7 @@ namespace FujitsuPayments
             }
         }
 
+        //validates the start days is one day in the future
         public DateTime StartDate
         {
             get { return startDate; }
@@ -84,10 +88,10 @@ namespace FujitsuPayments
                     startDate = value;
                 }
                 else
-                    throw new MyException("Start days must be greater than 1 day.");
+                    throw new MyException("Start days must be greater than 1 day in the future.");
             }
         }
-
+        //validates the capped hours are a valid digit and is greater than 0 and less than 10000
         public string CappedHrs
         {
             get { return cappedHrs; }
@@ -108,7 +112,7 @@ namespace FujitsuPayments
                 }
             }
         }
-
+        //validates the rate is a valid digit and within the boundaries
         public string B48Rate
         {
             get { return b48Rate; }
@@ -129,7 +133,7 @@ namespace FujitsuPayments
                 }
             }
         }
-
+        //validates the rate is a valid digit and within the boundaries
         public string A48Rate
         {
             get { return a48Rate; }
@@ -153,7 +157,7 @@ namespace FujitsuPayments
                 }
             }
         }
-
+        //validates the rate is a valid digit and within the boundaries
         public string BHRate
         {
             get { return bHRate; }

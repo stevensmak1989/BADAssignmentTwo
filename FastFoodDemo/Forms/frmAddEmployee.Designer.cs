@@ -104,7 +104,7 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            
             // 
             // cbManager
             // 
@@ -115,7 +115,7 @@ namespace FujitsuPayments.Forms
             this.cbManager.TabIndex = 49;
             this.cbManager.Text = "Manager";
             this.cbManager.UseVisualStyleBackColor = true;
-            this.cbManager.CheckedChanged += new System.EventHandler(this.cbManager_CheckedChanged);
+         
             // 
             // lblEmpNoAdd
             // 
@@ -127,7 +127,7 @@ namespace FujitsuPayments.Forms
             this.lblEmpNoAdd.Size = new System.Drawing.Size(13, 18);
             this.lblEmpNoAdd.TabIndex = 48;
             this.lblEmpNoAdd.Text = "-";
-            this.lblEmpNoAdd.Click += new System.EventHandler(this.lblEmpNoAdd_Click);
+       
             // 
             // txtTitle
             // 
@@ -148,7 +148,7 @@ namespace FujitsuPayments.Forms
             this.lblTitlee.Size = new System.Drawing.Size(35, 18);
             this.lblTitlee.TabIndex = 46;
             this.lblTitlee.Text = "Title";
-            this.lblTitlee.Click += new System.EventHandler(this.lblTitlee_Click);
+          
             // 
             // dtpDOB
             // 

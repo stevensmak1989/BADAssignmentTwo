@@ -13,7 +13,7 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmAddProject : Form
     {
-
+        // creates the sql adaptors
         SqlDataAdapter daProject, daClient;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject, cmbBClient;
@@ -24,7 +24,7 @@ namespace FujitsuPayments.Forms
         {
             InitializeComponent();
         }
-
+        //is called when the project is loaded
         private void frmAddProject_Load(object sender, EventArgs e)
         {
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
@@ -41,166 +41,178 @@ namespace FujitsuPayments.Forms
             daClient.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daClient.Fill(dsFujitsuPayments, "Account");
 
+            //sets the combo box to the account data table
             cmbAccountId.DataSource = dsFujitsuPayments.Tables["Account"];
             cmbAccountId.ValueMember = "AccountID";
             cmbAccountId.DisplayMember = "ClientName";
 
+            //checks the row numbers in the project
             int noRows = dsFujitsuPayments.Tables["Project"].Rows.Count;
 
+            //if it is 0 sets the value to 1
             if (noRows == 0)
                 lblPrjIDAdd.Text = "1";
+            //checks the number of rows
             else
             {
                 getNumber(noRows);
             }
         }
 
+        // is called when the close button is pressed and will dispose the form
         private void btnEmpClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        //called when the save button is pressed
         private void btnEmpSave_Click(object sender, EventArgs e)
         {
             Project myProject = new Project();
             bool ok = true;
             errP.Clear();
 
-            //employee number
+           //sets the projet id
             try
             {
                 myProject.ProjectId = Convert.ToInt32(lblPrjIDAdd.Text.Trim());
-                //passed to employee Class to check
+            
 
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(lblPrjIDAdd, MyEx.toString());
             }
-            //employee Title
+          
             try
             {
                 myProject.ProjDesc = txtProjDesc.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtProjDesc, MyEx.toString());
             }
-            //employee Surname
+          
             try
             {
                 myProject.AccountID = Convert.ToInt32(cmbAccountId.SelectedValue);
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(cmbAccountId, MyEx.toString());
             }
-            //employee Forename
+          
             try
             {
                 myProject.StartDate = DateTime.Parse(dtpStartDate.Text.Trim());
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(dtpStartDate, MyEx.toString());
             }
             
-            //employee Street
+        
             try
             {
                 myProject.Duration = txtDuration.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtDuration, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException )
             {
                 ok = false;
                 errP.SetError(txtDuration, "Duration must not be larger than 600 days");
 
             }
-            //employee Town
+          
             try
             {
                 myProject.CappedHrs = txtCappedhoursAdd.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtCappedhoursAdd, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException )
             {
                 ok = false;
                 errP.SetError(txtCappedhoursAdd, "Capped Hours must not be larger than 10000 hours");
 
             }
-            //employee County
+           
             try
             {
                 myProject.B48Rate = txtBasicAdd.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtBasicAdd, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException )
             {
                 ok = false;
                 errP.SetError(txtBasicAdd, "basic Hours must not be larger than 1");
-
             }
 
-            //employee Postcode
             try
             {
                 myProject.A48Rate = txtOvertimeAdd.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtOvertimeAdd, MyEx.toString());
             }
-
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException )
             {
                 ok = false;
                 errP.SetError(txtOvertimeAdd, "Overtime Hours must not be greater than 1 and less than 2");
 
             }
-            //employee TelNo
+         
             try
             {
                 myProject.BHRate = txtlblBankHolAdd.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtlblBankHolAdd, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException )
             {
                 ok = false;
                 errP.SetError(txtlblBankHolAdd, "Bank Holiday Hours must not be greater than 1.9 and less than 4.1");
-
             }
             try
             {
+                //if the validation is passed
                 if (ok)
                 {
-
+                    //creates the new row to be added
                     drProject = dsFujitsuPayments.Tables["Project"].NewRow();
 
                     drProject["ProjectID"] = myProject.ProjectId;
@@ -214,6 +226,7 @@ namespace FujitsuPayments.Forms
                     drProject["BHRate"] = Convert.ToDecimal(myProject.BHRate);
                     drProject["B48Rate"] = Convert.ToDecimal(myProject.B48Rate);
 
+                    //inserts the row into the database
                     dsFujitsuPayments.Tables["Project"].Rows.Add(drProject);
                     daProject.Update(dsFujitsuPayments, "Project");
 
@@ -222,21 +235,14 @@ namespace FujitsuPayments.Forms
 
                 }
             }
+            //catches the errors from the class
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
         }
 
-        private void txtCappedhoursAdd_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void getNumber(int noRows)
         {

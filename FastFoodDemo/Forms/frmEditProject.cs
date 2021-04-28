@@ -15,6 +15,7 @@ namespace FujitsuPayments.Forms
     public partial class frmEditProject : Form
 
     {
+
         SqlDataAdapter daProject,daClient;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject, cmbBClient;
@@ -32,132 +33,144 @@ namespace FujitsuPayments.Forms
             bool ok = true;
             errP.Clear();
 
-            //employee number
+            //sets the projet id
             try
             {
                 myProject.ProjectId = Convert.ToInt32(lblPrjIDEdit.Text.Trim());
-                //passed to employee Class to check
+
 
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(lblPrjIDEdit, MyEx.toString());
             }
-            //employee Title
+
             try
             {
                 myProject.ProjDesc = txtProjDesc.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtProjDesc, MyEx.toString());
             }
-            //employee Surname
+
             try
             {
                 myProject.AccountID = Convert.ToInt32(cmbAccountId.SelectedValue);
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(cmbAccountId, MyEx.toString());
             }
-            //employee Forename
+
             try
             {
                 myProject.StartDate = DateTime.Parse(dtpStartDate.Text.Trim());
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(dtpStartDate, MyEx.toString());
             }
-            //employee Street
+
+
             try
             {
                 myProject.Duration = txtDuration.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtDuration, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException)
             {
                 ok = false;
                 errP.SetError(txtDuration, "Duration must not be larger than 600 days");
 
             }
-            //employee Town
+
             try
             {
                 myProject.CappedHrs = txtCappedhoursEdit.Text.Trim();
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtCappedhoursEdit, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException)
             {
                 ok = false;
                 errP.SetError(txtCappedhoursEdit, "Capped Hours must not be larger than 10000 hours");
 
             }
-            //employee County
+
             try
             {
-                myProject.B48Rate = txtBasicEdit.Text.Trim();
+                myProject.B48Rate = txtBasicEdit.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtBasicEdit, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException)
             {
                 ok = false;
                 errP.SetError(txtBasicEdit, "basic Hours must not be larger than 1");
-
             }
-            //employee Postcode
+
             try
             {
-                myProject.A48Rate = txtOvertimeEdit.Text.Trim();
+                myProject.A48Rate = txtOvertimeEdit.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtOvertimeEdit, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException)
             {
                 ok = false;
                 errP.SetError(txtOvertimeEdit, "Overtime Hours must not be greater than 1 and less than 2");
 
             }
 
-            //employee TelNo
             try
             {
-                myProject.BHRate = txtlblBankHolEdit.Text.Trim();
+                myProject.BHRate = txtlblBankHolEdit.Text;
             }
+            //catches the errors from the class
             catch (MyException MyEx)
             {
                 ok = false;
                 errP.SetError(txtlblBankHolEdit, MyEx.toString());
             }
-            catch (System.OverflowException ex)
+            //catches the errors from the class
+            catch (System.OverflowException)
             {
                 ok = false;
-                errP.SetError(txtOvertimeEdit, "Overtime Hours must not be greater than 1 and less than 2");
-
+                errP.SetError(txtlblBankHolEdit, "Bank Holiday Hours must not be greater than 1.9 and less than 4.1");
             }
-
             try
             {
+                //if the validation is passed
                 if (ok)
                 {
                     drProject.BeginEdit();
@@ -193,18 +206,11 @@ namespace FujitsuPayments.Forms
             InitializeComponent();
         }
 
-        private void lbltitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
 
         private void frmEditProject_Load(object sender, EventArgs e)
         {
+            //sets the datasource to project table
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
             sqlProject = @"select * from Project";
@@ -213,14 +219,14 @@ namespace FujitsuPayments.Forms
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
             daProject.Fill(dsFujitsuPayments, "Project");
 
-
+            //gets the account information
             sqlClient = @"select * from Account";
             daClient = new SqlDataAdapter(sqlClient, connStr);
             cmbBClient = new SqlCommandBuilder(daClient);
             daClient.FillSchema(dsFujitsuPayments, SchemaType.Source, "Account");
             daClient.Fill(dsFujitsuPayments, "Account");
 
-
+            //gets the project id from the user control
             lblPrjIDEdit.Text = UC_Project.prjNoSelected.ToString();
 
             drProject = dsFujitsuPayments.Tables["Project"].Rows.Find(lblPrjIDEdit.Text);
@@ -231,6 +237,7 @@ namespace FujitsuPayments.Forms
             cmbAccountId.ValueMember = "AccountID";
             cmbAccountId.DisplayMember = "ClientName";
 
+            //populates the fields to the database values
             cmbAccountId.Text = drProject["AccountID"].ToString();
             txtProjDesc.Text = drProject["ProjDesc"].ToString();
             dtpStartDate.Text =  drProject["StartDate"].ToString();

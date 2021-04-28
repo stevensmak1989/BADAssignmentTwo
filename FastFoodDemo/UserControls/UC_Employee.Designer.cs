@@ -59,7 +59,7 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+           
             // 
             // btnEmployeeDel
             // 
@@ -141,7 +141,7 @@ namespace FujitsuPayments.UserControls
             this.dvgEmployee.ReadOnly = true;
             this.dvgEmployee.Size = new System.Drawing.Size(1087, 488);
             this.dvgEmployee.TabIndex = 0;
-            this.dvgEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // flowLayoutPanel1
             // 
@@ -151,7 +151,7 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1090, 91);
             this.flowLayoutPanel1.TabIndex = 4;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            
             // 
             // errorProvider1
             // 

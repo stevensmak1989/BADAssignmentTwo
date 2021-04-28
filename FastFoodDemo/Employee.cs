@@ -8,12 +8,13 @@ namespace FujitsuPayments
 {
     class Employee
     {
+        //vars for the Employee class
         private int employeeId, managerId, manager;
         private String title, surname, forename, street, town, county, country, postcode, telNo, grade, salary;
         private DateTime DOB;
        
 
-
+        //blank constructor
         public Employee()
         {
             employeeId = 0; managerId = 0; manager = 0;
@@ -21,7 +22,7 @@ namespace FujitsuPayments
             DOB = new DateTime(1999, 01, 01);
             salary = "";
         }
-
+        //constructor used to pass in values
         public Employee(int employeeId, int managerId,int manager, String title, String surname, String forename, String street, String town, String county,
             String country, String postcode, String telNo, String grade, DateTime DOB, String salary)
         {
@@ -30,7 +31,7 @@ namespace FujitsuPayments
             this.DOB = DOB;
             this.salary = salary;
         }
-
+        //list of getters and setters
         public int EmployeeId
         {
             get { return employeeId; }
@@ -47,7 +48,7 @@ namespace FujitsuPayments
             get { return manager; }
             set { manager = value; }
         }
-
+        //validates the title for the below values
         public string Title
         {
             get { return title; }
@@ -59,7 +60,7 @@ namespace FujitsuPayments
                     title = MyValidation.firstLetterEachWordToUpper(value);
             }
         }
-
+        //validates surname to be valid letters between 2 and 20
         public string Surname
         {
             get { return surname; }
@@ -73,7 +74,7 @@ namespace FujitsuPayments
                     throw new MyException("Surname must be 2-20 letters.");
             }
         }
-
+        //validates forename to be valid letters between 2 and 20
         public string Forename
         {
             get { return forename; }
@@ -87,7 +88,7 @@ namespace FujitsuPayments
                     throw new MyException("Forename must be 2-20 letters.");
             }
         }
-
+        //validates street to be valid letters between 5 and 30
         public string Street
         {
             get { return street; }
@@ -101,7 +102,7 @@ namespace FujitsuPayments
                     throw new MyException("Street must be 5-30 letters.");
             }
         }
-
+        //validates town to be valid letters between 2 and 30
         public string Town
         {
             get { return town; }
@@ -115,7 +116,7 @@ namespace FujitsuPayments
                     throw new MyException("Town must be 2-30 letters.");
             }
         }
-
+        //validates county to be valid letters between 2 and 30
         public string County
         {
             get { return county; }
@@ -129,7 +130,7 @@ namespace FujitsuPayments
                     throw new MyException("County must be 2-30 letters.");
             }
         }
-
+        //validates countru to be valid letters between 2 and 20
         public string Country
         {
             get { return country; }
@@ -143,7 +144,7 @@ namespace FujitsuPayments
                     throw new MyException("Country must be 2-20 letters.");
             }
         }
-
+        //validates postcode to be valid letters and numbers between 7 and 8
         public string Postcode
         {
             get { return postcode; }
@@ -157,7 +158,7 @@ namespace FujitsuPayments
                     throw new MyException("Postcode must be 7-8 letters.");
             }
         }
-
+        //validates telno to be valid numbers for 11 digits
         public string TelNo
         {
             get { return telNo; }
@@ -171,7 +172,7 @@ namespace FujitsuPayments
                     throw new MyException("Telephone number must be 11 digits.");
             }
         }
-
+        //validates dob to be older than 16
         public DateTime Dob
         {
             get { return DOB; }
@@ -202,17 +203,14 @@ namespace FujitsuPayments
             {
                 if (MyValidation.validDigit(value))
                 {
-                    //if (Convert.ToDecimal(value) > 0)
-                    //{
+                    
                     salary = value;
                 }
-                //}
-                //else
-                //    throw new MyException("Salary must be greater than 0.0");
+              
 
                 
                 else
-                    throw new MyException("Salary muust be greater than 0.0"); 
+                    throw new MyException("Salary must be greater than 0.0"); 
             }
         }
 

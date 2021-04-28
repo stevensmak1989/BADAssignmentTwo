@@ -13,6 +13,7 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmAddTask : Form
     {
+        //initialises the sql connectors
         SqlDataAdapter daProject, daTask, daTasks;
         DataSet dsFujitsuPayments = new DataSet();
         SqlCommandBuilder cmbBProject, cmbBTask;
@@ -21,19 +22,22 @@ namespace FujitsuPayments.Forms
         SqlConnection conn; 
         SqlCommand cmdTasks;
 
+        //closes the form when the exit button is selected
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
+        //is called when the user changes the account
         private void cmbProjectId_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //checks if the combo box has focus
             if(cmbProjectId.Focused == true)
             {
+                //this will check the number of rows for tasks
                 int noRows = dsFujitsuPayments.Tables["Tasks"].Rows.Count;
 
-                MessageBox.Show(cmbProjectId.SelectedValue.ToString());
-
+                //clears the tables
                 dsFujitsuPayments.Tables["Tasks"].Clear();
                 cmdTasks.Parameters["@ProjectID"].Value = cmbProjectId.SelectedValue.ToString();
 
@@ -41,13 +45,13 @@ namespace FujitsuPayments.Forms
                 DataTable dt = dsFujitsuPayments.Tables["Tasks"];
 
                 int count = 0;
+                //checks the number of rows in tasks
                 foreach (DataRow row in dt.Rows)
                 {
-
                     count += 1;
-
                 }
 
+                //if tasks is 0 will set the value to 1
                 if (count == 0)
                     lblTaskId.Text = "1";
                 else
@@ -56,20 +60,21 @@ namespace FujitsuPayments.Forms
                 }
             }
         }
-
+        //this is called when the user saves
         private void btnSave_Click(object sender, EventArgs e)
         {
             ProjectTask myProject = new ProjectTask();
             bool ok = true;
             errP.Clear();
 
-            //employee number
+           
             try
             {
                 myProject.TaskId = Convert.ToInt32(lblTaskId.Text.Trim());
-                //passed to employee Class to check
+                
 
             }
+            //catches errors for class
             catch (MyException MyEx)
             {
                 ok = false;
@@ -80,6 +85,7 @@ namespace FujitsuPayments.Forms
             {
                 myProject.TaskDesc = txtTaskDesc.Text.Trim();
             }
+            //catches errors for class
             catch (MyException MyEx)
             {
                 ok = false;
@@ -90,6 +96,7 @@ namespace FujitsuPayments.Forms
             {
                 myProject.ProjectId = Convert.ToInt32(cmbProjectId.SelectedValue);
             }
+            //catches errors for class
             catch (MyException MyEx)
             {
                 ok = false;
@@ -97,8 +104,10 @@ namespace FujitsuPayments.Forms
             }
             try
             {
+                //if validation passes
                 if (ok)
                 {
+                    //creates the new row
 
                     drTask = dsFujitsuPayments.Tables["ProjectTask"].NewRow();
 
@@ -106,6 +115,7 @@ namespace FujitsuPayments.Forms
                     drTask["TaskID"] = myProject.TaskId;
                     drTask["TaskDesc"] = myProject.TaskDesc;
 
+                    //adds the row to the database
                     dsFujitsuPayments.Tables["ProjectTask"].Rows.Add(drTask);
                     daTask.Update(dsFujitsuPayments, "ProjectTask");
 
@@ -114,14 +124,16 @@ namespace FujitsuPayments.Forms
 
                 }
             }
+            //catches unexpected errors
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.TargetSite + "" + ex.Message, "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
         }
-
+        //loads when the form is called
     private void frmAddTask_Load(object sender, EventArgs e)
         {
+            //gets the project data
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
             sqlProject = @"select * from Project";
@@ -130,12 +142,14 @@ namespace FujitsuPayments.Forms
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Project");
             daProject.Fill(dsFujitsuPayments, "Project");
 
+            //gets the project task data
             sqlTask = @"select * from ProjectTask";
             daTask = new SqlDataAdapter(sqlTask, connStr);
             cmbBTask = new SqlCommandBuilder(daTask);
             daTask.FillSchema(dsFujitsuPayments, SchemaType.Source, "ProjectTask");
             daTask.Fill(dsFujitsuPayments, "ProjectTask");
 
+            //sets the project id combo box to the project table
             cmbProjectId.DataSource = dsFujitsuPayments.Tables["Project"];
             cmbProjectId.ValueMember = "ProjectID";
             cmbProjectId.DisplayMember = "ProjDesc";
@@ -146,10 +160,6 @@ namespace FujitsuPayments.Forms
             cmdTasks.Parameters.Add("@ProjectID", SqlDbType.VarChar);
             daTasks = new SqlDataAdapter(cmdTasks);
             daTasks.FillSchema(dsFujitsuPayments, SchemaType.Source, "Tasks");
-
-
-           
-
         }
         private void getNumber(int noRows)
         {
@@ -164,9 +174,6 @@ namespace FujitsuPayments.Forms
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }

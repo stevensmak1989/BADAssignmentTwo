@@ -66,7 +66,7 @@ namespace FujitsuPayments.UserControls
             this.dvgTask.ReadOnly = true;
             this.dvgTask.Size = new System.Drawing.Size(1081, 332);
             this.dvgTask.TabIndex = 0;
-            this.dvgTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgTask_CellContentClick);
+       
             // 
             // flowLayoutPanel1
             // 
@@ -76,7 +76,7 @@ namespace FujitsuPayments.UserControls
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1087, 91);
             this.flowLayoutPanel1.TabIndex = 8;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+           
             // 
             // panel1
             // 
@@ -89,7 +89,7 @@ namespace FujitsuPayments.UserControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 42);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
             // 
             // btnTaskDel
             // 
@@ -151,7 +151,7 @@ namespace FujitsuPayments.UserControls
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1087, 477);
             this.panel2.TabIndex = 9;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+
             // 
             // errorProvider1
             // 

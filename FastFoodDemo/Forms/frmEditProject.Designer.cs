@@ -301,7 +301,7 @@ namespace FujitsuPayments.Forms
             this.lbltitle.Size = new System.Drawing.Size(154, 25);
             this.lbltitle.TabIndex = 1;
             this.lbltitle.Text = "Edit a Project";
-            this.lbltitle.Click += new System.EventHandler(this.lbltitle_Click);
+           
             // 
             // panel1
             // 
@@ -333,7 +333,7 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 335);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+          
             // 
             // errP
             // 
