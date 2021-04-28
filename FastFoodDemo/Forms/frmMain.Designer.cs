@@ -50,6 +50,7 @@
             this.btnTask = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SidePanel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.pnlForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -272,6 +273,7 @@
             // 
             // pnlDropDown
             // 
+            this.pnlDropDown.Controls.Add(this.SidePanel1);
             this.pnlDropDown.Controls.Add(this.btnEmpTask);
             this.pnlDropDown.Controls.Add(this.btnTask);
             this.pnlDropDown.Controls.Add(this.button1);
@@ -336,6 +338,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // SidePanel1
+            // 
+            this.SidePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            this.SidePanel1.Location = new System.Drawing.Point(-2, 1);
+            this.SidePanel1.Name = "SidePanel1";
+            this.SidePanel1.Size = new System.Drawing.Size(7, 54);
+            this.SidePanel1.TabIndex = 8;
+            this.SidePanel1.Visible = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +395,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel SidePanel1;
     }
 }
 

@@ -27,6 +27,8 @@ namespace FujitsuPayments
 
         private void button1_Click(object sender, EventArgs e) // timesheets
         {
+            SidePanel.Visible = true;
+            SidePanel1.Visible = false;
             SidePanel.Height = btnTimeSheet.Height;
             SidePanel.Top = btnTimeSheet.Top;
             UC_Timesheet uc = new UC_Timesheet();
@@ -48,6 +50,8 @@ namespace FujitsuPayments
 
         private void button3_Click(object sender, EventArgs e) // schedule
         {
+            SidePanel.Visible = true;
+            SidePanel1.Visible = false;
             SidePanel.Height = btnOnCall.Height;
             SidePanel.Top = btnOnCall.Top;
             UC_Schedule uc = new UC_Schedule();
@@ -58,6 +62,8 @@ namespace FujitsuPayments
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
+            SidePanel.Visible = true;
+            SidePanel1.Visible = false;
             SidePanel.Height = btnEmployee.Height;
             SidePanel.Top = btnEmployee.Top;
             UC_Employee uc = new UC_Employee();
@@ -83,6 +89,8 @@ namespace FujitsuPayments
 
         public void btnCustomer_Click(object sender, EventArgs e) // accounts
         {
+            SidePanel.Visible = true;
+            SidePanel1.Visible = false;
             SidePanel.Height = btnCustomer.Height;
             SidePanel.Top = btnCustomer.Top;
             UC_Accounts uc = new UC_Accounts();
@@ -93,8 +101,8 @@ namespace FujitsuPayments
         private void btnProject_Click(object sender, EventArgs e)
         {
 
-            SidePanel.Height = btnProject.Height;
-            SidePanel.Top = btnProject.Top; 
+            SidePanel.Visible = false;
+            SidePanel1.Visible = true;
             timer1.Start();
             timer1_Tick(sender,e);
 
@@ -122,6 +130,8 @@ namespace FujitsuPayments
 
         private void  btnMore_Click(object sender, EventArgs e) // location button
         {
+            SidePanel.Visible = true;
+            SidePanel1.Visible = false;
             SidePanel.Height = btnLocation.Height;
             SidePanel.Top = btnLocation.Top;
             UC_Location uc = new UC_Location();
