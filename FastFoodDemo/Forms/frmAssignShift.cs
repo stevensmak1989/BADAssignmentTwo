@@ -181,8 +181,7 @@ namespace FujitsuPayments.Forms
                                     drEmployeeShift["ShiftID"] = UC_Schedule.selectedShiftIDs[i];
                                     drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
                                     dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
-                                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
-                                   
+                                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");                                   
                                 }
                             }
                         }
