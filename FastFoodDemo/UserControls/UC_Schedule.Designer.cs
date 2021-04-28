@@ -58,6 +58,7 @@ namespace FujitsuPayments.UserControls
             this.panel40 = new System.Windows.Forms.Panel();
             this.dgvShift = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblHelp = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSearchShifts = new System.Windows.Forms.Button();
             this.cmbAccountId = new System.Windows.Forms.ComboBox();
@@ -127,7 +128,6 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift2 = new System.Windows.Forms.Panel();
             this.pnlSunShift1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblHelp = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel40.SuspendLayout();
@@ -282,7 +282,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblSunDate.AutoSize = true;
             this.lblSunDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSunDate.Location = new System.Drawing.Point(579, 2);
+            this.lblSunDate.Location = new System.Drawing.Point(607, 2);
             this.lblSunDate.Name = "lblSunDate";
             this.lblSunDate.Size = new System.Drawing.Size(12, 17);
             this.lblSunDate.TabIndex = 6;
@@ -292,7 +292,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblSatDate.AutoSize = true;
             this.lblSatDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSatDate.Location = new System.Drawing.Point(498, 2);
+            this.lblSatDate.Location = new System.Drawing.Point(515, 2);
             this.lblSatDate.Name = "lblSatDate";
             this.lblSatDate.Size = new System.Drawing.Size(12, 17);
             this.lblSatDate.TabIndex = 5;
@@ -302,7 +302,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblFriDate.AutoSize = true;
             this.lblFriDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFriDate.Location = new System.Drawing.Point(407, 2);
+            this.lblFriDate.Location = new System.Drawing.Point(436, 2);
             this.lblFriDate.Name = "lblFriDate";
             this.lblFriDate.Size = new System.Drawing.Size(12, 17);
             this.lblFriDate.TabIndex = 4;
@@ -312,7 +312,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblThuDate.AutoSize = true;
             this.lblThuDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThuDate.Location = new System.Drawing.Point(319, 2);
+            this.lblThuDate.Location = new System.Drawing.Point(348, 2);
             this.lblThuDate.Name = "lblThuDate";
             this.lblThuDate.Size = new System.Drawing.Size(12, 17);
             this.lblThuDate.TabIndex = 3;
@@ -322,7 +322,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblWedDate.AutoSize = true;
             this.lblWedDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWedDate.Location = new System.Drawing.Point(234, 2);
+            this.lblWedDate.Location = new System.Drawing.Point(260, 2);
             this.lblWedDate.Name = "lblWedDate";
             this.lblWedDate.Size = new System.Drawing.Size(12, 17);
             this.lblWedDate.TabIndex = 2;
@@ -332,7 +332,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblTueDate.AutoSize = true;
             this.lblTueDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTueDate.Location = new System.Drawing.Point(143, 2);
+            this.lblTueDate.Location = new System.Drawing.Point(172, 2);
             this.lblTueDate.Name = "lblTueDate";
             this.lblTueDate.Size = new System.Drawing.Size(12, 17);
             this.lblTueDate.TabIndex = 1;
@@ -342,7 +342,7 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblMonDate.AutoSize = true;
             this.lblMonDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonDate.Location = new System.Drawing.Point(56, 2);
+            this.lblMonDate.Location = new System.Drawing.Point(79, 2);
             this.lblMonDate.Name = "lblMonDate";
             this.lblMonDate.Size = new System.Drawing.Size(12, 17);
             this.lblMonDate.TabIndex = 0;
@@ -477,6 +477,17 @@ namespace FujitsuPayments.UserControls
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1090, 483);
             this.panel3.TabIndex = 2;
+            // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Image = ((System.Drawing.Image)(resources.GetObject("lblHelp.Image")));
+            this.lblHelp.Location = new System.Drawing.Point(895, 218);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(18, 21);
+            this.lblHelp.TabIndex = 17;
+            this.lblHelp.Text = "  ";
+            this.lblHelp.MouseHover += new System.EventHandler(this.lblHelp_MouseHover);
             // 
             // btnReset
             // 
@@ -1184,17 +1195,6 @@ namespace FujitsuPayments.UserControls
             this.pnlSunShift1.Size = new System.Drawing.Size(20, 320);
             this.pnlSunShift1.TabIndex = 14;
             this.pnlSunShift1.MouseHover += new System.EventHandler(this.pnlSunShift1_MouseHover);
-            // 
-            // lblHelp
-            // 
-            this.lblHelp.AutoSize = true;
-            this.lblHelp.Image = ((System.Drawing.Image)(resources.GetObject("lblHelp.Image")));
-            this.lblHelp.Location = new System.Drawing.Point(895, 218);
-            this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(18, 21);
-            this.lblHelp.TabIndex = 17;
-            this.lblHelp.Text = "  ";
-            this.lblHelp.MouseHover += new System.EventHandler(this.lblHelp_MouseHover);
             // 
             // UC_Schedule
             // 
