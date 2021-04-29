@@ -65,11 +65,11 @@ namespace FujitsuPayments.Forms
 
 
             // prevent nulls being entered or empty strings
-            if (String.IsNullOrEmpty(txtEditClientName.Text) || String.IsNullOrEmpty(txtEditStreet.Text) || String.IsNullOrEmpty(txtEditTown.Text) ||
-                String.IsNullOrEmpty(txtEditCounty.Text) || String.IsNullOrEmpty(txtEditTelNo.Text) || String.IsNullOrEmpty(txtEditPostCode.Text)
-                || String.IsNullOrEmpty(txtEditEmail.Text))
+            if (String.IsNullOrEmpty(txtEditClientName.Text) && String.IsNullOrEmpty(txtEditStreet.Text) && String.IsNullOrEmpty(txtEditTown.Text) &&
+                String.IsNullOrEmpty(txtEditCounty.Text) && String.IsNullOrEmpty(txtEditTelNo.Text) && String.IsNullOrEmpty(txtEditPostCode.Text)
+                && String.IsNullOrEmpty(txtEditEmail.Text))
             {
-                MessageBox.Show("Please fill in all required fields!");
+                MessageBox.Show("All fields must be filled in");
 
             }
             else
@@ -87,7 +87,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditAccountId, MyEx.toString());
+                    errP.SetError(txtEditAccountID, MyEx.toString());
                 }
                 try
                 {
@@ -96,7 +96,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditClientName, MyEx.toString());
+                    errP.SetError(txtEditClientName, MyEx.toString());
                 }
                 try
                 {
@@ -105,7 +105,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditStreet, MyEx.toString());
+                    errP.SetError(txtEditStreet, MyEx.toString());
                 }
                 try
                 {
@@ -114,7 +114,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditEditTown, MyEx.toString());
+                    errP.SetError(txtEditTown, MyEx.toString());
                 }
                 try
                 {
@@ -123,7 +123,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditCounty, MyEx.toString());
+                    errP.SetError(txtEditCounty, MyEx.toString());
                 }
                 try
                 {
@@ -132,7 +132,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditPostCode, MyEx.toString());
+                    errP.SetError(txtEditPostCode, MyEx.toString());
                 }
                 try
                 {
@@ -141,7 +141,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditTelNo, MyEx.toString());
+                    errP.SetError(txtEditTelNo, MyEx.toString());
                 }
                 try
                 {
@@ -150,7 +150,7 @@ namespace FujitsuPayments.Forms
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(lblEditEmail, MyEx.toString());
+                    errP.SetError(txtEditEmail, MyEx.toString());
                 }
 
                 try
