@@ -139,12 +139,6 @@ namespace FujitsuPayments.Forms
                 {
                     myAccount.Postcode = txtPostCode.Text.Trim();// passed to account class to check
                 }
-                catch (ConstraintException ex)
-                {
-                    MessageBox.Show("Please enter a valid post code", "Add Account");
-                    ok = false;
-                    errP.SetError(txtPostCode, ex.ToString());
-                }
                 catch (MyException MyEx)
                 {
                     ok = false;
