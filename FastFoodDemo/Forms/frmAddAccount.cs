@@ -72,6 +72,7 @@ namespace FujitsuPayments.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            StringBuilder errorMessages = new StringBuilder();
 
             // prevent nulls being entered or empty strings
             if (String.IsNullOrEmpty(txtClientName.Text) && String.IsNullOrEmpty(txtStreet.Text) && String.IsNullOrEmpty(txtTown.Text) &&
@@ -137,6 +138,12 @@ namespace FujitsuPayments.Forms
                 try
                 {
                     myAccount.Postcode = txtPostCode.Text.Trim();// passed to account class to check
+                }
+                catch (ConstraintException ex)
+                {
+                    MessageBox.Show("Please enter a valid post code", "Add Account");
+                    ok = false;
+                    errP.SetError(txtPostCode, ex.ToString());
                 }
                 catch (MyException MyEx)
                 {
