@@ -117,17 +117,17 @@ namespace FujitsuPayments
         }
 
 
-        public String Email
+        public string Email
         {
             get { return email; }
             set
             {
-                if (MyValidation.validLength(value, 2, 20) && MyValidation.validEmail(value))
+                if (MyValidation.validLength(value, 2, 20) && MyValidation.validEmail(value) && MyValidation.validEmailNew(value))
                 {
                     email = value;
                 }
                 else
-                    throw new MyException("Email must be 2-20 characters");
+                    throw new MyException("Email must be 2-20 characters and a valid email");
             }
 
         }

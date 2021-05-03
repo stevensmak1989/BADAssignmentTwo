@@ -384,5 +384,24 @@ namespace FujitsuPayments
             }
             return new String(array);
         }
+
+
+
+        public static bool validEmailNew(string txt)//allows alphabetic characters + whitespace
+        {
+            bool ok = true;
+            if (txt.Trim().Length == 0)
+            {
+                ok = false;
+            }
+            else
+            {
+                if(!(txt.Contains('@')) || !(txt.Contains('.')))
+                {
+                    ok = false;
+                }
+            }
+            return ok;
+        }
     }
 }
