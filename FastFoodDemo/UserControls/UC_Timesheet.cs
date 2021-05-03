@@ -63,6 +63,10 @@ namespace FujitsuPayments.UserControls
             //dvgProject.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void btnTimesheetEdit_Click(object sender, EventArgs e)
         {

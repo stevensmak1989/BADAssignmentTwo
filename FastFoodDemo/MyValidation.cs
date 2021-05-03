@@ -323,6 +323,26 @@ namespace FujitsuPayments
             return ok;
         }
 
+
+        public static Boolean validPCode(string txt)
+        {
+            Boolean ok = true;
+            String str = Convert.ToString(txt);
+          
+            string pattern = "\\d{1,2}:\\d{2}";
+
+            if (Regex.IsMatch(txt, @"([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})"))
+            {
+                ok = true;
+            }
+            else
+            {
+                ok = false;
+            }
+            return ok;
+
+            
+        }
         public static String firstLetterEachWordToUpper(string word) // not working
         {
             Char[] array = word.ToCharArray();

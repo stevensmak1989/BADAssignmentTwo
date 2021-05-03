@@ -111,6 +111,7 @@ namespace FujitsuPayments.UserControls
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(821, 91);
             this.panel2.TabIndex = 4;
+            
             // 
             // dvgTimesheetDets
             // 

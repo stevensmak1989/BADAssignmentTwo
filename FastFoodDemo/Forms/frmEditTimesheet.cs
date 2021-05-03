@@ -15,15 +15,15 @@ namespace FujitsuPayments.Forms
 {
     public partial class frmEditTimesheet : Form
     {
-        SqlDataAdapter daProject, daCount, daEmployee, daEmpTask, daEmpTask1, daClaim,  daMan, daTimesheet, daTimeDets, daCost;
+        SqlDataAdapter daProject, daCount, daEmployee, daEmpTask, daEmpTask1, daClaim, daMan, daTimesheet, daTimeDets, daCost;
         DataSet dsFujitsuPayments = new DataSet();
-        SqlCommandBuilder  cmbBClaim,  cmbBEmp,  cmbBTimesheet, cmbBTimeDets, cmbBCost;
+        SqlCommandBuilder cmbBClaim, cmbBEmp, cmbBTimesheet, cmbBTimeDets, cmbBCost;
 
-       
 
-        SqlCommand cmdEmp,  cmdProj, cmdCount, cmdEmp1 ;
 
-        DataRow drProject, drCount,  drClaim,  drTimeDets;
+        SqlCommand cmdEmp, cmdProj, cmdCount, cmdEmp1;
+
+        DataRow drProject, drCount, drClaim, drTimeDets;
 
         private void cmbProject3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -55,6 +55,11 @@ namespace FujitsuPayments.Forms
             this.Dispose();
         }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void cmbProject2_SelectedIndexChanged(object sender, EventArgs e)
         {
             task(1);
@@ -65,10 +70,10 @@ namespace FujitsuPayments.Forms
             task(0);
         }
 
-        String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan,  sqlTimesheet, sqlTimeDets, sqlCost, sqlEmpTask1;
+        String connStr, sqlProject, sqlEmp, sqlCount, sqlEmpTask, sqlClaim, sqlMan, sqlTimesheet, sqlTimeDets, sqlCost, sqlEmpTask1;
         SqlConnection conn;
         private double count;
-        private int numb,no, timesheetValue;
+        private int numb, no, timesheetValue;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -484,7 +489,7 @@ namespace FujitsuPayments.Forms
 
                                         no++;
                                     }
-                                   
+
                                 }
                                 if (MessageBox.Show("Do you wish to update On Call or Overtime claims?", "Update Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                                 {
@@ -822,7 +827,7 @@ namespace FujitsuPayments.Forms
                                             no++;
 
                                         }
-                                       
+
                                     }
 
                                     if (MessageBox.Show("Do you wish to add On Call or Basic hours claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -1159,7 +1164,7 @@ namespace FujitsuPayments.Forms
 
 
                                         }
-                                       
+
                                     }
 
                                     if (MessageBox.Show("Do you wish to update basic hours or Overtime claims?", "Add Claim", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -1340,13 +1345,13 @@ namespace FujitsuPayments.Forms
         public frmEditTimesheet()
         {
             InitializeComponent();
-        } 
-        
+        }
+
 
 
         private void frmEditTimesheet_Load(object sender, EventArgs e)
         {
-            
+
 
             connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = FujitsuPayments; Integrated Security = true";
 
@@ -1559,12 +1564,7 @@ namespace FujitsuPayments.Forms
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int numb = 0;
 
-            if (cmbEmployee.Focused == true)
-            {
-                projects();
-            }
         }
 
         private void findMondays(string wkBeginning)
@@ -1594,30 +1594,30 @@ namespace FujitsuPayments.Forms
 
         private void setData(int claimtype, int timesheetID)
         {
-            TextBox[] start = {   txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6 , txtStart7 };
-            TextBox[] end = {  txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6, txtEnd7 };
+            TextBox[] start = { txtStart1, txtStart2, txtStart3, txtStart4, txtStart5, txtStart6, txtStart7 };
+            TextBox[] end = { txtEnd1, txtEnd2, txtEnd3, txtEnd4, txtEnd5, txtEnd6, txtEnd7 };
             ComboBox[] task = { cmbEmpTask, cmbEmpTask2, cmbEmpTask3, cmbEmpTask4, cmbEmpTask5, cmbEmpTask6, cmbEmpTask7 };
-            ComboBox[] project = {  cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6 , cmbProject7 };
-            Label[] date = {  lblDateMon, lblDateTue, lblDateWed, lblDateThur, lblDateFri, lblDateSat, lblDateSun };
+            ComboBox[] project = { cmbProject, cmbProject2, cmbProject3, cmbProject4, cmbProject5, cmbProject6, cmbProject7 };
+            Label[] date = { lblDateMon, lblDateTue, lblDateWed, lblDateThur, lblDateFri, lblDateSat, lblDateSun };
 
 
-            
+
             daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheets");
 
 
             cmdProj.Parameters["@Timesheet"].Value = timesheetID;
             cmdProj.Parameters["@ClaimType"].Value = cmbClaimType.SelectedValue;
-            
+
             daProject.Fill(dsFujitsuPayments, "Timesheets");
-            
+
 
             DataTable dt = dsFujitsuPayments.Tables["Timesheets"];
-           
+
 
             foreach (DataRow row in dt.Rows)
             {
-                    numb++;
-                
+                numb++;
+
             }
             int x = 0;
             DateTime[] rowArray = new DateTime[numb];
@@ -1628,9 +1628,9 @@ namespace FujitsuPayments.Forms
             int[] claimType = new int[numb];
 
 
-            if (numb !=0 )
+            if (numb != 0)
             {
-                
+
                 foreach (DataRow row in dt.Rows)
                 {
                     rowArray[x] = row.Field<DateTime>("WorkedDay");
@@ -1642,48 +1642,48 @@ namespace FujitsuPayments.Forms
 
                     x++;
                 }
-                int cType = (int) cmbClaimType.SelectedValue;
+                int cType = (int)cmbClaimType.SelectedValue;
 
                 for (int i = 0; i < numb; i++)
                 {
                     if (claimType[i] == cType)
                     {
 
-                        
+
                         int day = (int)rowArray[i].DayOfWeek;
-                        
+
                         start[i].Text = startTime[i].ToString();
                         end[i].Text = endTime[i].ToString();
                         date[i].Text = rowArray[i].ToShortDateString();
                         project[i].Text = proj[i].ToString();
-                        task[i].Text =  tasks[i].ToString();
+                        task[i].Text = tasks[i].ToString();
 
                     }
-                   
+
                     else
                     {
-                       
-                            if (claimType[i] != cType)
-                            {
-                                start[i].Text = "";
-                                end[i].Text = "";
-                                // date[day].Text = rowArray[i].ToShortDateString();
-                            }
-                        
+
+                        if (claimType[i] != cType)
+                        {
+                            start[i].Text = "";
+                            end[i].Text = "";
+                            // date[day].Text = rowArray[i].ToShortDateString();
+                        }
+
                     }
 
 
                 }
-               
+
 
             }
             else
             {
-                for(int y = 0; y< 7; y ++)
+                for (int y = 0; y < 7; y++)
                 {
                     start[y].Text = "";
                     end[y].Text = "";
-                   // date[day].Text = rowArray[i].ToShortDateString();
+                    // date[day].Text = rowArray[i].ToShortDateString();
                 }
             }
 
@@ -1716,7 +1716,7 @@ namespace FujitsuPayments.Forms
 
             if (cmbClaimType.Focused == true)
             {
-                
+
                 int claim = (int)cmbClaimType.SelectedValue;
                 daProject.Dispose();
 
@@ -1724,30 +1724,30 @@ namespace FujitsuPayments.Forms
                 daProject.FillSchema(dsFujitsuPayments, SchemaType.Source, "Timesheets");
                 setData(claim, timesheetValue);
 
-                
-                    if (claim == 1)
-                    {
-                        txtStart6.Enabled = false;
-                        txtStart7.Enabled = false;
-                        txtEnd7.Enabled = false;
-                        txtEnd6.Enabled = false;
+
+                if (claim == 1)
+                {
+                    txtStart6.Enabled = false;
+                    txtStart7.Enabled = false;
+                    txtEnd7.Enabled = false;
+                    txtEnd6.Enabled = false;
                     cmbProject6.Enabled = false;
                     cmbProject7.Enabled = false;
                     cmbEmpTask7.Enabled = false;
                     cmbEmpTask6.Enabled = false;
                 }
-                    else
-                    {
-                        txtStart6.Enabled = true;
-                        txtStart7.Enabled = true;
-                        txtEnd7.Enabled = true;
-                        txtEnd6.Enabled = true;
+                else
+                {
+                    txtStart6.Enabled = true;
+                    txtStart7.Enabled = true;
+                    txtEnd7.Enabled = true;
+                    txtEnd6.Enabled = true;
                     cmbProject6.Enabled = true;
                     cmbProject7.Enabled = true;
                     cmbEmpTask7.Enabled = true;
                     cmbEmpTask6.Enabled = true;
                 }
-                
+
             }
         }
         private void listBoxValues()
@@ -1756,18 +1756,18 @@ namespace FujitsuPayments.Forms
             lvPastHours.GridLines = true;
             lvPastHours.FullRowSelect = true;
 
-
+            //adds columns to the listbox
             lvPastHours.Columns.Add("TimesheetID", 80);
             lvPastHours.Columns.Add("Basic", 70);
             lvPastHours.Columns.Add("OnCall", 60);
             lvPastHours.Columns.Add("Overtime", 60);
 
-
-           
-
-
+            //gets the number of rows in the db
+            
 
 
+
+            //query to get the previous 4 weeks timesheets
 
             sqlCount = @" select TimesheetID, DATEDIFF ( MINUTE, StartTime, EndTime )/ 60 as Hours, ClaimTypeID from TimesheetDetails
             where (TimesheetID = @Timesheet1 or TimesheetID = @Timesheet2 or TimesheetID = @Timesheet3 or TimesheetID = @Timesheet4)";
@@ -1781,14 +1781,14 @@ namespace FujitsuPayments.Forms
             daCount.FillSchema(dsFujitsuPayments, SchemaType.Source, "Count");
 
             int timesheet = Convert.ToInt32(lblTimsheetId.Text);
-
+            //sets the value to the current timesheet -1 
             cmdCount.Parameters["@Timesheet1"].Value = timesheet - 1;
             cmdCount.Parameters["@Timesheet2"].Value = timesheet - 2;
             cmdCount.Parameters["@Timesheet3"].Value = timesheet - 3;
             cmdCount.Parameters["@Timesheet4"].Value = timesheet - 4;
             daCount.Fill(dsFujitsuPayments, "Count");
 
-
+            //sets ints to the above values
             int ts1 = timesheet - 1;
             int ts2 = timesheet - 2;
             int ts3 = timesheet - 3;
@@ -1797,7 +1797,7 @@ namespace FujitsuPayments.Forms
             DataTable dt = dsFujitsuPayments.Tables["Count"];
             int numb = 0, count = 0, x = 0;
 
-            string startime, endtime, starttimeNew, endtimeNew;
+
 
 
 
@@ -1807,7 +1807,7 @@ namespace FujitsuPayments.Forms
                 numb++;
 
             }
-
+            //values to hold listvoew values
             double basic1 = 0, basic2 = 0, basic3 = 0, basic4 = 0;
             double oncall1 = 0, oncall2 = 0, oncall3 = 0, oncall4 = 0;
             double ot1 = 0, ot2 = 0, ot3 = 0, ot4 = 0;
@@ -1822,11 +1822,13 @@ namespace FujitsuPayments.Forms
                     int newTS = Convert.ToInt32(drCount["TimesheetID"].ToString());
                     int cType = Convert.ToInt32(drCount["ClaimTypeID"].ToString());
                     drCount = row;
-
+                    //checks if timesheet is equal to a database value
                     if (ts1 == newTS)
                     {
+                        //switch on claim type
                         switch (cType)
                         {
+                            //keeps a running total based on claim type
                             case 1:
                                 basic1 += Convert.ToDouble(drCount["Hours"].ToString());
                                 break;
@@ -1840,9 +1842,9 @@ namespace FujitsuPayments.Forms
 
                     }
                     else if (ts2 == newTS)
-                    {
+                    { //switch on claim type
                         switch (cType)
-                        {
+                        {//keeps a running total based on claim type
                             case 1:
                                 basic2 += Convert.ToDouble(drCount["Hours"].ToString());
                                 break;
@@ -1856,9 +1858,9 @@ namespace FujitsuPayments.Forms
 
                     }
                     else if (ts3 == newTS)
-                    {
+                    { //switch on claim type
                         switch (cType)
-                        {
+                        {//keeps a running total based on claim type
                             case 1:
                                 basic3 += Convert.ToDouble(drCount["Hours"].ToString());
                                 break;
@@ -1872,9 +1874,9 @@ namespace FujitsuPayments.Forms
 
                     }
                     else if (ts4 == newTS)
-                    {
+                    { //switch on claim type
                         switch (cType)
-                        {
+                        {//keeps a running total based on claim type
                             case 1:
                                 basic4 += Convert.ToDouble(drCount["Hours"].ToString());
                                 break;
@@ -1888,16 +1890,20 @@ namespace FujitsuPayments.Forms
 
                     }
                 }
+                //sets the running totals into string arrays
                 string[] row1 = { Convert.ToString(ts1), Convert.ToString(basic1), Convert.ToString(oncall1), Convert.ToString(ot1) };  //new object[3]; //{ basic1, basic2, basic3, basic4 };
                 string[] row2 = { Convert.ToString(ts2), Convert.ToString(basic2), Convert.ToString(oncall2), Convert.ToString(ot2) };
                 string[] row3 = { Convert.ToString(ts3), Convert.ToString(basic3), Convert.ToString(oncall3), Convert.ToString(ot3) };
                 string[] row4 = { Convert.ToString(ts4), Convert.ToString(basic4), Convert.ToString(oncall4), Convert.ToString(ot4) };
 
+                //adds the string arays to items
                 ListViewItem item1, item2, item3, item4;
                 item1 = new ListViewItem(row1);
                 item2 = new ListViewItem(row2);
                 item3 = new ListViewItem(row3);
                 item4 = new ListViewItem(row4);
+
+                //adds items to the listview
                 lvPastHours.Items.Add(item1);
                 lvPastHours.Items.Add(item2);
                 lvPastHours.Items.Add(item3);
@@ -1908,8 +1914,9 @@ namespace FujitsuPayments.Forms
             {
 
             }
-     
         }
-      
+
     }
+
+
 }

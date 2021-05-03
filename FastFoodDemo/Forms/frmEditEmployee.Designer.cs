@@ -33,7 +33,6 @@ namespace FujitsuPayments.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEmployee));
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblEmpNoEdit = new System.Windows.Forms.Label();
-            this.txtTitleEdit = new System.Windows.Forms.TextBox();
             this.lblTitleeEdit = new System.Windows.Forms.Label();
             this.dtpDOBEdit = new System.Windows.Forms.DateTimePicker();
             this.lblDOBEdit = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@ namespace FujitsuPayments.Forms
             this.txtPostcodeEdit = new System.Windows.Forms.TextBox();
             this.lblPostcodeEdit = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.cbManager = new System.Windows.Forms.CheckBox();
             this.txtCountyEdit = new System.Windows.Forms.TextBox();
             this.lblCountyEdit = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpClose = new System.Windows.Forms.Button();
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitleEdit = new System.Windows.Forms.Label();
-            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
+            this.cmbTitle = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,15 +81,6 @@ namespace FujitsuPayments.Forms
             this.lblEmpNoEdit.Size = new System.Drawing.Size(13, 18);
             this.lblEmpNoEdit.TabIndex = 48;
             this.lblEmpNoEdit.Text = "-";
-            // 
-            // txtTitleEdit
-            // 
-            this.txtTitleEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitleEdit.Location = new System.Drawing.Point(164, 29);
-            this.txtTitleEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTitleEdit.Name = "txtTitleEdit";
-            this.txtTitleEdit.Size = new System.Drawing.Size(106, 26);
-            this.txtTitleEdit.TabIndex = 47;
             // 
             // lblTitleeEdit
             // 
@@ -210,10 +201,10 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbTitle);
             this.panel1.Controls.Add(this.cmbApprovedBy);
             this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoEdit);
-            this.panel1.Controls.Add(this.txtTitleEdit);
             this.panel1.Controls.Add(this.lblTitleeEdit);
             this.panel1.Controls.Add(this.dtpDOBEdit);
             this.panel1.Controls.Add(this.lblDOBEdit);
@@ -244,7 +235,14 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 2;
-           
+            // 
+            // cmbApprovedBy
+            // 
+            this.cmbApprovedBy.FormattingEnabled = true;
+            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 273);
+            this.cmbApprovedBy.Name = "cmbApprovedBy";
+            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
+            this.cmbApprovedBy.TabIndex = 51;
             // 
             // cbManager
             // 
@@ -415,13 +413,18 @@ namespace FujitsuPayments.Forms
             this.lbltitleEdit.TabIndex = 1;
             this.lbltitleEdit.Text = "Edit Employee";
             // 
-            // cmbApprovedBy
+            // cmbTitle
             // 
-            this.cmbApprovedBy.FormattingEnabled = true;
-            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 273);
-            this.cmbApprovedBy.Name = "cmbApprovedBy";
-            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
-            this.cmbApprovedBy.TabIndex = 51;
+            this.cmbTitle.FormattingEnabled = true;
+            this.cmbTitle.Items.AddRange(new object[] {
+            "Mr",
+            "Mrs",
+            "Miss",
+            "Ms"});
+            this.cmbTitle.Location = new System.Drawing.Point(164, 34);
+            this.cmbTitle.Name = "cmbTitle";
+            this.cmbTitle.Size = new System.Drawing.Size(109, 21);
+            this.cmbTitle.TabIndex = 52;
             // 
             // frmEditEmployee
             // 
@@ -448,7 +451,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ErrorProvider errP;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblEmpNoEdit;
-        private System.Windows.Forms.TextBox txtTitleEdit;
         private System.Windows.Forms.Label lblTitleeEdit;
         private System.Windows.Forms.DateTimePicker dtpDOBEdit;
         private System.Windows.Forms.Label lblDOBEdit;
@@ -477,5 +479,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.Label lbltitleEdit;
         private System.Windows.Forms.CheckBox cbManager;
         private System.Windows.Forms.ComboBox cmbApprovedBy;
+        private System.Windows.Forms.ComboBox cmbTitle;
     }
 }

@@ -32,9 +32,9 @@ namespace FujitsuPayments.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEmployee));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
             this.cbManager = new System.Windows.Forms.CheckBox();
             this.lblEmpNoAdd = new System.Windows.Forms.Label();
-            this.txtTitle = new System.Windows.Forms.TextBox();
             this.lblTitlee = new System.Windows.Forms.Label();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.lblDOB = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@ namespace FujitsuPayments.Forms
             this.btnEmpSave = new System.Windows.Forms.Button();
             this.lbltitle = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cmbApprovedBy = new System.Windows.Forms.ComboBox();
+            this.cmbTitle = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
@@ -70,10 +70,10 @@ namespace FujitsuPayments.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbTitle);
             this.panel1.Controls.Add(this.cmbApprovedBy);
             this.panel1.Controls.Add(this.cbManager);
             this.panel1.Controls.Add(this.lblEmpNoAdd);
-            this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.lblTitlee);
             this.panel1.Controls.Add(this.dtpDOB);
             this.panel1.Controls.Add(this.lblDOB);
@@ -104,7 +104,14 @@ namespace FujitsuPayments.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 347);
             this.panel1.TabIndex = 1;
-            
+            // 
+            // cmbApprovedBy
+            // 
+            this.cmbApprovedBy.FormattingEnabled = true;
+            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 272);
+            this.cmbApprovedBy.Name = "cmbApprovedBy";
+            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
+            this.cmbApprovedBy.TabIndex = 50;
             // 
             // cbManager
             // 
@@ -115,7 +122,6 @@ namespace FujitsuPayments.Forms
             this.cbManager.TabIndex = 49;
             this.cbManager.Text = "Manager";
             this.cbManager.UseVisualStyleBackColor = true;
-         
             // 
             // lblEmpNoAdd
             // 
@@ -127,16 +133,6 @@ namespace FujitsuPayments.Forms
             this.lblEmpNoAdd.Size = new System.Drawing.Size(13, 18);
             this.lblEmpNoAdd.TabIndex = 48;
             this.lblEmpNoAdd.Text = "-";
-       
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(164, 29);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(106, 26);
-            this.txtTitle.TabIndex = 47;
             // 
             // lblTitlee
             // 
@@ -148,7 +144,6 @@ namespace FujitsuPayments.Forms
             this.lblTitlee.Size = new System.Drawing.Size(35, 18);
             this.lblTitlee.TabIndex = 46;
             this.lblTitlee.Text = "Title";
-          
             // 
             // dtpDOB
             // 
@@ -418,13 +413,18 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
-            // cmbApprovedBy
+            // cmbTitle
             // 
-            this.cmbApprovedBy.FormattingEnabled = true;
-            this.cmbApprovedBy.Location = new System.Drawing.Point(164, 272);
-            this.cmbApprovedBy.Name = "cmbApprovedBy";
-            this.cmbApprovedBy.Size = new System.Drawing.Size(106, 21);
-            this.cmbApprovedBy.TabIndex = 50;
+            this.cmbTitle.FormattingEnabled = true;
+            this.cmbTitle.Items.AddRange(new object[] {
+            "Mr",
+            "Mrs",
+            "Miss",
+            "Ms"});
+            this.cmbTitle.Location = new System.Drawing.Point(164, 35);
+            this.cmbTitle.Name = "cmbTitle";
+            this.cmbTitle.Size = new System.Drawing.Size(109, 21);
+            this.cmbTitle.TabIndex = 51;
             // 
             // frmAddEmployee
             // 
@@ -475,10 +475,10 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.ErrorProvider errP;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label lblDOB;
-        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblTitlee;
         private System.Windows.Forms.Label lblEmpNoAdd;
         private System.Windows.Forms.CheckBox cbManager;
         private System.Windows.Forms.ComboBox cmbApprovedBy;
+        private System.Windows.Forms.ComboBox cmbTitle;
     }
 }

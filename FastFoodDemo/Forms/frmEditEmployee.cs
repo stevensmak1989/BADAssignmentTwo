@@ -110,7 +110,7 @@ namespace FujitsuPayments.Forms
             daGrades.FillSchema(dsFujitsuPayments, SchemaType.Source, "Grades");
 
             //sets the form fields to the database values
-            txtTitleEdit.Text= drEmployee["Title"].ToString();
+            cmbTitle.Text= drEmployee["Title"].ToString();
             txtSurnameEdit.Text = drEmployee["Surname"].ToString();
             txtFirstNameEdit.Text = drEmployee["Forename"].ToString();
             txtStreetEdit.Text = drEmployee["Street"].ToString();
@@ -152,12 +152,12 @@ namespace FujitsuPayments.Forms
             //employee Title
             try
             {
-                myEmployee.Title = txtTitleEdit.Text.Trim();
+                myEmployee.Title = cmbTitle.SelectedItem.ToString();
             }
             catch (MyException MyEx)
             {
                 ok = false;
-                errP.SetError(txtTitleEdit, MyEx.toString());
+                errP.SetError(cmbTitle, MyEx.toString());
             }
             //employee Surname
             try

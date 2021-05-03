@@ -46,7 +46,8 @@ namespace FujitsuPayments.Forms
             sqlMan = @"Select  EmployeeID, Surname + ' ' + Forename as EmpName from Employee where Manager = 1";
             daMan = new SqlDataAdapter(sqlMan, connStr);
             daMan.Fill(dsFujitsuPayments, "Manager");
-
+            cmbTitle.SelectedIndex = 1;
+           
 
             sqlGrades = @"select * from Grade where Grade =  @Grade";
             conn = new SqlConnection(connStr);
@@ -85,6 +86,8 @@ namespace FujitsuPayments.Forms
             {
                 getNumber(noRows);
             }
+            cmbGrade.SelectedIndex = 1;
+
         }
         //is called when the grade is selected
         private void cmbGrade_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,12 +145,12 @@ namespace FujitsuPayments.Forms
                 //employee Title
                 try
                 {
-                    myEmployee.Title = txtTitle.Text.Trim();
+                myEmployee.Title = cmbTitle.SelectedItem.ToString();
                 }
                 catch (MyException MyEx)
                 {
                     ok = false;
-                    errP.SetError(txtTitle, MyEx.toString());
+                    errP.SetError(cmbTitle, MyEx.toString());
                 }
                 //employee Surname
                 try

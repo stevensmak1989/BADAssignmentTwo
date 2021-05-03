@@ -152,10 +152,15 @@ namespace FujitsuPayments
             {
                 if (MyValidation.validLength(value, 7, 8) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
-                    postcode = MyValidation.EachLetterToUpper(value);
+                    if (MyValidation.validPCode(value))
+                    {
+                        postcode = MyValidation.EachLetterToUpper(value);
+                    }
+                    else
+                        throw new MyException("Postcode must be 7-8 letters and numbers.");
                 }
                 else
-                    throw new MyException("Postcode must be 7-8 letters.");
+                    throw new MyException("Postcode must be 7-8 letters and numbers.");
             }
         }
         //validates telno to be valid numbers for 11 digits
