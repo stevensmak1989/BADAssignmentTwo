@@ -237,26 +237,57 @@ namespace FujitsuPayments.Forms
                 // convert combobox and radio button to string
                 if (rbStAM.Checked == true)
                 {
-                    startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
-                   // MessageBox.Show("Starttime : " + startTime);
+                    if (Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) == 12)
+                    {
+
+                        startTime = "00" + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
+                    else if (Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) == 00)
+                    {
+                        startTime = "12" + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                        startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
                 }
                 else
                 {
-                    int startHour = Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) + 12;
-                    startTime = Convert.ToString(startHour) + ":" + cmbStartTimeMin.SelectedItem.ToString();
-                   // MessageBox.Show("Starttime : " + startTime);
+                    if (Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) == 00)
+                    {
+                        MessageBox.Show("00 pm is classed ast midnight or 00:00");
+                        startTime = "00" + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        int startHour = Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) + 12;
+                        startTime = Convert.ToString(startHour) + ":" + cmbStartTimeMin.SelectedItem.ToString();
+                    }
                 }
 
                 if (rbEtAM.Checked == true)
                 {
-                    endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
-                   // MessageBox.Show("Endtime : " + endTime);
+                    if (Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) == 12)
+                    {
+                        endTime = "00" + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
+                    else if (Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) == 00)
+                    {
+                        endTime = "12" + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                        endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
                 }
                 else
                 {
-                    int endHour = Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) + 12;
-                    endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
-                   // MessageBox.Show("Endtime : " + endTime);
+                    if (Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) == 00)
+                    {
+                        MessageBox.Show("00 pm is classed ast midnight or 00:00");
+                        endTime = "00" + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        int endHour = Convert.ToInt32(cmbEndTime.SelectedItem.ToString()) + 12;
+                        endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
+                    }
                 }
 
 

@@ -62,6 +62,7 @@ namespace FujitsuPayments.Forms
             this.lblAccountId = new System.Windows.Forms.Label();
             this.lblAddShift = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtHelpBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlEndTime.SuspendLayout();
@@ -82,6 +83,7 @@ namespace FujitsuPayments.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.txtHelpBox);
             this.panel2.Controls.Add(this.rbFullWeek);
             this.panel2.Controls.Add(this.pnlEndTime);
             this.panel2.Controls.Add(this.pnlStartTime);
@@ -447,6 +449,20 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
+            // txtHelpBox
+            // 
+            this.txtHelpBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHelpBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHelpBox.Location = new System.Drawing.Point(517, 198);
+            this.txtHelpBox.Multiline = true;
+            this.txtHelpBox.Name = "txtHelpBox";
+            this.txtHelpBox.ReadOnly = true;
+            this.txtHelpBox.Size = new System.Drawing.Size(255, 115);
+            this.txtHelpBox.TabIndex = 39;
+            this.txtHelpBox.Text = "Select value from 00 - 12 from combo box then either am or pm, if value is 05 and" +
+    " am is selected it will still stay 05, if pm is selected it will be converted to" +
+    " 17";
+            // 
             // frmAddShift
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -506,5 +522,6 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.RadioButton rbStPM;
         private System.Windows.Forms.RadioButton rbStAM;
         private System.Windows.Forms.RadioButton rbFullWeek;
+        private System.Windows.Forms.TextBox txtHelpBox;
     }
 }
