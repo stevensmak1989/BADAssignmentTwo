@@ -116,6 +116,7 @@ namespace FujitsuPayments.Forms
         {
             EmployeeShiftDetails myEmployeeShift = new EmployeeShiftDetails();
             bool ok = true;
+            bool added = true;
             errP.Clear();
             // pass data to class for validation
             try
@@ -159,6 +160,7 @@ namespace FujitsuPayments.Forms
                         if (count == 4)
                         {
                             MessageBox.Show("Only 4 Employess can be assigned to a Shift");
+                            added = false;
                         }
                         else
                         {
@@ -175,6 +177,7 @@ namespace FujitsuPayments.Forms
                             if (count1 > 0)
                             {
                                 MessageBox.Show("Employee has already been assigned to shift :" + UC_Schedule.selectedShiftIDs[i].ToString());
+                                added = false;
                             }
                             else
                             {
@@ -184,12 +187,16 @@ namespace FujitsuPayments.Forms
                                     drEmployeeShift["ShiftID"] = UC_Schedule.selectedShiftIDs[i];
                                     drEmployeeShift["EmployeeID"] = myEmployeeShift.EmployeeId;
                                     dsFujitsuPayments.Tables["EmployeeShiftDetails"].Rows.Add(drEmployeeShift);
-                                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");                                   
+                                    daEmployeeShift.Update(dsFujitsuPayments, "EmployeeShiftDetails");
+                                    added = true;
                                 }
                             }
                         }
                     }
-                    MessageBox.Show("Employee Shift Added");
+                    if(added == true)
+                    {
+                        MessageBox.Show("Employee Shift Added");
+                    }                  
                     this.Dispose();
 
                 }

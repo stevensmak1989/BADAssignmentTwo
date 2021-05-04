@@ -169,12 +169,12 @@ namespace FujitsuPayments.Forms
                     {
                         drAccount = dsFujitsuPayments.Tables["Account"].NewRow();
 
+                        drAccount["Postcode"] = myAccount.Postcode;
                         drAccount["AccountID"] = myAccount.AccountId;
                         drAccount["ClientName"] = myAccount.ClientName;
                         drAccount["Street"] = myAccount.Street;
                         drAccount["Town"] = myAccount.Town;
-                        drAccount["County"] = myAccount.County;
-                        drAccount["Postcode"] = myAccount.Postcode;
+                        drAccount["County"] = myAccount.County;                        
                         drAccount["TelNo"] = myAccount.TelNo;
                         drAccount["Email"] = myAccount.Email;
 
