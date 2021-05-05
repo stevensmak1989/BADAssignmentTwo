@@ -94,7 +94,12 @@ namespace FujitsuPayments
             {
                 if (MyValidation.validLength(value, 7, 8) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
-                    postcode = MyValidation.EachLetterToUpper(value);
+                    if (MyValidation.validPCodeNew(value))
+                    {
+                        postcode = MyValidation.EachLetterToUpper(value);
+                    }
+                    else
+                        throw new MyException("Postcode must be in the following format - AA00 0AA/ AA0 0AA.");
                 }
                 else
                     throw new MyException("Postcode must be 7-8 letters.");
@@ -114,5 +119,7 @@ namespace FujitsuPayments
                     throw new MyException("Telephone number must be 11-15 digits.");
             }
         }
+
+
     }
 }

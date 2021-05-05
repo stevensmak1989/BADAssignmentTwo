@@ -95,7 +95,7 @@ namespace FujitsuPayments
             {
                 if (MyValidation.validLength(value, 7, 8) && MyValidation.validLetterNumberWhiteSpace(value))
                 {
-                    if (MyValidation.validPCode(value))
+                    if (MyValidation.validPCodeNew(value))
                     {
                         postcode = MyValidation.EachLetterToUpper(value);
                     }
@@ -137,10 +137,5 @@ namespace FujitsuPayments
             }
 
         }
-
-
     }
-
-
-
 }

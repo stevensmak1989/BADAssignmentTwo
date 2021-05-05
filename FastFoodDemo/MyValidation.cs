@@ -403,5 +403,25 @@ namespace FujitsuPayments
             }
             return ok;
         }
+
+        public static bool validPCodeNew(string txt)
+        {
+           bool ok = true;
+           string str = Convert.ToString(txt);
+
+            //string pattern = "\\d{1,2}:\\d{2}";
+
+            if (Regex.IsMatch(txt, @"(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY])))) [0-9][A-Z-[CIKMOV]]{2})"))
+            {
+                ok = true;
+            }
+            else
+            {
+                ok = false;
+            }
+            return ok;
+
+
+        }
     }
 }
