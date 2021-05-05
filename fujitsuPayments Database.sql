@@ -62,7 +62,6 @@ CREATE TABLE Account
 
 	--PK
 	CONSTRAINT pkAccID PRIMARY KEY (AccountID),
-	CONSTRAINT ckAccPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckAccTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
 
 )
@@ -81,7 +80,6 @@ CREATE TABLE OfficeLocation
 
 	--PK
 	CONSTRAINT pkLocID PRIMARY KEY (LocationID),
-	CONSTRAINT ckLocPostcode CHECK (Postcode LIKE '[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]'),
 	CONSTRAINT ckLocTelNo CHECK (TelNo LIKE REPLICATE('[0-9]', 11))
 	
 
