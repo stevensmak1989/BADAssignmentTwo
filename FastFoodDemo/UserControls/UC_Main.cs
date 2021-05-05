@@ -16,5 +16,10 @@ namespace FujitsuPayments.UserControls
         {
             InitializeComponent();
         }
+
+        private void UC_Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace FujitsuPayments.UserControls
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UC_Main";
             this.Size = new System.Drawing.Size(1090, 616);
+            this.Load += new System.EventHandler(this.UC_Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
