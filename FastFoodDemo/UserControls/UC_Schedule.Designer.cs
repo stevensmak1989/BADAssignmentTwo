@@ -31,7 +31,7 @@ namespace FujitsuPayments.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Schedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewShifts = new System.Windows.Forms.Button();
             this.btnEditShift = new System.Windows.Forms.Button();
@@ -282,71 +282,64 @@ namespace FujitsuPayments.UserControls
             // 
             this.lblSunDate.AutoSize = true;
             this.lblSunDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSunDate.Location = new System.Drawing.Point(607, 2);
+            this.lblSunDate.Location = new System.Drawing.Point(578, 2);
             this.lblSunDate.Name = "lblSunDate";
-            this.lblSunDate.Size = new System.Drawing.Size(12, 17);
+            this.lblSunDate.Size = new System.Drawing.Size(0, 17);
             this.lblSunDate.TabIndex = 6;
-            this.lblSunDate.Text = "-";
             // 
             // lblSatDate
             // 
             this.lblSatDate.AutoSize = true;
             this.lblSatDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSatDate.Location = new System.Drawing.Point(515, 2);
+            this.lblSatDate.Location = new System.Drawing.Point(486, 2);
             this.lblSatDate.Name = "lblSatDate";
-            this.lblSatDate.Size = new System.Drawing.Size(12, 17);
+            this.lblSatDate.Size = new System.Drawing.Size(0, 17);
             this.lblSatDate.TabIndex = 5;
-            this.lblSatDate.Text = "-";
             // 
             // lblFriDate
             // 
             this.lblFriDate.AutoSize = true;
             this.lblFriDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFriDate.Location = new System.Drawing.Point(436, 2);
+            this.lblFriDate.Location = new System.Drawing.Point(407, 2);
             this.lblFriDate.Name = "lblFriDate";
-            this.lblFriDate.Size = new System.Drawing.Size(12, 17);
+            this.lblFriDate.Size = new System.Drawing.Size(0, 17);
             this.lblFriDate.TabIndex = 4;
-            this.lblFriDate.Text = "-";
             // 
             // lblThuDate
             // 
             this.lblThuDate.AutoSize = true;
             this.lblThuDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThuDate.Location = new System.Drawing.Point(348, 2);
+            this.lblThuDate.Location = new System.Drawing.Point(319, 2);
             this.lblThuDate.Name = "lblThuDate";
-            this.lblThuDate.Size = new System.Drawing.Size(12, 17);
+            this.lblThuDate.Size = new System.Drawing.Size(0, 17);
             this.lblThuDate.TabIndex = 3;
-            this.lblThuDate.Text = "-";
             // 
             // lblWedDate
             // 
             this.lblWedDate.AutoSize = true;
             this.lblWedDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWedDate.Location = new System.Drawing.Point(260, 2);
+            this.lblWedDate.Location = new System.Drawing.Point(231, 2);
             this.lblWedDate.Name = "lblWedDate";
-            this.lblWedDate.Size = new System.Drawing.Size(12, 17);
+            this.lblWedDate.Size = new System.Drawing.Size(0, 17);
             this.lblWedDate.TabIndex = 2;
-            this.lblWedDate.Text = "-";
             // 
             // lblTueDate
             // 
             this.lblTueDate.AutoSize = true;
             this.lblTueDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTueDate.Location = new System.Drawing.Point(172, 2);
+            this.lblTueDate.Location = new System.Drawing.Point(143, 2);
             this.lblTueDate.Name = "lblTueDate";
-            this.lblTueDate.Size = new System.Drawing.Size(12, 17);
+            this.lblTueDate.Size = new System.Drawing.Size(0, 17);
             this.lblTueDate.TabIndex = 1;
-            this.lblTueDate.Text = "-";
             // 
             // lblMonDate
             // 
             this.lblMonDate.AutoSize = true;
             this.lblMonDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonDate.Location = new System.Drawing.Point(79, 2);
+            this.lblMonDate.Location = new System.Drawing.Point(50, 2);
             this.lblMonDate.Name = "lblMonDate";
-            this.lblMonDate.Size = new System.Drawing.Size(12, 17);
+            this.lblMonDate.Size = new System.Drawing.Size(0, 17);
             this.lblMonDate.TabIndex = 0;
-            this.lblMonDate.Text = "-";
             // 
             // lblSunday
             // 
@@ -438,14 +431,14 @@ namespace FujitsuPayments.UserControls
             // 
             this.dgvShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShift.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShift.Location = new System.Drawing.Point(686, 247);
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.ReadOnly = true;

@@ -227,13 +227,20 @@ namespace FujitsuPayments.Forms
         private void btnEditSave_Click(object sender, EventArgs e)
         {
 
-            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1
-            || rbStAM.Checked == false && rbStPM.Checked == false || rbEtAM.Checked == false && rbEtPM.Checked == false)
+            if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 || cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all time fields");
             }
             else
             {
+
+                startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
+
+                endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
+
+                /*Code removed as getting to complex, simplified by using 00-23 instead of using 00-12 and then converting based on am or pm, code was becoming less user friendly*/
+
+                /*
                 // convert combobox and radio button to string
                 if (rbStAM.Checked == true)
                 {
@@ -289,6 +296,7 @@ namespace FujitsuPayments.Forms
                         endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
                     }
                 }
+                */
 
 
                 int compareTime = TimeSpan.Compare(TimeSpan.Parse(startTime), TimeSpan.Parse(endTime));

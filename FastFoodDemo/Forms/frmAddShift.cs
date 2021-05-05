@@ -118,6 +118,8 @@ namespace FujitsuPayments.Forms
             {
                 getNumberProject(noRows);
             }
+
+            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -141,14 +143,21 @@ namespace FujitsuPayments.Forms
             {
                 // ----------  check that all options have been selected -------------------------- //
                 if (cmbStartTime.SelectedIndex == -1 || cmbStartTimeMin.SelectedIndex == -1 ||
-                    cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1 || rbStAM.Checked == false && rbStPM.Checked == false
-                    || rbEtAM.Checked == false && rbEtPM.Checked == false)
+                    cmbEndTime.SelectedIndex == -1 || cmbEndTimeMin.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please fill in all time fields");
                 }
                 else
                 {
+                    startTime = cmbStartTime.SelectedItem.ToString() + ":" + cmbStartTimeMin.SelectedItem.ToString();
+
+                    endTime = cmbEndTime.SelectedItem.ToString() + ":" + cmbEndTimeMin.SelectedItem.ToString();
+
+
+                    /*Code removed as getting to complex, simplified by using 00-23 instead of using 00-12 and then converting based on am or pm, code was becoming less user friendly*/
+
                     // ---------- convert combobox and radio button to string --------------------- //
+                    /*
                     if (rbStAM.Checked == true)
                     {
                         if (Convert.ToInt32(cmbStartTime.SelectedItem.ToString()) == 12)
@@ -203,6 +212,7 @@ namespace FujitsuPayments.Forms
                             endTime = Convert.ToString(endHour) + ":" + cmbEndTimeMin.SelectedItem.ToString();
                         }
                     }
+                    */
 
                     UC_Schedule.calSizeHeight(startTime, endTime);
 

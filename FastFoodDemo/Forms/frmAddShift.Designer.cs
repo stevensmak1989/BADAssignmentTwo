@@ -62,7 +62,6 @@ namespace FujitsuPayments.Forms
             this.lblAccountId = new System.Windows.Forms.Label();
             this.lblAddShift = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtHelpBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlEndTime.SuspendLayout();
@@ -83,7 +82,6 @@ namespace FujitsuPayments.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtHelpBox);
             this.panel2.Controls.Add(this.rbFullWeek);
             this.panel2.Controls.Add(this.pnlEndTime);
             this.panel2.Controls.Add(this.pnlStartTime);
@@ -118,9 +116,10 @@ namespace FujitsuPayments.Forms
             // rbFullWeek
             // 
             this.rbFullWeek.AutoSize = true;
+            this.rbFullWeek.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbFullWeek.Location = new System.Drawing.Point(133, 159);
             this.rbFullWeek.Name = "rbFullWeek";
-            this.rbFullWeek.Size = new System.Drawing.Size(146, 25);
+            this.rbFullWeek.Size = new System.Drawing.Size(142, 24);
             this.rbFullWeek.TabIndex = 38;
             this.rbFullWeek.TabStop = true;
             this.rbFullWeek.Text = "Select for week";
@@ -135,6 +134,7 @@ namespace FujitsuPayments.Forms
             this.pnlEndTime.Name = "pnlEndTime";
             this.pnlEndTime.Size = new System.Drawing.Size(112, 29);
             this.pnlEndTime.TabIndex = 37;
+            this.pnlEndTime.Visible = false;
             // 
             // rbEtPM
             // 
@@ -169,6 +169,7 @@ namespace FujitsuPayments.Forms
             this.pnlStartTime.Name = "pnlStartTime";
             this.pnlStartTime.Size = new System.Drawing.Size(112, 29);
             this.pnlStartTime.TabIndex = 36;
+            this.pnlStartTime.Visible = false;
             // 
             // rbStPM
             // 
@@ -196,16 +197,16 @@ namespace FujitsuPayments.Forms
             // 
             // cmbEndTimeMin
             // 
+            this.cmbEndTimeMin.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEndTimeMin.FormattingEnabled = true;
             this.cmbEndTimeMin.Items.AddRange(new object[] {
             "00",
             "15",
             "30",
-            "45",
-            ""});
-            this.cmbEndTimeMin.Location = new System.Drawing.Point(551, 163);
+            "45"});
+            this.cmbEndTimeMin.Location = new System.Drawing.Point(551, 170);
             this.cmbEndTimeMin.Name = "cmbEndTimeMin";
-            this.cmbEndTimeMin.Size = new System.Drawing.Size(44, 29);
+            this.cmbEndTimeMin.Size = new System.Drawing.Size(44, 28);
             this.cmbEndTimeMin.TabIndex = 35;
             // 
             // label1
@@ -228,19 +229,21 @@ namespace FujitsuPayments.Forms
             // 
             // cmbStartTimeMin
             // 
+            this.cmbStartTimeMin.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStartTimeMin.FormattingEnabled = true;
             this.cmbStartTimeMin.Items.AddRange(new object[] {
             "00",
             "15",
             "30",
             "45"});
-            this.cmbStartTimeMin.Location = new System.Drawing.Point(551, 128);
+            this.cmbStartTimeMin.Location = new System.Drawing.Point(551, 135);
             this.cmbStartTimeMin.Name = "cmbStartTimeMin";
-            this.cmbStartTimeMin.Size = new System.Drawing.Size(44, 29);
+            this.cmbStartTimeMin.Size = new System.Drawing.Size(44, 28);
             this.cmbStartTimeMin.TabIndex = 31;
             // 
             // cmbStartTime
             // 
+            this.cmbStartTime.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStartTime.FormattingEnabled = true;
             this.cmbStartTime.Items.AddRange(new object[] {
             "00",
@@ -255,14 +258,26 @@ namespace FujitsuPayments.Forms
             "09",
             "10",
             "11",
-            "12"});
-            this.cmbStartTime.Location = new System.Drawing.Point(481, 128);
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
+            this.cmbStartTime.Location = new System.Drawing.Point(481, 135);
             this.cmbStartTime.Name = "cmbStartTime";
-            this.cmbStartTime.Size = new System.Drawing.Size(44, 29);
+            this.cmbStartTime.Size = new System.Drawing.Size(44, 28);
             this.cmbStartTime.TabIndex = 30;
             // 
             // cmbEndTime
             // 
+            this.cmbEndTime.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEndTime.FormattingEnabled = true;
             this.cmbEndTime.Items.AddRange(new object[] {
             "00",
@@ -277,10 +292,21 @@ namespace FujitsuPayments.Forms
             "09",
             "10",
             "11",
-            "12"});
-            this.cmbEndTime.Location = new System.Drawing.Point(481, 163);
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
+            this.cmbEndTime.Location = new System.Drawing.Point(481, 170);
             this.cmbEndTime.Name = "cmbEndTime";
-            this.cmbEndTime.Size = new System.Drawing.Size(44, 29);
+            this.cmbEndTime.Size = new System.Drawing.Size(44, 28);
             this.cmbEndTime.TabIndex = 29;
             // 
             // lblEndTime
@@ -449,20 +475,6 @@ namespace FujitsuPayments.Forms
             // 
             this.errP.ContainerControl = this;
             // 
-            // txtHelpBox
-            // 
-            this.txtHelpBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtHelpBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHelpBox.Location = new System.Drawing.Point(517, 198);
-            this.txtHelpBox.Multiline = true;
-            this.txtHelpBox.Name = "txtHelpBox";
-            this.txtHelpBox.ReadOnly = true;
-            this.txtHelpBox.Size = new System.Drawing.Size(255, 115);
-            this.txtHelpBox.TabIndex = 39;
-            this.txtHelpBox.Text = "Select value from 00 - 12 from combo box then either am or pm, if value is 05 and" +
-    " am is selected it will still stay 05, if pm is selected it will be converted to" +
-    " 17";
-            // 
             // frmAddShift
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -522,6 +534,5 @@ namespace FujitsuPayments.Forms
         private System.Windows.Forms.RadioButton rbStPM;
         private System.Windows.Forms.RadioButton rbStAM;
         private System.Windows.Forms.RadioButton rbFullWeek;
-        private System.Windows.Forms.TextBox txtHelpBox;
     }
 }
