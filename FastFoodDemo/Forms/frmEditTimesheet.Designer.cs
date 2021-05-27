@@ -154,6 +154,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject5.Name = "cmbProject5";
             this.cmbProject5.Size = new System.Drawing.Size(60, 21);
             this.cmbProject5.TabIndex = 123;
+            this.cmbProject5.SelectedIndexChanged += new System.EventHandler(this.cmbProject5_SelectedIndexChanged);
             // 
             // lblDateFri
             // 
@@ -249,6 +250,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(60, 21);
             this.cmbProject.TabIndex = 120;
+            this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
             // cmbEmpTask
             // 
@@ -323,6 +325,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject4.Name = "cmbProject4";
             this.cmbProject4.Size = new System.Drawing.Size(60, 21);
             this.cmbProject4.TabIndex = 130;
+            this.cmbProject4.SelectedIndexChanged += new System.EventHandler(this.cmbProject4_SelectedIndexChanged);
             // 
             // panel7
             // 
@@ -344,6 +347,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject3.Name = "cmbProject3";
             this.cmbProject3.Size = new System.Drawing.Size(60, 21);
             this.cmbProject3.TabIndex = 121;
+            this.cmbProject3.SelectedIndexChanged += new System.EventHandler(this.cmbProject3_SelectedIndexChanged);
             // 
             // lblDateWed
             // 
@@ -434,6 +438,7 @@ namespace FujitsuPayments.Forms
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(107, 21);
             this.cmbEmployee.TabIndex = 71;
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // lblEmpID
             // 
@@ -533,6 +538,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject7.Name = "cmbProject7";
             this.cmbProject7.Size = new System.Drawing.Size(60, 21);
             this.cmbProject7.TabIndex = 125;
+            this.cmbProject7.SelectedIndexChanged += new System.EventHandler(this.cmbProject7_SelectedIndexChanged);
             // 
             // lblDateSun
             // 
@@ -596,6 +602,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject6.Name = "cmbProject6";
             this.cmbProject6.Size = new System.Drawing.Size(60, 21);
             this.cmbProject6.TabIndex = 124;
+            this.cmbProject6.SelectedIndexChanged += new System.EventHandler(this.cmbProject6_SelectedIndexChanged);
             // 
             // lblDateSat
             // 
@@ -649,6 +656,7 @@ namespace FujitsuPayments.Forms
             this.cmbProject2.Name = "cmbProject2";
             this.cmbProject2.Size = new System.Drawing.Size(60, 21);
             this.cmbProject2.TabIndex = 124;
+            this.cmbProject2.SelectedIndexChanged += new System.EventHandler(this.cmbProject2_SelectedIndexChanged);
             // 
             // cmbEmpTask2
             // 
@@ -750,6 +758,7 @@ namespace FujitsuPayments.Forms
             this.cmbClaimType.Name = "cmbClaimType";
             this.cmbClaimType.Size = new System.Drawing.Size(98, 21);
             this.cmbClaimType.TabIndex = 66;
+            this.cmbClaimType.SelectedIndexChanged += new System.EventHandler(this.cmbClaimType_SelectedIndexChanged);
             // 
             // lblWeekNo
             // 
@@ -872,7 +881,7 @@ namespace FujitsuPayments.Forms
             this.button2.TabIndex = 76;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSave
             // 
@@ -887,6 +896,7 @@ namespace FujitsuPayments.Forms
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel17
             // 

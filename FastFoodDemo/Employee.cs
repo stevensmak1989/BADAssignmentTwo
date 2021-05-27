@@ -221,15 +221,4 @@ namespace FujitsuPayments
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
